@@ -3,10 +3,14 @@
 :root {
 	--base: #1e1e2e;
 	--blue: #89b4fa;
+	--green: #a6e3a1;
 	--lavender: #b4befe;
 	--mantle: #181825;
+	--peach: #fab387;
+	--red: #f38ba8;
 	--selection: #9399b2cc;
 	--text: #cdd6f4;
+	--yellow: #f9e2af;
 }
 
 body {
