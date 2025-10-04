@@ -3,14 +3,29 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Heading</h1>
-	<h2>Subheading</h2>
-	<p>Hello, world!</p>
-	<div class="box">
-		<p>This is some text. Also, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">a link :3</a>.</p>
-\[f: A \to B\\
-A \headrightarrow \im(f) \rightarrowtail B\]
-	</div>
+$\definecolor{myred}{RGB}{243,139,168}\definecolor{mygreen}{RGB}{166,227,161}\definecolor{mypeach}{RGB}{250,179,135}\definecolor{myblue}{RGB}{137,180,250}\newcommand{\xA}{{\color{myred}A}}\newcommand{\xB}{{\color{mygreen}B}}\newcommand{\xC}{{\color{myblue}C}}\newcommand{\xa}{{\color{myred}a}}\newcommand{\xb}{{\color{mygreen}b}}\newcommand{\xc}{{\color{myblue}c}}\newcommand{\xx}{{\color{myred}x}}\newcommand{\xy}{{\color{mygreen}y}}\newcommand{\xz}{{\color{myblue}z}}\newcommand{\NN}{{\color{\mypeach}\mathbb{N}}}\newcommand{\bang}{{\color{myred}!}}$
+	<h1>Sets and Functions</h1>
+	<h2>Sets</h2>
+	<p>
+		In mathematics, a set refers to any collection of objects. For example, there is a set of natural numbers $\NN$, a set of all people on earth, a set with no elements, and a set consisting of a triangle, the colour red and a sheep named Gregory. Sets are often denoted with curly braces $\{\cdots\}$ with the contents of the set between them. So, for example, the last set listed is denoted as $\{\triangle, {\color{myred}\textrm{red}}, \textrm{Gregory the sheep}\}$. We'll denote sets with upper-case letters, like $\xA, \xB, \xC, \ldots$, and their elements with lower-case letters, such as $\xa, \xb, \xc, \ldots$. We use the symbol $\in$ to denote that an object is an element of a set. For example, $\xa \in \xA$ means that object $\xa$ is element of set $\xA$.
+	</p>
+
+	<p>
+		For two elements $\xx$ and $\xy$ of a set $\xA$, we can ask whether or not they're equal. If they are, we denote this as $\xx = \xy$. If they're not, we denote this as $\xx \neq \xy$. $=$ is called the <i>identity relation</i> on $\xA$ and has three key properties:
+	</p>
+
+	<ul>
+		<li>It is reflexive: for any $\xx \in \xA$, we have $\xx = \xx$;</li>
+		<li>It is transitive: for any three $\xx,\xy,\xz \in \xA$, if $\xx = \xy$ and $\xy = \xz$, then $\xx = \xz$;</li>
+		<li>It is symmetric: for two $\xx,\xy \in \xA$, if $\xx = \xy$, then $\xy = \xx$.</li>
+	</ul>
+
+	For example, in the set $\NN$ of natural numbers, since $2+2$ is equal to $4$, by symmetry, $4$ is also equal to $2+2$. Besides elements and an identity relation, sets have no additional structure.
+
+	In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element and we denote its elements with $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\emptyset$ to denote the empty set and $\bang = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\NN$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
+
+	<h2>Functions</h2>
+	W.I.P
 	
 	<script type="text/x-mathjax-config">
 	MathJax.Hub.Config({
