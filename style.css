@@ -1,34 +1,21 @@
-/* Catpuccin Mocha theme */
-
-:root {
-	--base: #1e1e2e;
-	--blue: #89b4fa;
-	--green: #a6e3a1;
-	--lavender: #b4befe;
-	--mantle: #181825;
-	--peach: #fab387;
-	--red: #f38ba8;
-	--selection: #9399b2cc;
-	--text: #cdd6f4;
-	--yellow: #f9e2af;
-}
+@import url('https://cdn.jsdelivr.net/npm/@catppuccin/palette/css/catppuccin.css');
 
 body {
-	background: var(--base);
-	color: var(--text);
+	background: var(--ctp-mocha-base);
+	color: var(--ctp-mocha-text);
 	font-family: sans;
 	padding: 2em;
 	text-size: 18px;
 }
 
 ::selection {
-	background: var(--selection);
+	background: #7c7f93cc;
 }
 
 .MathJax ::selection {
 	background: none;
-	color: var(--lavender);
-	text-shadow: 0 0 2px var(--lavender);
+	color: var(--ctp-mocha-lavender);
+	text-shadow: 0 0 2px var(--ctp-mocha-lavender);
 }
 
 h1 {
@@ -40,16 +27,16 @@ h1, h2 {
 }
 
 a {
-	color: var(--blue);
-	text-decoration: underline;
+	color: var(--ctp-mocha-blue);
+	text-decoration: none;
 }
 
 a:hover {
-	color: var(--text);
+	color: var(--ctp-mocha-lavender);
 }
 
 .box {
-	background: var(--mantle);
+	background: var(--ctp-mocha-mantle);
 	box-shadow: 0 0 10px black;
 	padding: 2em;
 }
