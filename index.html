@@ -5,6 +5,7 @@
 <body>
 \[
 \require{html}
+\require{amssymb}
 \newcommand{\red}[1]{\style{color:var(--ctp-mocha-red)}{#1}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\id}{\textrm{id}}
@@ -192,7 +193,7 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not so difficult to prove all sections are inverses (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. For some (a bit more complicated) surjections, finding a section is less obvious. For example, where $\mathbb{R}$ denotes the real number line, and in the quotient $\mathbb{R}/\mathbb{Q}$ two reals $r_1,r_2$ are considered equal if their difference $r_1-r_2$ is rational, it's not clear how to find a section of the quotient map $q: \mathbb{R} \twoheadrightarrow \mathbb{R}/\mathbb{Q}$ is less obvious.
+		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not so difficult to prove all sections are inverses (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. For some (a bit more complicated) surjections, finding a section is less obvious. For example, where $\mathbb{R}$ denotes the real number line, and in the quotient $\mathbb{R}/\mathbb{Q}$ two reals $r_1,r_2$ are considered equal if their difference $r_1-r_2$ is rational, how to define a section of the quotient map $q: \mathbb{R} \twoheadrightarrow \mathbb{R}/\mathbb{Q}$ is less obvious.
 	</p>
 
 	<p>
