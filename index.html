@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>Maths & stuff idk - DV103</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -211,7 +212,13 @@ f: & A & \to & B \\
 	<p>W.I.P todo: add exercises and pictures and explain im(f)</p>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
-	
+
+	<script>
+	window.MathJax = {
+		loader: {load: ['[tex]/ams']},
+		tex: {packages: {'[+]': ['ams']}}
+	};
+	</script>
 	<script type="text/x-mathjax-config">
 	MathJax.Hub.Config({
 	    jax: ["input/TeX", "output/HTML-CSS"],
