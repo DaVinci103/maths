@@ -10,23 +10,8 @@
 \newcommand{\yellow}[1]{\style{color:var(--ctp-mocha-yellow)}{#1}}
 \newcommand{\green}[1]{\style{color:var(--ctp-mocha-green)}{#1}}
 \newcommand{\blue}[1]{\style{color:var(--ctp-mocha-blue)}{#1}}
-<!--\newcommand{\sA}{\yellow{A}}
-\newcommand{\sB}{\red{B}}
-\newcommand{\sC}{\blue{C}}
-\newcommand{\sX}{\red{X}}
-\newcommand{\sY}{\green{Y}}
-\newcommand{\sZ}{\blue{Z}}
-\newcommand{\sa}{\yellow{a}}
-\newcommand{\sb}{\red{b}}
-\newcommand{\sc}{\blue{c}}
-\newcommand{\sx}{\red{x}}
-\newcommand{\sy}{\green{y}}
-\newcommand{\sz}{\blue{z}}
-\newcommand{\NN}{\peach{\mathbb{N}}}
-\newcommand{\ZZ}{\blue{\mathbb{Z}}}
-\newcommand{\QQ}{\green{\mathbb{Q}}}
-\newcommand{\RR}{\red{\mathbb{R}}}
-\newcommand{\bang}{\red{!}}-->
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\id}{\operatorname{id}}
 \]
 
 	<h1>Sets and Functions</h1>
@@ -62,6 +47,10 @@
 		<li>This assignment must be <i>total</i>, meaning that $f$ has a value at <i>every</i> element of $A$;</li>
 		<li>This assignment must be <i>unique</i>, meaning that $f$ cannot have multiple function values at the same argument (if $a = b$, then $f(a) = f(b)$).</li>
 	</ul>
+
+	<p>
+		Two functions $f$ and $g$, both from $A$ to $B$, are equal if $f(a) = g(a)$ for all $a \in A$. This means that, besides the function values, functions do not contain any extra information, such as the exact procedure to derive those values.
+	</p>
 
 	<p>
 		We write $f: A \to B$ to denote that $f$ is a function from $A$ to $B$. The set $A$ is called the domain of the function $f$ and $B$ is called the codomain. To indicate that the function $f$ maps an object $a \in A$ to an object $b \in B$, we use the symbol $\mapsto$, as in $a \mapsto b$ (when $f$ is clear from context) or $f: a \mapsto b$. We'll often write the following:
@@ -167,7 +156,19 @@ f: & A & \to & B \\
 	</div>
 
 	<p>
-		One (fairly obvious) property of composition is associativity: if we have three functions $f: A \to B$, $g: B \to C$ and $h: C \to D$ which we want to compose into one function $h \circ g \circ f$ W.I.P
+		One (fairly obvious) property of composition is associativity: if we have three functions $f: A \to B$, $g: B \to C$ and $h: C \to D$ which we want to compose into one function $h \circ g \circ f$, it doesn't matter if we first compose $h$ with $g$, and compose the result with $f$, or if we first compose $g$ and $f$, and then compose the result of that with $h$. In both cases, we map $a$ to $h(g(f(a)))$. Thus, instead of writing $(h \circ g) \circ f$ or $h \circ (g \circ f)$, we can simply write $h \circ g \circ f$, omitting the parenthesis.
+	</p>
+
+	<p>
+		A rather trivial example of a function is the identity function. Given a set $A$, the identity function on $A$ is denoted $\id_A$. The domain and codomain of $\id_A$ are both $A$ and, for $a \in A$, $\id_A(a)$ is defined as just $a$. The identity function also is a neutral element for function composition: given a function $f: A \to B$, or $g: B \to A$, composing it with $\id_A$ gives back the same function. For $a \in A$, $(f \circ \id_A)(a) = f(\id_A(a))$ and for $b \in B$, $(\id_A \circ g)(b) = \id_B(g(b))$.
+	</p>
+
+	<p>
+		For every set $A$, there is a unique function $\mathbf{0} \to A$. Namely, the empty function (of $A$). Since $\mathbf{0}$ has no elements, the empty function doesn't need to be defined on any elements. As for functions $A \to \mathbf{0}$, there are usually none. There are no elements that the elements of $A$ can be mapped to, so no function from $A$ to $\mathbf{0}$ can be defined. The one exception is (of course) $A = \mathbf{0}$, as then we don't have elements of $A$ to worry about.
+	</p>
+
+	<p>
+		For every set $A$, there also is a unque function $A \to \mathbf{1}$. If we try to define a function from $A$ to $\mathbf{1}$, we are forced to map every element of $A$ to $!$. There is a natural correspondence between functions $\mathbf{1} \to A$ and elements of $A$: a function $f: \mathbf{1} \to A$ corresponds to the element $f(!) \in A$ and, given an element $a \in A$, we can construct W.I.P todo: explain quantifiers
 	</p>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
