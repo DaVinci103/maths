@@ -10,7 +10,7 @@
 \newcommand{\yellow}[1]{\style{color:var(--ctp-mocha-yellow)}{#1}}
 \newcommand{\green}[1]{\style{color:var(--ctp-mocha-green)}{#1}}
 \newcommand{\blue}[1]{\style{color:var(--ctp-mocha-blue)}{#1}}
-\newcommand{\sA}{\yellow{A}}
+<!--\newcommand{\sA}{\yellow{A}}
 \newcommand{\sB}{\red{B}}
 \newcommand{\sC}{\blue{C}}
 \newcommand{\sX}{\red{X}}
@@ -26,33 +26,151 @@
 \newcommand{\ZZ}{\blue{\mathbb{Z}}}
 \newcommand{\QQ}{\green{\mathbb{Q}}}
 \newcommand{\RR}{\red{\mathbb{R}}}
-\newcommand{\bang}{\red{!}}
+\newcommand{\bang}{\red{!}}-->
 \]
 
 	<h1>Sets and Functions</h1>
 	<h2>Sets</h2>
 	<p>
-		In mathematics, a set refers to any collection of objects. For example, there is a set of natural numbers $\NN$, a set of all people on earth, a set with no elements, and a set consisting of a triangle, the colour red and a sheep named Gregory. Sets are often denoted with curly braces $\{\cdots\}$ with the contents of the set between them. So, for example, the last set listed is denoted as $\{\triangle, \red{\textrm{red}}, \textrm{Gregory the sheep}\}$. We'll denote sets with upper-case letters, like $\sA, \sB, \sC, \ldots$, and their elements with lower-case letters, such as $\sa, \sb, \sc, \ldots$. We use the symbol $\in$ to denote that an object is an element of a set. For example, $\sa \in \sA$ means that object $\sa$ is element of set $\sA$.
+		In mathematics, a set refers to any collection of objects. For example, there is a set of natural numbers $\NN$, a set of all people on earth, a set with no elements, and a set consisting of a triangle, the colour red and a sheep named Gregory. Sets are often denoted with curly braces $\{\cdots\}$ with the contents of the set between them. So, for example, the last set listed is denoted as $\{\triangle, \red{\bullet}, \textrm{Gregory the sheep}\}$. We'll denote sets with upper-case letters, like $A, B, C, \ldots$, and their elements with lower-case letters, such as $a, b, c, \ldots$. We use the symbol $\in$ to denote that an object is an element of a set. For example, $a \in A$ means that object $a$ is element of set $A$.
 	</p>
 
 	<p>
-		For two elements $\sx$ and $\sy$ of a set $\sA$, we can ask whether or not they're equal. If they are, we denote this as $\sx = \sy$. If they're not, we denote this as $\sx \neq \sy$. $=$ is called the <i>identity relation</i> on $\sA$ and has three key properties:
+		For two elements $x$ and $y$ of a set $A$, we can ask whether or not they're equal. If they are, we denote this as $x = y$. If they're not, we denote this as $x \neq y$. $=$ is called the <i>identity relation</i> on $A$ and has three key properties:
 	</p>
 
 	<ul>
-		<li>It is reflexive: for any $\sx \in \sA$, we have $\sx = \sx$;</li>
-		<li>It is transitive: for any three $\sx,\sy,\sz \in \sA$, if $\sx = \sy$ and $\sy = \sz$, then $\sx = \sz$;</li>
-		<li>It is symmetric: for two $\sx,\sy \in \sA$, if $\sx = \sy$, then $\sy = \sx$.</li>
+		<li>It is reflexive: for any $x \in A$, we have $x = x$;</li>
+		<li>It is transitive: for any three $x,y,z \in A$, if $x = y$ and $y = z$, then $x = z$;</li>
+		<li>It is symmetric: for two $x,y \in A$, if $x = y$, then $y = x$.</li>
 	</ul>
 
-	For example, in the set $\NN$ of natural numbers, since $2+2$ is equal to $4$, by symmetry, $4$ is also equal to $2+2$. Besides elements and an identity relation, sets have no additional structure.
+	<p>
+		For example, in the set $\mathbb{N}$ of natural numbers, since $2+2$ is equal to $4$, by symmetry, $4$ is also equal to $2+2$. Besides elements and an identity relation, sets have no additional structure.
+	</p>
 
-	In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element set and we denote its elements by $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\emptyset$ to denote the empty set and $\bang = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\NN$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
+	<p>
+		In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element set and we denote its elements by $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\emptyset$ to denote the empty set and $! = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\mathbb{N}$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
+	</p>
 
 	<h2>Functions</h2>
-	W.I.P
+	<p>
+		A function $f$ from a set $A$ to a set $B$ assigns, to each element $a \in A$, some element $f(a) \in B$. Here, $a$ is called the argument of the function and $f(a)$ is the function value (at $a$).
+	</p>
+	
+	<ul>
+		<li>This assignment must be <i>total</i>, meaning that $f$ has a value at <i>every</i> element of $A$;</li>
+		<li>This assignment must be <i>unique</i>, meaning that $f$ cannot have multiple function values at the same argument (if $a = b$, then $f(a) = f(b)$).</li>
+	</ul>
 
-	This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.
+	<p>
+		We write $f: A \to B$ to denote that $f$ is a function from $A$ to $B$. The set $A$ is called the domain of the function $f$ and $B$ is called the codomain. To indicate that the function $f$ maps an object $a \in A$ to an object $b \in B$, we use the symbol $\mapsto$, as in $a \mapsto b$ (when $f$ is clear from context) or $f: a \mapsto b$. We'll often write the following:
+	</p>
+\[\begin{array}{rrcl}
+f: & A & \to & B \\
+& a & \mapsto & f(a)
+\end{array}\]
+	<p>
+		to declare a function $f$. This should make it clear if we're using a notation other than $f(a)$ to denote the function value. For example, if we write
+	</p>
+\[\begin{array}{rrcl}
+(-)^*: & A & \to & A \\
+& a & \mapsto & a^*
+\end{array}\]
+	<p>
+		then it should be clear the function value of the function $(-)^*$ applied to the parameter $a$ is denoted as $a^*$, rather than $(-)^*(a)$.
+	</p>
+
+	<p>
+		We often visualize functions like this:
+	</p>
+
+	<div class=box>
+	<svg width="400" height="400">
+		<defs>
+		<filter id="shadow">
+		<feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+		<feBlend in="SourceGraphic" in2="blurOut" />
+		</filter>
+		</defs>
+		
+		<circle cx="100" cy="100" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="200" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="300" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<circle cx="300" cy="100" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="200" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="300" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		
+		<line x1="150" y1="125" x2="250" y2="175" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="200" x2="250" y2="200" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="300" x2="250" y2="300" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		The left (red) blobs are elements of the domain of the function, and the right (orange) blobs are elements of the codomain. The blue lines indicate which element maps to which element: the first two red blobs get mapped to the second orange blob, and the third gets mapped to the third. As can be seen in the picture above, each red blob has a unique corresponding orange blob, the same does not hold for the orange blob. For example, the first orange blob has no corresponding red blob, and the second orange blob has multiple corresponding red blobs.
+	</p>
+
+	<p>
+		A common operation on functions is function composition. If we have functions $f$ from $A$ to $B$ and $g$ from $B$ to $C$, we can define the composite function $g \circ f$ (read: "$g$ follows $f$") from $A$ to $C$ that maps $a \in A$ to $g(f(a))$. Note that the composition $g \circ f$ is sort-of denoted right-to-left: $f$ should be applied first, <i>then</i> $g$. This is to make it consistent with the notation $g(f(a))$, where $g$ is also written to the left of $f$.
+	</p>
+
+	<p>
+		For example, suppose we have the following two functions
+	</p>
+
+	<div class=box>
+	<svg width="600" height="500">
+		<circle cx="100" cy="150" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="250" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="350" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<circle cx="300" cy="150" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="250" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="350" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		
+		<circle cx="500" cy="100" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="500" cy="200" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="500" cy="300" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="500" cy="400" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		
+		<line x1="150" y1="175" x2="250" y2="225" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="250" x2="250" y2="250" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="350" x2="250" y2="350" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		
+		<line x1="350" y1="140" x2="450" y2="110" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="350" y1="240" x2="450" y2="210" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="350" y1="360" x2="450" y2="390" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		One from red to orange, the other from orange to yellow. If we want to compute the function value of the composite function at a red blob, we follow one blue line form red to orange, and then the next blue line from orange to yellow, and the yellow blob we arrive at is our function value. If we do that for all red blobs, we get the following composite function:
+	</p>
+
+	<div class=box>
+	<svg width="400" height="500">
+		<circle cx="100" cy="150" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="250" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="350" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<circle cx="300" cy="100" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="300" cy="200" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="300" cy="300" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		<circle cx="300" cy="400" r="25" fill="var(--ctp-mocha-yellow)" filter="url(#shadow)" />
+		
+		<line x1="150" y1="160" x2="250" y2="190" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="240" x2="250" y2="210" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="360" x2="250" y2="390" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		One (fairly obvious) property of composition is associativity: if we have three functions $f: A \to B$, $g: B \to C$ and $h: C \to D$ which we want to compose into one function $h \circ g \circ f$ W.I.P
+	</p>
+
+	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
 	
 	<script type="text/x-mathjax-config">
 	MathJax.Hub.Config({
