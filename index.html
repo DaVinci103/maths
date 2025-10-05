@@ -6,12 +6,8 @@
 \[
 \require{html}
 \newcommand{\red}[1]{\style{color:var(--ctp-mocha-red)}{#1}}
-\newcommand{\peach}[1]{\style{color:var(--ctp-mocha-peach)}{#1}}
-\newcommand{\yellow}[1]{\style{color:var(--ctp-mocha-yellow)}{#1}}
-\newcommand{\green}[1]{\style{color:var(--ctp-mocha-green)}{#1}}
-\newcommand{\blue}[1]{\style{color:var(--ctp-mocha-blue)}{#1}}
 \newcommand{\NN}{\mathbb{N}}
-\newcommand{\id}{\operatorname{id}}
+\newcommand{\id}{\textrm{id}}
 \]
 
 	<h1>Sets and Functions</h1>
@@ -31,11 +27,15 @@
 	</ul>
 
 	<p>
-		For example, in the set $\mathbb{N}$ of natural numbers, since $2+2$ is equal to $4$, by symmetry, $4$ is also equal to $2+2$. Besides elements and an identity relation, sets have no additional structure.
+		For example, in the set $\NN$ of natural numbers, since $2+2$ is equal to $4$, by symmetry, $4$ is also equal to $2+2$. Besides elements and an identity relation, sets have no additional structure.
 	</p>
 
 	<p>
 		In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element set and we denote its elements by $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\emptyset$ to denote the empty set and $! = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\mathbb{N}$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
+	</p>
+
+	<p>
+		In logic, we often use quantifier symbols for statements such as "for all x, statement P holds" or "there exists a y for which statement Q holds", wherein we use a variable such as x or y to range over different values, instead of having a fixed value that the statement depends on. The symbol $\forall$ is used for the universal quantifier. The statement $\forall x.P$ means "for all x, statement P holds". The variable $x$ is placed immediately to the right of the $\forall$ statement, and the quantifier and statement $P$ are separated here with a dot. We also often bound variables to be of a certain set or type, or quantify over multiple variables at once. For example, $\forall x,y \in A, b \in B. \ldots$ means "for all $x$ and $y$ in $A$ and all $b$ in $B$, …". Another common quantifier is $\exists$, which means "there exists". It is used in the same way as $\forall$, but to mean "there exists" instead of "forall". The axiom of transitivity of identity can thus be stated as $\forall x,y,z \in A. x = y \wedge y = z \implies x = z$ (the symbols $\wedge$ and $\implies$ mean "and" and "implies" respectively).
 	</p>
 
 	<h2>Functions</h2>
@@ -168,8 +168,46 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For every set $A$, there also is a unque function $A \to \mathbf{1}$. If we try to define a function from $A$ to $\mathbf{1}$, we are forced to map every element of $A$ to $!$. There is a natural correspondence between functions $\mathbf{1} \to A$ and elements of $A$: a function $f: \mathbf{1} \to A$ corresponds to the element $f(!) \in A$ and, given an element $a \in A$, we can construct W.I.P todo: explain quantifiers
+		For every set $A$, there also is a unque function $A \to \mathbf{1}$. If we try to define a function from $A$ to $\mathbf{1}$, we are forced to map every element of $A$ to $!$. There is a natural correspondence between functions $\mathbf{1} \to A$ and elements of $A$: a function $f: \mathbf{1} \to A$ corresponds to the element $f(!) \in A$ and, given an element $a \in A$, we can construct a function $f: \mathbf{1} \to A$ by defining $f: ! \mapsto a$.
 	</p>
+
+	<p>
+		For functions $f: A \to A$, whose domain is equal to its codomain, we can compose it with itself. We'll write repeated composition as $f^{\circ n}$ or simply $f^n$. For example, $f^{\circ 3} = f \circ f \circ f$. A function $f: A \to A$ for which $f^2 = f$ (i.e. for which applying twice is the same as applying once) is called idempotnent. If $f^2 = \id_A$, then we call it an involution. Taking an inverse or negative is a common example of an involution. We'll explore more kinds of functions (injections, surjections, bijections, permutations) in the next part. Functions that have the same domain as codomain are sometimes called operators, though this term more often refers to multi-argument functions on a single set. Endofunction is also a term that can be used to describe such a function, but this term is not used that often.
+	</p>
+
+	<h2>Injections, Surjections, Bijections</h2>
+	<p>
+		Some of the most important kinds of functions are injections, surjections and bijections.
+	</p>
+
+	<p>
+		For sets $A$ and $B$, an injection from $A$ to $B$ is a function $f: A \to B$ for which, for all $x,y \in A$, if $f(x) = f(y)$, then $x = y$. This is not true for functions in general: a function can map different arguments to the same value. We use the symbols $\rightarrowtail$ or $\hookrightarrow$ to indicate a function is an injection, as in $f: A \hookrightarrow B$. An injections is also sometimes called an embedding or an inclusion of $A$ in $B$, as it can be thought of as giving the elements of $A$ an interpretation as elements of $B$. This way, $A$ can be seen as a subset of $B$. The identity relation on subsets (which I won't explain right now) might be a bit unintuitive. I aim to explain more about subsets in chapter 2. It is not always possible to define an injection from one given set to another. For example, there is no injection from $\mathbf{3}$ to $\mathbf{2}$.
+	</p>
+
+	<p>
+		For sets $A$ and $B$, a surjection of $A$ onto $B$ is a function $f: A \to B$ for which $\forall b \in B. \exists a \in A. f(a) = b$ (all elements of $B$ are mapped to by some element of $A$). We use $f: A \twoheadrightarrow B$ to denote $f$ is a surjection from $A$ onto $B$. For an element $b$ of $B$, we call the subset of elements $a \in A$ that map to $b$ the <i>fibre</i> of $b$ under $f$, and we often denote it as $f^{-1}\{b\}$. To explain the notation: ${}^-1$ means "inverse image" and $\{b\}$ means "the set of only $b$", so $f^{-1}\{b\}$ is the "inverse image of the set of only $b$". It's clear to see, then, that a function is a surjection exactly if all its fibers are non-empty. If we think of $A$ as some ambient set and $B$ as a set of indices or labels, a surjection $f$ can then be thought of as a (labelled) partition of $A$ into non-empty subsets (namely, the fibres), each labelled, or indexed, by an element of $B$.</p>
+	
+	<p>
+		Another way to think of a surjection is as some sort of quotient map: the set $B$ results from the set $A$ by making the identity relation ($=$) on it weaker (making more things equal to eachother), and the surjection realizes each element of $A$ as an element of $B$. The surjections as quotients idea is dual to the injections as subsets idea, but a bit more complicated. It'll not show up for a few chapters.
+	</p>
+
+	<p>
+		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not so difficult to prove all sections are inverses (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. For some (a bit more complicated) surjections, finding a section is less obvious. For example, where $\mathbb{R}$ denotes the real number line, and in the quotient $\mathbb{R}/\mathbb{Q}$ two reals $r_1,r_2$ are considered equal if their difference $r_1-r_2$ is rational, it's not clear how to find a section of the quotient map $q: \mathbb{R} \twoheadrightarrow \mathbb{R}/\mathbb{Q}$ is less obvious.
+	</p>
+
+	<p>
+		The axiom of choice, abbreviated as AC, states that every surjection has a section. This axiom is used a lot in modern mathematics. We will not assume it by default: if we want to show a surjection has a section, an explicit construction of that section must be given. We will expand more on AC in future chapters.
+	</p>
+
+	<p>
+		A retraction of an injection is analogous to a section of a surjection: $r$ is a retraction of $f$ if $r \circ f = \id_A$. Retractions are boring and you may forget about them immediately.
+	</p>
+
+	<p>
+		A bijection from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. Such a $g$ is called an <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, but we'll use $\leftrightarrow$.
+	</p>
+
+	<p>W.I.P todo: add exercises and pictures and explain im(f)</p>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
 	
