@@ -2,15 +2,25 @@
 <head>
 	<title>Maths & stuff idk - DV103</title>
 	<link rel="stylesheet" href="style.css">
+	
+	<script>
+	MathJax = {
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+		
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 \[
-\require{html}
-\require{ams}
 \newcommand{\red}[1]{\style{color:var(--ctp-mocha-red)}{#1}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\id}{\textrm{id}}
 \]
+
 
 	<h1>Sets and Functions</h1>
 	<h2>Sets</h2>
@@ -33,12 +43,13 @@
 	</p>
 
 	<p>
-		In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element set and we denote its elements by $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\emptyset$ to denote the empty set and $! = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\mathbb{N}$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
+		In the following chapters, we use a bold $\mathbf{n}$ to denote an $n$ element set and we denote its elements by $0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}$. We use $\varnothing = \mathbf{0}$ to denote the empty set and $! = 0_{\mathbf{1}}$ for an alternative notation of the unique element of the one element set $\mathbf{1}$. We use $\mathbb{N}$ to denote the set of natural numbers, and $0, 1, 2, 3, \ldots$ are its elements. These will be our main examples of sets.
 	</p>
 
 	<p>
 		In logic, we often use quantifier symbols for statements such as "for all x, statement P holds" or "there exists a y for which statement Q holds", wherein we use a variable such as x or y to range over different values, instead of having a fixed value that the statement depends on. The symbol $\forall$ is used for the universal quantifier. The statement $\forall x.P$ means "for all x, statement P holds". The variable $x$ is placed immediately to the right of the $\forall$ statement, and the quantifier and statement $P$ are separated here with a dot. We also often bound variables to be of a certain set or type, or quantify over multiple variables at once. For example, $\forall x,y \in A, b \in B. \ldots$ means "for all $x$ and $y$ in $A$ and all $b$ in $B$, …". Another common quantifier is $\exists$, which means "there exists". It is used in the same way as $\forall$, but to mean "there exists" instead of "forall". The axiom of transitivity of identity can thus be stated as $\forall x,y,z \in A. x = y \wedge y = z \implies x = z$ (the symbols $\wedge$ and $\implies$ mean "and" and "implies" respectively).
 	</p>
+
 
 	<h2>Functions</h2>
 	<p>
@@ -174,10 +185,13 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For functions $f: A \to A$, whose domain is equal to its codomain, we can compose it with itself. We'll write repeated composition as $f^{\circ n}$ or simply $f^n$. For example, $f^{\circ 3} = f \circ f \circ f$. A function $f: A \to A$ for which $f^2 = f$ (i.e. for which applying twice is the same as applying once) is called idempotnent. If $f^2 = \id_A$, then we call it an involution. Taking an inverse or negative is a common example of an involution. We'll explore more kinds of functions (injections, surjections, bijections, permutations) in the next part. Functions that have the same domain as codomain are sometimes called operators, though this term more often refers to multi-argument functions on a single set. Endofunction is also a term that can be used to describe such a function, but this term is not used that often.
+		For functions $f: A \to A$, whose domain is equal to its codomain, we can compose it with itself. We'll write repeated composition as $f^{\circ n}$ or simply $f^n$. For example, $f^{\circ 3} = f \circ f \circ f$. A function $f: A \to A$ for which $f^2 = f$ (i.e. for which applying twice is the same as applying once) is called idempotnent. If $f^2 = \id_A$, then we call it an involution. Taking an inverse or negative is a common example of an involution. We'll explore more kinds of functions (injections, surjections, bijections, permutations) in the following parts. Functions that have the same domain as codomain are sometimes called operators, though this term more often refers to multi-argument functions on a single set. Endofunction is also a term that can be used to describe such a function, but this term is not used that often. Instead of drawing two sets and lines between them, with endofunctions, we can draw one set and draw arrows between the elements of the sets to visualize the function, like so:
 	</p>
 
-	<h2>Injections, Surjections, Bijections</h2>
+	<p>W.I.P todo: add visualization</p>
+
+
+	<h2>Injections</h2>
 	<p>
 		Some of the most important kinds of functions are injections, surjections and bijections.
 	</p>
@@ -187,47 +201,51 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For sets $A$ and $B$, a surjection of $A$ onto $B$ is a function $f: A \to B$ for which $\forall b \in B. \exists a \in A. f(a) = b$ (all elements of $B$ are mapped to by some element of $A$). We use $f: A \twoheadrightarrow B$ to denote $f$ is a surjection from $A$ onto $B$. For an element $b$ of $B$, we call the subset of elements $a \in A$ that map to $b$ the <i>fibre</i> of $b$ under $f$, and we often denote it as $f^{-1}\{b\}$. To explain the notation: ${}^-1$ means "inverse image" and $\{b\}$ means "the set of only $b$", so $f^{-1}\{b\}$ is the "inverse image of the set of only $b$". It's clear to see, then, that a function is a surjection exactly if all its fibers are non-empty. If we think of $A$ as some ambient set and $B$ as a set of indices or labels, a surjection $f$ can then be thought of as a (labelled) partition of $A$ into non-empty subsets (namely, the fibres), each labelled, or indexed, by an element of $B$.</p>
+		An exmaple of an injection is the functions $n \mapsto n^2$ on natural numbers that sends each number to its square. When seeing this as an inclusion, we identify natural numbers in the domain with their squares in the codomain. This way, it seems that the codomain of the injection is larger, as not all natural numbers in the codomain are perfect squares (e.g. $3$). However, we know the domain and codomain are the same: they are both the set of natural numbers. We can thus identify the set of perfect squares with the set of natural numbers, but at the same time, this identification is not the usual one (i.e. not the identity function). So does the set of perfect squares have the same size as the set of natural numbers, or is it smaller?
+	</p>
+
+	<p>
+		Up to the late 19th century, mathematicians said that these two sets have the same size as they're both infinite. This makes sense, as we can identify elements of one set with elements of the other. However, in 1874, mathematician Georg Ferdinand Ludwig Philipp Cantor found that knowing that two sets are infinite isn't enough to prove they can be paired one-to-one. Specifically, he wrote in a letter to Dedekind a proof that the set of positive real numbers cannot be enumerated by natural numbers. Although the set of natural numbers and the set of perfect squares can be thought of as having the same size, this isn't true anymore for any two infinite sets.
+	</p>
+
+	<p>
+		A set $A$ for which there exists an injection $f: A \hookrightarrow A$ that doesn't map to every element of $A$ is called a Dedekind infinite set. This is equivalent to there being an inclusion $g: \NN \hookrightarrow A$. Given an element $a \in A$ that is not mapped onto by $f$, we know that $f(a) \neq a$, but also, $f(f(a)) \neq f(a)$, as otherwise two distinct elements map to $f(a)$ ($a$ and $f(a)$). We can continue this, showing that $f^m(a) \neq f^n(a)$ whenever $m \neq n$, and so we can define the inclusion $g: \NN \hookrightarrow A$ by $g(n) = f^n(a)$. And, given an inclusion $g: \NN \hookrightarrow A$, we can define the injection $f: A \hookrightarrow A$ by $f(a)$ if $\forall n. g(n) \neq a$, and $f(g(n)) = g(n+1)$ otherwise. Thus, we snake the inclusion of $\NN$ in $A$ one step foreward. This way, $g(0)$ is not mapped to by $f$. Dedekind infinite sets might come back in later chapters.
+	</p>
+
+
+	<h2>Surjections</h2>
+	<p>
+		For sets $A$ and $B$, a surjection of $A$ onto $B$ is a function $f: A \to B$ for which $\forall b \in B. \exists a \in A. f(a) = b$ (all elements of $B$ are mapped to by some element of $A$). We use $f: A \twoheadrightarrow B$ to denote $f$ is a surjection from $A$ onto $B$. For an element $b$ of $B$, we call the subset of elements $a \in A$ that map onto $b$ (for which $f(a) = b$) the <i>fibre</i> of $b$ under $f$, and we denote it as $f^{-1}\{b\}$. To quickly explain the notation: ${}^-1$ means "inverse image" and $\{b\}$ means "the set of only $b$", so $f^{-1}\{b\}$ is the "inverse image of the set of only $b$". It's clear to see, then, that a function is a surjection exactly if all its fibers are non-empty. Dually, a set is injective if all its fibres have at most one element. If we think of $A$ as some ambient set and $B$ as a set of indices or labels, a surjection $f: A \twoheadrightarrow B$ can then be thought of as a (labelled) partition of $A$ into non-empty subsets (namely, the fibres), each labelled, or indexed, by an element of $B$.
+	</p>
 	
 	<p>
-		Another way to think of a surjection is as some sort of quotient map: the set $B$ results from the set $A$ by making the identity relation ($=$) on it weaker (making more things equal to eachother), and the surjection realizes each element of $A$ as an element of $B$. The surjections as quotients idea is dual to the injections as subsets idea, but a bit more complicated. It'll not show up for a few chapters.
+		Another way to think of a surjection is as some sort of quotient map: the set $B$ results from the set $A$ by making the identity relation ($=$) on it weaker, thus identifying more elements of $A$ with eachother, and the surjection realizes each element of $A$ as an element of $B$. This is a bit confusing to think about, so I'll try to give an example. The set $A$ is the set of all line segments in the plane. In $A$, the line segment from point $(0,1)$ to point $(1,2)$ and the line segment from point $(-4,3)$ to point $(-5,2)$ are differnet line segments, as different points lie on each. In $B$, elements are still line segments, but this time we identify two line segments with eachother if they have the same length. Now, the two line segments are identified with eachother, as they both have length $\sqrt{2}$. The quotient map $q: A \twoheadrightarrow B$ thus sends each line-segment $A$ to its 'length' in $B$, where more line segments are identified with eachother. It's called a <i>quotient</i>, as we divide out the difference in position and orientation of line segments. I hope this example makes sense.
 	</p>
 
 	<p>
-		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not so difficult to prove all sections are inverses (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. For some (a bit more complicated) surjections, finding a section is less obvious. For example, where $\mathbb{R}$ denotes the real number line, and in the quotient $\mathbb{R}/\mathbb{Q}$ two reals $r_1,r_2$ are considered equal if their difference $r_1-r_2$ is rational, how to define a section of the quotient map $q: \mathbb{R} \twoheadrightarrow \mathbb{R}/\mathbb{Q}$ is less obvious.
+		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not too difficult to prove all sections are injections (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. We can also define a section of any function $f: \NN \to B$ out of the natural numbers by mapping each element of $B$ to the smallest natural number in its fibre. For some (a bit more complicated) surjections, finding a section is less obvious.
 	</p>
 
 	<p>
-		The axiom of choice, abbreviated as AC, states that every surjection has a section. This axiom is used a lot in modern mathematics. We will not assume it by default: if we want to show a surjection has a section, an explicit construction of that section must be given. We will expand more on AC in future chapters.
+		For example, we can define a function $f$ that takes as argument a pair $(X,x)$ with a set $X$ of real numbers ($X$ is a subset of the set $\mathbb{R}$ of all real numbers) and an element $x$ of that set, and maps it to the set $X$. The domain of this function is $\sum_{X \subseteq \mathbb{R}} X$ and the codomain is $\mathcal{P}(\mathbb{R}) \smallsetminus \varnothing$, don't worry about the notation too much for now, all will be explained in due time. If we want to find a section of this mapping, for each non-empty set $X$ of real numbers, we want to pick one real number out of it. We might first try to choose the smallest real number in the set, but not all sets of real numbers have a smallest element. For example, although $0$ seems like it's the smallest element of the open interval from $0$ to $1$, this interval doesn't actually contain $0$, so we cannot choose it. We can also try to pick the middle element, but again, some sets don't have a middle element. For any way we try to describe a section, no matter how clever, it won't work.
+	</p>
+
+	<p>
+		The axiom of choice, abbreviated as AC, states that every surjection has a section. We don't need to describe this section, we're just given one. This axiom is used a lot in modern mathematics. We will not assume it by default: if we want to show a surjection has a section, an explicit construction of that section must be given. We will expand more on AC in future chapters.
 	</p>
 
 	<p>
 		A retraction of an injection is analogous to a section of a surjection: $r$ is a retraction of $f$ if $r \circ f = \id_A$. Retractions are boring and you may forget about them immediately.
 	</p>
 
+
+	<h2>Bijections</h2>
 	<p>
-		A bijection from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. Such a $g$ is called an <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, but we'll use $\leftrightarrow$.
+		A bijection from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. $g$ simply chooses the unique element in each fibre of $f$. Such a $g$ is called the <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, but we'll use $\leftrightarrow$.
 	</p>
 
 	<p>W.I.P todo: add exercises and pictures and explain im(f)</p>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
-
-	<script>
-	window.MathJax = {
-		loader: {load: ['[tex]/ams']},
-		tex: {packages: {'[+]': ['ams']}}
-	};
-	</script>
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	    jax: ["input/TeX", "output/HTML-CSS"],
-	    extensions: ["tex2jax.js"],
-	    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
-	    tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
-	    messageStyle: "none"
-	});
-	</script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 </body>
 </html>
