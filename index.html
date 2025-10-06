@@ -5,6 +5,7 @@
 	
 	<script>
 	MathJax = {
+		loader: {load: ['[tex]/html']},
 		tex: {
 			inlineMath: {'[+]': [['$', '$']]},
 			packages: {'[+]': ['html', 'ams']}
@@ -209,7 +210,7 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		A set $A$ for which there exists an injection $f: A \hookrightarrow A$ that doesn't map to every element of $A$ is called a Dedekind infinite set. This is equivalent to there being an inclusion $g: \NN \hookrightarrow A$. Given an element $a \in A$ that is not mapped onto by $f$, we know that $f(a) \neq a$, but also, $f(f(a)) \neq f(a)$, as otherwise two distinct elements map to $f(a)$ ($a$ and $f(a)$). We can continue this, showing that $f^m(a) \neq f^n(a)$ whenever $m \neq n$, and so we can define the inclusion $g: \NN \hookrightarrow A$ by $g(n) = f^n(a)$. And, given an inclusion $g: \NN \hookrightarrow A$, we can define the injection $f: A \hookrightarrow A$ by $f(a)$ if $\forall n. g(n) \neq a$, and $f(g(n)) = g(n+1)$ otherwise. Thus, we snake the inclusion of $\NN$ in $A$ one step foreward. This way, $g(0)$ is not mapped to by $f$. Dedekind infinite sets might come back in later chapters.
+		A set $A$ for which there exists an injection $f: A \hookrightarrow A$ that doesn't map to every element of $A$ is called a Dedekind infinite set. This is equivalent to there being an inclusion $g: \NN \hookrightarrow A$. Given an element $a \in A$ that is not mapped onto by $f$, we know that $f(a) \neq a$, but also, $f(f(a)) \neq f(a)$, as otherwise two distinct elements map to $f(a)$ ($a$ and $f(a)$). We can continue this, showing that $f^m(a) \neq f^n(a)$ whenever $m \neq n$, and so we can define the inclusion $g: \NN \hookrightarrow A$ by $g(n) = f^n(a)$. And, given an inclusion $g: \NN \hookrightarrow A$, we can define the injection $f: A \hookrightarrow A$ by $f(a) = a$ if $\forall n. g(n) \neq a$, and $f(g(n)) = g(n+1)$ otherwise. Thus, we snake the inclusion of $\NN$ in $A$ one step foreward. This way, $g(0)$ is not mapped to by $f$. Dedekind infinite sets might come back in later chapters.
 	</p>
 
 
