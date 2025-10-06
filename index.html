@@ -20,6 +20,7 @@
 \newcommand{\red}[1]{\style{color:var(--ctp-mocha-red)}{#1}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\id}{\textrm{id}}
+\newcommand{\im}{\textrm{im}}
 \]
 
 
@@ -198,7 +199,7 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For sets $A$ and $B$, an injection from $A$ to $B$ is a function $f: A \to B$ for which, for all $x,y \in A$, if $f(x) = f(y)$, then $x = y$. This is not true for functions in general: a function can map different arguments to the same value. We use the symbols $\rightarrowtail$ or $\hookrightarrow$ to indicate a function is an injection, as in $f: A \hookrightarrow B$. An injections is also sometimes called an embedding or an inclusion of $A$ in $B$, as it can be thought of as giving the elements of $A$ an interpretation as elements of $B$. This way, $A$ can be seen as a subset of $B$. The identity relation on subsets (which I won't explain right now) might be a bit unintuitive. I aim to explain more about subsets in chapter 2. It is not always possible to define an injection from one given set to another. For example, there is no injection from $\mathbf{3}$ to $\mathbf{2}$.
+		For sets $A$ and $B$, an injection from $A$ to $B$ is a function $f: A \to B$ for which, for all $x,y \in A$, if $f(x) = f(y)$, then $x = y$. This is not true for functions in general: a function can map different arguments to the same value. We use the symbols $\rightarrowtail$ or $\hookrightarrow$ to indicate a function is an injection, as in $f: A \hookrightarrow B$. An injection is also sometimes called an embedding or an inclusion of $A$ in $B$, as it can be thought of as giving the elements of $A$ an interpretation as elements of $B$. This way, $A$ can be seen as a subset of $B$. The identity relation on subsets (which I won't explain right now) might be a bit unintuitive. I aim to explain more about subsets in chapter 2. It is not always possible to define an injection from one given set to another. For example, there is no injection from $\mathbf{3}$ to $\mathbf{2}$.
 	</p>
 
 	<p>
@@ -220,7 +221,7 @@ f: & A & \to & B \\
 	</p>
 	
 	<p>
-		Another way to think of a surjection is as some sort of quotient map: the set $B$ results from the set $A$ by making the identity relation ($=$) on it weaker, thus identifying more elements of $A$ with eachother, and the surjection realizes each element of $A$ as an element of $B$. This is a bit confusing to think about, so I'll try to give an example. The set $A$ is the set of all line segments in the plane. In $A$, the line segment from point $(0,1)$ to point $(1,2)$ and the line segment from point $(-4,3)$ to point $(-5,2)$ are differnet line segments, as different points lie on each. In $B$, elements are still line segments, but this time we identify two line segments with eachother if they have the same length. Now, the two line segments are identified with eachother, as they both have length $\sqrt{2}$. The quotient map $q: A \twoheadrightarrow B$ thus sends each line-segment $A$ to its 'length' in $B$, where more line segments are identified with eachother. It's called a <i>quotient</i>, as we divide out the difference in position and orientation of line segments. I hope this example makes sense.
+		Another way to think of a surjection is as some sort of quotient map: the set $B$ results from the set $A$ by making the identity relation ($=$) on it weaker, thus identifying more elements of $A$ with eachother, and the surjection realizes each element of $A$ as an element of $B$. This is a bit confusing to think about, so I'll try to give an example. The set $A$ is the set of all line segments in the plane. In $A$, the line segment from point $(0,1)$ to point $(1,2)$ and the line segment from point $(-4,3)$ to point $(-5,2)$ are differnet line segments, as different points lie on each. In $B$, elements are still line segments, but this time we identify two line segments with eachother if they have the same length. Now, the two line segments are identified with eachother, as they both have length $\sqrt{2}$. The quotient map $q: A \twoheadrightarrow B$ thus sends each line-segment $A$ to its 'length' in $B$, where more line segments are identified with eachother. It's called a <i>quotient</i>, as we factor out the difference in position and orientation of line segments (i.e. we ignore these properties of line segments). I hope this example makes sense.
 	</p>
 
 	<p>
@@ -245,7 +246,75 @@ f: & A & \to & B \\
 		A bijection from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. $g$ simply chooses the unique element in each fibre of $f$. Such a $g$ is called the <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, but we'll use $\leftrightarrow$.
 	</p>
 
-	<p>W.I.P todo: add exercises and pictures and explain im(f)</p>
+	<p>
+		A bijection $f: A \leftrightarrow A$ is called a <b>permutation</b>. Although the existence of a bijection $A \leftrightarrow B$ implies $A$ and $B$ are indistinguishable/equivalent, there are often multiple choises for what this equivalence is, and it's not clear which one to choose. In the case of $A \leftrightarrow A$, there is a clear cannonical equivalence: $\id_A$. We are often interested in how a given permutation compares to the identity permutation. The collection of all permutation of a set $A$ forms a group (we can compose and invert permutations and there is a neutral permutation), called the permutation group of $A$. This group is denoted $S_A$.
+	</p>
+
+
+	<h2>Images</h2>
+	<p>
+		We can factorize any function $f: A \to B$ into a surjection $s: A \twoheadrightarrow \im(f)$ and an injection $i: \im(f) \hookrightarrow B$ (so that $s \circ i = f$). $\im(f)$ is called the image of $f$ and is the set of all elements of $B$ that $f$ maps to. The injection $i$ is the inclusion of this image in entire codomain $B$. The set $\im(f)$ can also be thought of as a quotient of $A$ where we identify two elements of $A$ if they get mapped to the same element by $f$, and $s$ is then the quotient map. Or you can think like a normal person, in which case, $s$ is just the function $f$ but with the codomain minimized.
+	</p>
+
+	<p>
+		For example, the following function:
+	</p>
+
+	<div class=box>
+	<svg width="400" height="400">
+		<circle cx="100" cy="100" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="200" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="300" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<circle cx="300" cy="100" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="200" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="300" cy="300" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		
+		<line x1="150" y1="125" x2="250" y2="175" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="200" x2="250" y2="200" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="300" x2="250" y2="300" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		can be factorized as
+	</p>
+
+	<div class=box>
+	<svg width="600" height="400">
+		<circle cx="100" cy="100" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="200" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="300" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<circle cx="300" cy="200" r="25" fill="var(--ctp-mocha-teal)" filter="url(#shadow)" />
+		<circle cx="300" cy="300" r="25" fill="var(--ctp-mocha-teal)" filter="url(#shadow)" />
+		
+		<circle cx="500" cy="100" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="500" cy="200" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		<circle cx="500" cy="300" r="25" fill="var(--ctp-mocha-peach)" filter="url(#shadow)" />
+		
+		<line x1="150" y1="125" x2="250" y2="175" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="200" x2="250" y2="200" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="150" y1="300" x2="250" y2="300" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		
+		<line x1="350" y1="200" x2="450" y2="200" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+		<line x1="350" y1="300" x2="450" y2="300" stroke="var(--ctp-mocha-mauve)" stroke-width=4px filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		The image here is shown in teal.
+	</p>
+
+	<p>
+		Any such factorization is unique in the sense that, for every set $C$ and any pair of functions $g: A \twoheadrightarrow C$ and $h: C \hookrightarrow B$ where $g$ is surjective, $h$ is injective and $h \circ g = f$, there exists a bijection $b: \im(f) \leftrightarrow C$ for which $b \circ s = g$ and $h \circ b = i$. Moreover, this bijection is unique. We define $b(x)$ by first looking at where $x$ maps to in $B$ by $i$, and then tracing back to $C$ via $h$. The function $h$ is only injective, not (necessarily) bijective, so we want to verify we can trace back $i(x)$ to $C$ with it. This is because $f$ maps some element $a \in A$ to $i(x)$ (by definition of the image), and $f(a) = h(g(a))$, and so we can trace $i(x)$ in $B$ back to $g(a)$ in $C$. With this definition, we have $h \circ b = i$. If we want $i \circ b = h$, this definition is forced, so if $b$ works we already know it's unique. Next we want to verify that $b \circ s = g$, i.e. that $b(s(a)) = g(a)$ for $a \in A$. By assumption, $h$ is injective, and if function values of an injection are equal, then the arguments must be equal. We already know that $h(b(s(a))) = i(s(a)) = f(a)$, and $h(g(a)) = f(a)$ directly follows from the assumption $h \circ g = f$. Therefore, $b \circ s = g$ as desired.
+	</p>
+
+	<p>
+		This proof is a bit long, so it might help to read it a few times through, or to work out an example.
+	</p>
+
+	<p>W.I.P todo: add exercises and pictures</p>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
 </body>
