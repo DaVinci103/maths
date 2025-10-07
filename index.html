@@ -27,11 +27,11 @@
 	<h1>Sets and Functions</h1>
 	<h2>Sets</h2>
 	<p>
-		In mathematics, a set refers to any collection of objects. For example, there is a set of natural numbers $\NN$, a set of all people on earth, a set with no elements, and a set consisting of a triangle, the colour red and a sheep named Gregory. Sets are often denoted with curly braces $\{\cdots\}$ with the contents of the set between them. So, for example, the last set listed is denoted as $\{\triangle, \red{\bullet}, \textrm{Gregory the sheep}\}$. We'll denote sets with upper-case letters, like $A, B, C, \ldots$, and their elements with lower-case letters, such as $a, b, c, \ldots$. We use the symbol $\in$ to denote that an object is an element of a set. For example, $a \in A$ means that object $a$ is element of set $A$.
+		In mathematics, a <b>set</b> refers to any collection of objects. For example, there is a set of natural numbers $\NN$, a set of all people on earth, a set with no elements, and a set consisting of a triangle, the colour red and a sheep named Gregory. Sets are often denoted with curly braces $\{\cdots\}$ with the contents of the set between them. So, for example, the last set listed is denoted as $\{\triangle, \red{\bullet}, \textrm{Gregory the sheep}\}$. We'll denote sets with upper-case letters, like $A, B, C, \ldots$, and their elements with lower-case letters, such as $a, b, c, \ldots$. We use the symbol $\in$ to denote that an object is an element of a set. For example, $a \in A$ means that object $a$ is element of set $A$.
 	</p>
 
 	<p>
-		For two elements $x$ and $y$ of a set $A$, we can ask whether or not they're equal. If they are, we denote this as $x = y$. If they're not, we denote this as $x \neq y$. $=$ is called the <i>identity relation</i> on $A$ and has three key properties:
+		For two elements $x$ and $y$ of a set $A$, we can ask whether or not they're equal. If they are, we denote this as $x = y$. If they're not, we denote this as $x \neq y$. $=$ is called the <b>identity relation</b> on $A$ and has three key properties:
 	</p>
 
 	<ul>
@@ -59,7 +59,7 @@
 
 	<h2>Functions</h2>
 	<p>
-		A function $f$ from a set $A$ to a set $B$ assigns, to each element $a \in A$, some element $f(a) \in B$. Here, $a$ is called the argument of the function and $f(a)$ is the function value (at $a$).
+		A <b>function</b> $f$ from a set $A$ to a set $B$ assigns, to each element $a \in A$, some element $f(a) \in B$. Here, $a$ is called the <b>argument</b> of the function and $f(a)$ is the function <b>value</b> (at $a$).
 	</p>
 	
 	<ul>
@@ -72,14 +72,14 @@
 	</p>
 
 	<p>
-		We write $f: A \to B$ to denote that $f$ is a function from $A$ to $B$. The set $A$ is called the domain of the function $f$ and $B$ is called the codomain. To indicate that the function $f$ maps an object $a \in A$ to an object $b \in B$, we use the symbol $\mapsto$, as in $a \mapsto b$ (when $f$ is clear from context) or $f: a \mapsto b$. We'll often write the following:
+		We write $f: A \to B$ to denote that $f$ is a function from $A$ to $B$. The set $A$ is called the <b>domain</b> of the function $f$ and $B$ is called the <b>codomain</b>. To indicate that the function $f$ maps an object $a \in A$ to an object $b \in B$, we use the symbol $\mapsto$, as in $a \mapsto b$ (when $f$ is clear from context) or $f: a \mapsto b$. We'll often write the following:
 	</p>
 \[\begin{array}{rrcl}
 f: & A & \to & B \\
 & a & \mapsto & f(a)
 \end{array}\]
 	<p>
-		to declare a function $f$. This should make it clear if we're using a notation other than $f(a)$ to denote the function value. For example, if we write
+		to declare a function $f$. The variable $a$ in the declaration is called a <b>parameter</b> of $f$. This notation should make it clear if we're using a notation other than $f(a)$ to denote the function value. For example, if we write
 	</p>
 \[\begin{array}{rrcl}
 (-)^*: & A & \to & A \\
@@ -191,10 +191,33 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For functions $f: A \to A$, whose domain is equal to its codomain, we can compose it with itself. We write repeated composition as $f^{\circ n}$ or simply $f^n$. For example, $f^{\circ 3} = f \circ f \circ f$. A function $f: A \to A$ for which $f^2 = f$ (i.e. for which applying twice is the same as applying once) is called an idempotent function. If $f^2 = \id_A$, we call it an involution. Taking an inverse or negative is a common example of an involution. We'll explore more kinds of functions (injections, surjections, bijections, permutations) in the following parts. Functions that have the same domain as codomain are sometimes called operators, though this term more often refers to multi-argument functions on a single set. Endofunction is also a term that can be used to describe an $A \to A$ function, but this term is not used that often. Instead of drawing two sets and lines between them, with endofunctions, we can draw one set and draw arrows between the elements of the sets to visualize the function, like so:
+		For functions $f: A \to A$, whose domain is equal to its codomain, we can compose it with itself. We write repeated composition as $f^{\circ n}$ or simply $f^n$. For example, $f^{\circ 3} = f \circ f \circ f$. A function $f: A \to A$ for which $f^2 = f$ (i.e. for which applying twice is the same as applying once) is called an <i>idempotent</i> function. If $f^2 = \id_A$, we call it an <i>involution</i>. Taking an inverse or negative is a common example of an involution. We'll explore more kinds of functions (injections, surjections, bijections, permutations) in the following sections. Functions that have the same domain as codomain are sometimes called operators, though this term more often refers to multi-argument functions on a single set. Endofunction is also a term that can be used to describe an $A \to A$ function, but this term is not used that often. Instead of drawing two sets and lines between them, with endofunctions, we can draw one set and draw arrows between the elements of the sets to visualize the function, like so:
 	</p>
 
-	<p>W.I.P todo: add visualization</p>
+	<div class=box>
+	<svg width="400" height="400">
+		<defs>
+		<marker id="arrow" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+		<polyline points="0 0, 2.5 2.5, 0 5" fill="none" stroke-width="1" stroke="var(--ctp-mocha-mauve)"></polyline>
+		</marker>
+		<marker id="worra" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+		<polyline points="5 0, 2.5 2.5, 5 5" fill="none" stroke-width="1" stroke="var(--ctp-mocha-mauve)"></polyline>
+		</marker>
+		</defs>
+		<circle cx="200" cy="100" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="100" cy="200" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="300" cy="200" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		<circle cx="200" cy="300" r="25" fill="var(--ctp-mocha-red)" filter="url(#shadow)" />
+		
+		<line x1="225" y1="125" x2="275" y2="175" stroke="var(--ctp-mocha-mauve)" stroke-width=4px marker-start="url(#worra)" marker-end="url(#arrow)" filter="url(#shadow)" />
+		<line x1="200" y1="250" x2="200" y2="150" stroke="var(--ctp-mocha-mauve)" stroke-width=4px marker-end="url(#arrow)" filter="url(#shadow)" />
+		<path d="M 140 190 C 175 175, 175 225, 140 210" fill="none" stroke="var(--ctp-mocha-mauve)" stroke-width=4px marker-end="url(#arrow)" filter="url(#shadow)" />
+	</svg>
+	</div>
+
+	<p>
+		The top blob gets send to the right blob, and the right blob and bottom blob get send to the top blob. The left blob is mapped to itself.
+	</p>
 
 
 	<h2>Injections</h2>
@@ -203,11 +226,11 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		For sets $A$ and $B$, an injection from $A$ to $B$ is a function $f: A \to B$ for which, for all $x,y \in A$, if $f(x) = f(y)$, then $x = y$. This is not true for functions in general: a function can map different arguments to the same value. We use the symbols $\rightarrowtail$ or $\hookrightarrow$ to indicate a function is an injection, as in $f: A \hookrightarrow B$. An injection is also sometimes called an embedding or an inclusion of $A$ in $B$, as it gives the elements of $A$ an interpretation as elements of $B$. This way, $A$ can be seen as a subset of $B$. The identity relation on subsets (which I won't explain right now) might be a bit unintuitive. I aim to explain more about subsets in chapter 2. It is not always possible to define an injection from one given set to another. For example, there is no injection from $\mathbf{3}$ to $\mathbf{2}$.
+		For sets $A$ and $B$, an <b>injection</b> from $A$ to $B$ is a function $f: A \to B$ for which, for all $x,y \in A$, if $f(x) = f(y)$, then $x = y$. This is not true for functions in general: a function can map different arguments to the same value. We use the symbols $\rightarrowtail$ or $\hookrightarrow$ to indicate a function is an injection, as in $f: A \hookrightarrow B$. An injection is also sometimes called an embedding or an inclusion of $A$ in $B$, as it gives the elements of $A$ an interpretation as elements of $B$. This way, $A$ can be seen as a subset of $B$. The identity relation on subsets (which I won't explain right now) might be a bit unintuitive. I aim to explain more about subsets in chapter 2. It is not always possible to define an injection from one given set to another. For example, there is no injection from $\mathbf{3}$ to $\mathbf{2}$.
 	</p>
 
 	<p>
-		An exmaple of an injection is the function $n \mapsto n^2$ defined on natural numbers that sends each number to its square. When seeing this as an inclusion, we identify natural numbers in the domain with their squares in the codomain. This way, it seems that the codomain of the injection is larger, as not all natural numbers in the codomain are perfect squares (e.g. $3$), and therefore not mapped to. However, we know the domain and codomain are the same: they are both the set of natural numbers. We can thus identify the set of perfect squares with the set of natural numbers, but at the same time, this identification is not the usual one (i.e. not the identity function). So does the set of perfect squares have the same size as the set of natural numbers, or is it smaller?
+		An exmaple of an injection is the function $n \mapsto n^2$ defined on natural numbers, that sends each number to its square. When seeing this as an inclusion, we identify natural numbers in the domain with their squares in the codomain. This way, it seems that the codomain of the injection is larger, as not all natural numbers in the codomain are perfect squares (e.g. $3$), and therefore not mapped to. However, we know the domain and codomain are the same: they are both the set of natural numbers. We can thus identify the set of perfect squares with the set of natural numbers, but at the same time, this identification is not the usual one (i.e. not the identity function). So does the set of perfect squares have the same size as the set of natural numbers, or is it smaller?
 	</p>
 
 	<p>
@@ -215,13 +238,13 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		A set $A$ for which there exists an injection $f: A \hookrightarrow A$ that doesn't map to every element of $A$ (like the $n \mapsto n^2$ function) is called a Dedekind infinite set. This is equivalent to there being an inclusion $g: \NN \hookrightarrow A$. Given an element $a \in A$ that is not mapped onto by $f$, we know that $f(a) \neq a$, but also, $f(f(a)) \neq f(a)$, as otherwise two distinct elements map to $f(a)$ ($a$ and $f(a)$), and $f(f(a)) \neq a$, as we assumed $a$ is not mapped onto. We can continue this, showing that $f^m(a) \neq f^n(a)$ whenever $m \neq n$, and so we can define the inclusion $g: \NN \hookrightarrow A$ by $g(n) = f^n(a)$. And, given an inclusion $g: \NN \hookrightarrow A$, we can define the injection $f: A \hookrightarrow A$ by $f(a) = a$ if $g$ does not map onto $a$, and $f(g(n)) = g(n+1)$ otherwise. Thus, we snake the inclusion of $\NN$ in $A$ one step foreward. This way, $g(0)$ is not mapped to by $f$. Dedekind infinite sets might come back in later chapters.
+		A set $A$ for which there exists an injection $f: A \hookrightarrow A$ that doesn't map to every element of $A$ (like the $n \mapsto n^2$ function) is called a <i>Dedekind infinite</i> set. This is equivalent to there being an inclusion $g: \NN \hookrightarrow A$. Given an element $a \in A$ that is not mapped onto by $f$, we know that $f(a) \neq a$, but also, $f(f(a)) \neq f(a)$, as otherwise two distinct elements map to $f(a)$ ($a$ and $f(a)$), and $f(f(a)) \neq a$, as we assumed $a$ is not mapped onto. We can continue this, showing that $f^m(a) \neq f^n(a)$ whenever $m \neq n$, and so we can define the inclusion $g: \NN \hookrightarrow A$ by $g(n) = f^n(a)$. And, given an inclusion $g: \NN \hookrightarrow A$, we can define the injection $f: A \hookrightarrow A$ by $f(a) = a$ if $g$ does not map onto $a$, and $f(g(n)) = g(n+1)$ otherwise. Thus, we snake the inclusion of $\NN$ in $A$ one step foreward. This way, $g(0)$ is not mapped to by $f$. Dedekind infinite sets might come back in later chapters.
 	</p>
 
 
 	<h2>Surjections</h2>
 	<p>
-		For sets $A$ and $B$, a surjection from $A$ onto $B$ is a function $f: A \to B$ for which $\forall b \in B. \exists a \in A. f(a) = b$ (all elements of $B$ are mapped to by some element of $A$). We use $f: A \twoheadrightarrow B$ to denote $f$ is a surjection from $A$ onto $B$. For an element $b$ of $B$, we call the subset of elements $a \in A$ that map onto $b$ (for which $f(a) = b$) the <i>fibre</i> of $b$ under $f$, and we denote it as $f^{-1}\{b\}$. To quickly explain the notation: ${}^{-1}$ means "inverse image" and $\{b\}$ means "the set of only $b$", so $f^{-1}\{b\}$ is the "inverse image of the set of only $b$". It's clear to see, then, that a function is a surjection exactly when all its fibers are non-empty. Dually, a function is injective when all its fibres have at most one element. If we think of $A$ as some ambient set and $B$ as a set of indices or labels, a surjection $f: A \twoheadrightarrow B$ can then be thought of as a (labelled) partition of $A$ into non-empty subsets (namely, the fibres), each labelled, or indexed, by an element of $B$.
+		For sets $A$ and $B$, a <b>surjection</b> from $A$ onto $B$ is a function $f: A \to B$ for which $\forall b \in B. \exists a \in A. f(a) = b$ (all elements of $B$ are mapped to by some element of $A$). We use $f: A \twoheadrightarrow B$ to denote $f$ is a surjection from $A$ onto $B$. For an element $b$ of $B$, we call the subset of elements $a \in A$ that map onto $b$ (for which $f(a) = b$) the <i>fibre</i> of $b$ under $f$, and we denote it as $f^{-1}\{b\}$. To quickly explain the notation: ${}^{-1}$ means "inverse image" and $\{b\}$ means "the set of only $b$", so $f^{-1}\{b\}$ is the "inverse image of the set of only $b$". It's clear to see, then, that a function is a surjection exactly when all its fibers are non-empty. Dually, a function is injective when all its fibres have at most one element. If we think of $A$ as some ambient set and $B$ as a set of indices or labels, a surjection $f: A \twoheadrightarrow B$ can then be thought of as a (labelled) partition of $A$ into non-empty subsets (namely, the fibres), each labelled, or indexed, by an element of $B$.
 	</p>
 	
 	<p>
@@ -229,7 +252,7 @@ f: & A & \to & B \\
 	</p>
 
 	<p>
-		Given a surjection $f: A \to B$, a <i>section</i> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not too difficult to prove all sections are injections (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. We can also define a section of any function $f: \NN \to B$ out of the natural numbers by mapping each element of $B$ to the smallest natural number in its fibre. For some (a bit more complicated) surjections, finding a section is less obvious.
+		Given a surjection $f: A \to B$, a <b>section</b> of $f$ is a function $s: B \to A$ that chooses, for each element $b \in B$, some element $a \in A$ in the fibre of $b$. Thus, $s$ is a section if $f \circ s = \id_B$ (make sure you understand this equation). It's not too difficult to prove all sections are injections (try it yourself!). Some surjections have obvious sections. For example, if we have a function $f: \NN \to \mathbf{2}$ that maps even numbers to $0_{\mathbf{2}}$ and odd numbers to $1_{\mathbf{2}}$, then one example of a section maps $0_{\mathbf{2}}$ to the even number $4$ and $1_{\mathbf{2}}$ to the odd number $11$. We can also define a section of any function $f: \NN \to B$ out of the natural numbers by mapping each element of $B$ to the smallest natural number in its fibre. For some (a bit more complicated) surjections, finding a section is less obvious.
 	</p>
 
 	<p>
@@ -247,7 +270,7 @@ f: & A & \to & B \\
 
 	<h2>Bijections</h2>
 	<p>
-		A bijection from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. $g$ simply chooses the unique element in each fibre of $f$. Such a $g$ is called the <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, we'll use $\leftrightarrow$.
+		A <b>bijection</b> from $A$ to $B$ is a function $f: A \to B$ that is both an injection and a surjection. A fibre of an injection always has at most one element, and fibres of surjections have at least one element, so fibres of bijections have exactly one element. Another way to state $f$ is bijective is by the existence of a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. $g$ simply chooses the unique element in each fibre of $f$. Such a $g$ is called the <i>inverse</i> of $f$, and is often denoted $f^{-1}$. Bijections are a one-to-one correspondence of the elements of $A$ and $B$, so it can be thought of as an equivalence of those two sets. There are different symbols that can be used to denote a function is a bijection, we'll use $\leftrightarrow$.
 	</p>
 
 	<p>
@@ -257,7 +280,7 @@ f: & A & \to & B \\
 
 	<h2>Images</h2>
 	<p>
-		We can factorize any function $f: A \to B$ into a surjection $s: A \twoheadrightarrow \im(f)$ and an injection $i: \im(f) \hookrightarrow B$ (so that $i \circ s = f$). The set $\im(f)$ is called the image of $f$ and is the set of all elements of $B$ that $f$ maps to. The injection $i$ is the inclusion of this image in entire codomain $B$. The set $\im(f)$ can also be thought of as a quotient of $A$ where we identify two elements of $A$ with eachother if $f$ maps them to the same element in $B$, and $s$ is then the quotient map. Or you can think like a normal person, in which case, $s$ is just the function $f$ but with the codomain minimized.
+		We can factorize any function $f: A \to B$ into a surjection $s: A \twoheadrightarrow \im(f)$ and an injection $i: \im(f) \hookrightarrow B$ (so that $i \circ s = f$). The set $\im(f)$ is called the <b>image</b> of $f$ and is the set of all elements of $B$ that $f$ maps to. The injection $i$ is the inclusion of this image in entire codomain $B$. The set $\im(f)$ can also be thought of as a quotient of $A$ where we identify two elements of $A$ with eachother if $f$ maps them to the same element in $B$, and $s$ is then the quotient map. Or you can think like a normal person, in which case, $s$ is just the function $f$ but with the codomain minimized.
 	</p>
 
 	<p>
@@ -318,7 +341,32 @@ f: & A & \to & B \\
 		This proof is a bit long, so it might help to read it a few times through, or to work out an example.
 	</p>
 
-	<p>W.I.P todo: add exercises and more pictures</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Let $f: A \to B$ and $g: B \to C$ be functions and let $h = g \circ f$. For each of the following, prove or give a counterexample:
+	</p>
+
+	<ul>
+		<li><b>(1)</b> If $f$ and $g$ are injections, then $h$ is an injection;</li>
+		<li><b>(2)</b> If $f$ and $g$ are surjections, then $h$ is a surjection;</li>
+		<li><b>(3)</b> If $h$ is a injection, then at least one of $f$ or $g$ is an injection;</li>
+		<li><b>(4)</b> If $h$ is a surjection, then at least one of $f$ or $g$ is a surjection;</li>
+		<li><b>(5)</b> If $h$ is a bijection, then at least one of $f$ or $g$ is a bijection.</li>
+	</ul>
+
+	<p>
+		Let $A$ be a set and let $a_0 \in A$. In the scope of these exercises, say a function $f: A \to A$ is a <i>contraction towards</i> $a_0$ if $f(a_0) = a_0$ and $\forall a \in A. \exists n \in \NN. f^n(a) = a_0$. <b>(6)</b> Define a function $f: \NN \to \NN$ that is both a surjection and a contraction towards $0$.
+	</p>
+
+	<p>
+		Let $f: A \to A$ and $g: A \to A$ be endofunctions. For each of the following, prove or give a counterexample:
+	</p>
+
+	<ul>
+		<li><b>(7)</b> If $f$ and $g$ are involutions, then $g \circ f$ is an involution;</li>
+		<li><b>(8)</b> If $f$ and $g$ are idempotent, then $g \circ f$ is idempotent.</li>
+	</ul>
 
 	<p>This website uses the <a href="https://catppuccin.com/">Catppuccin</a> color scheme. I think it looks nice.</p>
 </body>
