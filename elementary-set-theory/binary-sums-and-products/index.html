@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\]
+ 
+	<title>Binary Sums and Products - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Binary Sums and Products</h1>
+	<h2>Products</h2>
+	<p>
+		Any two given sets $A$ and $B$ have a <b>product</b>, which consists of:
+	</p>
+
+	<ul>
+		<li>A set $A \times B$, also sometimes refered to as the product;</li>
+		<li>Functions $A \times B \to A$ and $A \times B \to B$, called <b>projections</b>.</li>
+	</ul>
+
+	<p>
+		The set $A \times B$ consists of all pairs of elements $(a,b)$ with $a \in A$ and $b \in B$. For example, $(6,(3,44))$ is an element of $\NN \times (\NN \times \NN)$. The projection functions make clear how $A \times B$ relates to $A$ and $B$.
+	</p>
+\[
+\begin{array}{rrcl}
+\pi_0: & A \times B & \to & A \\
+& p & \mapsto & p_0 \\
+\pi_1: & A \times B & \to & B \\
+& p & \mapsto & p_1
+\end{array}
+\]
+	<p>
+		We'll denote these projections by $\pi_0$ and $\pi_1$, or sometimes $\pi_0^{A \times B}$ and $\pi_1^{A \times B}$ to indicate which project they're the projection functions of. We call $\pi_0$ the <b>left projection</b> and $\pi_1$ the <b>right projection</b>. The left projection chooses $a$ from a pair $(a,b)$ and the right projection chooses $b$ from a pair $b$. For a pair $p$, we write the left- and right projection of $p$ as $p_0$ and $p_1$ respectively. For example, $((6,(3,44))_1)_0 = (3,44)_0 = 3$.
+	</p>
+
+	<p>
+		There are three basic axioms regarding the pair construction $(-,-)$ and the projections $\pi_0$ and $\pi_1$:
+	</p>
+
+	<ul>
+		<li>For $a \in A$ and $b \in B$, $(a,b)_0 = a$;</li>
+		<li>For $a \in A$ and $b \in B$, $(a,b)_1 = b$;</li>
+		<li>For $p \in A \times B$, $(p_0,p_1) = p$.</li>
+	</ul>
+
+	<p>
+		The first two axioms are basically just the definitions of the two projections. The last axiom might be a bit confusing at first. Basically, it states that no pair contains more information than its left and right projection, similar to how a function contains no more information than its function values. In other words, closer to the actual statement of the axiom, all pairs $p \in A \times B$ can be constructed with the same pair construction $(-,-)$. Without it, there might be multiple pairs $p \neq p'$ with $p_0 = p'_0$ and $p_1 = p'_1$.
+	</p>
+
+	<p>
+		When we write a ternary product like $A \times B \times C$, it's unclear whether we mean $(A \times B) \times C$ or $A \times (B \times C)$. Products don't seem to be associative at first: the first projection function of $(A \times B) \times C$ is an $(A \times B) \times C \to A \times B$ function, while the first projection function of $A \times (B \times C)$ is from $A \times (B \times C)$ to $A$. So it's not clear which one we should choose as the correct interpretation. However, the underlying set doesn't actually seem to change, only the projection functions around it. From the set $A \times B \times C$ of triplets $(a,b,c)$ for $a \in A$, $b \in B$ and $c \in C$, we can define a left projection $\pi_0^{(A \times B) \times C}: A \times B \times C \to A \times B$ that maps $(a,b,c)$ and $(a,b)$, or we can define a left projection $\pi_0^{A \times (B \times C)}: A \times B \times C \to A$ that maps $(a,b,c)$ to $a$. But we still want to know which projection function to use when interpreting $(a,b,c)_0$.
+	</p>
+
+	<p>
+		Neither option is really practical. If we haver longer tuples $(a_0,\ldots,a_n)$, we have to apply a lot of projection functions to get to an element somewhere in the middle. So, instead of choosing either, we'll just use more projection functions $\pi_0: A \times B \times C \to A$, $\pi_1: A \times B \times C \to B$ and $\pi_2: A \times B \times C \to C$, where $(a,b,c)_0 = a$, $(a,b,c)_1 = b$ and $(a,b,c)_2 = c$. Generally, $(a_0,\ldots,a_n)_i = a_i$. In cases where the exact choice does matter, for example if a theorem or definition applies specifically to binary products, we assume $\times$ is right-associative, meaning that $A \times B \times C = A \times (B \times C)$.
+	</p>
+
+
+	<h2>Multi-Valued Functions</h2>
+	<p>
+		W.I.P
+	</p>
+	
+	<p>
+		<a href="../sets-and-functions">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a style="color:var(--ctp-mocha-overlay2)">&rightarrow;</a>
+	</p>
+</body>
+</html>
