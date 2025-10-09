@@ -61,7 +61,7 @@
 	</p>
 
 	<p>
-		When we write a ternary product like $A \times B \times C$, it's unclear whether we mean $(A \times B) \times C$ or $A \times (B \times C)$. Products don't seem to be associative at first: the first projection function of $(A \times B) \times C$ is an $(A \times B) \times C \to A \times B$ function, while the first projection function of $A \times (B \times C)$ is from $A \times (B \times C)$ to $A$. So it's not clear which one we should choose as the correct interpretation. However, the underlying set doesn't actually seem to change, only the projection functions around it. From the set $A \times B \times C$ of triplets $(a,b,c)$ for $a \in A$, $b \in B$ and $c \in C$, we can define a left projection $\pi_0^{(A \times B) \times C}: A \times B \times C \to A \times B$ that maps $(a,b,c)$ and $(a,b)$, or we can define a left projection $\pi_0^{A \times (B \times C)}: A \times B \times C \to A$ that maps $(a,b,c)$ to $a$. But we still want to know which projection function to use when interpreting $(a,b,c)_0$.
+		When we write a ternary product like $A \times B \times C$, it's unclear whether we mean $(A \times B) \times C$ or $A \times (B \times C)$. Products don't seem to be associative at first: the first projection function of $(A \times B) \times C$ is an $(A \times B) \times C \to A \times B$ function, while the first projection function of $A \times (B \times C)$ is from $A \times (B \times C)$ to $A$. So it's not clear which one we should choose as the correct interpretation. However, the underlying set doesn't actually seem to change, only the projection functions around it. From the set $A \times B \times C$ of triplets $(a,b,c)$ for $a \in A$, $b \in B$ and $c \in C$, we can define a left projection $\pi_0^{(A \times B) \times C}: A \times B \times C \to A \times B$ that maps $(a,b,c)$ to $(a,b)$, or we can define a left projection $\pi_0^{A \times (B \times C)}: A \times B \times C \to A$ that maps $(a,b,c)$ to $a$. But we still want to know which projection function to use when interpreting $(a,b,c)_0$.
 	</p>
 
 	<p>
@@ -71,7 +71,46 @@
 
 	<h2>Multi-Valued Functions</h2>
 	<p>
-		W.I.P
+		A <b>multi-valued</b> function is a function whose codomain is a product. If the codomain of a function $f$ is a product of $n$ sets we call it an $n$-valued function. For example, the function
+	</p>
+\[
+\begin{array}{rrcl}
+\Delta_A: & A & \to & A \times A \\
+& a & \mapsto & \Delta_A(a)
+\end{array}
+\]
+	<p>
+		defined by $\Delta_A(a) = (a,a)$, called the <b>diagonal</b> of $A$, is a two-valued function. We often omit $A$ when writing the diagonal map, simply denoting it as $\Delta$. Another example is the function $f: \NN \to \NN \times \NN$ that factors $n$ into $(a,b)$, where $n = a \cdot b^2$ and $a$ is a square-free number. For example, $f(12) = (3,2)$ as $12 = 3 \cdot 2^2$ and $3$ is square-free.
+	</p>
+
+	<p>
+		It seems like a multi-valued function really is just multiple functions in one. For example the function $f$ that factors a number into a square-free part and a square can be seen as two functions $g: \NN \to \NN$ and $h: \NN \to \NN$, where $g$ maps a number to its square-free part, and $h$ maps a number to (the square-root of) the square part. Thus, $g(12) = 3 = f(12)_0$ and $h(12) = 2 = f(12)_1$. Since pairs are uniquely determined by its projections (because of the third axiom of pairs), we can give a complete definition of a multi-valued function by defining only the projections of its function values. For example,
+	</p>
+\begin{eqnarray}
+k(n)_0 & = & n + 6 \\
+k(n)_1 & = & 2 \cdot n \\
+k(n)_2 & = & n^3
+\end{eqnarray}
+	<p>
+		is a complete definition of a function $k: \NN \to \NN \times \NN \times \NN$.
+	</p>
+
+	<p>
+		Given a list of functions $f_0: A \to B_0, \ldots, f_n: A \to B_n$, each with the same domain, we call the unique multi-valued function $f: A \to B_0 \times \cdots \times B_n$  for which, for all $0 \le i \le n$, $\pi_i \circ f = f_i$, the <b>tuple</b> of $f_0, \ldots, f_n$. We denote this tuple as $(f_0,\ldots,f_n)$. Using the square-factoring example above, we thus have $f = (g,h)$. Tuples of functions share notation with pairs and tuples of elements. This is because they're basically the same thing. We'll often use a pair $(g,h)$ as both a function tuple as a pair of elements, so we write $(g,h)_0$ to mean $g$ (using $(g,h)$ as a pair of elements, this can also be interpreted as a shorthand for $\pi_0 \circ (g,h)$) and $(g,h)(n)$ to mean $(g(n),h(n))$ (using $(g,h)$ as a tuple of functions).
+	</p>
+
+	<p>
+		One last example of a multi-valued function is the bijection between $A \times B$ and $B \times A$ that maps a pair $(a,b)$ to $(b,a)$. Using function tuples, this bijection can be written as $(\pi_1,\pi_0)$.
+	</p>
+
+
+	<h2>Functions with Multiple Arguments</h2>
+	<p>
+		A function a product of $n$ sets as domain is called an <b>$n$-ary</b> function (binary for $n=2$, ternary for $n=3$, etc). For $f: A_0 \times \cdots \times A_{n-1} \to B$, we write $f$ applied to the tuple $(a_0,\ldots,a_{n-1})$ as $f(a_0,\ldots,a_{n-1})$ and we call the elements $a_0 \in A_0, \ldots, a_{n-1} \in A_{n-1}$ its <b>arguments</b>. Unlike multi-valued functions, $n$-ary functions aren't simply multiple functions in one.
+	</p>
+
+	<p>
+		We already saw a binary function in the last chapter: the bijection $(\pi_1,\pi_0)$. W.I.P
 	</p>
 	
 	<p>
