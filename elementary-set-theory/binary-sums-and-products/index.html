@@ -3,6 +3,7 @@
 <head>
 \[
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\id}{\textrm{id}}
 \]
  
 	<title>Binary Sums and Products - DV103</title>
@@ -110,7 +111,76 @@ k(n)_2 & = & n^3
 	</p>
 
 	<p>
-		We already saw a binary function in the last chapter: the bijection $(\pi_1,\pi_0)$. W.I.P
+		We already saw a binary function in the last part: the bijection $(\pi_1,\pi_0)$. Another example is multiplication on natural numbers: it takes two natural numbers $m$ and $n$ as arguments, and gives back a single number $m \cdot n$. Multiplication on natural numbers is an operator. An ($n$-ary) <b>operator</b> on $A$ is a function $f: \underbrace{A \times \cdots \times A}_n \to A$ where the domain is an $n$-fold product of the codomain, this product is sometimes abbreviated as $A^n$. The empty product is often defined as the one-element set $\mathbf{1}$, so a nullary ($0$-ary) operator on $A$ is sometimes used to refer to a $\mathbf{1} \to A$ function, or an element of $A$.
+	</p>
+
+	<p>
+		There are many kinds of operators. We already saw two kinds of unary operators in the first chapter: idempotent operators $f: A \to A$ for which $f^2 = f$, and involutions $f: A \to A$ for which $f^2 = \id_A$.
+	</p>
+
+	<p>
+		We often write binary operators with infix notation. Thus, for an operator ${\star}: A \times A \to A$, instead of writing ${\star}(x,y)$ for $\star$ applied to $(x,y)$, we often write $x \star y$. The two most important properties of binary operators are associativity and commutativity. An operator $\star$ is said to be <b>associative</b> if $(x \star y) \star z = x \star (y \star z)$ for all $x,y,z \in A$. If $\star$ is associative, we often write $x \star y \star z$ without parenthesis. Associativity allows us to combine elements unambiguously. An example of an associative operator is string concatenation: if we concatenate string "a", "b" and "c", it doesn't matter if we concatenate "a" with "b" first, or if we first concatenate "b" with "c", we'll always end up with the string "abc". An operator ${\star}: A \times A \to A$ is <b>commutative</b> if $x \star y = y \star x$ for all $x,y \in A$. For example, adding two natural numbers is commutative. We often talk about commuting of individual elements: we say $x$ and $y$ <b>commute</b> (with respect to $\star$) if $x \star y = y \star x$.
+	</p>
+
+	<p>
+		We can generalize commutativity to operators with more arguments: an operator $f: A^n \to A$ is said to be <b>symmetric</b> if swapping any two arguments doesn't change the function value. More properties of operators will be introduced in the next chapter, where we'll look at the operators $\cap$ and $\cup$.
+	</p>
+
+
+	<h2>Sums</h2>
+	<p>
+		Any two given sets $A$ and $B$ have a <b>sum</b>, which consists of:
+	</p>
+
+	<ul>
+		<li>A set $A+B$, also sometimes referred to as the sum;</li>
+		<li>Functions $A \to A+B$ and $B \to A+B$, called <b>coprojections</b>.</li>
+	</ul>
+
+	<p>
+		The set $A+B$ consists of all elements of $A$ and $B$ combined. These elements are labelled with if they come from the left set $A$ or the right set $B$. For an element $a \in A$, its corresponding element in $A+B$ is denoted as $\kappa_0(a)$, and for $b \in B$, its corresponding element in $A+B$ is denoted $\kappa_1(b)$. The $\kappa_0$/$\kappa_1$ indicates which set the element came from. For example, if we consider the sum $\NN + \NN$, then $\kappa_0(6) \neq \kappa_1(6)$ as one $6$ comes from the left $\NN$, while the other $6$ comes from the right $\NN$.
+	</p>
+\[
+\begin{array}{rrcl}
+\kappa_0: & A & \to & A+B \\
+\kappa_1: & B & \to & A+B
+\end{array}
+\]
+	<p>
+		The functions $\kappa_0: A \to A+B$ and $\kappa_1: B \to A+B$ are the coprojections of $A+B$. Besides allowing us to write elements of $A+B$, they also make clear how the sets $A$ and $B$ relate to their sum $A+B$. We sometimes denote these coprojections as $\kappa_0^{A+B}$ and $\kappa_1^{A+B}$. We call $\kappa_0$ the <b>left coprojection</b> and $\kappa_1$ the <b>right coprojection</b>. Similar to how we use more projections $\pi_0,\ldots,\pi_n$ for larger products $A_0 \times \cdots \times A_n$, we'll also use more coprojections $\kappa_0,\ldots,\kappa_n$ for larger sums $A_0+\cdots+A_n$.
+	</p>
+
+	<p>
+		For products, we used the pair constructor to introduce elements of the products $A \times B$ and the projections to eliminate those elements. For sums, coprojections introduce elements of $A+B$, but eliminating elements is a bit more difficult. We cannot simply define a functions from $A+B$ to $A$ or $B$, as this would allow us to create elements of $A$ from elements of $B$ (by using the elimination function to $A$ on $\kappa_1(b)$), or vice-versa. We also can't define an elimination function to be $A+B \to A+\mathbf{1}$, where the $\mathbf{1}$ is a sort-of "error" corresponding to giving an element from the wrong set (i.e. from $B$), as then we just trade one sum for another. Sum elimination is actually more similar to function tuples, as opposed to the simpler operations on elements (pairing, projections) used in products. The usual way to eliminate a sum is using is using cotuples, which are explained in the next part.
+	</p>
+
+
+	<h2>Cotuples</h2>
+	<p>
+		The solution to our problem in the last part, eliminating sums, is to first map both sets $A$ amd $B$ to a common set $C$, and then combining both maps into one. Given two functions $f: A \to C$ and $g: B \to C$, $[f,g]$ is a function from $A+B$ to $C$ called the <b>cotuple</b> of $f$ and $g$. Similar to pairing and projections, we have three rules for how coprojections work with cotuples. The first two basically define the cotuple:
+	</p>
+\[
+\begin{eqnarray}
+[f,g](\kappa_0(a)) & = & f(a) \\
+[f,g](\kappa_1(b)) & = & g(b)
+\end{eqnarray}
+\]
+	<p>
+		The third axiom mirrors the third axiom of products. It basically states all elements of $A+B$ are either of the form $\kappa_0(a)$ or $\kappa_1(b)$. The actual formulation is, for a function $h: A+B \to C$,
+	</p>
+\[[h \circ \kappa_0, h \circ \kappa_1] = h\]
+	<p>
+		If you think a little about this axiom, it says that a function out of $A+B$ is uniquelly determined by how it's defined on elements of the form $\kappa_0(a)$ and $\kappa_1(b)$. To see how this implies all elements of $A+B$ are either of the form $\kappa_0(a)$ or $\kappa_1(b)$: take any two functions $f: A \to \mathbf{2}$ and $g: B \to \mathbf{2}$ and consider the cotuple $[f,g]: A+B \to \mathbf{2}$. Assuming not all elements of $A+B$ are of the form $\kappa_0(a)$ or $\kappa_1(b)$, take $x \in A+B$ to be such an element. The cotuple $[f,g]$ has $A+B$ as domain, so $[f,g](x)$ is defined and is either $0_{\mathbf{2}}$ or $1_{\mathbf{2}}$. Now, define a function $h: A+B \to \mathbf{2}$ by $h(y) = [f,g](y)$ for all $y \in A+B$ not equal to $x$, and $h(x)$ is opposite of whatever $[f,g](x)$. Since $x$ is neither of the form $\kappa_0(a)$ or $\kappa_1(b)$, $h \circ \kappa_0$ is still equal to $f$, and $h \circ \kappa_1$ still equals $g$. By the third axiom of sums, $[h \circ \kappa_0, h \circ \kappa_1] = h$, however, we know that $[h \circ \kappa_0, h \circ \kappa_1] = [f,g] \neq h$ because $[f,g](x) \neq h(x)$. This means such an element $x$ cannot exist.
+	</p>
+
+	<p>
+		We can also define cotuples on more functions. If we have functions $f_0: A_0 \to B, \ldots, f_n: A_n \to B$, then $[f_0,\ldots,f_n]$ is a cotuple from $A_0+\cdots+A_n$ to $B$ where $[f_0,\ldots,f_n] \circ \kappa_i = f_i$.
+	</p>
+
+
+	<h2>Sums and Products of Functions</h2>
+	<p>
+		W.I.P
 	</p>
 	
 	<p>
