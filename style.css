@@ -3,8 +3,8 @@
 body {
 	background: var(--ctp-mocha-base);
 	color: var(--ctp-mocha-text);
-	font-family: sans;
-	padding: 2em;
+	font-family: sans-serif;
+	padding: 4em;
 	text-size: 18px;
 }
 
