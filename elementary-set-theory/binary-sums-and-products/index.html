@@ -81,7 +81,7 @@
 \end{array}
 \]
 	<p>
-		defined by $\Delta_A(a) = (a,a)$, called the <b>diagonal</b> of $A$, is a two-valued function. We often omit $A$ when writing the diagonal map, simply denoting it as $\Delta$. Another example is the function $f: \NN \to \NN \times \NN$ that factors $n$ into $(a,b)$, where $n = a \cdot b^2$ and $a$ is a square-free number. For example, $f(12) = (3,2)$ as $12 = 3 \cdot 2^2$ and $3$ is square-free.
+		defined by $\Delta_A(a) = (a,a)$, called the <b>diagonal</b> of $A$, is a two-valued function. We often omit $A$ when writing the diagonal map, simply denoting it as $\Delta$. This function is also sometimes written we the lower-case letter $\delta$. Another example is the function $f: \NN \to \NN \times \NN$ that factors $n$ into $(a,b)$, where $n = a \cdot b^2$ and $a$ is a square-free number. For example, $f(12) = (3,2)$ as $12 = 3 \cdot 2^2$ and $3$ is square-free.
 	</p>
 
 	<p>
@@ -177,16 +177,61 @@ k(n)_2 & = & n^3
 		We can also define cotuples on more functions. If we have functions $f_0: A_0 \to B, \ldots, f_n: A_n \to B$, then $[f_0,\ldots,f_n]$ is a cotuple from $A_0+\cdots+A_n$ to $B$ where $[f_0,\ldots,f_n] \circ \kappa_i = f_i$.
 	</p>
 
+	<p>
+		Instead of doing all this complicated stuff with cotuples, we could've also just added
+	</p>
+\[\forall x \in A+B. (\exists a \in A. x = \kappa_0(a)) \vee (\exists b \in B. x = \kappa_1(b))\]
+	<p>
+		("for all $x$ in $A+B$, there is some $a \in A$ for which $x = \kappa_0(a)$, or there is some $b \in B$ for which $x = \kappa_1(b)$") as our third axiom of sums, but cotuples are cooler, and I'm cool. To briefly explain why I think cotuples are cooler: they don't use any actual logic, only functions and equations.
+	</p>
+
 
 	<h2>Sums and Products of Functions</h2>
 	<p>
-		W.I.P
+		In the last few sections, we saw how to combine different functions using function tuples and cotuples. In order to tuple two (or more functions), they need to have the same domain, and in order to cotuple functions, they need to have the same codomain. There are also two other operations: sums and products of functions.
+	</p>
+
+	<p>
+		Given any two functions $f: A \to C$ and $g: B \to D$, we can construct new functions
+	</p>
+\[\begin{array}{rrcl}
+f \times g: & A \times B & \to & C \times D \\
+& x & \mapsto & (f \times g)(x) \\
+f + g: & A + B & \to & C + D \\
+& x & \mapsto & (f + g)(x)
+\end{array}\]
+	<p>
+		called the <b>product</b> and <b>sum</b> of $f$ and $g$ respectively. These functions are defined as follows:
+	</p>
+\[\begin{eqnarray}
+(f \times g)(a,b) & = & (f(a),g(b)) \\
+(f + g)(\kappa_0(a)) & = & \kappa_0(f(a)) \\
+(f + g)(\kappa_1(b)) & = & \kappa_1(g(b))
+\end{eqnarray}\]
+	<p>
+		or, alternatively using tuples and cotuples:
+	</p>
+\[\begin{eqnarray}
+(f \times g) & = & (f \circ \pi_0, g \circ \pi_1) \\
+(f + g) & = & [\kappa_0 \circ f, \kappa_1 \circ g]
+\end{eqnarray}\]
+	<p>
+		Since these operations can be expressed using operations we've already seen, they're not "primitive" in some sense. The left/right projection of the value $(f \times g)(x)$ of a function product $f \times g$ can only depend on the left/right projection of $x$ respectively, so it should be clear not every $A \times B \to C \times D$ function can be expressed as a product. For example, the swap function $(\pi_1,\pi_0)$ from the second section cannot be expressed as a product of functions (of course, unless $A$ and $B$ are chosen to be something trivial), as the left projection of the function value is dependend on the <i>right</i> projection of the argument, and vice-versa. A similar argument shows not every $A + B \to C + D$ function is a sum.
+	</p>
+
+	<p>
+		It's still common to want to combine two functions without them interfering, which is what function products and sums do, so that's why I've included them in this explanation. It's also fairly common to want to apply a function to only one term or factor of a sum or product type, while leaving the rest the same, which corresponds to taking a function sum or product with the identity function.
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Maybe later. Make up your own.
 	</p>
 	
 	<p>
 		<a href="../sets-and-functions">&leftarrow;</a>
 		<a href="../..">..</a>
-		<a style="color:var(--ctp-mocha-overlay2)">&rightarrow;</a>
+		<a href="../subsets">&rightarrow;</a>
 	</p>
 </body>
 </html>
