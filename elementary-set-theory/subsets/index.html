@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\true}{\texttt{true}}
+\newcommand{\false}{\texttt{false}}
+\]
+ 
+	<title>Binary Sums and Products - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\]
+	<h1>Subsets</h1>
+	<h2>Subsets</h2>
+	<p>
+		Given a set $X$, a subset of $X$ is a set that contains some, but (often) not all the elements of $X$. For example, the set $E$ of even natural numbers is a subset of the set $\NN$ of all natural numbers. When viewing the set $E$ in isolation, however, it's not clear that it's a subset of $\NN$ or which elements of $\NN$ it contains. In fact, the set $E$ seems identical to $\NN$ as there is a bijection $n \mapsto \frac{n}{2}$ between the two sets. We thus need some piece of context that shows $E$ is a subset of $\NN$ and which elements it contains. This piece of context is an injection $m: E \hookrightarrow \NN$ serving as an inclusion of $E$ in $\NN$, mapping every even number $n \in E$ to its corresponding natural number in $\NN$. We can thus define a subset of $X$ to be a pair $(A,m)$ consisting of a set $A$ and an inclusion $m: A \hookrightarrow X$. We write $A \subset X$ (or sometimes $A \subseteq X$) to denote $A$ is a subset of $X$, the inclusion $m$ is often clear from context. In this chapter, though, I'll often write $(A,m) \subset X$ instead. For $x \in X$, we write $x \in A$ for "$x$ is in the subset $A$" or, formally, $\exists a \in A. m(a) = x$, and we write $x \notin A$ for "$x$ is not in the subset $A$", which is simply the negation of $x \in A$.
+
+	<p>
+		We can also identify the set of even numbers with $\NN$ itself and the inclusion $n \mapsto 2n$. Or we could a different inclusion, such as
+	</p>
+\[\left\{\begin{array}{lll}
+2n & \mapsto & 4n+2 \\
+2n+1 & \mapsto & 4n
+\end{array}\right.\]
+	<p>
+		which swaps each consecutive pair of even numbers. Besides these all being different sets and/or different inclusion, they all still represent the subset of $\NN$ of even numbers. The definition of subsets we have is thus incomplete: it only says what a subset <i>is</i>, but not yet when two subsets are <i>equal</i>. The definition of the identity relation on subsets is as follows:
+	</p>
+
+	<p>
+		Given a set $X$ and subsets $(A,m) \subset X$ and $(B,n) \subset X$, we have that $(A,m)$ and $(B,n)$ are <b>identical</b> if there is a bijection $f: A \leftrightarrow B$ for which $n = m \circ f$.
+	</p>
+
+	<p>
+		For example, the latter two representations are equal because of the permutation
+	</p>
+\[\left\{\begin{array}{lll}
+2n & \mapsto & 2n+1 \\
+2n+1 & \mapsto & 2n
+\end{array}\right.\]
+	<p>
+		It can be shown that, if two subsets are equal, then they're equal in a unique way. In other words, given $X$, $(A,m) \subset X$, $(B,n) \subset X$, $f: A \leftrightarrow B$ and $g: A \leftrightarrow B$ for which $n = m \circ f$ and $n = m \circ g$, we have that $f = g$. We use function extensionality to prove this: given $a \in A$, we have that $m(f(a)) = n(a) = m(g(a))$, and therefore $m(f(a)) = m(g(a))$. Since $m$ is an injection, we have that $f(a) = g(a)$, which is exactly what we wanted to show.
+	</p>
+
+
+	<h2>Predicates</h2>
+	<p>
+		If we have some rule for which elements belong to a subset and which don't, it's often difficult or sometimes just tedious to find a set $A$ and inclusion $m$ that selects exactly those elements that satisfy the given rule. For example, in the last section, if we don't have the set of even numbers $E$, we have to first identify that there are as many even numbers as natural numbers and then define an inclusion $\NN \hookrightarrow \NN$ that selects exactly the even numbers, such as $n \mapsto 2n$. Though it's not that difficult in this specific example, you can see it gets more difficult if you try to define the set of real-valued continuous functions as a subset of the set of all real-valued functions, which is still somewhat do-able with an inclusion from $\RR$, or the set of perfect numbers as a subset of $\NN$, for which we don't know how many there are and thus don't know which set we should choose as the domain of our inclusion. Because of this, there is an axiom in set theory, called the axiom of separation, which (roughly) states that every rule that selects elements of a set directly corresponds to some subset of that set.
+	</p>
+
+	<p>
+		We use $\Omega$ to denote the set of truth-values $\{\true, \false\}$. A "rule" is then a function $P: X \to \Omega$ that maps each element $x \in X$ to either $\true$ or $\false$. We call such a function a <b>predicate</b> on $X$. Since elements of $\Omega$ are truth-values, we can use the function value $P(x)$ as a statement in a longer formula, as in $\forall x \in X. P(x)$, which states that $P(x)$ is true for all $x \in X$. The axiom of separation then states that, given any predicate $P: X \to \Omega$, there is a subset $(A,m) \subset X$ for which, for all $x \in X$, $x \in A$ if and only if $P(x)$. We use the notation $\{x \in X \mid P(x)\}$, called set comprehension notation, to denote this subset. This axiom allows us to define the set $\{n \in \NN \mid n \textrm{ is prefect}\}$ of perfect numbers without knowing how many there are in advance. Sometimes we use a colon $:$ instead of a pipe $\mid$ to separate the element and the predicate in a set comprehension expression.
+	</p>
+
+	<p>
+		In future chapters, we'll often identify predicates $P(x)$ with their corresponding subset $\{x \in X \mid P(x)\}$ and vice-versa. For now though, we'll keep them separate. It might make more sense to view the predicates on $X$ as the actual subsets, as two predicates $P,Q$ are equal as functions exactly when their corresponding subsets $\{x \in X \mid P(x)\}$ and $\{x \in X \mid Q(x)\}$ are equal as subsets.
+	</p>
+
+	<p>
+		A predicate $R: A \times B \to \Omega$ on a Cartesian product $A \times B$ is called a <b>relation</b> between $A$ and $B$. For $(a,b) \in A \times B$, we often write $a R b$ for $R(a,b)$. We'll taker a closer look at relations in the chapter about quotients.
+	</p>
+
+
+	<h2>Unions, Intersections, Complements</h2>
+	<p>
+		Three basic operations on sets are (as the title of this section says) unions, intersections and complements. Given two subsets $A,B \subset X$, we define their union as follows:
+	</p>
+\[A \cup B = \{x \in X \mid x \in A \vee x \in B\}\]
+	<p>
+		Here, $\vee$ is the "or" symbol. A proposition of the form $P \vee Q$ is true if at least one of $P$ or $Q$ is true. The union of $A$ and $B$ thus contains all elements that are in either $A$ or in $B$ or both. Unions of sets satisfy a few basic identities:
+	</p>
+
+	<ul>
+		<li>Union is associative: $(A \cup B) \cup C = A \cup (B \cup C)$;</li>
+		<li>Union is commutative: $A \cup B = B \cup A$;</li>
+		<li>The empty set is neutral: $A \cup \varnothing = A = \varnothing \cup A$</li>
+	</ul>
+
+	<p>
+		$\varnothing$ denotes the empty subset of $X$. All of these identities should be fairly straightforeward: changing the order in which you take unions doesn't change what elements are in the union, and adding nothing to a subset doesn't change that subset.
+	</p>
+
+	<p>
+		For subsets $A,B \subset X$, we say $A$ is a subset of $B$ (written $A \subset B$) if $\forall x \in X. x \in A \implies x \in B$. With this definition, we also have:
+	</p>
+
+	<ul>
+		<li>$A \subset A \cup B$;</li>
+		<li>$B \subset A \cup B$.</li>
+	</ul>
+
+	<p>
+		Furthermore, $A \cup B$ is a subset of any set $C$ satisfying the above two properties.
+	</p>
+
+	<p>
+		Given two subsets $A,B \subset X$, we define their intersection as follows:
+	</p>
+\[A \cap B = \{x \in X \mid x \in A \wedge x \in B\}\]
+	<p>
+		Here, $\wedge$ is the "and" symbol. A proposition of the form $P \wedge Q$ is true if both $P$ and $Q$ are true. Thus, the intersection of $A$ and $B$ contains all elements that are in both $A$ and $B$. Just like unions, intersections satisfy a few basic properties:
+	</p>
+
+	<ul>
+		<li>Intersection is associative: $(A \cap B) \cap C = A \cap (B \cap C)$;</li>
+		<li>Intersection is commutative: $A \cap B = B \cap A$;</li>
+		<li>The whole set $X$ is neutral: $A \cap X = A = X \cap A$.</li>
+	</ul>
+
+	<p>
+		$X \subset X$ is the set of all elements of $X$. We also have some identities for how unions and intersections interact:
+	</p>
+
+	<ul>
+		<li>Unions distribute over intersections: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$;</li>
+		<li>Intersections distribute over unions: $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.</li>
+	</ul>
+
+	<p>
+		It shouldn't be too hard to verify these identities for yourself.
+	</p>
+
+	<p>
+		We also have the following:
+	</p>
+
+	<ul>
+		<li>$A \cap B \subset A$;</li>
+		<li>$A \cap B \subset B$.</li>
+	</ul>
+
+	<p>
+		In fact, any subset $C$ with the above two properties is a subset of $A$.
+	</p>
+
+	<p>
+		Given a subset $A \subset X$, we define its complement $A^c$ as follows:
+	</p>
+\[A^c = \{x \in X \mid x \notin A\}\]
+	<p>
+		In other words, it's the set of all elements of $X$ that are not in $A$. Unlike with unions and intersections, the ambient set $X$ now matters: we could take the union of intersection of any two subsets as long as those sets had some common identity relation, regardless of what those sets were actually subsets of, but we cannot do that with complements.
+	</p>
+
+	<p>
+		We have the following identities for how complements "distribute" over unions and intersections:
+	</p>
+
+	<ul>
+		<li>$(A \cup B)^c = A^c \cap B^c$;</li>
+		<li>$(A \cap B)^c = A^c \cup B^c$.</li>
+	</ul>
+
+	<p>
+		These identities are called De Morgan laws. These identities should make sense intuitively: if something is in not in either $A$ or $B$, then it is neither in $A$ nor $B$, and if something is not in both $A$ and $B$, it's either not in $A$ or not in $B$.
+	</p>
+
+	<p>
+		$A^c$ is the unique subset of $X$ that satisfies the following two identities:
+	</p>
+
+	<ul>
+		<li>$A \cup A^c = X$;</li>
+		<li>$A \cap A^c = \emptyset$.</li>
+	</ul>
+
+	<p>
+		If it's not clear what set the subset $A$ is should be considered the subset of when taking a complement, we write $X \setminus A$ for $A^c$ to clarify this. We can also define $B \setminus A$ for any two subsets $A,B \subset X$:
+	</p>
+\[B \setminus A = B \cap A^c = \{x \in X \mid x \in B \wedge x \notin A\}\]
+	<p>
+		The subset $B \setminus A$ is called the relative complement of $A$ relative to $B$. We can also define another operation $A \bigtriangleup B$, called the symmetric difference, as follows:
+	</p>
+\[A \bigtriangleup B = (B \setminus A) \cup (A \setminus B) = (A \cup B) \setminus (A \cap B)\]
+	<p>
+		This consists of all elements of $X$ that are in either $A$ or $B$, but not both. It can be used as a measure for how different two subsets are. For example, if $A \bigtriangleup B = \emptyset$, then $A$ and $B$ are the same subset.
+	</p>
+
+	<h2>Powerset</h2>
+	<p>W.I.P</p>
+
+	<p>
+		<a href="../binary-sums-and-products">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../natural-numbers">&rightarrow;</a>
+	</p>
+</body>
+</html>
