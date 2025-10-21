@@ -81,7 +81,39 @@
 	</p>
 \[A \cup B = \{x \in X \mid x \in A \vee x \in B\}\]
 	<p>
-		Here, $\vee$ is the "or" symbol. A proposition of the form $P \vee Q$ is true if at least one of $P$ or $Q$ is true. The union of $A$ and $B$ thus contains all elements that are in either $A$ or in $B$ or both. Unions of sets satisfy a few basic identities:
+		Here, $\vee$ is the "or" symbol. A proposition of the form $P \vee Q$ is true if at least one of $P$ or $Q$ is true. The union of $A$ and $B$ thus contains all elements that are in either $A$ or in $B$ or both. In this picture, the two circles represent the two subsets $A$ and $B$ and the blue area is their union:
+	</p>
+
+	<div class="box">
+	<svg width="400" height="300">
+		<defs>
+		<filter id="shadow" filterUnits="userSpaceOnUse" width="1000" height="1000">
+		<feGaussianBlur in="SourceAlpha" stdDeviation="4"></feGaussianBlur>
+		<feBlend in="SourceGraphic" in2="blurOut"></feBlend>
+		</filter>
+		
+		<mask id="mask">
+		<circle cx="150" cy="150" r="100" fill="white"/>
+		</mask>
+		</defs>
+		
+		<g filter="url(#shadow)">
+		<circle cx="150" cy="150" r="100" fill="var(--ctp-mocha-mauve)"/>
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-mauve)"/>
+		</g>
+		
+		<g filter="url(#shadow)">
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-mauve)" mask="url(#mask)"/>
+		</g>
+		
+		<text x="40" y="50" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">X</text>
+		<text x="100" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">A</text>
+		<text x="280" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">B</text>
+	</svg>
+	</div>
+
+	<p>
+		 Unions of sets satisfy a few basic identities:
 	</p>
 
 	<ul>
@@ -112,7 +144,28 @@
 	</p>
 \[A \cap B = \{x \in X \mid x \in A \wedge x \in B\}\]
 	<p>
-		Here, $\wedge$ is the "and" symbol. A proposition of the form $P \wedge Q$ is true if both $P$ and $Q$ are true. Thus, the intersection of $A$ and $B$ contains all elements that are in both $A$ and $B$. Just like unions, intersections satisfy a few basic properties:
+		Here, $\wedge$ is the "and" symbol. A proposition of the form $P \wedge Q$ is true if both $P$ and $Q$ are true. Thus, the intersection of $A$ and $B$ contains all elements that are in both $A$ and $B$. The shaded area in this picture represents the intersection of $A$ and $B$:
+	</p>
+
+	<div class="box">
+	<svg width="400" height="300">
+		<g filter="url(#shadow)">
+		<circle cx="150" cy="150" r="100" fill="var(--ctp-mocha-surface0)"/>
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-surface0)"/>
+		</g>
+		
+		<g filter="url(#shadow)">
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-mauve)" mask="url(#mask)"/>
+		</g>
+		
+		<text x="40" y="50" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">X</text>
+		<text x="100" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">A</text>
+		<text x="280" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">B</text>
+	</svg>
+	</div>
+
+	<p>
+		Just like unions, intersections satisfy a few basic properties:
 	</p>
 
 	<ul>
@@ -152,8 +205,17 @@
 	</p>
 \[A^c = \{x \in X \mid x \notin A\}\]
 	<p>
-		In other words, it's the set of all elements of $X$ that are not in $A$. Unlike with unions and intersections, the ambient set $X$ now matters: we could take the union of intersection of any two subsets as long as those sets had some common identity relation, regardless of what those sets were actually subsets of, but we cannot do that with complements.
+		In other words, it's the set of all elements of $X$ that are not in $A$. Unlike with unions and intersections, the ambient set $X$ now matters: we could take the union of intersection of any two subsets as long as those sets had some common identity relation, regardless of what those sets were actually subsets of, but we cannot do that with complements. The blue area in this picture represents the complement of $A$ in $X$:
 	</p>
+
+	<div class="box">
+	<svg width="300" height="300" style="background:var(--ctp-mocha-mauve)">
+		<circle cx="150" cy="150" r="100" fill="var(--ctp-mocha-surface0)" filter="url(#shadow)"/>
+		
+		<text x="40" y="50" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">X</text>
+		<text x="100" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">A</text>
+	</svg>
+	</div>
 
 	<p>
 		We have the following identities for how complements "distribute" over unions and intersections:
@@ -174,7 +236,7 @@
 
 	<ul>
 		<li>$A \cup A^c = X$;</li>
-		<li>$A \cap A^c = \emptyset$.</li>
+		<li>$A \cap A^c = \varnothing$.</li>
 	</ul>
 
 	<p>
@@ -182,12 +244,50 @@
 	</p>
 \[B \setminus A = B \cap A^c = \{x \in X \mid x \in B \wedge x \notin A\}\]
 	<p>
-		The subset $B \setminus A$ is called the relative complement of $A$ relative to $B$. We can also define another operation $A \bigtriangleup B$, called the symmetric difference, as follows:
+		The subset $B \setminus A$ is called the relative complement of $A$ relative to $B$. It looks like this:
+	</p>
+
+	<div class="box">
+	<svg width="400" height="300">
+		<g filter="url(#shadow)">
+		<circle cx="150" cy="150" r="100" fill="var(--ctp-mocha-surface0)"/>
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-mauve)"/>
+		</g>
+		
+		<g filter="url(#shadow)">
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-surface0)" mask="url(#mask)"/>
+		</g>
+		
+		<text x="40" y="50" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">X</text>
+		<text x="100" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">A</text>
+		<text x="280" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">B</text>
+	</svg>
+	</div>
+
+	<p>
+		We can also define another operation $A \bigtriangleup B$, called the symmetric difference, as follows:
 	</p>
 \[A \bigtriangleup B = (B \setminus A) \cup (A \setminus B) = (A \cup B) \setminus (A \cap B)\]
 	<p>
-		This consists of all elements of $X$ that are in either $A$ or $B$, but not both. It can be used as a measure for how different two subsets are. For example, if $A \bigtriangleup B = \emptyset$, then $A$ and $B$ are the same subset.
+		This consists of all elements of $X$ that are in either $A$ or $B$, but not both. It can be used as a measure for how different two subsets are. For example, if $A \bigtriangleup B = \varnothing$, then $A$ and $B$ are the same subset.
 	</p>
+
+	<div class="box">
+	<svg width="400" height="300">
+		<g filter="url(#shadow)">
+		<circle cx="150" cy="150" r="100" fill="var(--ctp-mocha-mauve)"/>
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-mauve)"/>
+		</g>
+		
+		<g filter="url(#shadow)">
+		<circle cx="250" cy="150" r="100" fill="var(--ctp-mocha-surface0)" mask="url(#mask)"/>
+		</g>
+		
+		<text x="40" y="50" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">X</text>
+		<text x="100" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">A</text>
+		<text x="280" y="120" fill="var(--ctp-mocha-text)" font-size="30px" font-family="MathJax_Math" style="text-shadow:0 0 4px black">B</text>
+	</svg>
+	</div>
 
 	<h2>Powerset</h2>
 	<p>W.I.P</p>
