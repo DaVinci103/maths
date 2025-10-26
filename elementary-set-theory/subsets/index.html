@@ -3,11 +3,10 @@
 <head>
 \[
 \newcommand{\NN}{\mathbb{N}}
-\newcommand{\true}{\texttt{true}}
-\newcommand{\false}{\texttt{false}}
+\newcommand{\RR}{\mathbb{R}}
 \]
  
-	<title>Binary Sums and Products - DV103</title>
+	<title>Subsets - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
 
 	<script>
@@ -28,25 +27,25 @@
 	<h1>Subsets</h1>
 	<h2>Subsets</h2>
 	<p>
-		Given a set $X$, a subset of $X$ is a set that contains some, but (often) not all the elements of $X$. For example, the set $E$ of even natural numbers is a subset of the set $\NN$ of all natural numbers. When viewing the set $E$ in isolation, however, it's not clear that it's a subset of $\NN$ or which elements of $\NN$ it contains. In fact, the set $E$ seems identical to $\NN$ as there is a bijection $n \mapsto \frac{n}{2}$ between the two sets. We thus need some piece of context that shows $E$ is a subset of $\NN$ and which elements it contains. This piece of context is an injection $m: E \hookrightarrow \NN$ serving as an inclusion of $E$ in $\NN$, mapping every even number $n \in E$ to its corresponding natural number in $\NN$. We can thus define a subset of $X$ to be a pair $(A,m)$ consisting of a set $A$ and an inclusion $m: A \hookrightarrow X$. We write $A \subset X$ (or sometimes $A \subseteq X$) to denote $A$ is a subset of $X$, the inclusion $m$ is often clear from context. In this chapter, though, I'll often write $(A,m) \subset X$ instead. For $x \in X$, we write $x \in A$ for "$x$ is in the subset $A$" or, formally, $\exists a \in A. m(a) = x$, and we write $x \notin A$ for "$x$ is not in the subset $A$", which is simply the negation of $x \in A$.
+		Given a set $X$, a subset of $X$ is a set that contains some, but (often) not all the elements of $X$. For example, the set $E$ of even natural numbers is a subset of the set $\NN$ of all natural numbers. When viewing the set $E$ in isolation, however, it's not clear that it's a subset of $\NN$ or which elements of $\NN$ it contains. In fact, the set $E$ seems identical to $\NN$ as there is a bijection $n \mapsto \frac{n}{2}$ between the two sets. We need some way to realize the elements of $E$ as elements of $\NN$. This is done with an injection $m: E \hookrightarrow \NN$ serving as an inclusion of $E$ in $\NN$, mapping every even number $n \in E$ to its corresponding natural number in $\NN$, allowing us to compare elements of $E$ with elements of $\NN$. We can thus define a subset of $X$ to be a pair $(A,m)$ consisting of a set $A$ and an inclusion $m: A \hookrightarrow X$. We write $A \subset X$ (sometimes $A \subseteq X$) to denote $A$ is a subset of $X$, the inclusion $m$ is omitted in the notation as it's often clear from context. In this chapter, I'll often write $(A,m) \subset X$ instead. For $x \in X$, we write $x \in A$ for "$x$ is in the subset $A$" or, formally, $\exists a \in A. m(a) = x$, and we write $x \notin A$ for "$x$ is not in the subset $A$", which is simply the negation of $x \in A$.
 
 	<p>
-		We can also identify the set of even numbers with $\NN$ itself and the inclusion $n \mapsto 2n$. Or we could a different inclusion, such as
+		We can also identify the set of even numbers with $\NN$ itself and the inclusion $n \mapsto 2n$. Or we could define a different inclusion, such as
 	</p>
 \[\left\{\begin{array}{lll}
 2n & \mapsto & 4n+2 \\
 2n+1 & \mapsto & 4n
 \end{array}\right.\]
 	<p>
-		which swaps each consecutive pair of even numbers. Besides these all being different sets and/or different inclusion, they all still represent the subset of $\NN$ of even numbers. The definition of subsets we have is thus incomplete: it only says what a subset <i>is</i>, but not yet when two subsets are <i>equal</i>. The definition of the identity relation on subsets is as follows:
+		which swaps each consecutive pair of even numbers. Besides these all being different sets and/or different inclusion, they all still represent the same subset of $\NN$: the set of even numbers. The definition of subsets we have is thus incomplete: it only says what a subset <i>is</i>, but not yet when two subsets are <i>equal</i>. The definition of the identity relation on subsets is as follows:
 	</p>
 
 	<p>
-		Given a set $X$ and subsets $(A,m) \subset X$ and $(B,n) \subset X$, we have that $(A,m)$ and $(B,n)$ are <b>identical</b> if there is a bijection $f: A \leftrightarrow B$ for which $n = m \circ f$.
+		Given a set $X$ and subsets $(A,m) \subset X$ and $(B,n) \subset X$, we have that $(A,m)$ and $(B,n)$ are <b>identical</b> (or <i>equal</i>) if there is a bijection $f: A \leftrightarrow B$ for which $n = m \circ f$.
 	</p>
 
 	<p>
-		For example, the latter two representations are equal because of the permutation
+		For example, the latter two representations of the set of even numbers are identical because of the bijection
 	</p>
 \[\left\{\begin{array}{lll}
 2n & \mapsto & 2n+1 \\
@@ -56,6 +55,10 @@
 		It can be shown that, if two subsets are equal, then they're equal in a unique way. In other words, given $X$, $(A,m) \subset X$, $(B,n) \subset X$, $f: A \leftrightarrow B$ and $g: A \leftrightarrow B$ for which $n = m \circ f$ and $n = m \circ g$, we have that $f = g$. We use function extensionality to prove this: given $a \in A$, we have that $m(f(a)) = n(a) = m(g(a))$, and therefore $m(f(a)) = m(g(a))$. Since $m$ is an injection, we have that $f(a) = g(a)$, which is exactly what we wanted to show.
 	</p>
 
+	<p>
+		It's also possible for sets to be subsets of other subsets. For example, the set of $2$ and $6$ as a subset of the set of natural numbers, is a subset of the set of even numbers: every element of $\{2,6\}$, realized as an element of $\NN$, is also an element of $E$. This is equivalent to saying that there is an inclusion $i$ of $\{2,6\}$ in $E$ that "respects" the inclusions $m: E \hookrightarrow \NN$ and $n: \{2,6\} \hookrightarrow \NN$, i.e. for which $m \circ i = n$. For $(A,m) \subset X$ and $(B,n) \subset X$, we can thus define the proposition $A \subset B$ to mean that there exists an injection $i: A \hookrightarrow B$ for which $m \circ i = n$. The reader may verify that such an injection $i$, if it exists, must be unique. From this definition, we have that $(A,m)$ and $(B,n)$ are identical as subsets of $X$ exactly when both $A \subset B$ and $B \subset A$.
+	</p>
+
 
 	<h2>Predicates</h2>
 	<p>
@@ -63,7 +66,7 @@
 	</p>
 
 	<p>
-		We use $\Omega$ to denote the set of truth-values $\{\true, \false\}$. A "rule" is then a function $P: X \to \Omega$ that maps each element $x \in X$ to either $\true$ or $\false$. We call such a function a <b>predicate</b> on $X$. Since elements of $\Omega$ are truth-values, we can use the function value $P(x)$ as a statement in a longer formula, as in $\forall x \in X. P(x)$, which states that $P(x)$ is true for all $x \in X$. The axiom of separation then states that, given any predicate $P: X \to \Omega$, there is a subset $(A,m) \subset X$ for which, for all $x \in X$, $x \in A$ if and only if $P(x)$. We use the notation $\{x \in X \mid P(x)\}$, called set comprehension notation, to denote this subset. This axiom allows us to define the set $\{n \in \NN \mid n \textrm{ is prefect}\}$ of perfect numbers without knowing how many there are in advance. Sometimes we use a colon $:$ instead of a pipe $\mid$ to separate the element and the predicate in a set comprehension expression.
+		We use $\Omega$ to denote the set of truth-values $\{\top, \bot\}$ ($\top$ = true, $\bot$ = false). A "rule" is then a function $P: X \to \Omega$ that maps each element $x \in X$ to either $\top$ or $\bot$. We call such a function a <b>predicate</b> on $X$. Since elements of $\Omega$ are truth-values, we can use the function value $P(x)$ as a proposition in a longer formula, as in $\forall x \in X. P(x)$, which states that $P(x)$ is true for all $x \in X$. The axiom of separation then states that, given any predicate $P: X \to \Omega$, there is a subset $(A,m) \subset X$ for which, for all $x \in X$, $x \in A$ if and only if $P(x)$. We use the notation $\{x \in X \mid P(x)\}$, called set comprehension notation or set builder notation, to denote this subset. This axiom allows us to define the set $\{n \in \NN \mid n \textrm{ is prefect}\}$ of perfect numbers without knowing how many there are in advance. Sometimes we use a colon $:$ instead of a pipe $\mid$ to separate the element and the predicate in a set comprehension expression.
 	</p>
 
 	<p>
@@ -205,7 +208,7 @@
 	</p>
 \[A^c = \{x \in X \mid x \notin A\}\]
 	<p>
-		In other words, it's the set of all elements of $X$ that are not in $A$. Unlike with unions and intersections, the ambient set $X$ now matters: we could take the union of intersection of any two subsets as long as those sets had some common identity relation, regardless of what those sets were actually subsets of, but we cannot do that with complements. The blue area in this picture represents the complement of $A$ in $X$:
+		In other words, it's the set of all elements of $X$ that are not in $A$. Unlike with unions and intersections, the ambient set $X$ now matters: if $X$ was a subset of a larger set $Y$ with an inclusion that respects those of $A$ and $B$, it didn't matter if we take the union of intersection of $A$ and $B$ in $X$ or in $Y$, but that does matter for complements. The blue area in this picture represents the complement of $A$ in $X$:
 	</p>
 
 	<div class="box">
@@ -227,16 +230,20 @@
 	</ul>
 
 	<p>
-		These identities are called De Morgan laws. These identities should make sense intuitively: if something is in not in either $A$ or $B$, then it is neither in $A$ nor $B$, and if something is not in both $A$ and $B$, it's either not in $A$ or not in $B$.
+		These identities are called De Morgan laws. These identities should make sense intuitively: if something is in not in either $A$ or $B$, then it is neither in $A$ nor $B$, and if something is not in both $A$ and $B$, it's either not in $A$ or not in $B$. We also have the following identity, showing taking complements is an involution:
 	</p>
+
+	<ul>
+		<li>$A^{cc} = A$.</li>
+	</ul>
 
 	<p>
 		$A^c$ is the unique subset of $X$ that satisfies the following two identities:
 	</p>
 
 	<ul>
-		<li>$A \cup A^c = X$;</li>
-		<li>$A \cap A^c = \varnothing$.</li>
+		<li>$A^c \cup A = X$;</li>
+		<li>$A^c \cap A = \varnothing$.</li>
 	</ul>
 
 	<p>
@@ -289,6 +296,11 @@
 	</svg>
 	</div>
 
+
+	<h2>Function Restrictions</h2>
+	<p>W.I.P</p>
+
+	
 	<h2>Powerset</h2>
 	<p>W.I.P</p>
 
