@@ -4,6 +4,8 @@
 \[
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\im}{\textrm{im}}
 \]
  
 	<title>Subsets - DV103</title>
@@ -298,6 +300,64 @@
 
 
 	<h2>Function Restrictions</h2>
+	<p>
+		Let $f: X \to Y$ be a function and let $(A,m) \subset X$ be a subset. The <b>restriction</b> of $f$ to $A$ (along $m$) is commonly denoted $f|A$, $f|_A$, $f \upharpoonright A$ or $f{\upharpoonright_A}$. We'll use the notation $f|_A$. The restriction $f|_A$ is a function from $A$ to $Y$ representing the restriction of the function $f$ to the domain $A$. I.e. for $a \in A$, we have $f|_A(a) = f(a)$. Formally, it is defined by:
+	</p>
+\[f|_A = f \circ m\]
+	<p>
+		For $(A,m) \subset X$, $(B,n) \subset X$ and $f: X \to Y$, we have the following identities:
+	</p>
+
+	<ul>
+		<li>$f|_X = f$, where $X$ (with the inclusion $\id_X$) is the subset of all elements of $X$;</li>
+		<li>$f|_\varnothing$ is the empty function to $Y$;</li>
+		<li>Given that $A \subset B$ in $X$, witnessed by the inclusion $i: A \hookrightarrow B$, we have $(f|_B)|_A = f|_A$ (the first restriction to $A$ is along $i$, the second is along $m$);</li>
+		<li>$\id_X|_A = m$.</li>
+	</ul>
+
+	<p>
+		Given subsets $A \subset X$ and $B \subset X$ and functions $f: A \to Y$ and $g: B \to Y$, if $f|_{A \cap B} = g|_{A \cap B}$ (i.e. their values agree on their common domain), we can glue $f$ and $g$ together into a new function $f \cup g$. The union $f \cup g$ is a function from $A \cup B$ to $Y$ with the following two properties:
+	</p>
+
+	<ul>
+		<li>$(f \cup g)|_A = f$;</li>
+		<li>$(f \cup g)|_B = g$.</li>
+	</ul>
+
+	<p>
+		This function can be defined by cases as follows: $(f \cup g)(x) = f(x)$ if $x \in A \setminus B$, $(f \cup g)(x) = g(x)$ if $x \in B \setminus A$, and (either definition works) $(f \cup g)(x) = f(x)$ if $x \in A \cap B$ or, equivalently, $(f \cup g)(x) = g(x)$ if $x \in A \cap B$. A function from $A \cup B$ to $Y$ with the above two properties, if it exists, must be unique: suppose $h$ and $h'$ are such functions. We prove $h = h'$ using function extensionality. For $x \in A \cup B$, we have $x \in A$ or $x \in B$ (by definition of union). In the first case, i.e. if $x \in A$, we have that $h(x) = h|_A(x) = f(x) = h'|_A(x) = h'(x)$. In the second case, $h(x) = h|_B(x) = g(x) = h'|_B(x) = h'(x)$. In either case, $h(x) = h'(x)$.
+	</p>
+
+	<p>
+		Given an operator $f: X^n \to X$ ($X^n = X \times \cdots \times X$ with $n$ copies of $X$), we say a subset $A \subset X$ is <b>closed</b> under the operator $f$ if for all $a_1, \ldots, a_n \in A$, we have that $f(a_1,\ldots,a_n) \in A$ as well. In other words, the restriction $f|_{A^n}$ still makes sense as a function when we change the domain from $X$ to $A$. In yet other words, $\im(f) \subset A$. For example, consider the operation of addition on the natural numbers ${+}: \NN \times \NN \to \NN$. The set of even numbers is closed under this operation: if you add any two even numbers, you get an even number. However, the set of odd numbers is not closed under this operation: if we add, for example, $1$ and $5$, we get $6$, which is not in the set of odd numbers.
+	</p>
+
+	<p>
+		The <b>closure</b> of a subset $A \subset X$ under an operation $f: X^n \to X$ is the unique subset $B \subset X$ with the following three properties:
+	</p>
+
+	<ul>
+		<li>$A \subset B$;</li>
+		<li>$B$ is closed under $f$;</li>
+		<li>For any subset $C \subset X$ with the above two properties, $B \subset C$.</li>
+	</ul>
+
+	<p>
+		We can define this set $B$ as follows:
+	</p>
+
+	<ul>
+		<li>$B_0 = A$;</li>
+		<li>For $i \in \NN$, $B_{i+1} = B_i \cup \im(f|_{B_i})$;</li>
+		<li>$B = \{x \in X \mid \exists i \in \NN. x \in B_i\}$.</li>
+	</ul>
+
+	<p>
+		For example, the closure of the subset $\{3\} \subset \NN$ under addition is the set of all positive multiples of $3$.
+	</p>
+
+
+	<h2>Function Graphs</h2>
 	<p>W.I.P</p>
 
 	
