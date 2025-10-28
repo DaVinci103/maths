@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\]
+	<title>Natural Numbers - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Natural Numbers</h1>
+	<p>
+		In the first chapter, I've introduced the set of natural numbers, though I have not yet formally <i>defined</i> this set. We can define the finite sets $\mathbf{0}$, $\mathbf{1}$, etc, by simply listing out all their elements: $\{\}$, $\{0_{\mathbf{1}}\}$. If we try this for $\NN$, we'd find that this'd take a very long time. So we need another approach.
+	</p>
+
+	<p>
+		Instead of listing out the elements of $\NN$ one by one, we can look for some structure that we know $\NN$ has, and then define $\NN$ by that structure. The structure of $\NN$ is kind of like some chain: it has a beginning $0$, and for each number $n$, we can find a number $S(n) = n+1$ directly succeeding it. This description is not yet complete: it does not yet rule out the possibility that $n+1$ is a number we've already seen, or that there are numbers that cannot be reached from $0$ using the successor function $S$. So we'd want to add some axiom that states $\NN$ has no "redundancies": no redundant identities (such as $S(S(0)) = 0$), and no redundant elements (ones that cannot be reaced from $0$ and $S$).
+	</p>
+
+	<p>
+		We now have some picture of how we want $\NN$ to look like. However, we still need to formally define what "no redundancies" means, and we need to prove $\NN$ is unique with this structure. In the rest of this chapter, we'll tackle these two problems, as well as build extra structure of $\NN$ (addition, multiplication, comparison) up from the structure $(\NN,0,S)$.
+	</p>
+
+
+	<h2>N-Algebras</h2>
+	<p>
+		An <b>N-algebra</b> is a structure that consists of:
+	</p>
+
+	<ul>
+		<li>A set $N$;</li>
+		<li>An element $z \in N$;</li>
+		<li>An endofunction $s: N \to N$.</li>
+	</ul>
+
+	<p>
+		For N-algebras $(N,z,s)$ and $(N',z',s')$, an <b>N-homomorphism</b> W.I.P
+	</p>
+</body>
+</html>
