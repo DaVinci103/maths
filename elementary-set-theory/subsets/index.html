@@ -6,6 +6,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\id}{\textrm{id}}
 \newcommand{\im}{\textrm{im}}
+\newcommand{\graph}{\textrm{Graph}}
 \]
  
 	<title>Subsets - DV103</title>
@@ -358,7 +359,47 @@
 
 
 	<h2>Function Graphs</h2>
-	<p>W.I.P</p>
+	<p>
+		Given sets $A$ and $B$, a (binary) <b>relation</b> on $A$ and $B$ is a subset $R \subset A \times B$ of their product. For $a \in A$ and $b \in B$, we write $aRb$ for $(a,b) \in R$. For a function $f: A \to B$, its graph $\graph(f)$ is a relation on $A$ and $B$ defined as:
+	</p>
+\[a \graph(f) b \iff f(a) = b\]
+	<p>
+		We can see that the graph $R$ of a function always satisfies the following two condition:
+	</p>
+	
+	<ul>
+		<li>$\forall a \in A. \exists b \in B. aRb$;</li>
+		<li>$\forall a \in A, b, b' \in B. aRb \wedge aRb' \implies b = b'$.</li>
+	</ul>
+
+	<p>
+		The first condition states that every element $a \in A$ is related to some element $b \in B$, and the second property states that this element $b$ is unique. Conversely, every relation satisfying the above two properties is the graph of some function. In most formal set theories, functions aren't given as a primitive concept. Instead, functions are identified by their graphs. This allows for more flexibility with functions: you can define partial functions and multi-valued functions easily, but this comes at the cost of not being able to call functions directly. Instead, if you want the function value of a function defined by the graph $R$ given the argument $a \in A$, you'd have to use a slightly awkward $\exists b \in B. aRb \wedge \cdots$ where $\cdots$ continuous your formula.
+	</p>
+
+	<p>
+		Function graphs can be extended to graphs of $n$-ary and multi-argument functions quite easily: given a function $f: A_1 \times \cdots \times A_m \to B_1 \times \cdots \times B_n$, we can define its graph $\graph(f) \subset A_1 \times \cdots \times A_m \times B_1 \times \cdots \times B_n$ as:
+	</p>
+\[\graph(f)(a_1,\ldots,a_m,b_1,\ldots,b_m) \iff f(a_1,\ldots,a_n) = (b_1,\ldots,b_n)\]
+	<p>
+		Given a relation $R \subset A \times B$, we write its inverse as $R^{-1}$. This is a relation on $B$ and $A$ defined by:
+	</p>
+\[bR^{-1}a \iff aRb\]
+	<p>
+		If $R$ is the graph of a bijection, then it can be verified that $R^{-1}$ is the graph of the inverse of that bijection. Thus, this notion of an inverse relation seems to match up with the notion of an inverse function.
+	</p>
+	
+	<p>
+		A relation $R \subset A \times B$ can have properties that make it look like a function or a certain kind of function. We use different notation for different kinds of relations. For example, we write $R: A \to B$ to denote $R$ satisfies the above two properties, thus signifying $R$ can be used as a usual function. Ohter properties of relations, and their notations, are:
+	</p>
+
+	<ul>
+		<li>$R: A \righttail B$ iff $\forall a \in A. \exists b \in B. aRb$;</li>
+		<li>$R: A \rightharpoonup B$ iff $\forall a \in A, b, b' \in B. aRb \wedge aRb' \implies b = b'$ ($R$ is a partial function from $A$ to $B$).</li>
+	</ul>
+
+	<p>
+		If we have both $R: A \righttail B$ and $R: A \rightharpoonup B$, then $R$ is just the (graph of a) function. Then, an injection can be defined as a relation $R \subset A \times B$ for which $R: A \to B$ and $R^{-1}: B \rightharpoonup A$ and a surjection is a relation $R \subset A \times B$ for which $R: A \to B$ and $R^{-1}: B \righttail A$.
+	</p>
 
 	
 	<h2>Powerset</h2>
