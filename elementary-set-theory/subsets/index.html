@@ -7,6 +7,7 @@
 \newcommand{\id}{\textrm{id}}
 \newcommand{\im}{\textrm{im}}
 \newcommand{\graph}{\textrm{Graph}}
+\newcommand{\pow}{\mathcal{P}}
 \]
  
 	<title>Subsets - DV103</title>
@@ -17,7 +18,7 @@
 		loader: {load: ['[tex]/html']},
 		tex: {
 			inlineMath: {'[+]': [['$', '$']]},
-			packages: {'[+]': ['html', 'ams']}
+			packages: {'[+]': ['html', 'ams', 'mathspec']}
 		},
 	};
 	</script>
@@ -394,8 +395,12 @@
 
 	<ul>
 		<li>$R: A \righttail B$ iff $\forall a \in A. \exists b \in B. aRb$;</li>
-		<li>$R: A \rightharpoonup B$ iff $\forall a \in A, b, b' \in B. aRb \wedge aRb' \implies b = b'$ ($R$ is a partial function from $A$ to $B$).</li>
+		<li>$R: A \rightharpoonup B$ iff $\forall a \in A, b, b' \in B. aRb \wedge aRb' \implies b = b'$.</li>
 	</ul>
+
+	<p>
+		A relation $R: A \rightharpoonup B$ is sometimes called a <b>partial function</b> from $A$ to $B$. This can be interpreted as a graph of a function $f: S \to B$ where $S \subset A$ is a subset of $A$. In particular, $S$ is the subset $\{a \mid \exists b \in B. aRb\}$.
+	</p>
 
 	<p>
 		If we have both $R: A \righttail B$ and $R: A \rightharpoonup B$, then $R$ is just the (graph of a) function. Then, an injection can be defined as a relation $R \subset A \times B$ for which $R: A \to B$ and $R^{-1}: B \rightharpoonup A$ and a surjection is a relation $R \subset A \times B$ for which $R: A \to B$ and $R^{-1}: B \righttail A$.
@@ -403,7 +408,73 @@
 
 	
 	<h2>Powerset</h2>
-	<p>W.I.P</p>
+	<p>
+		Any given set $X$ has a <b>powerset</b>, which consists of:
+	</p>
+
+	<ul>
+		<li>A set $\pow(X)$, also sometimes referred to as the powerset;</li>
+		<li>A function $e: X \times \pow(X) \to \Omega$.</li>
+	</ul>
+
+	<p>
+		The powerset $\pow(X)$ of $X$ can be thought of as the set of all subsets of $X$. Points in $X$ don't have additional strucutre on their own, but subsets do have extra structure: namely, the points of $X$ they contain. The function $e$ shows this extra structure of subsets. The function $e$ can be thought of as a membership relation between $X$ and $\pow(X)$: for a point $x \in X$ and a point $A \in \pow(X)$, we have that $e(x,A)$ asserts $x$ is an element of $A$.
+	</p>
+
+	<p>
+		The structure $(\pow(X),e)$, similar to products and sums of sets, as two axioms. The first concerns the construction of elements in $\pow(X)$, and the second concerns the identity relation on $\pow(X)$. These axioms are as follows:
+	</p>
+
+	<ul>
+		<li>For every predicate $P: X \to \Omega$, there is a corresponding element $A \in \pow(X)$ for which $\forall x \in X. e(x,A) = P(x)$;</li>
+		<li>For all $A,B \in \pow(X)$, if $\forall x \in X. e(x,A) = e(x,B)$, then $A = B$.</li>
+	</ul>
+
+	<p>
+		The above two axioms allow us to identify predicates on $X$ with elements of $\pow(X)$, and vice-versa. With the axiom of separation, we can also identify elements of $\pow(X)$ with subsets of $X$.
+	</p>
+
+	<p>
+		The operations $\cup$, $\cap$ and $(-)^c$ form operations on $\pow(X)$. $\cup$ and $\cap$ are binary operations and $(-)^c$ is a unary operation.
+	</p>
+\[\begin{array}{rrcl}
+{\cup}: & \pow(X) \times \pow(X) & \to & \pow(X) \\
+& (A,B) & \mapsto & A \cup B \\
+{\cap}: & \pow(X) \times \pow(X) & \to & \pow(X) \\
+& (A,B) & \mapsto & A \cap B \\
+(-)^c: & \pow(X) & \to & \pow(X) \\
+& A & \mapsto & A^c
+\end{array}\]
+	<p>
+		A structure consisting of a set and some operations on that set, sometimes satisfying a list of equations, is called an <i>algebra</i>. In particular, the structure $(\pow(X),\varnothing,X,{\cup},{\cap},(-)^c)$ is an example of a Boolean algebra. The symmetric difference $\triangle$ is also a binary operation on $\pow(X)$. The structure $(\pow(X),\varnothing,X,\triangle,{\cap})$ is another example of an algebra. Namely, it is a commutative ring. Besides N-algebras in the next chapter, we won't explore algebras further in this chapter.
+	</p>
+
+	<p>
+		A subset $F \subset \pow(X)$ is referred to as a (set) <b>family</b> of subsets of $X$. A function $G: I \to \pow(X)$ from some set $I$ is also sometimes referred to as an (indexed) family. In general, a family refers to some collection of sets or subsets. We can do large unions and large intersections on both kinds of families to get subsets of $X$. These are defined as follows:
+	</p>
+
+	<ul>
+		<li>$\bigcup F = \{x \in X \mid \exists A \subset X. x \in A \wedge A \in F\}$;</li>
+		<li>$\bigcap F = \{x \in X \mid \forall A \subset X. x \in A \wedge A \in F\}$;</li>
+		<li>$\bigcup_{i \in I} G(i) = \{x \in X \mid \exists i \in I. x \in G(i)\}$;</li>
+		<li>$\bigcap_{i \in I} G(i) = \{x \in X \mid \forall i \in I. x \in G(i)\}$.</li>
+	</ul>
+
+	<p>
+		These extend the binary $\cap$ and $\cup$ by allowing any number of sets in the union or intersection. Note that $\bigcap \varnothing = X$, as every element of $x$ is in every element of $\varnothing$ by vacuous truth.
+	</p>
+
+	<p>
+		Though there are bijections between $\NN$ and $\NN + \NN$, and between $\NN$ and $\NN \times \NN$, Cantor showed that the same is not true for $\pow(\NN)$. His argument is called the diagonal argument, and it goes as follows:
+	</p>
+
+	<p>
+		Assume, aiming for a contradiction, we have a bijection $f: \NN \leftrightarrow \pow(\NN)$. The function $f$ is then a complete enumeration $f(0), f(1), f(2), \ldots$ of the subsets of $\NN$. We'll get to a contradiction by defining a set $A \subset \NN$ that is not on this list. First, to ensure $A$ is different from $f(0)$, we set $0 \in A$ if and only if $0 \notin f(0)$. This way, $f(0)$ and $A$ disagree, and thus $A \neq f(0)$. Second, to ensure $A$ is different from $f(1)$, we set $1 \in A$ iff $1 \notin f(1)$. By the same argument as before, $A \neq f(1)$. In general, set $n \in A$ iff $n \notin f(n)$. Thus, we have $A = \{n \in \NN \mid n \notin f(n)\}$. The set $A$ cannot be in the enumeration $f$, so the function $f$ isn't a bijection. A contradiction arises.
+	</p>
+
+	<p>
+		This argument can be extended to show that for any arbitrary set $X$, there is no bijection between $X$ and $\pow(X)$: for any supposed bijection $f$, define $A = \{x \in X \mid x \notin f(x)\}$. This way, $A$ isn't in the image of $f$, hence $f$ is not a bijection.
+	</p>
 
 	<p>
 		<a href="../binary-sums-and-products">&leftarrow;</a>
