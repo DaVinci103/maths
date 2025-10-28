@@ -45,7 +45,24 @@
 	</ul>
 
 	<p>
-		For N-algebras $(N,z,s)$ and $(N',z',s')$, an <b>N-homomorphism</b> W.I.P
+		For N-algebras $(N,z,s)$ and $(N',z',s')$, an <b>N-homomorphism</b> from $(N,z,s)$ to $(N',z',s')$ is a function $f: N \to N'$ for which:
+	</p>
+
+	<ul>
+		<li>$f(z) = z'$;</li>
+		<li>For all $n \in N$, $f(s(n)) = s'(f(n))$.</li>
+	</ul>
+
+	<p>
+		We write $f: (N,z,s) \to (N',z',s')$ for "$f$ is an N-homomorphism from $(N,z,s)$ to $(N',z',s')$".
+	</p>
+
+	<p>
+		N-algebras, along with N-homomorphisms between them, form a <i>category</i>. Informally, a category is some collection of objects with, for any two objects, a collection of morphisms or arrows from one object to another. In this case, the objects are N-algebras, and the arrows are N-homomorophisms.
+	</p>
+
+	<p>
+		An N-homomorphism $f: (\NN,0,S) \to (N,z,s)$ from the natural numbers would satisfy $f(0) = z$ and $f(n+1) = s(f(n))$. This sort-of looks like a recursive definition for a sequence $z, s(z), s(s(z)), s(s(s(z))), \ldots$. We know (intuitively) that such a recursive sequence always exists, and that this sequence must be unique. W.I.P
 	</p>
 </body>
 </html>
