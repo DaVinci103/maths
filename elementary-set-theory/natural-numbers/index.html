@@ -3,6 +3,7 @@
 <head>
 \[
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\id}{\textrm{id}}
 \]
 	<title>Natural Numbers - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -54,15 +55,42 @@
 	</ul>
 
 	<p>
-		We write $f: (N,z,s) \to (N',z',s')$ for "$f$ is an N-homomorphism from $(N,z,s)$ to $(N',z',s')$".
+		We write $f: (N,z,s) \to (N',z',s')$ for "$f$ is an N-homomorphism from $(N,z,s)$ to $(N',z',s')$". For example, the identity map $\id_N: (N,z,s) \to (N,z,s)$ is an N-homomorphism from an N-algebra to itself.
 	</p>
 
 	<p>
-		N-algebras, along with N-homomorphisms between them, form a <i>category</i>. Informally, a category is some collection of objects with, for any two objects, a collection of morphisms or arrows from one object to another. In this case, the objects are N-algebras, and the arrows are N-homomorophisms.
+		N-algebras, along with N-homomorphisms between them, form a <i>category</i>. Informally, a category is some collection of objects with, for any two objects, a collection of morphisms or arrows from one object to another. In this case, the objects are N-algebras, and the arrows are N-homomorophisms. A category also requires that any two arrows following eachother can be composed. The reader may verify that, given N-homomorphisms $f: (N,z,s) \to (N',z',s')$ and $g: (N',z',s') \to (N'',z'',s'')$, their composition $g \circ f$ is an N-homomorphism as well.
 	</p>
 
 	<p>
-		An N-homomorphism $f: (\NN,0,S) \to (N,z,s)$ from the natural numbers would satisfy $f(0) = z$ and $f(n+1) = s(f(n))$. This sort-of looks like a recursive definition for a sequence $z, s(z), s(s(z)), s(s(s(z))), \ldots$. We know (intuitively) that such a recursive sequence always exists, and that this sequence must be unique. W.I.P
+		We say an N-algebra $(N,z,s)$ is <b>initial</b> if, for all N-algebras $(N',z',s')$, there is an N-homomorphism $f: (N,z,s) \to (N',z',s')$. Moreover, this N-homomorphism must be unique. I.e. for any N-homomorphism $g: (N,z,s) \to (N',z',s')$, we have $f = g$. More generally, an initial object of a category is some object that has a unique outgowing arrow to each object in the category. For example, $\varnothing$ is the initial set, as for any set $A$, the unique function $\varnothing \to A$ is the empty function.
+	</p>
+
+	<p>
+		Given two initial N-algebras $(N,z,s)$ and $(N',z',s')$, we can see they must be isomorphic: there is a unique N-homomorphism $f: (N,z,s) \to (N',z',s')$ and a unique N-homomorphism $g: (N',z',s') \to (N,z,s)$. Since the composition of two N-homomorphisms is another N-homomorphism, we have that $g \circ f$ is an N-homomorphism on $(N,z,s)$ and $f \circ g$ is an N-homomorphism $(N',z',s')$. But, as $(N,z,s)$ and $(N',z',s')$ are initial, the N-homomorphisms $g \circ f$ and $f \circ g$ must be the unique N-homomorphism on $(N,z,s)$ and $(N',z',s')$ respectively. We already know N-homomorphisms on $(N,z,s)$ and $(N',z',s')$: the identity morphisms $\id_N$ and $\id_{N'}$. So, by uniqueness, $g \circ f = \id_N$ and $f \circ g = \id_{N'}$. This means $f$ and $g$ are inverses of eachother, and are thus bijections. So, the initial N-algebra is, in some sense, unique.
+	</p>
+
+	<p>
+		The N-algebra of natural numbers, $(\NN,0,S)$, is defined as the initial N-algebra. We refer to the unique N-homomorphisms $f: (\NN,0,S) \to (N,z,s)$ going out from $\NN$ as the <b>sequence</b> of $(N,z,s)$. We cannot prove the existence of an initial N-algebra, so we need to add its existence as an axiom. The axiom stating the existence of $\NN$ is called the <b>axiom of infinity</b>. This might not seem to line up with the informal "no redundancies" definition of $\NN$ we gave in the beginning of this chapter, so I'll give an informal argument that it does: $\NN$ cannot have any redundant identies, as then there can be no N-homomorphism to N-algebras that do not have that redundant identity, and similarly, $\NN$ cannot redundant elements, as then this gives us a choice for where we sent those elements in another N-algebra, while sequences must be unique.
+	</p>
+
+	<p>
+		Generally, a sequence is a function $f: \NN \to A$ from the set of natural numbers. We usually think of sequences as lists $(a_0,a_1,a_2,\ldots)$ of elements. If we set $f(n) = a_n$, or set $a_n = f(n)$, we can see that these infinite lists and these functions from $\NN$ are actually just the same thing. The sequence of an N-algebra $(N,z,s)$ can then be written in list form as $(z,s(z),s(s(z)),s(s(s(z))),\ldots)$, where the $n$<sup>th</sup> element is $s$ applied $n$ times to $z$.
+	</p>
+
+	<h2>Induction</h2>
+	<p>
+		Recall from the last chapter that a set $A \subset N$ is said to be <i>closed</i> under $s$ if, for all $a \in A$, we have $s(a) \in A$. In this chapter, given a set $(N,z,s)$, we say a subset $A \subset N$ is <i>inductive</i> if $z \in A$ and $A$ is closed under $s$. We say an N-algebra $(N,z,s)$ is <b>well-founded</b> if, for all inductive $A \subset N$, we have $A = N$. This formalizes the idea of every element of $N$ being reachable from $z$ and $s$. We'll show that the N-algebra of natural numbers is inductive. Though this might seem obvious, the actual proof is a bit technical.
+	</p>
+
+	<p>
+		Let $A \subset \NN$ be a subset of the set of natural numbers and suppose $A$ is inductive. As $A$ is closed under $S$, we have that $S|_A$ is a function from $A$ to $A$. Thus, $(A,0,S|_A)$ is an N-algebra. Clearly, the inclusion $m$ of $A$ in $\NN$ is an N-homomorphism. The sequence $s: \NN \to A$ of $(A,0,S|_A)$ is an N-homomorphism the other way. If $m$ and $s$ were to be inverses, then we'd know that the inclusion $m$ is a bijection, and thus that $A = N$. The problem is that we don't know whether $s$ and $m$ are inverses. We'll show that $(A,0,S|_A)$ is an initial N-algebra. Let $(N,z,s)$ be any N-algebra. Then, there must be a sequence $f: \NN \to N$. The restriction $f|_A: A \to N$ of $f$ to $A$ is still an N-homomorphism, so we know outgoining N-homomorphisms always exist. Now, we need to show they're unique. Suppose $g: A \to N$ is an N-homomorphism, aiming to show that $g = f|_A$. We define a "lift" $\tilde{g}: \NN \to N$ with the properties that $\tilde{g}$ is an N-homomorphism and $\tilde{g}|_A = g$. We do this as follows: for $n \in \NN$, if $n \in A$, then we set $\tilde{g}(n) = g(n)$. Otherwise, we set $\tilde{g}(n) = f(n)$. Clearly, with this definition, we have $\tilde{g}|_A = g$, so it remains to show that $\tilde{g}$ is an N-homomorphism. To verify this, $\tilde{g}(n) = $ W.I.P
+	</p>
+
+	<p>
+		<a href="../subsets">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../quotients">&rightarrow;</a>
 	</p>
 </body>
 </html>
