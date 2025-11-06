@@ -332,7 +332,15 @@
 	</p>
 
 	<p>
-		Given an operator $f: X^n \to X$ ($X^n = X \times \cdots \times X$ with $n$ copies of $X$), we say a subset $A \subset X$ is <b>closed</b> under the operator $f$ if for all $a_1, \ldots, a_n \in A$, we have that $f(a_1,\ldots,a_n) \in A$ as well. In other words, the restriction $f|_{A^n}$ still makes sense as a function when we change the domain from $X$ to $A$. In yet other words, $\im(f) \subset A$. For example, consider the operation of addition on the natural numbers ${+}: \NN \times \NN \to \NN$. The set of even numbers is closed under this operation: if you add any two even numbers, you get an even number. However, the set of odd numbers is not closed under this operation: if we add, for example, $1$ and $5$, we get $6$, which is not in the set of odd numbers.
+		For a function $f: X \to Y$ and a subset $A \subset X$, $f[A]$ is a subset of $Y$ called the <b>image</b> of $A$ under $f$. This image is defined as the set of all $f(a)$ for $a \in A$:
+	</p>
+\[f[A] = \{x \in X \mid \exists a \in A. f(a) = x\}\]
+	<p>
+		We can also define $f[A]$ as the image $\im(f|_A)$ of the restriction of $f$ to $A$. For $A = X$, we have that $f[X] = \im(X)$ is the usual image of $X$.
+	</p>
+
+	<p>
+		Given an operator $f: X^n \to X$ ($X^n = X \times \cdots \times X$ with $n$ copies of $X$), we say a subset $A \subset X$ is <b>closed</b> under the operator $f$ if for all $a_1, \ldots, a_n \in A$, we have that $f(a_1,\ldots,a_n) \in A$ as well. In other words, the restriction $f|_{A^n}$ still makes sense as a function when we change the domain from $X$ to $A$. In yet other words, $f[A^n] \subset A$. For example, consider the operation of addition on the natural numbers ${+}: \NN \times \NN \to \NN$. The set of even numbers is closed under this operation: if you add any two even numbers, you get an even number. However, the set of odd numbers is not closed under this operation: if we add, for example, $1$ and $5$, we get $6$, which is not in the set of odd numbers.
 	</p>
 
 	<p>
