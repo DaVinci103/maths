@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\Card}{\mathsf{Card}}
+\newcommand{\Univ}{\mathcal{U}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cc}{\mathfrak{c}}
+\]
+	<title>Cardinals - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Cardinals</h1>
+	<h2>Cardinals</h2>
+	<p>
+		In mathematics, a <b>cardinal</b> refers to the number of elements of a given set. Given a set $X$, its <b>cardinality</b> is denoted $|X|$ or $\#X$. The cardinality $|X|$ is a cardinal. For sets $X$ and $Y$, we have $|X| = |Y|$ iff there is a bijection $f: X \leftrightarrow Y$.
+	</p>
+
+	<p>
+		One might notice that the collection of cardinals, along with cardinal identity $|X| = |Y|$, forms the data of a set: the rules reflexivity, symmetry and transitivity are satisfied by the identity function, inverses and function composition. However, the collection of cardinals is "too large" to be a set: none of the constructions discussed in the previous section can make a set large enough to serve as the set of cardinals. Although currently we do not have the necessary machinery to actually prove the collection of cardinals isn't a set, I can give a short outline of the proof: we assume there is a set $C$ of cardinal, aiming for a contradiction. We define a larger (well, it's technically <i>not smaller or equal</i>, not strictly <i>larger</i>) set $\aleph(C)$ and define, for each $\alpha \in \aleph(C)$, a cardinal $\aleph_{\alpha}$ such that $\aleph_{\alpha}$ and $\aleph_{\beta}$ are different cardinals whenever $\alpha \neq \beta$. From this, it follows there are at least $|\aleph(C)|$ cardinals, meaning that $|\aleph(C)| \le |C|$, while that's impossible by construction of $\aleph(C)$.
+	</p>
+
+	<p>
+		Collections that are similar to sets that are too large to be sets themselves are sometimes called <i>classes</i>. However, since these collections are really just the same as sets appart from their size, I'll refer to them as <i>large sets</i> in this section.
+	</p>
+
+	<p>
+		Given a universe $\Univ$, we have a set $\Card_{\Univ}$ of $\Univ$-small cardinals (cardinalities of sets in $\Univ$). This set $\Card_{\Univ}$ is not in $\Univ$ itself, so it is a $\Univ$-large set. From this point onwards, we fix a universe $\Univ$. We refer to sets in $\Univ$ as <b>small sets</b>, sets outside of $\Univ$ as <b>large sets</b> and we write $\Card$ for $\Card_{\Univ}$. In HoTT, $\Card_{\Univ}$ is formally defined as the set-truncation of the groupoid (1-type) of $\Univ$-small sets.
+	</p>
+
+	<p>
+		The main examples of cardinals are $n = |\mathbf{n}|$, the cardinality of the $n$-element set, $\aleph_0 = \NN$, the cardinality of the set of natural numbers, and $\cc = \mathcal{P}(\omega)$, the continuum. We often use Greek letters in the middle of the alphabet, such as $\kappa,\lambda,\mu$, to denote cardinal numbers.
+	</p>
+
+	<h2>Cardinal Arithmetic</h2>
+	<p>
+		For cardinals $\kappa = |A|$ and $\lambda = |B|$, we define:
+	</p>
+\[\begin{array}{rcl}
+\kappa + \lambda &:=& |A+B| \\
+\kappa \cdot \lambda &:=& |A \times B| \\
+\kappa^{\lambda} &:=& |B \Rightarrow A|
+\end{array}\]
+	<p>
+		For example, $\cc = 2^{\aleph_0}$. We sometimes write $\kappa \lambda$ for $\kappa \cdot \lambda$. Order of operations is as usual. We have the following basic identities:
+	</p>
+\[\begin{array}{rclrcl}
+(\kappa+\lambda)+\mu &=& \kappa+(\lambda+\mu) &
+(\kappa\lambda)\mu &=& \kappa(\lambda\mu) \\
+\kappa+\lambda &=& \lambda+\kappa &
+\kappa\lambda &=& \lambda\kappa \\
+\kappa(\lambda+\mu) &=& \kappa\lambda+\kappa\mu &
+(\kappa^{\lambda})^{\mu} &=& \kappa^{\lambda\mu} \\
+\kappa^{\lambda}\cdot\kappa^{\mu} &=& \kappa^{\lambda+\mu} &
+\kappa^{\mu}\cdot\lambda^{\mu} &=& (\kappa\lambda)^{\mu}
+\end{array}\]
+	<p>
+		By Cantor's diagonal argument, we have $\lambda \neq 2^{\lambda}$.
+	</p>
+
+	<p>
+		We say a cardinal $\lambda$ is <b>idempotent</b> iff $\lambda \cdot \lambda = \lambda$. Examples of idempotent cardinals are $0$, $1$ and $\aleph_0$. The cardinal $2$ is not idempotent, as $2 \cdot 2 = 4 \neq 2$. Tarski's theorem on idempotent cardinals states that the axiom of choice is equivalent to every infinite cardinal being idempotnent. We'll prove this in a future chapter.
+	</p>
+
+	<h2>Cardinal Comparison</h2>
+	<p>
+		For cardinals $\kappa = |A|$ and $\lambda = |B|$, we define:
+	</p>
+	<ul>
+		<li>$\kappa \le \lambda$ iff there is an injection $f: A \hookrightarrow B$;</li>
+		<li>$\kappa \nleq \lambda$ iff not $\kappa \le \lambda$;</li>
+		<li>$\kappa < \lambda$ iff $\kappa \le \lambda$ and $\lambda \nleq \kappa$.</li>
+	</ul>
+	<p>
+		For cardinals $\kappa$, $\lambda$ and $\mu$, if $\kappa \le \lambda$ and $\lambda \le \mu$, then $\kappa \le \mu$: we simply compose the underlying injections. This property of $\le$ is known as <i>transitivity</i>. The relation $\le$ is also reflexive: for any cardinal $\kappa$, we have $\kappa \le \kappa$.
+	</p>
+
+	<p>
+		The Cantor-Shröder-Bernstein theorem states that $\le$ is antisymmetric. That is, if $\kappa \le \lambda$ and $\lambda \le \kappa$, then $\kappa = \lambda$. We'll see this in the a future chapter.
+	</p>
+
+	<p>
+		Totality of $\le$ states that, for any two cardinals $\kappa$ and $\lambda$, we have $\kappa \le \lambda$ or $\lambda \le \kappa$ (or both). Totality is not automatic. If $\kappa \le \lambda$ or $\lambda \le \kappa$, then we call $\kappa$ and $\lambda$ <b>comparable</b>, otherwise they're <b>incomparable</b>. Totality of $\le$ is equivalent to the axiom of choice, this can be proven through the use of Hartog numbers.
+	</p>
+
+	<p>
+		We say a cardinal $\kappa$ is equivalent iff it is not finite, i.e. not $n = |\mathbf{n}|$ for any finite $n$. Equivalently, $n \le \kappa$ for all finite $n$. What is <i>not</i> equivalent is $\aleph_0 \le \kappa$. A cardinal $\kappa$ for which $\aleph_0 \le \kappa$ is known as a <i>Dedekind infinite</i> cardinal. If the axiom of choice holds, then infinite cardinals and Dedekind infinite cardinals coincide. You'll be asked in the exercises to prove an equivalence between a few forms of the definition of a Dedekind infinite cardinal.
+	</p>
+
+	<p>
+		For cardinals $\kappa = |A|$ and $\lambda = |B|$, we define:
+	</p>
+	<ul>
+		<li>$\kappa \le^* \lambda$ iff there is a surjection $f: B \twoheadrightarrow A$;</li>
+		<li>$\kappa \nleq^* \lambda$ iff not $\kappa \le^* B$;</li>
+		<li>$\kappa &lt;^* \lambda$ iff $\kappa \le^* \lambda$ and $\lambda \nleq^* \kappa$;</li>
+		<li>$\kappa =^* \lambda$ iff $\kappa \le^* \lambda$ and $\lambda \le^* \kappa$.</li>
+	</ul>
+	<p>
+		The relation $\le^*$ also is reflexive and transitive. However, it doesn't need to be antisymmetric. If $\kappa =^* \lambda$, then that doesn't directly imply $\kappa = \lambda$.
+	</p>
+
+	<p>
+		One consequence of the definition of $\le^*$ I have given is that $0$ is maximal: for any set $A$, if there is any function $\varnothing \to A$, then $A$ is empty. In other words, if $0 \le^* \kappa$, then $\kappa = 0$. This might be an undesirable property of $\le^*$, so sometimes the definition is modified to: <i>$\kappa \le^* \lambda$ iff there is a surjection $f: S \twoheadrightarrow A$ for some $S \subset B$</i>. I'll simply assume $\kappa$ and $\lambda$ are non-zero whenever using $\le^*$.
+	</p>
+
+	<p>
+		For non-zero $\kappa$ and $\lambda$, we have that $\kappa \le \lambda$ implies $\kappa \le^* \lambda$, so the relation $\le^*$ is weaker than $\le$. The converse statement, that $\kappa \le^* \lambda$ implies $\kappa \le \lambda$, is known as the <b>partition principle</b>. The axiom of choice implies the partition principle: if $f: B \twoheadrightarrow A$ is a surjection, then a section of $f$ is an injection $A \hookrightarrow B$. However, whether the partition principle implies the axiom of choice is still an open problem.
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Explicitely describe the bijections of the underlying sets in the basic identities in part <b>Cardinal Arithmetic</b>.
+	</p>
+
+	<p>
+		Let $\kappa = |A|$ be a cardinal. Prove the following are equivalent:
+	</p>
+	<ul>
+		<li>There is an injection $f: A \rightarrowtail A$ that is not a surjection;</li>
+		<li>$\kappa+1 = \kappa$;</li>
+		<li>$\aleph_0 \le \kappa$.</li>
+	</ul>
+
+	<p>
+		Assume $\kappa$ and $\lambda$ are non-zero cardinals. Show that $\kappa \le^* \lambda$ implies $2^{\kappa} \le 2^{\lambda}$.
+	</p>
+
+	<p>
+		Cantor's diagonal argument states that $\kappa \neq 2^{\kappa}$. This result can be strengthened to show that $\kappa \le 2^{\kappa}$ and $2^{\kappa} \nleq^* \kappa$. Do this.
+	</p>
+</body>
+</html>
