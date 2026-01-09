@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\Univ}{\mathcal{U}}
+\newcommand{\Card}{\textsf{Card}}
+\newcommand{\Ord}{\textsf{Ord}}
+\]
+	<title>Ordinals - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Ordinals</h1>
+	<h2>Linear Orders</h2>
+	<p>
+		Suppose $(L,&lt;)$ is a pair with a set $L$ and a binary relation $(&lt;) \subset L \times L$ on $L$. For $a,b \in L$, we write $a &lt; b$ for $(a,b) \in (&lt;)$. We call $(L,&lt;)$ a <b>linear order</b> iff it satisfies:
+	</p>
+	<ul>
+		<li><i>Transitivity.</i> If $a &lt; b$ and $b &lt; c$, then $a &lt; c$;</li>
+		<li><i>Trichotomy.</i> For $a,b \in L$, exactly one of the following holds:</li>
+		<ol>
+			<li>$x &lt; y$;</li>
+			<li>$x = y$;</li>
+			<li>$y &lt; x$.</li>
+		</ol>
+	</ul>
+	<p>
+		Examples of linear orders are $(\NN,&lt;)$, the order of natural numbers, $(\QQ,&lt;)$, the order of rational numbers, and $(\varnothing,&lt;)$, the empty ordering ($(&lt;) = \varnothing$ is the unique subset of $\varnothing \times \varnothing$).
+	</p>
+
+	<p>
+		If the ordering $&lt;$ is clear from context, we sometimes identify the linear order $(L,&lt;)$ with the set $L$.
+	</p>
+
+	<p>
+		Intuitively, a linear order looks like points on a horizontal line. For points $x,y \in X$, $x &lt; y$ is interpreted as <i>$x$ is to the left of $y$</i>. Transitivity then states that, if $a$ is to the left of $b$, which is to the left of $c$, then $a$ is to the left of $c$. Trichotomy states that any two points are either the same point, or one is to the left of the other, without any of these options conflicting.
+	</p>
+
+	<p>
+		One immediate consequence of trichotomy is irreflexivity: for any point $x$, we have $x = x$, therefore $x \not &lt; x$. We call irreflexive orderings <i>strict</i>. A non-strict ordering is an ordering that is reflexive. We often use $&lt;$ for strict orderings, and $\le$ for non-strict orderings. What we have defined above is therefore, more accurately, a <i>strict linear order</i>, while a non-strict linear order would be a pair $(L,\le)$ with a set $L$ and a binary relation $\le$ that is transitive, antisymmetric and total ($a \le b$ or $b \le a$ for all $a,b \in L$, where $a = b$ if both hold). Strict and non-strict linear orders encode the same information, only in different ways: given a strict linear order $&lt;$, we can define a non-strict linear order $\le$ by <i>$x \le y$ iff $x &lt; y$ or $x = y$</i>, and given a non-strict linear order $\le$, we can define a strict linear order $&lt;$ by <i>$x &lt; y$ iff $x \le y$ and $x \neq y$</i>. Whether to use strict or non-strict orderings mostly comes down to personal preference.
+	</p>
+
+	<p>
+		On each of the standard finite sets $\mathbf{n} = \{0_{\mathbf{n}}, \ldots, (n-1)_{\mathbf{n}}\}$, we define a linear order $&lt;$ where $0_{\mathbf{n}} &lt; \cdots &lt; (n-1)_{\mathbf{n}}$. We call this the <b>standard order</b> on $\mathbf{n}$, and denote it as $n = (\mathbf{n},&lt;)$. Note that this isn't the only linear order on $\mathbf{n}$: $\mathbf{2}$ has a second linear order where $1_{\mathbf{2}} &lt; 0_{\mathbf{2}}$. Generally, $\mathbf{n}$ has $n!$ ($n$ factorial) linear orders. However, these linear orders are all isomorphic, i.e. the same up to relabeling of the elements.
+	</p>
+
+	<p>
+		For linear orders $(A,&lt;)$ and $(B,&lt;)$, an <b>embedding</b> is a function $f: A \to B$ for which, for all $a,b \in A$, if $a &lt; b$, then $f(a) &lt; f(b)$. Embeddings are necessarily injective, and the composition of two embeddings is again an embedding. An <b>isomorphism</b> of linear orders is an embedding $f: A \to B$ for which there exists an embedding $g: B \to A$ with $g \circ f = \id_A$ and $f \circ g = \id_B$. We call such a $g: B \to A$ the <b>inverse</b> of $f$, and write it $f^{-1}$. If there exists an isomorphism between $A$ and $B$, we call $A$ and $B$ <b>isomorphic</b>.
+	</p>
+
+	<h2>Well-Orders</h2>
+	<p>
+		Given a linear order $(L,&lt;)$ and a point $a$, we define:
+	</p>
+\[(a) = \{b \in L \mid b &lt; a\}\]
+	<p>
+		to be the set of points in $L$ that are below $a$. We say a subset $S \subset L$ is <b>inductive</b> iff, for all $a \in L$, if $(a) \subset S$, then $a \in S$.
+	</p>
+
+	<p>
+		To give an example, suppose we have an inductive set $S \subset \NN$ of natural numbers. We have $(0) = \varnothing$, and therefore $(0) \subset S$. By the definition of an inductive set, this implies $0 \in S$. However, since $(1) = \{0\}$, we now have $(1) \subset S$, and therefore $1 \in S$. And now, since $(2) = \{0,1\} \subset S$, we have $2 \in S$. This continues infinitely, and eventually we will have $S = \NN$. This is the principle of (strong) induction on $\NN$.
+	</p>
+
+	<p>
+		Now suppose we have the set of integers $\ZZ$ with its usual order, and let $S = \varnothing$ be the empty subset of $\ZZ$. For any integer $n$, we have $n-1 \in (n)$, and so no $(n)$ is empty. Therefore, for no $n \in \ZZ$ do we have $(n) \subset S$, and $S$ is vacuously inductive.
+	</p>
+
+	<p>
+		We say a linear order $(L,&lt;)$ is a <b>well-order</b> iff for all inductive $S \subset L$, we have $S = L$. Examples of linear orders are the standard finite orders $n$ and the order of natural numbers $\NN$. A non-example is the ordered set $\ZZ$ of integers, as $\varnothing \subsetneq \ZZ$ is inductive. A (bit stranger) example of a well-order is $\overline{\NN} = \NN + \{\infty\}$, which is the natural numbers $\NN$ with a maximal element $\infty$ added. For all $n \in \NN$, we have $n &lt; \infty$.
+	</p>
+
+	<p>
+		Properties of well-orders are often proven by induction. First, a set $S \subset L$ is defined of points with a desirable property. Then, $S$ is proven to be inductive. Last, we conclude $S = L$ by the definition of a well-order, and therefore every element of $L$ has the desirable property.
+	</p>
+
+	<h2>Recursion</h2>
+	<p>
+		If we have a linear order $(L,&lt;)$, then we can define functions $f: L \to X$ by recursion. That is, we define $f(a)$ assuming the values $f(b)$ for $b &lt; a$ are known. Formally, a <b>recursive definition</b> is a function
+	</p>
+\[F: \sum_{a \in L} X^{(a)} \to X\]
+	<p>
+		that takes a point $a \in L$ and a function $g: (a) \to X$ as arguments, and gives an element $F(a,g) \in X$ as value. We then say $F$ <b>defines</b> a function $f: L \to X$ iff, for all $a \in L$,
+	</p>
+\[f(a) = F(a,f|_{(a)})\]
+	<p>
+		Where $f|_{(a)}: (a) \to X$ is the function restriction of $f$ to $(a)$. We then have the following theorem:
+	</p>
+
+	<p>
+		<i>If $(L,&lt;)$ is a well-order and $X$ is a set, then every recursive definition $F: \sum_{a \in L} X^{(a)} \to X$ defines a unique function $f: L \to X$.</i>
+	</p>
+
+	<p>
+		The proof of this theorem is quite technical, but I'll do my best to explain it. I'll first prove the second part: if $F$ defines a function, then that function is unique.
+	</p>
+
+	<p>
+		Suppose $F$ defines functions $f,g: L \to X$, aiming to show that $f = g$. By function extensionality, we want to show that $f(a) = g(a)$ for all $a \in L$. Define a set
+	</p>
+\[S = \{a \in L \mid f(a) = g(a)\}\]
+	<p>
+		We want to show $S$ is inductive. Let $a \in L$ and suppose $(a) \subset L$. Then, $f|_{(a)} = g|_{(a)}$ and
+	</p>
+\[f(a) = F(a,f|_{(a)}) = F(a,g|_{(a)}) = g(a)\]
+	<p>
+		and therefore $a \in S$. By definition of well-order, we have $S = L$ and therefore $f = g$.
+	</p>
+
+	<p>
+		For the second part, let $S \subset$ be the set of $a \in L$ for which there exists a function $g: (a) \to X$ for which, for all $b &lt; a$,
+	</p>
+\[g(b) = F(b,g|_{(b)})\]
+	<p>
+		Note that, by transitivity, $(b) \subset (a)$, so the domain of $g|_{(b)}$ is $(b)$ (as opposed to a proper subset of $(b)$). For each $a \in S$, by the first part of this proof (applied to the well-order $((a),&lt;)$), this function $g$ is unique and we'll denote it $f_a: (a) \to X$.
+	</p>
+
+	<p>
+		Now, let $a \in L$ and assume, aiming to show $S$ is inductive, that $(a) \subset S$. Define the function $g: (a) \to X$ by
+	</p>
+\[g(b) = F(b,f_b)\]
+	<p>
+		Define $T \subset (a)$ to be the set of $b &lt; a$ for which $g(b) = F(b,g|_{(b)})$. We want to show $T$ is inductive (in $((a),&lt;)$), so let $b &lt; a$ and assume $(b) \subset T$. Then, for $g|_{(b)}: (b) \to X$, we have $g|_{(b)}(c) = F(c,g|_{(b)}|_{(c)})$ so, by unicity in the first part of the theorem, $g|_{(b)} = f_b$. So, we have
+	</p>
+\[g(b) = F(b,f_b) = F(b,g|_{(b)})\]
+	<p>
+		and therefore $b \in T$. Therefore, $T$ is inductive and, as $((a),&lt;)$ is well-ordered, we have $T = (a)$. Thus, we have $a \in S$ witnessed by $g$.
+	</p>
+
+	<h2>Ordinals</h2>
+	<p>
+		With induction, we can prove the following theorem:
+	</p>
+
+	<p>
+		<li>If well-orders are isomorphic, then they're isomorphic in a unique way.</li>
+	</p>
+
+	<p>
+		Let $(A,&lt;)$ and $(B,&lt;)$ be well-orders and let $f,g: A \to B$ be isomorphisms. Define
+	</p>
+\[S = \{a \in A \mid f(a) = g(a)\}\]
+	<p>
+		For $a \in A$, assume $(a) \subset S$, aiming to show that $a \in S$. Towards contradiction, assume $a \notin S$ and therefore $f(a) \neq g(a)$. By trichotomy in $B$, we have either $f(a) &lt; g(a)$ or $g(a) &lt; f(a)$. Both cases are symmetrical, so assume, WLOG, that $f(a) &lt; g(a)$. Then, as $g$ is an isomorphism, there must be some $b \in A$ for which $g(b) = f(a)$. We have $g(b) &lt; g(a)$, and therefore $b &lt; a$ (apply the inverse of $g$ on both sides, and use the fact that that inverse is an embedding). So, we have $b \in (a)$ and therefore $b \in S$. So, we have $f(b) = g(b) = f(a)$, which contradicts $f$ being injective. Therefore, we must have $a \in S$, and so $S$ is inductive. Thus, we have $S = A$ and $f = g$.
+	</p>
+
+	<p>
+		Compare this with the situation with sets: two sets $A$ and $B$ can have many bijections $A \leftrightarrow B$, but well-orders are only isomorphic in a unique way. So, although sets form only a large groupoid, the collection of well-orders are already a large set. In the first chapter, we defined $\Card$ as the set-truncation of the large groupoid of sets, but no such truncation is needed here.
+	</p>
+
+	<p>
+		Given a universe $\Univ$, we define $\Ord = \Ord_{\Univ}$ to be the set of $\Univ$-small well-orders (well-orders $(L,&lt;)$ where $L$ is a $\Univ$-small set), and we say well-orders $A$ and $B$ are identical in $\Ord_{\Univ}$ iff they're isomorphic.
+	</p>
+
+	<p>
+		Elements of $\Ord$ are called <b>ordinals</b>. We often use Greek letters in the beginning of the alphabet, such as $\alpha,\beta,\gamma$, to denote ordinal numbers.
+	</p>
+
+	<p>W.I.P</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Let $f: A \to B$ be an embedding of linear orders. Prove $f$ is injective.
+	</p>
+
+	<p>
+		Let $f: A \to B$ be an embedding. Prove the following are equivalent:
+	</p>
+	<ol>
+		<li>$f$ is an isomorphism;</li>
+		<li>$f$ is injective.</li>
+	</ol>
+
+	<p>
+		<a href="../cardinals">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../cantor-shroder-bernstein">&rightarrow;</a>
+	</p>
+</body>
+</html>
