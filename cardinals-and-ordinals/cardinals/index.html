@@ -42,7 +42,7 @@
 	</p>
 
 	<p>
-		The main examples of cardinals are $n = |\mathbf{n}|$, the cardinality of the $n$-element set, $\aleph_0 = \NN$, the cardinality of the set of natural numbers, and $\cc = \mathcal{P}(\omega)$, the continuum. We often use Greek letters in the middle of the alphabet, such as $\kappa,\lambda,\mu$, to denote cardinal numbers.
+		The main examples of cardinals are $n = |\mathbf{n}|$, the cardinality of the $n$-element set, $\aleph_0 = \NN$, the cardinality of the set of natural numbers, and $\cc = \pow(\NN)$, the continuum. We often use Greek letters in the middle of the alphabet, such as $\kappa,\lambda,\mu$, to denote cardinal numbers.
 	</p>
 
 	<h2>Cardinal Arithmetic</h2>
@@ -68,7 +68,7 @@
 \kappa^{\mu}\cdot\lambda^{\mu} &=& (\kappa\lambda)^{\mu}
 \end{array}\]
 	<p>
-		By Cantor's diagonal argument, we have $\lambda \neq 2^{\lambda}$.
+		By Cantor's diagonal argument, we have $\lambda \neq 2^{\lambda}$. Suppose, aiming for a contradiction, there is a bijection $f: A \leftrightarrow \mathcal{P}(A)$. Define $S \subset A$ by $S = \{x \in A \mid x \notin f(x)\}$. By definition of bijection, there is some $s \in S$ for which $f(s) = S$. Suppose $s \in S$. By definition of $S$, we have $s \notin f(s)$, but by definition of $s$, $f(s) = S$ and therefore $s \notin S$, contradicting $s \in S$. Therefore, $s \in S$ can't be true, and we have $s \notin S$. By definition of $s$, we have $f(s) = S$, and therefore $s \in f(s)$, and by definition of $S$, we therefore have $s \in S$. A contradiction arises and no such bijection $f$ exists.
 	</p>
 
 	<p>
@@ -97,7 +97,7 @@
 	</p>
 
 	<p>
-		We say a cardinal $\kappa$ is equivalent iff it is not finite, i.e. not $n = |\mathbf{n}|$ for any finite $n$. Equivalently, $n \le \kappa$ for all finite $n$. What is <i>not</i> equivalent is $\aleph_0 \le \kappa$. A cardinal $\kappa$ for which $\aleph_0 \le \kappa$ is known as a <i>Dedekind infinite</i> cardinal. If the axiom of choice holds, then infinite cardinals and Dedekind infinite cardinals coincide. You'll be asked in the exercises to prove an equivalence between a few forms of the definition of a Dedekind infinite cardinal.
+		We say a cardinal $\kappa$ is <b>infinite</b> iff it is not finite, i.e. not $n = |\mathbf{n}|$ for any finite $n$. Equivalently, $n \le \kappa$ for all finite $n$. What is <i>not</i> equivalent is $\aleph_0 \le \kappa$. A cardinal $\kappa$ for which $\aleph_0 \le \kappa$ is known as a <b>Dedekind infinite</b> cardinal. If the axiom of choice holds, then infinite cardinals and Dedekind infinite cardinals coincide. You'll be asked in the exercises to prove several equivalences of forms of the definition of a Dedekind infinite cardinal.
 	</p>
 
 	<p>
@@ -110,7 +110,11 @@
 		<li>$\kappa =^* \lambda$ iff $\kappa \le^* \lambda$ and $\lambda \le^* \kappa$.</li>
 	</ul>
 	<p>
-		The relation $\le^*$ also is reflexive and transitive. However, it doesn't need to be antisymmetric. If $\kappa =^* \lambda$, then that doesn't directly imply $\kappa = \lambda$.
+		Note that a surjection $f: B \twoheadrightarrow A$ realizes an $A$-indexed partition of $B$: the cells of the partition are the fibres $f^{-1}\{a\}$ of $f$. We can thus think of $\kappa \le^* \lambda$ as <i>$\lambda$ has a $\kappa$-partition</i>.
+	</p>
+	
+	<p>
+		Just like $\le$, the relation $\le^*$ is reflexive and transitive. However, it doesn't need to be antisymmetric. If $\kappa =^* \lambda$, then that doesn't directly imply $\kappa = \lambda$.
 	</p>
 
 	<p>
@@ -141,6 +145,11 @@
 
 	<p>
 		Cantor's diagonal argument states that $\kappa \neq 2^{\kappa}$. This result can be strengthened to show that $\kappa \le 2^{\kappa}$ and $2^{\kappa} \nleq^* \kappa$. Do this.
+	</p>
+
+	<p>
+		<a href="../..">..</a>
+		<a href="../ordinals">&rightarrow;</a>
 	</p>
 </body>
 </html>
