@@ -4,6 +4,7 @@
 \[
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\id}{\textrm{id}}
 \newcommand{\Univ}{\mathcal{U}}
 \newcommand{\Card}{\textsf{Card}}
@@ -146,7 +147,7 @@
 	</p>
 
 	<p>
-		<li>If well-orders are isomorphic, then they're isomorphic in a unique way.</li>
+		<i>If well-orders are isomorphic, then they're isomorphic in a unique way.</i>
 	</p>
 
 	<p>
@@ -166,10 +167,21 @@
 	</p>
 
 	<p>
-		Elements of $\Ord$ are called <b>ordinals</b>. We often use Greek letters in the beginning of the alphabet, such as $\alpha,\beta,\gamma$, to denote ordinal numbers.
+		Elements of $\Ord$ are called <b>ordinals</b>. We often use Greek letters in the beginning of the alphabet, such as $\alpha,\beta,\gamma$, to denote ordinal numbers. For ordinals $\alpha,\beta \in \Ord$ and points $a \in \alpha$ and $b \in \beta$, if $\alpha = \beta$, then $a = b$ iff the unique isomorphism $\alpha \to \beta$ sends $a$ to $b$. Like $\Card$, the set $\Ord$ is a large set.
 	</p>
 
-	<p>W.I.P</p>
+	<p>
+		We identify finite ordinals with natural numbers $n = (\mathbf{n},&lt;)$. We write $\omega$ for the ordinal $(\NN,&lt;)$. The ordinal corresponding to $\overline{\NN} = \NN + \{\infty\}$ is denoted $\omega+1$, this notation will be explained later.
+	</p>
+
+	<h2>Ordering</h2>
+	<p>
+		For ordinals $\alpha$ and $\beta$ in $\Ord$, we write $\alpha \preceq \beta$ iff there is an embedding $f: \alpha \to \beta$. We write $\alpha \prec \beta$ iff $\alpha \preceq \beta$ and $\beta \not \preceq \alpha$. The main result of this chapter is that $(\Ord,\prec)$ is a (large) ordinals.
+	</p>
+
+	<p>
+		Though isomorphisms of well-orders are unique, embeddings are not. For example, for finite well-orders $k$ and $n$ with $k \le n$, there are $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ embeddings from $k$ to $n$. W.I.P
+	</p>
 
 	<h2>Exercises</h2>
 	<p>
@@ -177,12 +189,16 @@
 	</p>
 
 	<p>
-		Let $f: A \to B$ be an embedding. Prove the following are equivalent:
+		Let $f: A \to B$ be an embedding of linear orders. Prove the following are equivalent:
 	</p>
 	<ol>
 		<li>$f$ is an isomorphism;</li>
 		<li>$f$ is injective.</li>
 	</ol>
+
+	<p>
+		Let $(A,&lt;_A)$ be a well-order and let $B \subset A$. Define the relation $&lt;_B$ on $B$ by: $a &lt;_B b$ iff $a &lt;_A b$. Prove that $(B,&lt;)$ is a well-order.
+	</p>
 
 	<p>
 		<a href="../cardinals">&leftarrow;</a>
