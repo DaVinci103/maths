@@ -217,17 +217,14 @@
 		Let $0$ be the minimal element of $\alpha$. For a function $f: B \to A$, define $\supp(f) = \{b \in B \mid f(b) \neq 0\}$. We call $\supp(f)$ the <b>support</b> of $f$. We say $f$ has finite support iff the set $\supp(f)$ is finite. We write $B \Rightarrow_0 A$ for the set of finite support functions from $B$ to $A$. We define $\alpha^{\beta} = (B \Rightarrow_0 A, &lt;_{\alpha^{\beta}})$ as follows:
 	</p>
 \[f &lt;_{\alpha^{\beta}} g \iff f \neq g \wedge f(b) &lt;_{\alpha} g(b) \\
-\textrm{where } b = \min\{b \in B \mid f(b) \neq g(b)\}\]
+\textrm{where } b = \max\{b \in B \mid f(b) \neq g(b)\}\]
 	<p>
-		In words, $f &lt;_{\alpha^{\beta}} g$ iff $f(b) &lt;_{\alpha} g(b)$ where $b$ is the smallest (under $&lt;_{\beta}$) element of $B$ where $f$ and $g$ differ. For example, $\omega\omega = \omega^2$. We have the following identities:
+		In words, $f &lt;_{\alpha^{\beta}} g$ iff $f(b) &lt;_{\alpha} g(b)$ where $b$ is the largest (under $&lt;_{\beta}$) element of $B$ where $f$ and $g$ differ. A maximal such $b$ exists as $f$ and $g$ can only differ on a finite number of arguments. For example, $\omega\omega = \omega^2$. We have the following identities:
 	</p>
 	<ul>
 		<li>$\alpha^{\beta}\alpha^{\gamma} = \alpha^{\beta+\gamma}$;</li>
 		<li>$(\alpha^{\beta})^{\gamma} = \alpha^{\beta\gamma}$.</li>
 	</ul>
-	<p>
-		Sometimes, $\alpha^{\beta}$ is used to denote the linear order of <i>all</i> functions $f: \alpha \to \beta$ with the ordering defined above, not just the finite support functions. If you see $\alpha^{\beta}$ written somewhere where $\alpha$ and $\beta$ are ordinals, make sure you check which convention is used.
-	</p>
 
 	<h2>Ordering</h2>
 	<p>
