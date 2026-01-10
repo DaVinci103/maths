@@ -10,6 +10,7 @@
 \newcommand{\Card}{\textsf{Card}}
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\id}{\textrm{id}}
+\newcommand{\supp}{\textrm{supp}}
 \]
 	<title>Ordinals - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -183,6 +184,51 @@
 		We identify finite ordinals with natural numbers $n = (\mathbf{n},&lt;)$. We write $\omega$ for the ordinal $(\NN,&lt;)$. The ordinal corresponding to $\overline{\NN} = \NN + \{\infty\}$ is denoted $\omega+1$, this notation will be explained later.
 	</p>
 
+	<h2>Arithmetic</h2>
+	<p>
+		For ordinals $\alpha = (A,&lt;_{\alpha})$ and $\beta = (B,&lt;_{\beta})$, we define ordinals $\alpha+\beta$, $\alpha\beta$ and $\alpha^{\beta}$. First, we define $\alpha+\beta = (A+B,&lt;_{\alpha+\beta})$. The set $A+B$ is the set addition of $A$ and $B$. Let $\kappa_0: A \to A+B$ and $\kappa_1: B \to A+B$ denote the co-projections. Then, we define
+	</p>
+\[\begin{array}{rcl}
+\kappa_0(x) &lt;_{\alpha+\beta} \kappa_0(y) &\iff& x &lt;_{\alpha} y \\
+\kappa_0(x) &lt;_{\alpha+\beta} \kappa_1(y) &\iff& \top \\
+\kappa_1(x) &lt;_{\alpha+\beta} \kappa_0(y) &\iff& \bot \\
+\kappa_1(x) &lt;_{\alpha+\beta} \kappa_1(y) &\iff& x &lt;_{\beta} y
+\end{array}\]
+	<p>
+		Intuitively, we concatenate the orders $\alpha$ and $\beta$, with $\alpha$ to the left and $\beta$ to the right. We have the following identities:
+	</p>
+	<ul>
+		<li>$(\alpha+\beta)+\gamma = \alpha+(\beta+\gamma)$;</li>
+		<li>$\alpha+0 = \alpha$;</li>
+		<li>$0+\alpha = \alpha$.</li>
+	</ul>
+	<p>
+		Although $+$ is associative, it is not commutative. For example, $1+\omega = \omega$ has no maximal element, while $\omega+1$ does. We define $\alpha\beta = (A \times B,&lt;_{\alpha\beta})$ as follows:
+	</p>
+\[(a,b) &lt;_{\alpha\beta} (c,d) \iff b &lt;_{\beta} d \vee (b = d \wedge a &lt;_{\alpha} c)\]
+	<p>
+		Intuitively, $\alpha\beta$ is the ordering $\beta$ whith each point in $\beta$ replaced with a copy of $\alpha$. For example, $\omega2 = \omega+\omega$ is two copies of $\omega$, while $2\omega = \omega$ is $\omega$ copies of $2$. We have the following identities:
+	</p>
+	<ul>
+		<li>$(\alpha\beta)\gamma = \alpha(\beta\gamma)$;</li>
+		<li>$\alpha(\beta+\gamma) = \alpha\beta+\alpha\gamma$.</li>
+	</ul>
+	<p>
+		Let $0$ be the minimal element of $\alpha$. For a function $f: B \to A$, define $\supp(f) = \{b \in B \mid f(b) \neq 0\}$. We call $\supp(f)$ the <b>support</b> of $f$. We say $f$ has finite support iff the set $\supp(f)$ is finite. We write $B \Rightarrow_0 A$ for the set of finite support functions from $B$ to $A$. We define $\alpha^{\beta} = (B \Rightarrow_0 A, &lt;_{\alpha^{\beta}})$ as follows:
+	</p>
+\[f &lt;_{\alpha^{\beta}} g \iff f \neq g \wedge f(b) &lt;_{\alpha} g(b) \\
+\textrm{where } b = \min\{b \in B \mid f(b) \neq g(b)\}\]
+	<p>
+		In words, $f &lt;_{\alpha^{\beta}} g$ iff $f(b) &lt;_{\alpha} g(b)$ where $b$ is the smallest (under $&lt;_{\beta}$) element of $B$ where $f$ and $g$ differ. For example, $\omega\omega = \omega^2$. We have the following identities:
+	</p>
+	<ul>
+		<li>$\alpha^{\beta}\alpha^{\gamma} = \alpha^{\beta+\gamma}$;</li>
+		<li>$(\alpha^{\beta})^{\gamma} = \alpha^{\beta\gamma}$.</li>
+	</ul>
+	<p>
+		Sometimes, $\alpha^{\beta}$ is used to denote the linear order of <i>all</i> functions $f: \alpha \to \beta$ with the ordering defined above, not just the finite support functions. If you see $\alpha^{\beta}$ written somewhere where $\alpha$ and $\beta$ are ordinals, make sure you check which convention is used.
+	</p>
+
 	<h2>Ordering</h2>
 	<p>
 		For ordinals $\alpha$ and $\beta$ in $\Ord$, we write $\alpha \preceq \beta$ iff there is an embedding $f: \alpha \to \beta$. We write $\alpha \prec \beta$ iff $\alpha \preceq \beta$ and $\beta \not \preceq \alpha$. The main result of this chapter is that $(\Ord,\prec)$ is a (large) ordinal.
@@ -265,7 +311,7 @@
 	</p>
 
 	<p>
-		Next, trichotomy. That at most one of $\alpha \prec \beta, $\alpha = \beta$ or $\beta \prec \alpha$ is true is apparent. So, we want to assume at least one is true. We do this as follows: we first prove that at least one of $\alpha \preceq \beta$ or $\beta \preceq \alpha$ is true, and then prove $\alpha = \beta$ in case both are true. So, suppose $\alpha$ and $\beta$ are ordinals, and define
+		Next, trichotomy. That at most one of $\alpha \prec \beta$, $\alpha = \beta$ or $\beta \prec \alpha$ is true is apparent. So, we want to assume at least one is true. We do this as follows: we first prove that at least one of $\alpha \preceq \beta$ or $\beta \preceq \alpha$ is true, and then prove $\alpha = \beta$ in case both are true. So, suppose $\alpha$ and $\beta$ are ordinals, and define
 	</p>
 \[X = \{a \in \alpha \mid (a) \not \prec \beta\}\]
 	<p>
@@ -301,7 +347,23 @@
 	</p>
 
 	<p>
-		Last, we want to show that $(\Ord,\prec)$ is a well-order. Let $S \subset \Ord$ and assume, for all $\alpha \in \Ord$, if $(\alpha) \subset S$, then $\alpha \in S$. We want to show that $S = \Ord$. W.I.P
+		Last, we want to show that $(\Ord,\prec)$ is a well-order. Let $S \subset \Ord$ and assume, for all $\alpha \in \Ord$, if $(\alpha) \subset S$, then $\alpha \in S$. We want to show that $S = \Ord$. We first show that, for $\alpha \in \Ord$, $\alpha = (\alpha)$ (i.e. the ordinal $\alpha$ and the set of ordinals $\prec \alpha$ are isomorphic well-orders). Define $f: \alpha \to (\alpha)$ by $f(a) = (a)$. We can see that $f(a) \prec (a)$, as the inclusion of $(a)$ in $\alpha$ is a proper segment. For $a &lt; b$ in $\alpha$, the inclusion of $(a)$ in $(b)$ is a proper segment, and therefore $f(a) \prec f(b)$. Therefore, $f$ is an embedding. For $\beta \prec \alpha$, there is a proper segment $g: \beta \to \alpha$. By definition of proper segment, and by well-ordering of $\alpha$, there is a minimal $M \in \alpha$ for which $\forall b \in \beta. f(b) &lt; M$. The segment $g$ is then an isomorphism between $\beta$ and $(M)$. Therefore, we have $f(M) = \beta$, and $f$ is surjective. Thus, $f$ is an isomorphism between $\alpha$ and $(\alpha)$, and therefore $\alpha = (\alpha)$.
+	</p>
+
+	<p>
+		Now, let $\alpha \in \Ord$, aiming to show that $\alpha \in S$. Define
+	</p>
+\[S_{\alpha} = \{a \in \alpha \mid (a) \in S\}\]
+	<p>
+		Let $a \in \alpha$ and assume $(a) \subset S_{\alpha}$. Then, as $((a)) = (a)$, we have $((a)) \subset S$ and, as $S$ is inductive, $(a) \in S$. Thus, $S_{\alpha}$ is inductive and, as $\alpha$ is well-ordered, $S_{\alpha} = \alpha$. For $\beta \prec \alpha$, we have $\beta = (a)$ for some $a \in \alpha$ and therefore $\beta \in S$. So, we have $(\alpha) \subset S$ and, as $S$ is inductive, $\alpha \in S$ as desired.
+	</p>
+
+	<p>
+		That completes the proof that $\Ord$ is a large ordinal. We can see that $\Ord$ is indeed large as, otherwise, $\Ord \in \Ord$, and the inclusion of $(\Ord)$ in $\Ord$ is a proper segment of $\Ord$. This implies that $\Ord \prec \Ord$, which contradicts $\prec$ being irreflexive.
+	</p>
+
+	<p>
+		As $\Ord$ is a large ordinal, and every ordinal $\alpha \in \Ord$ has $\alpha \prec \Ord$, there is a segment $f: \alpha \to \Ord$ which canonicaly identifies points in $\alpha$ with ordinals in $\Ord$. The point $a \in \alpha$ is then identified with $(a) \in \Ord$. So, with this identification, ordinals are (canonicaly identified with) sets of smaller ordinals. We often write $\alpha &lt; \beta$ and $\alpha \le \beta$ for $\alpha \prec \beta$ and $\alpha \preceq \beta$ respectively. I have used $\prec$ and $\preceq$ in this chapter to distinguish between the orderings in well-orders and the ordering of well-orders. However, as we have seen, these two orderings canonicaly coincide, so this distinction is no longer needed.
 	</p>
 	
 	<h2>Exercises</h2>
@@ -314,7 +376,7 @@
 	</p>
 	<ol>
 		<li>$f$ is an isomorphism;</li>
-		<li>$f$ is injective.</li>
+		<li>$f$ is surjective.</li>
 	</ol>
 
 	<p>
@@ -328,6 +390,19 @@
 		<li>$(L,&lt;)$ is well-ordered ($L$ is the only inductive subset);</li>
 		<li>Every non-empty subset $X \subset L$ has a minimal element.</li>
 	</ol>
+
+	<p>
+		Given ordinals $\alpha$, $\beta$ and $\gamma$,
+	</p>
+	<ul>
+		<li>Prove $\alpha+\beta$, $\alpha\beta$ and $\alpha^{\beta}$ are well-ordered;</li>
+		<li>Give explicit isomorphisms for the identities claimed in <b>Arithmetic</b>;</li>
+		<li>Prove or give a counterexample: $(\alpha+\beta)\gamma = \alpha\gamma+\beta\gamma$.</li>
+	</ul>
+
+	<p>
+		Show that $4^{\omega} = \omega$.
+	</p>
 
 	<p>
 		Let $f,g: \alpha \to \beta$ be segments. Prove that $f = g$. Let $h: \beta \to \gamma$ be a segment. Prove that $h \circ f: \alpha \to \gamma$ is a segment.
