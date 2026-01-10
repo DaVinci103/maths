@@ -34,9 +34,9 @@
 		<li><i>Transitivity.</i> If $a &lt; b$ and $b &lt; c$, then $a &lt; c$;</li>
 		<li><i>Trichotomy.</i> For $a,b \in L$, exactly one of the following holds:</li>
 		<ol>
-			<li>$x &lt; y$;</li>
-			<li>$x = y$;</li>
-			<li>$y &lt; x$.</li>
+			<li>$a &lt; b$;</li>
+			<li>$a = b$;</li>
+			<li>$b &lt; a$.</li>
 		</ol>
 	</ul>
 	<p>
@@ -88,6 +88,10 @@
 		Properties of well-orders are often proven by induction. First, a set $S \subset L$ is defined of points with a desirable property. Then, $S$ is proven to be inductive. Last, we conclude $S = L$ by the definition of a well-order, and therefore every element of $L$ has the desirable property.
 	</p>
 
+	<p>
+		In the exercises, you'll be asked to prove the equivalence between $(L,&lt;)$ being a well-order and every non-empty subset of $L$ having a minimal element. In the next parts, we assume this is given.
+	</p>
+
 	<h2>Recursion</h2>
 	<p>
 		If we have a linear order $(L,&lt;)$, then we can define functions $f: L \to X$ by recursion. That is, we define $f(a)$ assuming the values $f(b)$ for $b &lt; a$ are known. Formally, a <b>recursive definition</b> is a function
@@ -122,7 +126,7 @@
 	</p>
 
 	<p>
-		For the second part, let $S \subset$ be the set of $a \in L$ for which there exists a function $g: (a) \to X$ for which, for all $b &lt; a$,
+		For the second part, let $S \subset L$ be the set of $a \in L$ for which there exists a function $g: (a) \to X$ for which, for all $b &lt; a$,
 	</p>
 \[g(b) = F(b,g|_{(b)})\]
 	<p>
@@ -138,7 +142,11 @@
 	</p>
 \[g(b) = F(b,f_b) = F(b,g|_{(b)})\]
 	<p>
-		and therefore $b \in T$. Therefore, $T$ is inductive and, as $((a),&lt;)$ is well-ordered, we have $T = (a)$. Thus, we have $a \in S$ witnessed by $g$.
+		and therefore $b \in T$. Therefore, $T$ is inductive and, as $((a),&lt;)$ is well-ordered, we have $T = (a)$. Thus, we have $a \in S$ witnessed by $g$. Therefore, $S$ is inductive and, as $(L,&lt;)$ is a well-order, $S = L$. Now, define $f: L \to X$ by
+	</p>
+\[f(a) = F(a,f_a)\]
+	<p>
+		$f$ is defined by $F$ by the same argument we used for $g$: for $a \in L$, we have $f|_{(a)} = f_a$ by unicity and induction, and therefore $f(a) = F(a,f|_{(a)})$ as desired.
 	</p>
 
 	<h2>Ordinals</h2>
@@ -176,13 +184,81 @@
 
 	<h2>Ordering</h2>
 	<p>
-		For ordinals $\alpha$ and $\beta$ in $\Ord$, we write $\alpha \preceq \beta$ iff there is an embedding $f: \alpha \to \beta$. We write $\alpha \prec \beta$ iff $\alpha \preceq \beta$ and $\beta \not \preceq \alpha$. The main result of this chapter is that $(\Ord,\prec)$ is a (large) ordinals.
+		For ordinals $\alpha$ and $\beta$ in $\Ord$, we write $\alpha \preceq \beta$ iff there is an embedding $f: \alpha \to \beta$. We write $\alpha \prec \beta$ iff $\alpha \preceq \beta$ and $\beta \not \preceq \alpha$. The main result of this chapter is that $(\Ord,\prec)$ is a (large) ordinal.
 	</p>
 
 	<p>
-		Though isomorphisms of well-orders are unique, embeddings are not. For example, for finite well-orders $k$ and $n$ with $k \le n$, there are $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ embeddings from $k$ to $n$. W.I.P
+		Though isomorphisms of well-orders are unique, embeddings are not. For example, for finite well-orders $k$ and $n$ with $k \le n$, there are $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ embeddings from $k$ to $n$. However, of the embeddings $\alpha \to \beta$, we regard one as the canonical embedding.
 	</p>
 
+	<p>
+		We say an embedding of ordinals $f: \alpha \to \beta$ is a <b>segment</b> iff, for all $a \in \alpha$ and all $b &lt; f(a)$, there is some $a' \in \alpha$ with $f(a') = b$. Terminology might differ, sometimes the image of $f$ is called a segment, and sometimes the term <i>initial segment</i> is used instead. We will use segment to refer to the embedding $f: \alpha \to \beta$ as described above. We have the following theorem:
+	</p>
+
+	<p>
+		<i>For ordinals $\alpha$ and $\beta$, there exists a segment $f: \alpha \to \beta$ iff $\alpha \preceq \beta$. Moreover, this segment is unique. Composing segments gives a segment.</i>
+	</p>
+
+	<p>
+		First, if $f: \alpha \to \beta$ is a segment, then $f$ witnesses $\alpha \preceq \beta$. So, assume $\alpha \preceq \beta$, aiming to define a segment $f: \alpha \to \beta$. Assume, WLOG, $\beta$ is non-zero. We define a recursive definition
+	</p>
+\[F: \sum_{x \in \alpha} \beta^{(x)} \to \beta\]
+	<p>
+		Let $x \in \alpha$ and let $h: (x) \to \beta$, aiming to define $F(x,h)$. Define
+	</p>
+\[X = \{y \in \beta \mid \forall x_0 &lt; x. h(x_0) &lt; y\}\]
+	<p>
+		to be the set of all $y \in \beta$ that are above the image of $h$ in $\beta$. There are two cases: either $X$ is empty, or $X$ is non-empty. If $X$ is empty, then define $F(x,h)$ to be the minimal element of $\beta$. Otherwise, if $X$ is non-empty, then it has a minimal element, so define $F(x,h)$ to be the minimal element of $X$. The recursive definition $F$ uniquely defines a function $f: \alpha \to \beta$, i.e.
+	</p>
+\[f(x) = F(x,f|_{(x)})\]
+	<p>
+		We want to show that $f$ is an embedding, and that it is a segment. By $\alpha \preceq \beta$, there is some embedding $g: \alpha \to \beta$. By induction, we prove that, for $x \in \alpha$, $g(x) \not &lt; f(x)$. Define
+	</p>
+\[S = \{x \in \alpha \mid g(x) \not &lt; f(x)\}\]
+	<p>
+		Let $x \in \alpha$ and assume $(x) \subset S$. Let $X$ be as above, with $h = f|_{(x)}$. If $X$ is empty, then $f(x)$ is the minimal element of $\beta$, and therefore $g(x) \not &lt; f(x)$ and $x \in S$. If $X$ is non-empty, then let $m$ be the minimal element of $X$. We have $f(x) = m$. By $(x) \subset X$, we can see $X$ is a superset of
+	</p>
+\[X_g = \{y \in \beta \mid \forall x_0 &lt; x. g(x_0) &lt; y\}\]
+	<p>
+		Let $m_g$ be the minimal element of $X_g$. We have that $m_g \not &lt; m$ ($m$ is minimal in $X$, and $m_g \in X$). Since $g$ is an embedding, we have $g(x) \in X_g$, and therefore $g(x) \not &lt; m_g$. By transitivity, we have $g(x) \not&lt; m = f(x)$ as desired. Therefore, $x \in S$. The set $S$ is inductive, and therefore $S = \alpha$.
+	</p>
+
+	<p>
+		Let $x \in \alpha$. We prove that
+	</p>
+\[X = \{y \in \beta \mid \forall x_0 &lt; x. f(x_0) &lt; y\}\]
+	<p>
+		is non-empty. Since $g(x) \not &lt; f(x)$, we have $g(x) \in X$, and therefore $X$ is non-empty. To prove $f$ is an embedding, let $a,b \in \alpha$ and assume $a &lt; b$, aiming to prove $f(a) &lt; f(b)$. If we take $x = b$, then the set $X$ above is non-empty, and therefore $f(b) \in X$. In particular, choosing $x_0 = a$, we obtain $f(a) &lt; f(b)$ as desired.
+	</p>
+
+	<p>
+		For the second part of the proof, we want to show that $f$ is a segment. Let $a \in \alpha$ and define
+	</p>
+\[S = \{b \in (f(a)) \mid \exists a' \in \alpha. f(a') = b\}\]
+	<p>
+		We want to show $S$ is inductive in $(f(a))$. Let $b &lt; f(a)$ and suppose $(b) \subset S$. For each $b_0 &lt; b$, there is some $a_0 \in \alpha$ for which $f(a_0) = b_0$. Since $f$ is injective, this $a_0$ is unique and we write it $a(b_0)$. Define
+	</p>
+\[Y = \{x \in \alpha \mid \forall b_0 &lt; b. a(b_0) &lt; x\}\]
+	<p>
+		The set $Y$ is non-empty, as $a \in Y$, and therefore it has a minimal element $a'$. By definition of $f$, $f(a')$ is the minimal element of
+	</p>
+\[X = \{y \in \beta \mid \forall x_0 &lt; a'. f(x_0) &lt; y\}\]
+	<p>
+		We now aim to prove $b$ is this minimal element. For each $b_0 &lt; b$, we have that $f(a(b_0)) = b_0$, and $a(b_0) &lt; a'$ by definition of $a'$. Therefore, $b_0 \notin X$. For $x_0 &lt; a'$, we have that $x_0 \le a(b_0)$ for some $b_0$. Therefore, $f(x_0) \le b_0$ for some $b_0$ and, by transitivity, $f(x_0) &lt; b$. So, we have $b \in X$ and thus $f(a') = b$. We have $b \in S$. Since $S$ is inductive, we have $S = (f(a))$, which proves $f$ is a segment.
+	</p>
+
+	<p>
+		The last part of the theorem will be an exercise for the reader.
+	</p>
+
+	<p>
+		Segments give an alternative definition of $\preceq$: for ordinals $\alpha$ and $\beta$, we have $\alpha \preceq \beta$ iff there exists a segment $f: \alpha \to \beta$. Furthermore, for $\alpha \preceq \beta$ witnessed by the segment $f: \alpha \to \beta$, $a \in \alpha$ and $b \in \beta$, we define $a = b$ iff $f(a) = b$. This definition is motivated by the theorem above, showing that segments are unique and (so there is no ambiguity in which segment to choose), and that compositions of segments are segments (so if $a=b=c$ with $a \in \alpha$, $b \in \beta$ and $c \in \gamma$, and $\alpha \preceq \beta \preceq \gamma$, then $a=c$). Sometimes, the use of $a=b$ this way can be ambiguous: subsets of well-orders are well-orders, so if $A \subset \alpha$, for $a \in A$ and $b \in \alpha$, it might be unclear whether $a=b$ means that $i(a)=b$ where $i: A \hookrightarrow \alpha$ is the set inclusion, or $f(a)=b$ where $f: A \to \alpha$ is the segment. In this case, we interpret it as the first, i.e. $a = b$ iff $i(a) = b$ where $i$ is the inclusion.
+	</p>
+
+	<p>
+		W.I.P
+	</p>
+	
 	<h2>Exercises</h2>
 	<p>
 		Let $f: A \to B$ be an embedding of linear orders. Prove $f$ is injective.
@@ -197,7 +273,19 @@
 	</ol>
 
 	<p>
-		Let $(A,&lt;_A)$ be a well-order and let $B \subset A$. Define the relation $&lt;_B$ on $B$ by: $a &lt;_B b$ iff $a &lt;_A b$. Prove that $(B,&lt;)$ is a well-order.
+		Let $(A,&lt;_A)$ be a well-order and let $B \subset A$. Define the relation $&lt;_B$ on $B$ by: $a &lt;_B b$ iff $a &lt;_A b$. Prove that $(B,&lt;_B)$ is a well-order.
+	</p>
+
+	<p>
+		Let $(L,&lt;)$ be a linear order. For $X \subset L$, we say $x \in X$ is a minimal element iff, for all $y \in X$, $y \not &lt; x$. Show that the following are equivalent:
+	</p>
+	<ol>
+		<li>$(L,&lt;)$ is well-ordered ($L$ is the only inductive subset);</li>
+		<li>Every non-empty subset $X \subset L$ has a minimal element.</li>
+	</ol>
+
+	<p>
+		Let $f,g: \alpha \to \beta$ be segments. Prove that $f = g$. Let $h: \beta \to \gamma$ be a segment. Prove that $h \circ f: \alpha \to \gamma$ is a segment.
 	</p>
 
 	<p>
