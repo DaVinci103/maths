@@ -9,6 +9,7 @@
 \newcommand{\Univ}{\mathcal{U}}
 \newcommand{\Card}{\textsf{Card}}
 \newcommand{\Ord}{\textsf{Ord}}
+\newcommand{\id}{\textrm{id}}
 \]
 	<title>Ordinals - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -256,7 +257,51 @@
 	</p>
 
 	<p>
-		W.I.P
+		We can redefine $\prec$ in terms of proper segments like we've done for $\preceq$ and segments. We call a segment $f: \alpha \to \beta$ a <b>proper segment</b> iff there is some $M \in \beta$ for which, for all $a \in \alpha$, $f(a) &lt; M$. We can see that $\alpha \prec \beta$ iff there is a proper segment $f: \alpha \to \beta$. If $\alpha \prec \beta$, then $\alpha \preceq \beta$ and there is a segment $f: \alpha \to \beta$. If $f$ weren't to be proper, then for every $M \in \beta$, there is some $a \in \alpha$ for which $f(a) \ge M$. In particular, since $f$ is a segment, there is some $a \in \alpha$ for which $f(a) = M$. This means that $f$ is surjective, therefore bijective, and therefore has an inverse $f^{-1}: \beta \to \alpha$. However, this inverse is an embedding witnessing $\beta \preceq \alpha$, contradicting $\beta \not \preceq \alpha$ in the definition of $\prec$. Therefore, $f$ must be proper. And, conversely, if $f: \alpha \to \beta$, then we have $\alpha \preceq \beta$. If $\beta \preceq \alpha$ is also true, then there is a segment $g: \beta \to \alpha$. However, since compositions of segments are segments, $g \circ f: \alpha \to \alpha$ must be a segment. The identity function on $\alpha$ is also a segment so, by unicity of segments, $g \circ f = \id_{\alpha}$. However, this means $f$ is a surjection, contradicting it being proper. So, we have $\beta \not \preceq \alpha$, and therefore $\alpha \prec \beta$.
+	</p>
+
+	<p>
+		Now that we have the complicated proofs with segments and proper segments out of the way, we can start proving $(\Ord,\prec)$ is a large ordinal. First, transitivity. This if fairly straightforeward. Suppose $\alpha \prec \beta \prec \gamma$. Then, $\alpha \preceq \beta \preceq \gamma$. Let $f: \alpha \to \beta$ and $g: \beta \to \gamma$ be embeddings. Then, $g \circ f: \alpha \to \gamma$ is an embedding witnessing $\alpha \preceq \gamma$. To prove $\gamma \not \preceq \alpha$, towards contradiction, assume $\gamma \preceq \alpha$. Let $h: \gamma \to \alpha$ be an embedding. Then, $h \circ g: \beta \to \alpha$ is an embedding, contradicting $\alpha \prec \beta$. Therefore, we have $\alpha \prec \gamma$ and $\prec$ is transitive.
+	</p>
+
+	<p>
+		Next, trichotomy. That at most one of $\alpha \prec \beta, $\alpha = \beta$ or $\beta \prec \alpha$ is true is apparent. So, we want to assume at least one is true. We do this as follows: we first prove that at least one of $\alpha \preceq \beta$ or $\beta \preceq \alpha$ is true, and then prove $\alpha = \beta$ in case both are true. So, suppose $\alpha$ and $\beta$ are ordinals, and define
+	</p>
+\[X = \{a \in \alpha \mid (a) \not \prec \beta\}\]
+	<p>
+		There are two cases: either $X$ is empty, or $X$ is non-empty. If $X$ is empty, then, for all $a \in \alpha$, we have $(a) \prec \beta$. For each $a \in \alpha$, let $f_a: (a) \to \beta$ be the unique proper segment. Define
+	</p>
+\[Y_a = \{M \in \beta \mid \forall x &lt; a. f_a(x) &lt; M\}\]
+	<p>
+		By definition of proper segment, $Y_a$ is non-empty. As $\beta$ is a well-order, each $Y_a$ has a minimal element. Define $f: \alpha \to \beta$ as follows: for each $a \in \alpha$, $f(a)$ is the minimal element of $Y_a$. We want to show $f$ is an embedding. Let $a,b \in \alpha$ and assume $a &lt; b$. The inclusion $(a) \to (b)$ is a segment. Thus, the composition of $f_b$ with that inclusion is a segment $(a) \to \beta$ and, by unicity of segments, must be the segment $f_a$. In other words, $f_a = f_b|_{(a)}$. Since $a &lt; b$, we have that $a \in (b)$ and, as $f_b$ is a segment, we have $f_b(a) = f(a)$. So, we have $f(a) &lt; f(b)$ as desired. Therefore, we have $\alpha \preceq \beta$
+	</p>
+
+	<p>
+		If $X$ is non-empty, then it has a minimal element $p$. We define a function $f: (p) \to \beta$. For $a &lt; p$, there is a unique proper segment $f_a: (a) \to \beta$. Define
+	</p>
+\[Y_a = \{M \in \beta \mid \forall x &lt; a. f_a(x) &lt; M\}\]
+	<p>
+		Like before, let $f(a)$ be the minimal element of $Y_a$. By the same argument as before, $f$ is an embedding. We aim to show $f$ is an isomorphism. First, we show $f$ is a segment. Define
+	</p>
+\[S = \{a \in (p) \mid f|_{(a)} = f_a\}\]
+	<p>
+		Let $a &lt; p$ and suppose $(a) \subset S$. Let $b &lt; a$. We want to show that $f_a(b)$ is the minimal element of $Y_b$. Let $y &lt; f_a(b)$, aiming to show that $y \notin Y_b$. Since $f_a$ is a segment, there is some $x &lt; a$ for which $f_a(x) = y$.  As $f_a$ is an embedding, we have $x &lt; b$. By compatibility of segments, we have $f_b(x) = f_a(x)$, and therefore $f_b(x) \not &lt; y$. By definition of $Y_b$, we have $y \notin Y_b$. We want to show that $f_a(b) \in Y_b$. Let $x &lt; b$. Then, by compatibility of segments, $f_b(x) = f_a(x)$ and, as $f_a$ is an embedding, $f_a(x) &lt; f_a(b)$. Therefore, $f_b(x) &lt; f_a(b)$ and $f_a(b) \in Y_a$. Therefore, $f_a(b)$ is the minimal element of $Y_b$ and $f_a(b) = f(b)$. Therefore, we have $f|_{(a)} = f_a$ and $a \in S$. So, $S$ is inductive and $S = (p)$.
+	</p>
+
+	<p>
+		Let $b &lt; f(a)$. As $f_a$ is a segment, there is some $a' &lt; a$ for which $f_a(a') = b$. However, $f_a(a') = f(a')$, and therefore $f(a') = b$. Thus, $f$ is a segment.
+	</p>
+
+	<p>
+		We have $(p) \not \prec \beta$, so the segment $f$ cannot be proper. Thus, it is an isomorphism and has an inverse $f^{-1}: \beta \to (p)$. This inverse is an embedding $f^{-1}: \beta \to \alpha$ witnessing $\beta \preceq \alpha$.
+	</p>
+
+	<p>
+		Now that we have shown $\alpha \preceq \beta$ or $\beta \preceq \alpha$, suppose $\alpha \preceq \beta$ and $\beta \preceq \alpha$. Let $f: \alpha \to \beta$ and $g: \beta \to \alpha$ be segments. The compositions $g \circ f: \alpha \to \alpha$ and $f \circ g: \beta \to \beta$ are segments as well. By unicity of segments, $g \circ f = \id_{\alpha}$ and $f \circ g = \id_{\beta}$. Therefore, $f$ and $g$ are inverses, and hence isomorphisms. $\alpha$ and $\beta$ are isomorphic, and therefore equal.
+	</p>
+
+	<p>
+		Last, we want to show that $(\Ord,\prec)$ is a well-order. Let $S \subset \Ord$ and assume, for all $\alpha \in \Ord$, if $(\alpha) \subset S$, then $\alpha \in S$. We want to show that $S = \Ord$. W.I.P
 	</p>
 	
 	<h2>Exercises</h2>
