@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\im}{\operatorname{im}}
+\]
+	<title>Cantor Shröder Bernstein - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+	<h1>Cantor Shröder Bernstein</h1>
+	<p>
+		Given two cardinals $\kappa = |A|$ and $\lambda = |B|$ it can sometimes be difficult, or just tedious, to given an explicit bijection between the underlying sets $A$ and $B$ to show that $\kappa$ and $\lambda$ are equal. In this chapter, we will prove a theorem that will make it easier to prove when two cardinals are equal. In the main body of this chapter, as well as in the exercises, we will look at some applications of this theorem. This theorem is known as the Cantor-Shröder-Bernstein theorem. The proof given is König's proof of the theorem. The result does not use AC, but is also not constructive (i.e. uses LEM). There is a much stronger result on the ordering of cardinals if we do allow use of the axiom of choice, known as the well-ordering principle, which will be discussed in a few chapters.
+	</p>
+
+	<h2>Cantor-Shröder-Bernstein</h2>
+	<p>
+		The statement of the theorem is as follows: let $A$ and $B$ be sets. Let $f: A \hookrightarrow B$ and $g: B \hookrightarrow A$ be injections. Then, there is a bijection $h: A \leftrightarrow B$. Restated in terms of cardinals: let $\kappa$ and $\lambda$ be cardinals. Suppose $\kappa \le \lambda$ and $\lambda \le \kappa$. Then, $\kappa = \lambda$.
+	</p>
+
+	<p>
+		The proof of this theorem is not too difficult. First, note we have an injection $f+g: A+B \hookrightarrow B+A$ that maps $\kappa_0(a)$ to $\kappa_0(f(a))$ and $\kappa_1(b)$ to $\kappa_1(g(b))$. We can compose $f+g$ with the bijection $[\kappa_1,\kappa_0]: B+A \leftrightarrow A+B$ to get an endofunction $i: A+B \hookrightarrow A+B$.
+	</p>
+\[\begin{array}{rcl}
+i(\kappa_0(a)) &=& \kappa_1(f(a)) \\
+i(\kappa_1(b)) &=& \kappa_0(g(b))
+\end{array}\]
+	<p>
+		Since $i$ is an injection, it has a partial inverse $i^{-1}: \im i \leftrightarrow A+B$, $\im i \subset A+B$ is the image of $i$ in $A+B$. W.I.P
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Let $\kappa$ be an infinite cardinal, i.e. $n \le \kappa$ for all finite $n$. Recursively define $\beth_0(\kappa) := \kappa$ and $\beth_{n+1}(\kappa) := 2^{\beth_n(\kappa)}$. Show that $\beth_4(\kappa)$ is idempotent (recall: a cardinal $\lambda$ is idempotent iff $\lambda \cdot \lambda = \lambda$).
+	</p>
+
+	<p>
+		Let $\kappa$ and $\lambda$ be cardinals with $\kappa \le \lambda$ and $\lambda$ idempotent. Prove that $\kappa^{\lambda} = 2^{\lambda}$.
+	</p>
+</body>
+</html>
