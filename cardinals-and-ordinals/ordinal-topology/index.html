@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\Ord}{\textsf{Ord}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\]
+	<title>Ordinal Topology - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Ordinal Topology</h1>
+	<p>
+		In the chapter <b>Ordinals</b>, we explored the basic theory of ordinals. We defined what well-orders and ordinals are and have proven the class $\Ord$ of small ordinals is itself a large ordinal. We briefly looked at arithmetic with ordinals. In this chapter, we expand on the theory of ordinals by exploring their topology, as well as expanding on ordinal arithmetic. We assume the reader has basic knowledge of topology. If not, the first part briefly explains all the topology needed in this chapter.
+	</p>
+
+	<h2>General Topology</h2>
+	<p>
+		A <b>topology</b> is a pair $(X,\cT)$ with a set $X$ and a family $\cT \subset \pow(X)$ of subsets of $X$, satisfying the following conditions:
+	</p>
+	<ul>
+		<li>For a family $F \subset \cT$, we have $\bigcup F \in \cT$;</li>
+		<li>For $A,B \in \cT$, we have $A \cap B \in \cT$;</li>
+		<li>$X \in \cT$.</li>
+	</ul>
+	<p>
+		Elements of $\cT$ are called <b>open sets</b>. Thus, arbitrary unions of open sets are open, binary intersections of open sets are open and $X$ is open. For a point $x \in X$, we call a set $U \subset X$ a <b>neighbourhood</b> of $x$ iff there is some open set $O \in \cT$ for which $x \in O$ and $O \subset U$.
+	</p>
+	<ul>
+		<li>A set $C \subset X$ is <b>closed</b> iff $X \setminus C$ is open;</li>
+		<li>A set $C \subset X$ is <b>clopen</b> iff $C$ is closed and open;</li>
+		<li>Given a set $A \subset X$, its <b>interior</b> $\overset{\circ}{A}$ is the largest open set contained in $A$;</li>
+		<li>Given a set $A \subset X$, its <b>closure</b> $\overline{A}$ is the largest closed set containing $A$;</li>
+		<li>A set $D \subset X$ is <b>dense</b> iff $\overline{D} = X$;</li>
+		<li>A set $R \subset X$ is <b>regular open</b> iff $\overset{\circ}{\overline{R}} = R$;</li>
+		<li>A set $N \subset X$ is <b>nowhere dense</b> (nwd) iff $\overset{\circ}{\overline{N}} = \varnothing$;</li>
+		<li>Given a set $A \subset X$, its <b>boundary</b> is the set $\partial A := \overline{A} \setminus \overset{\circ}{A}$</li>
+	</ul>
+	<p>
+		Thus, we have:
+	</p>
+\[\begin{array}{rcl}
+\overset{\circ}{A} &=& \bigcup \{O \subset X \mid O \textrm{ open} \wedge O \subset A\} \\
+\overline{A} &=& \bigcap \{C \subset X \mid C \textrm{ closed} \wedge A \subset C\}
+\end{array}\]
+	<p>
+		For a set $X$, a <b>basis</b> on $X$ is a family $\cB \subset \pow(X)$ of subsets of $X$ satisfying the following conditions:
+	</p>
+	<ul>
+		<li>For $A,B \in \cB$, we have $A \cap B \in \cB$;</li>
+		<li>$\bigcup \cB = X$.</li>
+	</ul>
+	<p>
+		We call elements of $\cB$ <b>basic open sets</b>. Given a basis $\cB$, we define the topology
+	</p>
+\[\cT_{\cB} := \left\{\bigcup F \mid F \subset \cB\right\}\]
+	<p>
+		In this case, we call $\cB$ is a basis for $\cT_{\cB}$. Note a topology can have different basises.
+	</p>
+
+	<h2>Order Topology</h2>
+	<p>
+		Let $(L,&t;)$ be a linear order. Write $[L]$ for $L + \{-\infty,\infty\}$ with ordering extending $L$ by $-\infty &lt; a &lt; \infty$ for all $a \in L$. For $a,b \in [L]$ with $a &lt; b$, we define the open interval
+	</p>
+\[(a,b) := \{x \in L \mid a &lt; x &lt; b\}\]
+	<p>
+		We define a basis for the topology on $L$,
+	</p>
+\[\cB = \{(a,b) \mid a,b \in [L] \wedge a &lt; b\}\]
+	<p>
+		The topology $\cT$ induced by $\cB$ is called the <b>order topology</b> on $L$. Explicitely, a set $O \subset L$ is <b>open</b> iff
+	</p>
+\[\forall x \in O \exists a,b \in [L]. x \in (a,b) \wedge (a,b) \subset O\]
+	<p>
+		A <b>neighbourhood</b> of some point $x \in L$ is a set $U \subset L$ for which, for some $a,b \in [L]$, we have $x \in (a,b)$ and $(a,b) \subset U$.
+	</p>
+
+	<p>
+		For example, if $L = \ZZ$ with its usual order, then the order topology is the discrete topology (i.e. every set is open). For $n \in \ZZ$, we have that $(n-1,n+1) = \{n\}$, therefore for $O \subset \ZZ$, we have, for all $n \in O$, $(n-1,n+1) \subset O$. W.I.P
+	</p>
+</body>
+</html>
