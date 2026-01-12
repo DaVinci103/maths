@@ -3,6 +3,10 @@
 <head>
 \[
 \newcommand{\im}{\operatorname{im}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\pow}{\mathcal{P}}
 \]
 	<title>Cantor Shröder Bernstein - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -31,14 +35,32 @@
 	</p>
 
 	<p>
-		The proof of this theorem is not too difficult. First, note we have an injection $f+g: A+B \hookrightarrow B+A$ that maps $\kappa_0(a)$ to $\kappa_0(f(a))$ and $\kappa_1(b)$ to $\kappa_1(g(b))$. We can compose $f+g$ with the bijection $[\kappa_1,\kappa_0]: B+A \leftrightarrow A+B$ to get an endofunction $i: A+B \hookrightarrow A+B$.
+		The proof of this theorem is not too difficult. Since $f$ and $g$ are injections, they have partial inverses $f^{-1}: \im f \to A$ and $g^{-1}: \im g \to B$, where $\im f \subset B$ and $\im g \subset A$ are the image of $f$ and $g$ respectively. For each $a \in A$, we can define a sequence $(a_0,b_1,a_2,b_3,\ldots)$ of elements alternating between elements of $A$ and elements of $B$. First, we set $a_0 := a$. Then, assume $a_n$ has been defined, and define $b_{n+1} := g^{-1}(a_n)$. Assume $b_n$ has been defined, and define $a_{n+1} := f^{-1}(b_n)$. The sequence terminates when $g^{-1}(a_n)$ or $f^{-1}(b_n)$ is undefined. These sequences parition $A$ into three sets: $S_0 \subset A$, of $a \in A$ for which the sequence is infinite (and possibly runs in a cycle), $S_1 \subset A$, of $a \in A$ for which the sequence ends in an element $a_n$ of $A$ (i.e. the sequence has odd length), and $S_2 \subset A$, of $a \in A$ for which the sequence ends in an element $b_n$ of $B$ (i.e. the sequence has even length). We can do the same for $B$. For $b \in B$, we define $(b_0,a_1,b_2,a_3,\ldots)$ by $b_0 := b$, $a_{n+1} := f^{-1}(b_n)$ and $b_{n+1} := g^{-1}(a_n)$. Then, we partition $B$ into $T_0 \subset B$ of elements for which the sequence is infinite, $T_1 \subset B$ for which the sequence ends with an element of $A$ (i.e. is of even length), and $T_2 \subset B$ for which the sequence ends with an element of $B$ (i.e. is of odd length). Then, $f|_{S_0}: S_0 \leftrightarrow T_0$ is a bijection between $S_0$ and $T_0$, and $g|_{T_0}: T_0 \leftrightarrow S_0$ is a bijection between $T_0$ and $S_0$. The function $f|_{S_1}: S_1 \leftrightarrow T_1$ is a bijection (for each $b \in T_1$, $(b_0,a_1,\ldots)$ has even length, therefore cannot terminate in $b_0$, therefore $a_1$ exists and $f(a_1) = b_0$), however $g|_{T_1}: T_1 \hookrightarrow S_1$ is only an injection. And, similar, $f|_{S_2}: S_2 \hookrightarrow T_2$ is only an injection, but $g|_{T_2}: T_2 \leftrightarrow S_2$ is a bijection. We can glue these restricted functions together into a bijection $h: A \leftrightarrow B$,
 	</p>
-\[\begin{array}{rcl}
-i(\kappa_0(a)) &=& \kappa_1(f(a)) \\
-i(\kappa_1(b)) &=& \kappa_0(g(b))
-\end{array}\]
+\[h(a) := \left\{\begin{array}{ll}
+f(a) & a \in S_0 \\
+f(a) & a \in S_1 \\
+g^{-1}(a) & a \in S_2
+\end{array}\right.\]
 	<p>
-		Since $i$ is an injection, it has a partial inverse $i^{-1}: \im i \leftrightarrow A+B$, $\im i \subset A+B$ is the image of $i$ in $A+B$. W.I.P
+		In the first case, we could've chosen either $f(a)$ or $g^{-1}(a)$, as both are bijections $S_0 \leftrightarrow T_0$. In the latter two cases, only specifically $f$ is guaranteed to be a bijection $S_1 \leftrightarrow T_1$, and only $g^{-1}$ is guaranteed to be a bijection $S_2 \leftrightarrow T_2$. The bijection $h$ proves the theorem.
+	</p>
+
+	<h2>Application: $\RR \leftrightarrow \pow(\NN)$</h2>
+	<p>
+		We want to show that $\RR$, the set of real numbers, and $\pow(\NN)$, the powerset of the natural numbers, have the same cardinality. By the Cantor-Shröder-Bernstein theorem, it suffices to show there are injections $f: \RR \rightarrowtail \pow(\NN)$ and $g: \pow(\NN) \rightarrowtail \RR$.
+	</p>
+
+	<p>
+		First, $f: \RR \rightarrowtail \pow(\NN)$. We know that there are as many rational numbers as natural numbers, i.e. $|\QQ| = |\NN| = \aleph_0$. Therefore, showing there is an injection of $\RR$ into $\pow(\NN)$ is equivalent to showing there is an injection of $\RR$ into $\pow(\QQ)$, which is what we'll do. Note that a real number $x$ is uniquely determined by what rational numbers are less than it: if reals $x$ and $y$ are distinct, then $x &lt; y$ or $y &lt; x$, so assume, WLOG, $x &lt; y$. Between any two real numbers is a rational number, so there is some $q \in \QQ$ with $x &lt; q &lt; y$. This means that $q$ is less than $y$, but not less than $x$. We can thus define the injection $f$ by mapping $x$ to
+	</p>
+\[\{q \in \QQ \mid q &lt; x\}\]
+	<p>
+		Second, $g: \pow(\NN) \rightarrowtail \RR$. We can view a subset $A \subset \NN$ as a function $A: \NN \to \{0,1\}$, or an infinite sequence $(a_0,a_1,a_2,\ldots)$ of $a_n \in \{0,1\}$. We can map this sequence to the decimal, or maybe ternary, expansion $0.a_0a_1a_2\ldots$. Note that a binary expansion wouldn't work here, as e.g. $0.1010111111\ldots_2 = 0.1011000000\ldots_2$, so the function wouldn't be injective.
+	</p>
+
+	<p>
+		The Cantor-Shröder-Bernstein theorem now gives us a bijection $h: \RR \leftrightarrow \pow(\NN)$, showing that $|\RR| = \mathfrak{c}$.
 	</p>
 
 	<h2>Exercises</h2>
@@ -48,6 +70,12 @@ i(\kappa_1(b)) &=& \kappa_0(g(b))
 
 	<p>
 		Let $\kappa$ and $\lambda$ be cardinals with $\kappa \le \lambda$ and $\lambda$ idempotent. Prove that $\kappa^{\lambda} = 2^{\lambda}$.
+	</p>
+
+	<p>
+		<a href="../ordinals">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../ordinal-topology">&rightarrow;</a>
 	</p>
 </body>
 </html>
