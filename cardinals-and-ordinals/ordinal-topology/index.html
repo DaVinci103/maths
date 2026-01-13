@@ -3,11 +3,15 @@
 <head>
 \[
 \newcommand{\Ord}{\textsf{Ord}}
+\newcommand{\Succ}{\textsf{Succ}}
+\newcommand{\Lim}{\textsf{Lim}}
 \newcommand{\cT}{\mathcal{T}}
 \newcommand{\cB}{\mathcal{B}}
 \newcommand{\pow}{\mathcal{P}}
-\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\id}{\textrm{id}}
 \]
 	<title>Ordinal Topology - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -59,6 +63,9 @@
 \overline{A} &=& \bigcap \{C \subset X \mid C \textrm{ closed} \wedge A \subset C\}
 \end{array}\]
 	<p>
+		For a set $A \subset X$, a <b>limit</b> or <b>accumulation</b> of $A$ is a point $x \in X$ for which, for all neighbourhoods $U$ of $x$, there is some point $y \in A \cap U$ for which $y \neq x$. The <b>derivative</b> of $A$, denoted $A'$, is the set of accumulation points of $A$.
+	</p>
+	<p>
 		For a set $X$, a <b>basis</b> on $X$ is a family $\cB \subset \pow(X)$ of subsets of $X$ satisfying the following conditions:
 	</p>
 	<ul>
@@ -73,9 +80,21 @@
 		In this case, we call $\cB$ is a basis for $\cT_{\cB}$. Note a topology can have different basises.
 	</p>
 
+	<p>
+		Given a set $X$, the <b>discrete</b> topology on $X$ is $\cT_{\textit{discrete}} = \pow(X)$. The indiscrete topology is $\cT_{\textit{indiscrete}} = {\varnothing,X}$.
+	</p>
+
+	<p>
+		An <b>open cover</b> of a topology $(X,\cT)$ is a family $\Sigma \subset \cT$ of open sets with $\bigcup \Sigma = X$. The topology $X$ is <b>compact</b> iff every open cover $\Sigma$ has a finite open subcover $\Sigma_0 \subset \Sigma$.
+	</p>
+
+	<p>
+		Let $(X,\cT_0)$ and $(Y,\cT_1)$ be topologies. A function $f: X \to Y$ is said to be <b>continuous</b> iff, for all open $O \in \cT_1$, the inverse image $f^{-1}(O) = \{x \in X \mid f(x) \in O\}$ is open (i.e. $f^{-1}(O) \in \cT_0$). A function $f: X \to Y$ is a <b>homeomorphism</b> iff there exists a continuous function $g: Y \to X$ with $g \circ f = \id_X$ and $f \circ g = \id_Y$. Although a homeomorphism is bijective, not every bijective continuous map is a homeomorphism. Take e.g. the identity function $\id_X: X \to X$ from the discrete topology $(X,\cT_{\textit{discrete}})$ to the indiscrete topology $(X,\cT_{\textit{indiscrete}})$, where $X$ has at least two points.
+	</p>
+
 	<h2>Order Topology</h2>
 	<p>
-		Let $(L,&t;)$ be a linear order. Write $[L]$ for $L + \{-\infty,\infty\}$ with ordering extending $L$ by $-\infty &lt; a &lt; \infty$ for all $a \in L$. For $a,b \in [L]$ with $a &lt; b$, we define the open interval
+		Let $(L,&lt;)$ be a linear order. Write $[L]$ for $L + \{-\infty,\infty\}$ with ordering extending $L$ by $-\infty &lt; a &lt; \infty$ for all $a \in L$. For $a,b \in [L]$ with $a &lt; b$, we define the open interval
 	</p>
 \[(a,b) := \{x \in L \mid a &lt; x &lt; b\}\]
 	<p>
@@ -91,7 +110,76 @@
 	</p>
 
 	<p>
-		For example, if $L = \ZZ$ with its usual order, then the order topology is the discrete topology (i.e. every set is open). For $n \in \ZZ$, we have that $(n-1,n+1) = \{n\}$, therefore for $O \subset \ZZ$, we have, for all $n \in O$, $(n-1,n+1) \subset O$. W.I.P
+		For example, if $L = \ZZ$ with its usual order, then the order topology is the discrete topology (i.e. every set is open). For $n \in \ZZ$, we have that $(n-1,n+1) = \{n\}$, therefore for $O \subset \ZZ$, we have, for all $n \in O$, $(n-1,n+1) \subset O$. As another example, the order topology on $\overline{\NN} = \NN + \{\omega\}$ is compact (I use $\omega$ here so it doesn't get confused with the $\infty$ of $[\overline{\NN}]$). Given an open cover $\Sigma$, there must be some open $O \in \Sigma$ with $\omega \in O$. This open set $O$ includes a basic open set $(a,b)$ containing $\omega$, i.e. with $a &lt; omega$. However, if $a &lt; \omega$, then $a = -\infty$ or $a \in \NN$. In case $a = -\infty$, $\{O\}$ is a finite subcover of $\Sigma_0$. If $a \in \NN$, then the set $\{n \in \NN \mid n \le a\}$ of points not covered by $B$ is finite, so we can choose (with finite choice) for each $n \le a$ some open $O_n \in \Sigma$ with $n \in O_n$. Then, $\{O_n \mid n \le a\} \cup \{O\}$ is a finite subcover of $\Sigma$.
+	</p>
+
+	<p>
+		In this chapter, we mainly focus on the order topology of $\alpha$ where $\alpha$ is an ordinal.
+	</p>
+
+	<h2>Limit Ordinals</h2>
+	<p>
+		We endow $\Ord$ with the order topology.
+	</p>
+	
+	<p>
+		Every ordinal $\alpha$ has a direct successor $\alpha+1$: the embedding $\alpha \to \alpha+1$ that maps $\alpha$ to the left part of $\alpha+1$ is a proper segment, witnessing $\alpha \prec \alpha+1$. Not every ordinal has a direct predecessor. For example, the ordinal $0$ is the minimal ordinal, so there is no $\alpha &lt; 0$. As another example, the ordinal $\omega = (\NN,&lt;)$ has no direct predecessor, as every $n &lt; \omega$ is finite and $n &lt; n+1 &lt; \omega$. We can partition $\Ord$ into three classes:
+	</p>
+	<ul>
+		<li>The class $\{0\}$ with only the ordinal $0$;</li>
+		<li>The class $\Succ$ of successor ordinals, i.e. ordinals of the form $\alpha+1$ for some ordinal $\alpha$;</li>
+		<li>The class $\Lim = \Ord'$ of limit ordinals.</li>
+	</ul>
+	<p>
+		There are a few equivalent definitions of a limit ordinal. An ordinal $\alpha \in \Ord$ is said to be a <b>limit ordinal</b> iff one of the following equivalent definitions holds:
+	</p>
+	<ul>
+		<li>The ordinal $\alpha$ is a limit point (in the topological sense) of $\Ord$;</li>
+		<li>The ordinal $\alpha$ is not zero and not a successor ordinal;</li>
+		<li>There is some $x &lt; \alpha$ and, for all $x &lt; \alpha$, we have $x+1 &lt; \alpha$;</li>
+		<li>$\alpha$ is of the form $\omega\beta$ for some non-zero ordinal $\beta$;</li>
+		<li>$\alpha$ is of the form $\omega(1+\beta)$ for some ordinal $\beta$.</li>
+	</ul>
+	<p>
+		We can generalize the notion of a limit ordinals to a limit of a set of ordinals. For a set $A \subset \Ord$, its set of limits $A'$ is the set of ordinals $\alpha \in \Ord$ for which one of the following equivalent definitions holds:
+	</p>
+	<ul>
+		<li>The ordinal $\alpha$ is a limit point of $A$;</li>
+		<li>$\alpha$ is positive (i.e. not zero) and for all $x &lt; \alpha$, there is some $y \in A$ for which $x &lt; y &lt; \alpha$.</li>
+	</ul>
+	<p>
+		For example, $\Succ' = \Lim$, and $\Lim'$ is the set of ordinals of the form $\omega^2\beta$ with positive $\beta$ (as you'll prove in the exercises).
+	</p>
+
+	<h2>Open and Closed sets of Ordinals</h2>
+	<p>
+		In this chapter, we'll see what it means for a set $O \subset \Ord$ of ordinals to be open, and what it means for a set $C \subset \Ord$ of ordinal to be closed. W.I.P
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Let $(X,\cT)$ be a topology and let $A \subset X$. We write $U \ni a$ for <i>$U$ is a neighbourhood of $x$</i>. Show that
+	</p>
+\[\begin{array}{rcl}
+\overset{\circ}{A} &=& \{a \in A \mid \exists U \ni a. U \subset A\} \\
+\overline{A} &=& \{a \in A \mid \forall U \ni a. U \cap A \neq \varnothing\} \\
+\partial A &=& \{a \in A \mid \forall U \ni a. U \cap A \neq \varnothing \wedge U \setminus A \neq \varnothing\}
+\end{array}\]
+	<p>
+		In the order-topology of the reals $\RR$, for each of the following, prove or give a counter-example:
+	</p>
+	<ul>
+		<li>For all sets $A \subset \RR$, $\partial A = A$;</li>
+		<li>For all sets $A \subset \RR$, $\partial \partial A = \partial A$;</li>
+		<li>For all sets $A \subset \RR$, $\partial \partial \partial A = \partial \partial A$.</li>
+	</ul>
+
+	<p>
+		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. Show that
+	</p>
+\[\Lim_n = \{\omega^n\beta \mid \beta \in \Ord^+\}\]
+	<p>
+		where $\Ord^+ = \Ord \smallsetminus 0$ is the set of positive ordinals.
 	</p>
 </body>
 </html>
