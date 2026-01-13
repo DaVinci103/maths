@@ -12,6 +12,9 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\id}{\textrm{id}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\otyp}{\textrm{otyp}}
+\newcommand{\cf}{\textrm{cf}}
 \]
 	<title>Ordinal Topology - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -63,7 +66,7 @@
 \overline{A} &=& \bigcap \{C \subset X \mid C \textrm{ closed} \wedge A \subset C\}
 \end{array}\]
 	<p>
-		For a set $A \subset X$, a <b>limit</b> or <b>accumulation</b> of $A$ is a point $x \in X$ for which, for all neighbourhoods $U$ of $x$, there is some point $y \in A \cap U$ for which $y \neq x$. The <b>derivative</b> of $A$, denoted $A'$, is the set of accumulation points of $A$.
+		For a set $A \subset X$, a <b>limit</b> or <b>accumulation</b> point of $A$ is a point $x \in X$ for which, for all neighbourhoods $U$ of $x$, there is some point $y \in A \cap U$ for which $y \neq x$. The <b>derivative</b> of $A$, denoted $A'$, is the set of accumulation points of $A$.
 	</p>
 	<p>
 		For a set $X$, a <b>basis</b> on $X$ is a family $\cB \subset \pow(X)$ of subsets of $X$ satisfying the following conditions:
@@ -81,7 +84,7 @@
 	</p>
 
 	<p>
-		Given a set $X$, the <b>discrete</b> topology on $X$ is $\cT_{\textit{discrete}} = \pow(X)$. The indiscrete topology is $\cT_{\textit{indiscrete}} = {\varnothing,X}$.
+		Given a set $X$, the <b>discrete</b> topology on $X$ is $\cT_{\textit{discrete}} = \pow(X)$. The indiscrete topology is $\cT_{\textit{indiscrete}} = \{\varnothing,X\}$.
 	</p>
 
 	<p>
@@ -110,7 +113,7 @@
 	</p>
 
 	<p>
-		For example, if $L = \ZZ$ with its usual order, then the order topology is the discrete topology (i.e. every set is open). For $n \in \ZZ$, we have that $(n-1,n+1) = \{n\}$, therefore for $O \subset \ZZ$, we have, for all $n \in O$, $(n-1,n+1) \subset O$. As another example, the order topology on $\overline{\NN} = \NN + \{\omega\}$ is compact (I use $\omega$ here so it doesn't get confused with the $\infty$ of $[\overline{\NN}]$). Given an open cover $\Sigma$, there must be some open $O \in \Sigma$ with $\omega \in O$. This open set $O$ includes a basic open set $(a,b)$ containing $\omega$, i.e. with $a &lt; omega$. However, if $a &lt; \omega$, then $a = -\infty$ or $a \in \NN$. In case $a = -\infty$, $\{O\}$ is a finite subcover of $\Sigma_0$. If $a \in \NN$, then the set $\{n \in \NN \mid n \le a\}$ of points not covered by $B$ is finite, so we can choose (with finite choice) for each $n \le a$ some open $O_n \in \Sigma$ with $n \in O_n$. Then, $\{O_n \mid n \le a\} \cup \{O\}$ is a finite subcover of $\Sigma$.
+		For example, if $L = \ZZ$ with its usual order, then the order topology is the discrete topology (i.e. every set is open). For $n \in \ZZ$, we have that $(n-1,n+1) = \{n\}$, therefore for $O \subset \ZZ$, we have, for all $n \in O$, $(n-1,n+1) \subset O$. As another example, the order topology on $\overline{\NN} = \NN + \{\omega\}$ is compact (I use $\omega$ here so it doesn't get confused with the $\infty$ of $[\overline{\NN}]$). Given an open cover $\Sigma$, there must be some open $O \in \Sigma$ with $\omega \in O$. This open set $O$ includes a basic open set $(a,b)$ containing $\omega$, i.e. with $a &lt; \omega$. However, if $a &lt; \omega$, then $a = -\infty$ or $a \in \NN$. In case $a = -\infty$, $\{O\}$ is a finite subcover of $\Sigma_0$. If $a \in \NN$, then the set $\{n \in \NN \mid n \le a\}$ of points not covered by $B$ is finite, so we can choose (with finite choice) for each $n \le a$ some open $O_n \in \Sigma$ with $n \in O_n$. Then, $\{O_n \mid n \le a\} \cup \{O\}$ is a finite subcover of $\Sigma$.
 	</p>
 
 	<p>
@@ -141,7 +144,7 @@
 		<li>$\alpha$ is of the form $\omega(1+\beta)$ for some ordinal $\beta$.</li>
 	</ul>
 	<p>
-		We can generalize the notion of a limit ordinals to a limit of a set of ordinals. For a set $A \subset \Ord$, its set of limits $A'$ is the set of ordinals $\alpha \in \Ord$ for which one of the following equivalent definitions holds:
+		We can generalize the notion of a limit ordinal to a limit of a set of ordinals. For a set $A \subset \Ord$, its set of limits $A'$ is the set of ordinals $\alpha \in \Ord$ for which one of the following equivalent definitions holds:
 	</p>
 	<ul>
 		<li>The ordinal $\alpha$ is a limit point of $A$;</li>
@@ -151,9 +154,96 @@
 		For example, $\Succ' = \Lim$, and $\Lim'$ is the set of ordinals of the form $\omega^2\beta$ with positive $\beta$ (as you'll prove in the exercises).
 	</p>
 
+	<p>
+		If $\alpha \in A'$, then we say $A$ (sometimes $A \cap \alpha = \{\beta \in A \mid \beta &lt; \alpha\}$) is <b>unbounded</b> in $\alpha$.
+	</p>
+
 	<h2>Open and Closed sets of Ordinals</h2>
 	<p>
-		In this chapter, we'll see what it means for a set $O \subset \Ord$ of ordinals to be open, and what it means for a set $C \subset \Ord$ of ordinal to be closed. W.I.P
+		In this part, we'll see what it means for a set $O \subset \Ord$ of ordinals to be open, and what it means for a set $C \subset \Ord$ of ordinal to be closed.
+	</p>
+
+	<p>
+		A set $O \subset \Ord$ of ordinals is <b>open</b> iff, for all limit ordinals $\lambda \in O$, there is some ordinal $\alpha &lt; \lambda$ for which $(\alpha,\lambda) \subset O$.
+	</p>
+
+	<p>
+		A set $C \subset \Ord$ of ordinals is <b>closed</b> iff $C' \subset C$, where $C'$ is the set of limit points of $C$. A set $C \subset \alpha$ of ordinals below $\alpha$ is <b>closed in</b> $\alpha$ iff $C' \cap \alpha \subset \alpha$, where $C' \cap \alpha$ is the set of limit points of $C$ that are below $\alpha$.
+	</p>
+
+	<p>
+		Another important kind of set is a club set. A set $C \subset \alpha$ is <b>club</b> (in $\alpha$) iff $C$ is <b>cl</b>osed and <b>u</b>n<b>b</b>ounded. Club sets are used in the definition of a stationary set, which we'll see in a later chapter.
+	</p>
+
+	<h2>Cofinality, Initial and Regular Ordinals</h2>
+	<p>
+		A set $C \subset \alpha$ of ordinals below $\alpha$ is said to be <b>cofinal</b> (in $\alpha$) iff:
+	</p>
+\[\forall a &lt; \alpha \exists b \in C. a \le b\]
+	<p>
+		Equivalently,
+	</p>
+	<ul>
+		<li>If $\alpha = 0$, then $C = \varnothing$;</li>
+		<li>If $\alpha = \beta+1$ is a successor ordinal, then $\beta \in C$;</li>
+		<li>If $\alpha$ is a limit ordinal, then $C$ is unbounded.</li>
+	</ul>
+	<p>
+		An embedding $f: \beta \to \alpha$ is said to be <b>cofinal</b> iff the image $\im f$ of $f$ is cofinal in $\alpha$, equivalently:
+	</p>
+\[\forall a &lt; \alpha \exists b &lt; \beta a \le f(b)\]
+	<p>
+		Note there is a bijection between cofinal subsets of $\alpha$ and cofinal embeddings into $\alpha$: every embedding $f: \beta \to \alpha$ corresponds to the cofinal subset $\im f$, and the ordering $(C,&lt;)$ of every cofinal subset $C$ is isomorphic with an ordinal $\beta$, of which the isomorphism $f: \beta \to C$ can be compossed with the inclusion $i: C \to \alpha$ to get a cofinal embedding $f: \beta \to \alpha$.
+	</p>
+
+	<p>
+		For a set $A$ of ordinals, we call the ordinal $\alpha$ with which $A$ is isomorphic the <b>order type</b> of $A$, denoted $\otyp(A)$. We then have an embedding $f: \otyp(A) \to \Ord$ with image $\im f = A$, this embedding is called the <b>enumeration</b> of $A$.
+	</p>
+
+	<p>
+		The <b>cofinality</b> of an ordinal $\alpha$ is the smallest ordinal $\beta$ for which there is a cofinal embedding $f: \beta \to \alpha$. We denote the cofinality of $\alpha$ as $\cf(\alpha)$. Note that $\cf(\alpha)$ exists as the set of ordinals $\beta$ with a cofinal embedding $\beta \to \alpha$ is non-empty (it contains $\alpha$, witnessed by the embedding $\id_{\alpha}$), and therefore, as $\Ord$ is well-ordered, it has a minimal element. We call an ordinal $\alpha$ <b>regular</b> iff $\cf(\alpha) = \alpha$. The cofinality operation $\cf: \Ord \to \Ord$ is idempotent, meaning that $\cf(\alpha)$ is regular for any ordinal $\alpha$.
+	</p>
+
+	<p>
+		An ordinal $\alpha = (A,&lt;)$ is <b>initial</b> iff for all $\beta &lt; \alpha$, where $\beta = (B,&lt;)$, we have $|B| &lt; |A|$. Examples of initial ordinals are the finite ordinals, and the ordinal $\omega$. A non-example is the ordinal $\omega+1$, as $|\omega+1| = |\omega| = \aleph_0$, and therefore $|\omega| \not &lt; |\oemga+1|$. All regular ordinals are initial, as you will verify in the exercises. For this reason, the cofinality of an ordinal may sometimes refer to the cardinality of $\cf(\alpha)$: we have $|\cf(\alpha)| = |\cf(\beta)|$ iff $\cf(\alpha) = \cf(\beta)$. Here, the cardinality of an ordinal $\alpha = (A,&lt;)$ is defined as the cardinality of its underlying set $A$.
+	</p>
+
+	<p>
+		The fibres of $\cf$ refine the partition of $\Ord$ made in the part <b>Limit Ordinals</b>.
+	</p>
+	<ul>
+		<li>$\cf(\alpha) = 0$ iff $\alpha = 0$;</li>
+		<li>$\cf(\alpha) = 1$ iff $\alpha$ is a successor ordinal;</li>
+		<li>$\cf(\alpha) \ge \omega$ iff $\alpha$ is a limit ordinal.</li>
+	</ul>
+
+	<h2>$\omega_1$</h2>
+	<p>
+		The ordinal $\omega_1$ is the smallest uncountable ordinal. All ordinals below $\omega_1$ are countable, and all ordinals above $\omega_1$ are uncountable. Of course, there is the question of whether we can construct an uncountable well-order. And yes, we can. Let
+	</p>
+\[B = \sum_{S \subset \NN} S \times S\]
+	<p>
+		be the set of pairs $(S,R)$ with $S$ a subset of $\NN$ and $R$ a binary relation on $S$, and let $W \subset B$ be the subset of well-orders. Then, we can define an equivalence relation
+	</p>
+\[(S,R) \sim (S',R') \iff \exists f: S \leftrightarrow S' \forall a,b \in S. a R b \Leftrightarrow f(a) R' f(b)\]
+	<p>
+		on $W$ and take the quotient $Q = W/\sim$. Then, we can define a well-order $&lt;$ on $Q$ as follows: $[S,R] &lt; [S',R']$ iff $(S,R) &lt; (S',R')$ as ordinals. Then, $(Q,&lt;) is the minimal uncountable well-order.
+	</p>
+
+	<p>
+		$\omega_1$ is an initial ordinal: every $\alpha &lt; \omega_1$ is countable, and therefore $|\alpha| \le \aleph_0 &lt; |\omega_1|$. It is the smallest initial ordinal greater than $\omega$. The cardinality of $\omega_1$ is $\aleph_1$, or <b>Aleph-one</b>. Surprisingly, the ordinal $\omega_1$ does not need to be regular. In the Feferman-Levy model, we in fact have $\cf(\omega_1) = \omega$. Assuming the axiom of choice, the ordinal $\omega_1$ is regular. Here is a short proof of this fact:
+	</p>
+
+	<p>
+		Let $C \subset \omega_1$ be cofinal and assume, towards contradiction, $C$ is countable. Let $f: C \hookrightarrow \NN$ be an injection. For each ordinal $\alpha \in C$, choose an injection $g_{\alpha}: \alpha \hookrightarrow \NN$. Define an injection $h: \omega_1 \hookrightarrow \NN \times \NN$ as follows: for each ordinal $\beta &lt; \omega_1$, let $\alpha \in C$ be minimal with $\beta &lt; \alpha$ (which exists as $C$ is unbounded in $\omega_1$), and set $h(\beta) := (f(\alpha),f_{\alpha}(\beta)). The injection $h: \omega_1 \hookrightarrow \NN \times \NN$ witnesses $|\omega_1| \le |\NN \times \NN| = \aleph_0$, i.e. $\omega_1$ is countable. However, $\omega_1$ is, by definition, uncountable.
+	</p>
+
+	<p>
+		The axiom of choice was needed in the proof above the choose the injections $g_{\alpha}$. Only a small fragment of choice is needed to show $\omega_1$ is regular, known as the <b>countable union theorem</b>, or <b>CUT</b>, which states that a union of countably many countable sets is countable.
+	</p>
+
+	<p>
+		For an ordinal $\alpha$, we write $\alpha^+$ for W.I.P
 	</p>
 
 	<h2>Exercises</h2>
@@ -175,11 +265,19 @@
 	</ul>
 
 	<p>
-		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. Show that
+		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. For $n > 0$, show that
 	</p>
 \[\Lim_n = \{\omega^n\beta \mid \beta \in \Ord^+\}\]
 	<p>
 		where $\Ord^+ = \Ord \smallsetminus 0$ is the set of positive ordinals.
+	</p>
+
+	<p>
+		Show that $\cf$ is idempotent. I.e., for $\alpha \in \Ord$, show that $\cf(\cf(\alpha)) = \cf(\alpha)$.
+	</p>
+
+	<p>
+		Let $\alpha$ be a regular ordinal. Show that $\alpha$ is initial.
 	</p>
 </body>
 </html>
