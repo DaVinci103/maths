@@ -5,6 +5,8 @@
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\Succ}{\textsf{Succ}}
 \newcommand{\Lim}{\textsf{Lim}}
+\newcommand{\Init}{\textsf{Init}}
+\newcommand{\Reg}{\textsf{Reg}}
 \newcommand{\cT}{\mathcal{T}}
 \newcommand{\cB}{\mathcal{B}}
 \newcommand{\pow}{\mathcal{P}}
@@ -15,6 +17,7 @@
 \newcommand{\im}{\operatorname{im}}
 \newcommand{\otyp}{\textrm{otyp}}
 \newcommand{\cf}{\textrm{cf}}
+\newcommand{\cof}{\textrm{cof}}
 \]
 	<title>Ordinal Topology - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -93,6 +96,10 @@
 
 	<p>
 		Let $(X,\cT_0)$ and $(Y,\cT_1)$ be topologies. A function $f: X \to Y$ is said to be <b>continuous</b> iff, for all open $O \in \cT_1$, the inverse image $f^{-1}(O) = \{x \in X \mid f(x) \in O\}$ is open (i.e. $f^{-1}(O) \in \cT_0$). A function $f: X \to Y$ is a <b>homeomorphism</b> iff there exists a continuous function $g: Y \to X$ with $g \circ f = \id_X$ and $f \circ g = \id_Y$. Although a homeomorphism is bijective, not every bijective continuous map is a homeomorphism. Take e.g. the identity function $\id_X: X \to X$ from the discrete topology $(X,\cT_{\textit{discrete}})$ to the indiscrete topology $(X,\cT_{\textit{indiscrete}})$, where $X$ has at least two points.
+	</p>
+
+	<p>
+		Equivalently, a function $f: X \to Y$ is continuous iff for all $x \in X$ and all neighbourhoods $V$ of $f(x)$ in $Y$, there is a neighbourhood $U$ of $x$ in $X$ with $f(U) \subset V$. If this property holds for a specific point $x$, we call $f$ <b>continuous at</b> $x$.
 	</p>
 
 	<h2>Order Topology</h2>
@@ -205,7 +212,7 @@
 	</p>
 
 	<p>
-		An ordinal $\alpha = (A,&lt;)$ is <b>initial</b> iff for all $\beta &lt; \alpha$, where $\beta = (B,&lt;)$, we have $|B| &lt; |A|$. Examples of initial ordinals are the finite ordinals, and the ordinal $\omega$. A non-example is the ordinal $\omega+1$, as $|\omega+1| = |\omega| = \aleph_0$, and therefore $|\omega| \not &lt; |\oemga+1|$. All regular ordinals are initial, as you will verify in the exercises. For this reason, the cofinality of an ordinal may sometimes refer to the cardinality of $\cf(\alpha)$: we have $|\cf(\alpha)| = |\cf(\beta)|$ iff $\cf(\alpha) = \cf(\beta)$. Here, the cardinality of an ordinal $\alpha = (A,&lt;)$ is defined as the cardinality of its underlying set $A$.
+		An ordinal $\alpha = (A,&lt;)$ is <b>initial</b> iff for all $\beta &lt; \alpha$, where $\beta = (B,&lt;)$, we have $|B| &lt; |A|$. Examples of initial ordinals are the finite ordinals, and the ordinal $\omega$. A non-example is the ordinal $\omega+1$, as $|\omega+1| = |\omega| = \aleph_0$, and therefore $|\omega| \not &lt; |\omega+1|$. All regular ordinals are initial, as you will verify in the exercises. For this reason, the cofinality of an ordinal may sometimes refer to the cardinality of $\cf(\alpha)$: we have $|\cf(\alpha)| = |\cf(\beta)|$ iff $\cf(\alpha) = \cf(\beta)$. Here, the cardinality of an ordinal $\alpha = (A,&lt;)$ is defined as the cardinality of its underlying set $A$. I write $\Init \subset \Ord$ for the class of initial ordinals, and $\Reg \subset \Ord$ for the class of regular ordinals. $\Ord$ itself is a regular ordinal, i.e. for universes $\mathcal{U}$ and $\mathcal{V}$ with $\mathcal{U} \in \mathcal{V}$, we have $\Ord_{\mathcal{U}} \in \Reg_{\mathcal{V}}$. Ordinals that are not regular are called <b>singular</b>.
 	</p>
 
 	<p>
@@ -216,6 +223,9 @@
 		<li>$\cf(\alpha) = 1$ iff $\alpha$ is a successor ordinal;</li>
 		<li>$\cf(\alpha) \ge \omega$ iff $\alpha$ is a limit ordinal.</li>
 	</ul>
+	<p>
+		The fibre of $\cf$ at $\alpha$ is sometimes written $\cof(\alpha)$. E.g. $\cof(1) = \Succ$.
+	</p>
 
 	<h2>$\omega_1$</h2>
 	<p>
@@ -227,7 +237,7 @@
 	</p>
 \[(S,R) \sim (S',R') \iff \exists f: S \leftrightarrow S' \forall a,b \in S. a R b \Leftrightarrow f(a) R' f(b)\]
 	<p>
-		on $W$ and take the quotient $Q = W/\sim$. Then, we can define a well-order $&lt;$ on $Q$ as follows: $[S,R] &lt; [S',R']$ iff $(S,R) &lt; (S',R')$ as ordinals. Then, $(Q,&lt;) is the minimal uncountable well-order.
+		on $W$ and take the quotient $Q = W/\sim$. Then, we can define a well-order $&lt;$ on $Q$ as follows: $[S,R] &lt; [S',R']$ iff $(S,R) &lt; (S',R')$ as ordinals. Then, $(Q,&lt;)$ is the minimal uncountable well-order.
 	</p>
 
 	<p>
@@ -235,7 +245,7 @@
 	</p>
 
 	<p>
-		Let $C \subset \omega_1$ be cofinal and assume, towards contradiction, $C$ is countable. Let $f: C \hookrightarrow \NN$ be an injection. For each ordinal $\alpha \in C$, choose an injection $g_{\alpha}: \alpha \hookrightarrow \NN$. Define an injection $h: \omega_1 \hookrightarrow \NN \times \NN$ as follows: for each ordinal $\beta &lt; \omega_1$, let $\alpha \in C$ be minimal with $\beta &lt; \alpha$ (which exists as $C$ is unbounded in $\omega_1$), and set $h(\beta) := (f(\alpha),f_{\alpha}(\beta)). The injection $h: \omega_1 \hookrightarrow \NN \times \NN$ witnesses $|\omega_1| \le |\NN \times \NN| = \aleph_0$, i.e. $\omega_1$ is countable. However, $\omega_1$ is, by definition, uncountable.
+		Let $C \subset \omega_1$ be cofinal and assume, towards contradiction, $C$ is countable. Let $f: C \hookrightarrow \NN$ be an injection. For each ordinal $\alpha \in C$, choose an injection $g_{\alpha}: \alpha \hookrightarrow \NN$. Define an injection $h: \omega_1 \hookrightarrow \NN \times \NN$ as follows: for each ordinal $\beta &lt; \omega_1$, let $\alpha \in C$ be minimal with $\beta &lt; \alpha$ (which exists as $C$ is unbounded in $\omega_1$), and set $h(\beta) := (f(\alpha),f_{\alpha}(\beta))$. The injection $h: \omega_1 \hookrightarrow \NN \times \NN$ witnesses $|\omega_1| \le |\NN \times \NN| = \aleph_0$, i.e. $\omega_1$ is countable. However, $\omega_1$ is, by definition, uncountable.
 	</p>
 
 	<p>
@@ -243,12 +253,96 @@
 	</p>
 
 	<p>
-		For an ordinal $\alpha$, we write $\alpha^+$ for W.I.P
+		For an ordinal $\alpha$, we write $\alpha^+$ for the smallest initial ordinal greater than $\alpha$. The function $\omega_{\bullet}$ enumerates infinite initial ordinals. For example, $\omega_0 = \omega$, and $\omega_2$ is the next initial ordinal after $\omega_1$. The domain of $\omega_{\bullet}$ is $\Ord$. The above construction for $\omega_1$ can be generalized to show $\alpha^+$ exists for any ordinal $\alpha$. Therefore, if $\omega_{\alpha}$ exists, then $\omega_{\alpha+1} = \omega_{\alpha}^+$ does too. Further, for limit ordinal $\lambda$, we can construct $\omega_{\lambda}$ as the sum
+	</p>
+\[\sum_{\alpha &lt; \lambda} \omega_{\alpha}\]
+	<p>
+		endowed with lexicographical ordering, i.e. $(\alpha,\beta) &lt; (\gamma,\delta)$ (with $\alpha,\gamma &lt; \lambda$, $\beta &lt; \omega_{\alpha}$ and $\delta &lt; \omega_{\gamma}$) iff $\alpha &lt; \beta$, or $\alpha = \beta$ and $\gamma &lt; \delta$.
+	</p>
+
+	<p>
+		We define $\aleph_{\alpha}$ as the cardinality of $\omega_{\alpha}$.
+	</p>
+
+	<h2>Continuous and Normal Functions</h2>
+	<p>
+		Let $A \subset \Ord$ be a bounded set of ordinals. We define the <b>supremum</b> $\sup(A)$ as the smallest ordinal $\alpha$ for which,
+	</p>
+\[\forall x \in A. x \le \alpha\]
+	<p>
+		The supremum of the empty set is $0$.
+	</p>
+	
+	<p>
+		Let $\alpha$ and $\beta$ be ordinals and let $f: \alpha \to \beta$ be a function. For limit ordinal $x \le \alpha$, we define the limit
+	</p>
+\[\lim_{y \to x} f(y) := \min\{\sup(f((y,x))) \mid y &lt; x\}\]
+	<p>
+		where $(y,x)$ is the open interval from $y$ to $x$. We say $f$ is <b>continuous at</b> $x$ iff
+	</p>
+\[f(x) = \lim_{y \to x} f(x)\]
+	<p>
+		We say $f$ is <b>continuous</b> iff $f$ is continuous at all limit ordinals $x &lt; \alpha$. We say $f$ is <b>normal</b> iff it is continuous and an embedding.
+	</p>
+
+	<p>
+		In the case $f$ is an embedding, the definition of a limit simplifies to
+	</p>
+\[\lim_{y \to x} f(y) = \sup\{f(y) \mid y &lt; x\}\]
+	<p>
+		An example of a normal function is the function $x \mapsto \omega+1+x$ from $\Ord$ to $\Ord$. We can verify for, for example $x = \omega$, that $\omega+1+\omega = \omega2$ is indeed the supremum of $\{\omega+1+n \mid n &lt; \omega\}$. A non-example is the function $x \mapsto x+1$ which, although it is an embedding, is not continuous. The limit $\lim_{n \to \omega} n+1$ is $\omega$, while $\omega+1$ is strictly greater.
+	</p>
+
+	<p>
+		Generally, ordinal addition is continuous in its right argument, and discontinuous in its left. I.e. for a fixed ordinal $\alpha$, the function $x \mapsto \alpha+x$ is continuous, while the function $x+\alpha$ is not. Further, we have:
+	</p>
+	<ul>
+		<li>Multiplication is continuous in its right argument and discontinuous in its left;</li>
+		<li>Exponentiation is continuous in its right argument and discontinuous in its left.</li>
+	</ul>
+	<p>
+		These observation, as well as basic arithmetic properties of ordinal arithmetic, gives the following alternative definitions of ordinal arithmetic:
+	</p>
+\[\begin{array}{rcl}
+\alpha+\beta &:=& \sup(\{\alpha\} \cup \{S(\alpha+x) \mid x &lt; \beta\}) \\
+\alpha\beta &:=& \sup\{\alpha x+\alpha \mid x &lt; \beta\} \\
+\alpha^{\beta} &:=& \sup(\{1\} \cup \{\alpha^x \cdot \alpha \mid x &lt; \beta\})
+\end{array}\]
+	<p>
+		Here, $S(\alpha)$ is the successor ordinal of $\alpha$, i.e. the smallest ordinal greater than $\alpha$.
+	</p>
+
+	<p>
+		Given a closed set $C \subset \beta$, its enumeration function $f: \otyp(C) \to \beta$ is normal. Conversly, given a normal function $f: \alpha \to \beta$, its image will be a closed subset of some ordinal $\gamma$ (specifically, $\gamma = \sup\{f(x)+1 \mid x &lt; \alpha\}$).
+	</p>
+
+	<p>
+		For a normal function $f: \alpha \to \alpha$, its <b>derivative</b>, denoted $f'$, is the enumeration of the set
+	</p>
+\[X = \{x \mid f(x) = x\}\]
+	<p>
+		I.e. $f': \otyp(X) \to \alpha$ enumerates the fixed points of $f$. The derivative of a normal function is again normal. If $\alpha$ is uncountable and regular (e.g. $\alpha = \Ord$), then $\otyp(X) = \alpha$. Note that the derivative of a function is <i>not</i> the same as the enumeration of the derivative of its image.
+	</p>
+
+	<p>
+		Iterated derivatives gives the Veblen function. Given an ordinal $\alpha \in \Ord$, the function $\varphi_{\alpha}: \Ord \to \Ord$ (the $\alpha$th Veblen function) is given by:
+	</p>
+\[\begin{array}{rcl}
+\varphi_0(\beta) &:=& \omega^{\beta} \\
+\varphi_{\alpha+1} &:=& \varphi_{\alpha}' \\
+\varphi_{\lambda} &:=& \textrm{Enum}\{\gamma \in \Ord \mid \forall \alpha &lt; \lambda. \varphi_{\alpha}(\gamma) = \gamma\}
+\end{array}\]
+	<p>
+		where $\lambda$ is a limit ordinal and $\textrm{Enum}(X)$ is the enumeration of $X$. We write $\varepsilon_{\alpha}$ for $\varphi_1(\alpha)$ and $\zeta_{\alpha}$ for $\varphi_2(\alpha)$. The Veblen function is continuous in its right argument and discontinuous in its left.
+	</p>
+
+	<p>
+		The derivative of $\omega_{\bullet}$ is sometimes denoted as $\Lambda_{\bullet}$ with $\Lambda := \Lambda_0$, though this notation is not common. A version of Veblen's function with $\omega_{\bullet}$ as base function is sometimes denoted with a capital $\Phi$. I.e. $\Phi_0(\beta) = \omega_{\beta}$ and the rest of the rules are the same.
 	</p>
 
 	<h2>Exercises</h2>
 	<p>
-		Let $(X,\cT)$ be a topology and let $A \subset X$. We write $U \ni a$ for <i>$U$ is a neighbourhood of $x$</i>. Show that
+		Let $(X,\cT)$ be a topology and let $A \subset X$. We write $U \ni a$ for <i>$U$ is a neighbourhood of $a$</i>. Show that
 	</p>
 \[\begin{array}{rcl}
 \overset{\circ}{A} &=& \{a \in A \mid \exists U \ni a. U \subset A\} \\
@@ -265,7 +359,7 @@
 	</ul>
 
 	<p>
-		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. For $n > 0$, show that
+		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. For $n &gt; 0$, show that
 	</p>
 \[\Lim_n = \{\omega^n\beta \mid \beta \in \Ord^+\}\]
 	<p>
@@ -278,6 +372,30 @@
 
 	<p>
 		Let $\alpha$ be a regular ordinal. Show that $\alpha$ is initial.
+	</p>
+
+	<p>
+		Show that $\Init$ is closed and $\Reg$ is not closed.
+	</p>
+
+	<p>
+		Let $\alpha$ be an uncountable regular ordinal and let $f: \alpha \to \alpha$ is normal. Show that the domain of the derivative $f'$ is $\alpha$.
+	</p>
+
+	<p>
+		Let $\alpha$ be a positive ordinal. Show that the following are equivalent:
+	</p>
+	<ul>
+		<li>$\alpha$ is compact;</li>
+		<li>$\alpha$ is a successor ordinal.</li>
+	</ul>
+
+	<p>
+		<p>
+		<a href="../cantor-shroder-bernstein">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../well-ordering-principle">&rightarrow;</a>
+	</p>
 	</p>
 </body>
 </html>
