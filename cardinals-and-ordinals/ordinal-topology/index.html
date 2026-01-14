@@ -12,6 +12,7 @@
 \newcommand{\pow}{\mathcal{P}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\id}{\textrm{id}}
 \newcommand{\im}{\operatorname{im}}
@@ -340,6 +341,10 @@
 		The derivative of $\omega_{\bullet}$ is sometimes denoted as $\Lambda_{\bullet}$ with $\Lambda := \Lambda_0$, though this notation is not common. A version of Veblen's function with $\omega_{\bullet}$ as base function is sometimes denoted with a capital $\Phi$. I.e. $\Phi_0(\beta) = \omega_{\beta}$ and the rest of the rules are the same.
 	</p>
 
+	<p>
+		Normal functions preserve cofinality of limit ordinals. That is, if $f: \alpha \to \beta$ is normal, and $x &lt; \alpha$ is a limit ordinal, then $\cf(f(x)) = \cf(x)$. For example, $\cf(\omega_{\omega}) = \omega$.
+	</p>
+
 	<h2>Exercises</h2>
 	<p>
 		Let $(X,\cT)$ be a topology and let $A \subset X$. We write $U \ni a$ for <i>$U$ is a neighbourhood of $a$</i>. Show that
@@ -357,6 +362,9 @@
 		<li>For all sets $A \subset \RR$, $\partial \partial A = \partial A$;</li>
 		<li>For all sets $A \subset \RR$, $\partial \partial \partial A = \partial \partial A$.</li>
 	</ul>
+	<p>
+		<i>Hint: what's $\partial \QQ$ in $\RR$?</i>
+	</p>
 
 	<p>
 		Recursively define $\Lim_0 := \Ord$ and $\Lim_{n+1} := \Lim_n'$. For $n &gt; 0$, show that
@@ -375,7 +383,7 @@
 	</p>
 
 	<p>
-		Show that $\Init$ is closed and $\Reg$ is not closed.
+		Show that $\Init$ is closed. Assume $\Reg$ is finite, show $\Reg$ is not closed.
 	</p>
 
 	<p>
