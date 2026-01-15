@@ -6,6 +6,8 @@
 \newcommand{\Card}{\textsf{Card}}
 \newcommand{\Ord}{\textsf{Ord}}
 \newcommand{\Init}{\textsf{Init}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\pow}{\mathcal{P}}
 \]
 	<title>Well-Ordering Principle - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -36,18 +38,124 @@
 		In the second part, we will look at some consequences of the well-ordering principle. In the third part, we will prove it is equivalent to the axiom of choice.
 	</p>
 
+	<p>
+		A set $X$ or cardinal $\kappa = |X|$ for which there is a well-order $(X,&lt;)$ is called a <b>well-orderable</b> set/cardinal. An infinite well-orderable cardinal is called an <b>aleph</b> cardinal.
+	</p>
+
 	<h2>Consequences</h2>
 	<p>
 		Recall that $\Init \subset \Ord$ is the set of initial ordinals and $\Card$ is the class of cardinals. We have an injection $\Init \hookrightarrow \Card$ that maps an initial ordinal $\alpha$ to its cardinality $|\alpha|$ in $\Card$, this map is injective by the definition of an initial cardinal and by trichotomy of ordinals. Assuming WOP, this injection is actually a bijection. For each cardinal $\kappa = |X|$, we have a well-order $\alpha = (X,&lt;)$. The set of ordinals $\le \alpha$ with cardinality $\kappa$ is non-empty (it contains $\alpha$), it must contain a minimal element $\beta$. We can see $\beta$ is an initial ordinal with $|\beta| = \kappa$.
 	</p>
 
 	<p>
-		The second consequence of WOP is that there is a cardinal function, i.e. a section of $|\cdot|: \Set \to \Card$. As $|\cdot|$ is not really a function in the usual sense (its domain is a groupoid, not a set), it might be a bit confusing with what I mean with a <i>section</i>. To be precise, we have a function $s: \Card \to \Set$ that assigns, to each cardinal $\kappa$, some set $s(\kappa)$ so that $|s(\kappa)| = \kappa$. The reader might think the existence of a cardinal function is trivial: W.I.P
+		A second consequence of WOP is that there is a cardinal function, i.e. a section of $|\cdot|: \Set \to \Card$. As $|\cdot|$ is not really a function in the usual sense (its domain is a groupoid, not a set), it might be a bit confusing with what I mean with a <i>section</i>. To be precise, we have a "function" $s: \Card \to \Set$ with the following data and requirements:
+	</p>
+	<ul>
+		<li><i>Total.</i> For every cardinal $\kappa$, a set $s(\kappa)$;</li>
+		<li><i>Functional.</i> For cardinals $\kappa$ and $\lambda$ with $\kappa = \lambda$, a bijection $s_{\kappa\lambda}: \kappa \leftrightarrow \lambda$;</li>
+		<li><i>Functorial.</i> For cardinals $\kappa,\lambda,\mu$, we have $s_{\kappa\kappa} = \id_{s(\kappa)}$ and $s_{\lambda\mu} \circ s_{\kappa\lambda} = s_{\kappa\mu}$;</li>
+		<li><i>Section.</i> $|s(\kappa)| = \kappa$.</li>
+	</ul>
+	<p>
+		The existence of a cardinal function is not trivial. One might naively define $s(|X|) = X$, however, problems start arising in the functionality requirement. For example, consider the cardinals $\kappa = |\{0_{\mathbf{2}},1_{\mathbf{2}}\}|$ and $\lambda = |\{\square,\circ\}|$. We have $\kappa = \lambda$, so $s_{\kappa\lambda}$ must be a bijection between $s(\kappa) = \{0_{\mathbf{2}},1_{\mathbf{2}}\}$ and $\{\square,\circ\}$. However, there are two bijections: $0_{\mathbf{2}} \mapsto \square, 1_{\mathbf{2}} \mapsto \circ$, and $0_{\mathbf{2}} \mapsto \circ, 1_{\mathbf{2}} \mapsto \square$. No bijection is more "natural" than the other, so it is not clear which to choose for $s_{\kappa\lambda}$. Of course, we could arbitrarily choose, for example $0_{\mathbf{2}} \mapsto \square, 1_{\mathbf{2}} \mapsto \circ$, in this case. However, we cannot make such a choice for every of the infinite pairs of equinumerous sets.
+	</p>
+
+	<p>
+		We can equivalently represent the data of a cardinal function with a function $t: \Set \to \Set$, with the following data and requirements:
+	</p>
+	<ul>
+		<li><i>Total.</i> For every set $A$, a set $t(A)$;</li>
+		<li><i>Functional.</i> For a bijection $f: A \leftrightarrow B$, a bijection $t_f: t(A) \leftrightarrow t(B)$;</li>
+		<li><i>Functorial.</i> For sets bijections $f: A \leftrightarrow B$ and $g: B \leftrightarrow C$, we have $t_{\id_A} = \id_{t(A)}$ and $t_g \circ t_f = t_{g \circ f}$;</li>
+		<li>For a set $A$, we have $|A| = |t(A)|$;</li>
+		<li>For bijections $f,g: A \leftrightarrow B$, we have $t_f = t_g$.</li>
+	</ul>
+	<p>
+		Given a section $s$ of $|\cdot|$, we can define such a $t$ above as the composition $t = s \circ |\cdot|$. Given a function $t$ as above, we can define $s$ by $s(|A|) = t(A)$ and for $f: A \leftrightarrow B$, $s_{|A||B|} = t_f$. By the last requirement of $t$, the bijection $f$ in the definition of $s_{|A||B|}$ doesn't matter, so it is well-defined.
+	</p>
+
+	<p>
+		Assuming WOP, we define the cardinal function $s: \Card \to \Set$ as follows: for a cardinal $\kappa$, let $\alpha$ be an initial ordinal with $|\alpha| = \kappa$. Then, set $s(\kappa) = \alpha$ (identifying $\alpha$ with the set of smaller ordinals). For cardinals $\kappa = \lambda$, we define $s_{\kappa\lambda}$ to be the unique isomorphism between ordinals $s(\kappa)$ and $s(\lambda)$. When working with the well-ordering principle, we view this identification of cardinals with their initial ordinals as canonical.
+	</p>
+
+	<p>
+		A third consequence of WOP is that every non-empty set of cardinals has a minimal element. We can identify the cardinals with their initial ordinals, and every non-empty set of ordinals has a least element. Most cardinal invariants (cardinals that are an invariant of a model of set theory) are defined as the least cardinal satisfying some property, such as the smallest size $|F|$ of a family $F$ of sets of reals of Lebesgue measure zero, for which the union $\bigcup F$ does not have Lebesgue measure zero (i.e. either it is non-measurable or has positive measure). A fourth is cardinal trichotomy. Of course, as cardinals can now be identified with their initial ordinals, the same ordering properties of ordinals apply to cardinals as well. We do not have to differentiate between the ordering $\le$ and $\le^*$ of cardinals, and if we have $\kappa \not \le \lambda$, then we know that $\lambda &lt; \kappa$.
 	</p>
 
 	<h2>AC $\iff$ WOP</h2>
+	<p>
+		In this part, we will show that the axiom of choice and the well-ordering principle are equivalent. Recall that AC states every surjection $f: A \twoheadrightarrow B$ between sets $A,B \in \Set$ has a section $s: B \to A$.
+	</p>
+
+	<p>
+		First, to show that WOP implies AC, assume $f: A \twoheadrightarrow B$ is a surjection. Let $(A,&lt;)$ be a well-order. Then, we can define the section $s: B \to A$ by mapping $b \in B$ to the $&lt;$-minimal element of the fibre $f^{-1}\{b\}$.
+	</p>
+
+	<p>
+		Second, showing AC implies WOP is a bit more complicated. Let $A$ be the set we want to well-order. The set $\mathcal{P}(A) \smallsetminus \varnothing$ is the set of all non-empty subsets of $A$. We define a surjection
+	</p>
+\[f: \sum_{S \in \pow(A)} S \twoheadrightarrow \pow(A) \smallsetminus \varnothing\]
+	<p>
+		that takes arguments $S \subset A$ and $x \in S$, and returns a non-empty set $f(S,x) \subset A$, as simply the projection $f(S,x) = S$. This function is well-defined as, if $x \in S$, then $S$ is non-empty and it is a surjection as, if $S$ is non-empty, then there is some $x \in S$, and $f(S,x) = S$.
+	</p>
+
+	<p>
+		By the axiom of choice, $f$ has a section $s$. I.e. a function
+	</p>
+\[s: \pow(A) \smallsetminus \varnothing \to \sum_{S \in \pow(A)} S\]
+	<p>
+		for which, for all $S \subset A$, we have $s(S) = (S,x)$ for some $x \in S$. So, $s$ chooses, out of each subset $S$ of $A$, one element $x \in S$. We'll use $c(S)$ to denote this $x$, i.e. $c = \pi_1 \circ s$. Now, let
+	</p>
+\[W \subset \sum_{S \in \pow(A)} S \times S\]
+	<p>
+		be the set of well-orders on subsets of $A$. Let $Q$ be the quotient of $W$ under isomorphism of the well-orders. The ordering on $Q$ defined by <i>$[S,R] &lt; [S',R']$ iff there is a proper segment $f: S \to S'$</i> is a well-order, so $Q$ is isomorphic to some ordinal $\alpha$. We define a partial function
+	</p>
+\[f: \alpha \to W\]
+	<p>
+		by recursion, so that:
+	</p>
+	<ul>
+		<li>For each ordinal $\beta &lt; \alpha$, we have that $f(\beta)$ is isomorphic to $\beta$;</li>
+		<li>For ordinals $\beta \le \gamma &lt; \alpha$, we have $f(\beta)_0 \subset f(\gamma)_0$ and the identity function $f(\beta)_0 \hookrightarrow $f(\gamma)_0$ is a segment.</li>
+	</ul>
+	<p>
+		Define
+	</p>
+\[\begin{array}{rcl}
+f(0) &:=& (\varnothing,\varnothing) \\
+f(\beta+1) &:=& (f(\beta)_0 \cup c(A \setminus f(\beta)_0), f(\beta)_1 \cup \{(x,c(A \setminus f(\beta)_0) \mid x \in f(\beta)_0)\}) \\
+f(\lambda) &:=& \left(\bigcup_{\beta &lt; \lambda} f(\beta)_0, \bigcup_{\beta &lt; \lambda} f(\beta)_1\right)
+\end{array}\]
+	<p>
+		where $\lambda &lt; \alpha$ is a limit ordinal. In words, $f(0)$ is the empty order. The ordering $f(\beta+1)$ extends the order $f(\beta)$ by appending a new element $c(A \setminus f(\beta)_0)$ at the end. The ordering $f(\lambda)$ is the limit of orderings $f(\beta)$ for $\beta &lt; \lambda$.
+	</p>
+
+	<p>
+		Now, there is some ordinal $\xi &lt; \alpha$ for which $f(\xi)_0 = A$. If there were no such $\xi$, then the ordering $(S,&lt;)$ given by $S = \bigcup_{\beta &lt; \alpha} f(\beta)_0$ and $(&lt;) = \bigcup_{\beta &lt; \alpha} f(\beta)_1$ has order-type $\alpha$. The segments of $(S,&lt;)$ are well-orders of all order-types below $\alpha$. Therefore, the isomorphism $g: Q \to \alpha$ sends $[S,&lt;]$ to $\alpha$, which gives $\alpha &lt; \alpha$, a contradiction. For this ordinal $\xi$, we have that $f(\xi)$ is a well-order on $A$, as we wanted.
+	</p>
+
+	<p>
+		Though AC is equivalent to WOP, we can actually be a little more specific. The statement that a given set $A$ has a well-order is equivalent to
+	</p>
+\[\begin{array}{rcl}
+\sum_{S \subset A} S &\to& \pow(A) \smallsetminus \varnothing \\
+(S,x) &\mapsto& S
+\end{array}\]
+	<p>
+		having a section. I.e. $A$ has a well-order iff $\pow(A)$ has a choice function.
+	</p>
+
+	<h2>Tarski's Theorem</h2>
+	<p>W.I.P</p>
 
 	<h2>Exercises</h2>
+	<p>
+		Let $\alpha = (A,&lt;)$ be an infinite initial ordinal. Construct a injection $f: A \times A \to A$. Conclude that $|\alpha|^2 = |\alpha|$, proving the converse of Tarski's theorem.
+	</p>
+
+	<p>
+		(Without assuming AC or WOP), show that $\aleph_{\omega} &lt; \aleph_{\omega}^{\aleph_0}$.
+	</p>
 
 	<p>
 		<a href="../ordinal-topology">&leftarrow;</a>
