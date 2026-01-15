@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\Set}{\textsf{Set}}
+\newcommand{\Card}{\textsf{Card}}
+\newcommand{\Ord}{\textsf{Ord}}
+\newcommand{\Init}{\textsf{Init}}
+\]
+	<title>Well-Ordering Principle - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Well-Ordering Principle</h1>
+	<h2>Statement</h2>
+	<p>
+		The <b>well-ordering principle</b>, abbreviated <b>WOP</b>, is the following statement:
+	</p>
+
+	<p>
+		<i>For every set $X$, there exists a binary relation $(&lt;) \subset X \times X$ so that $(X,&lt;)$ is a well-order.</i>
+	</p>
+
+	<p>
+		In the second part, we will look at some consequences of the well-ordering principle. In the third part, we will prove it is equivalent to the axiom of choice.
+	</p>
+
+	<h2>Consequences</h2>
+	<p>
+		Recall that $\Init \subset \Ord$ is the set of initial ordinals and $\Card$ is the class of cardinals. We have an injection $\Init \hookrightarrow \Card$ that maps an initial ordinal $\alpha$ to its cardinality $|\alpha|$ in $\Card$, this map is injective by the definition of an initial cardinal and by trichotomy of ordinals. Assuming WOP, this injection is actually a bijection. For each cardinal $\kappa = |X|$, we have a well-order $\alpha = (X,&lt;)$. The set of ordinals $\le \alpha$ with cardinality $\kappa$ is non-empty (it contains $\alpha$), it must contain a minimal element $\beta$. We can see $\beta$ is an initial ordinal with $|\beta| = \kappa$.
+	</p>
+
+	<p>
+		The second consequence of WOP is that there is a cardinal function, i.e. a section of $|\cdot|: \Set \to \Card$. As $|\cdot|$ is not really a function in the usual sense (its domain is a groupoid, not a set), it might be a bit confusing with what I mean with a <i>section</i>. To be precise, we have a function $s: \Card \to \Set$ that assigns, to each cardinal $\kappa$, some set $s(\kappa)$ so that $|s(\kappa)| = \kappa$. The reader might think the existence of a cardinal function is trivial: W.I.P
+	</p>
+
+	<h2>AC $\iff$ WOP</h2>
+
+	<h2>Exercises</h2>
+
+	<p>
+		<a href="../ordinal-topology">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../Konigs-Lemma">&rightarrow;</a>
+	</p>
+</body>
+</html>
