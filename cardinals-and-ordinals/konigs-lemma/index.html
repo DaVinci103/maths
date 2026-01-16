@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\Set}{\textsf{Set}}
+\newcommand{\Card}{\textsf{Card}}
+\newcommand{\cf}{\textrm{cf}}
+\]
+	<title>König's Lemma - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>König's Lemma</h1>
+	<p>
+		In this chapter, we will expand on cardinal arithmetic with the axiom of choice. First, new arithmetic operations on cardinals are introduced: the infinite product and infinite sum. Then, a statement about these new operations is proven, called König's lemma. Last, we look at some corollaries of König's lemma, and introduce Gimel numbers.
+	</p>
+
+	<h2>Infinite Products and Infinite Sums</h2>
+	<p>
+		Let $I$ be a set and let $\kappa_{\bullet}: I \to \Card$ be a family of cardinals indexed by $I$. Using the axiom of choice, we can choose, for each $i \in I$, some set $A_i$ with $|A_i| = \kappa_i$. We then define:
+	</p>
+\[\sum_{i \in I} \kappa_i = \left|\sum_{i \in I}  A_i\right|\]
+	<p>
+		We want to make sure this operation is well-defined. I.e. that this sum is independent of the sets $A_i$ chosen. Suppose $A_i$ and $B_i$ are such that $|A_i| = |B_i| = \kappa_i$. For each $i \in I$, using AC, we can choose a bijection $f_i: A_i \leftrightarrow B_i$. We can combine these into a bijection
+	</p>
+\[\begin{array}{rrcl}
+f: & \sum_{i \in I} A_i & \leftrightarrow & \sum_{i \in I} B_i \\
+& (i,a) & \mapsto & (i,f_i(a))
+\end{array}\]
+	<p>
+		showing that the choice of family of sets $A_i$ doesn't matter.
+	</p>
+
+	<p>
+		Products of cardinals are defined in a similar way. For a family of cardinals $\kappa_{\bullet}: I \to \Card$, choose a corresponding family of sets $A_{\bullet}: I \to \Set$ with $|A_i| = \kappa_i$. Then,
+	</p>
+\[\prod_{i \in I} \kappa_i = \left|\prod_{i \in I} A_i\right|\]
+	<p>
+		this product is well-defined for the same reason $\sum$ is.
+	</p>
+
+	<h2>König's Lemma</h2>
+	<p>
+		Let $\kappa_{\bullet},\lambda_{\bullet}: I \to \Card$ be families of cardinals. Suppose, for every $i \in I$, we have $\kappa_i &lt; \lambda_i$. König's lemma states that:
+	</p>
+\[\sum_{i \in I} \kappa_i &lt; \prod_{i \in I} \lambda_i\]
+	<p>
+		Call the cardinal on the left $K$, and the cardinal on the right $L$. It is easy to show that $K \le L$, so we'll show that $L \nleq K$.
+	</p>
+
+	<p>
+		Let $A_{\bullet},B_{\bullet}: I \to \Set$ be families of sets with $|A_i| = \kappa_i$ and $|B_i| = \lambda_i$. Assume, towards a contradiction, there is a surjection
+	</p>
+\[f: \sum_{i \in I} A_i \twoheadrightarrow \prod_{i \in I} B_i\]
+	<p>
+		For each $i \in I$, define the function $f_i: A_i \to B_i$ by
+	</p>
+\[f_i(a) := f(i,a)_i\]
+	<p>
+		I.e. $f_i(a)$ is the $i$th projection of $f$ applied to $a$ in $A_i$. By assumption, we have that $|A_i| &lt; |B_i|$, and therefore $f_i$ is not surjective. Using AC, choose, for each $i \in I$, some $b_i$ in $B_i$ outside of the image of $f_i$. Then, we have
+	</p>
+\[b_{\bullet} \in \prod_{i \in I} B_i\]
+	<p>
+		I claim that $b_{\bullet}$ is outside of the image of $f$. Indeed, for every $(i,a)$ in the domain of $f$, we have $f(i,a)_i \neq b_i$, and therefore $f(i,a) \neq b_{\bullet}$. This contradicts $f$ being surjective and proves the theorem.
+	</p>
+
+	<h2>Cofinality</h2>
+	<p>
+		Let $\kappa = |A|$ be a cardinal. Let $f: A \to I$ be a function. The fibres $f^{-1}\{i\}$ of $f$ partition $A$ (where some cells may be empty). We call this partition a <b>proper partition</b> iff, for all $i \in I$, we have $|f^{-1}\{i\}| \neq \kappa$ (this terminology is not standard). Note that, if $f$ properly partitions $A$, then we have $|f^{-1}\{i\}| &lt; \kappa$. For an infinite cardinal $\kappa = |A|$ and a cardinal $\lambda = |I|$, we write $\kappa \le_{\cf} \lambda$ iff there is a proper partition $f: A \to I$. We have the following properties of $\le_{\cf}$:
+	</p>
+	<ul>
+		<li>$\kappa \le_{\cf} \kappa$;</li>
+		<li>If $\kappa \le_{\cf} \lambda$ and $\lambda \le \mu$, then $\kappa \le_{\cf} \mu$.</li>
+	</ul>
+	<p>
+		If it exists, we call the smallest cardinal $\lambda$ for which $\kappa \le_{\cf} \lambda$ the <b>cofinality</b> of $\kappa$, and denoted it $\cf(\kappa)$. Note that, if AC holds, then cardinals are well-ordered, so the cofinality of $\kappa$ always exists. For example, the cofinality of $\aleph_{\omega}$ is $\aleph_0$. The cofinality of aleph cardinals coincide with the cofinality of their initial ordinals.
+	</p>
+
+	<p>
+		For a cardinal $\kappa$, we define its <b>Gimel number</b> as
+	</p>
+\[\gimel(\kappa) := \kappa^{\cf(\kappa)}\]
+	<p>
+		With the axiom of choice, cardinal exponentiation can be reduced to Gimel numbers. Gimel numbers of regular cardinals (under AC) are as well understood as they could be. For regular $\kappa$, $\gimel(\kappa) = 2^{\kappa}$. By Easton's theorem, the values of $\gimel(\kappa)$ for regular $\kappa$ can be anything, as long as they satisfy monotonicity and (the first consequence of) König's lemma. Gimel numbers for singular cardinals are less well understood. If $\aleph_{\omega}$ is a strong limit, i.e. $\forall n &lt; \omega. 2^{\aleph_n} &lt; \aleph_{\omega}$, then we have that $\aleph_{\omega}^{\aleph_0} &lt; \aleph_{\omega_4}$. This result was shown using Shelah's possible cofinalities theory (PCF theory).
+	</p>
+
+	<h2>Corollaries of König's Lemma</h2>
+	<p>
+		There are mostly two. First, we have
+	</p>
+\[\kappa &lt; \cf(2^{\kappa})\]
+	<p>
+		For example, $\aleph_0 &lt; \cf(\mathfrak{c})$. Second,
+	</p>
+\[\kappa &lt; \kappa^{\cf(\kappa)}\]
+
+	<h2>Exercises</h2>
+	<p>
+		Prove the two corollaries in the chapter <b>corollaries</b>.
+	</p>
+
+	<p>
+		<a href="../well-ordering-principle">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../hartog-and-lindenbaum-numbers">&rightarrow;</a>
+	</p>
+</body>
+</html>
