@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\Set}{\textsf{Set}}
+\newcommand{\Card}{\textsf{Card}}
+\newcommand{\Init}{\textsf{Init}}
+\newcommand{\Ord}{\textsf{Ord}}
+\]
+	<title>Hartog and Lindenbaum Numbers - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Hartog and Lindenbaum Numbers</h1>
+	<p>
+		In the previous chapter, we looked at cardinal arithmetic with the axiom of choice. In this chapter, we'll introduce Hartog numbers and Lindenbaum numbers, which are useful tools for studying cardinals without the axiom of choice. Explained simply, a Hartog or Lindenbaum number of a (possibly not well-orderable) cardinal $\kappa$ is a well-orderable cardinal of approximately the same "size", or representing the "reach", of $\kappa$. We'll use Hartog numbers to prove cardinal trichotomy implies AC, and Tarski's theorem on the axiom of choice.
+	</p>
+
+	<h2>Hartog and Lindenbaum Numbers</h2>
+	<p>
+		Given a set $X$, its Hartog number $\aleph(X)$ is the set of well-orders of subsets of $X$, quotiented by isomorphism, ordered under the existence of proper segments. In other words, it is the smallest ordinal $\alpha$ for which there is no injection of $\alpha$ into $X$. This Hartog number $\aleph(X)$ is an initial ordinal: if there were to exist an $\alpha &lt; \aleph(X)$ with $|\alpha| = |\aleph(X)|$, then the injection of $\alpha$ into $X$ composed with a bijection between $\alpha$ and $\aleph(X)$ (witnessing $|\alpha| = |\aleph(X)|$) gives an injection of $\aleph(X)$ into $X$, a contradiction. Recall we identify initial ordinals with their cardinalities, so $\aleph(X)$ can be alternatively defined as a cardinal number. The Hartog number $\aleph(\kappa)$ of a cardinal $\kappa = |X|$ is defined as (the cardinality of) the Hartog number of $X$.
+	</p>
+
+	<p>
+		The Lindenbaum number $\aleph^*(X)$ of $X$ is the set of well-orders of quotients of $X$, quotiented by isomorphism, ordered under the existence of proper segments. In other words, it is the smallest ordinal $\alpha$ for which there is no surjection of $X$ onto $\alpha$. The Lindenbaum number $\aleph^*(X)$ is initial for (almost) the same reason $\aleph(X)$ is. The Lindenbaum number $\aleph^*(\kappa)$ of a cardinal $\kappa = |X|$ is defined as the Lindenbaum number of the underlying set $X$. W.I.P
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Recursively define $\beth_0(\kappa) = \kappa$ and $\beth_{n+1}(\kappa) = 2^{\beth_n(\kappa)}$. Show that $\aleph^*(\kappa) \le \beth_3(\kappa)$.
+	</p>
+
+	<p>
+		
+	</p>
+
+	<p>
+		Let $\alpha$ be an infinite initial ordinal. Define an injection $f: \alpha \times \alpha \hookrightarrow \alpha$. Conclude that AC implies idempotence of infinite cardinals.
+	</p>
+
+	<p>
+		<a href="../konigs-lemma">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../zorns-lemma">&rightarrow;</a>
+	</p>
+</body>
+</html>
