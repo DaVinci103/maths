@@ -6,6 +6,7 @@
 \newcommand{\Card}{\textsf{Card}}
 \newcommand{\Init}{\textsf{Init}}
 \newcommand{\Ord}{\textsf{Ord}}
+\newcommand{\RR}{\mathbb{R}}
 \]
 	<title>Hartog and Lindenbaum Numbers - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
@@ -33,7 +34,41 @@
 	</p>
 
 	<p>
-		The Lindenbaum number $\aleph^*(X)$ of $X$ is the set of well-orders of quotients of $X$, quotiented by isomorphism, ordered under the existence of proper segments. In other words, it is the smallest ordinal $\alpha$ for which there is no surjection of $X$ onto $\alpha$. The Lindenbaum number $\aleph^*(X)$ is initial for (almost) the same reason $\aleph(X)$ is. The Lindenbaum number $\aleph^*(\kappa)$ of a cardinal $\kappa = |X|$ is defined as the Lindenbaum number of the underlying set $X$. W.I.P
+		The Lindenbaum number $\aleph^*(X)$ of $X$ is the set of well-orders of quotients of $X$, quotiented by isomorphism, ordered under the existence of proper segments. In other words, it is the smallest ordinal $\alpha$ for which there is no surjection of $X$ onto $\alpha$. The Lindenbaum number $\aleph^*(X)$ is initial for (almost) the same reason $\aleph(X)$ is. The Lindenbaum number $\aleph^*(\kappa)$ of a cardinal $\kappa = |X|$ is defined as the Lindenbaum number of the underlying set $X$. It is clear that, for non-zero $\kappa$, we have $\aleph(\kappa) \le \aleph^*(\kappa)$.
+	</p>
+
+	<p>
+		If $\kappa = \aleph_{\alpha}$ is an Aleph-cardinal, then $\aleph(\aleph_{\alpha}) = \aleph^*(\aleph_{\alpha}) = \aleph_{\alpha+1}$ is simply the successsor cardinal of $\kappa$.
+	</p>
+
+	<p>
+		A cardinal $\kappa$ is called <b>Dedekind</b> of <b>mediate</b> iff it is infinite and Dedekind-finite, i.e. $n \le \kappa$ for all finite $n$, and $\aleph_0 \nleq \kappa$. We have that $\kappa$ is Dedekind iff $\aleph(\kappa) = \aleph_0$, as you'll prove in the exercises. If $\kappa$ is Dedekind, then $\aleph^*(\kappa)$ can still be arbitrarily large
+	</p>
+
+	<p>
+		The Lindenbaum number of the reals is denoted by $\Theta := \aleph^*(\RR)$.
+	</p>
+
+	<h2>Hartog Trichotomy</h2>
+	<p>
+		By the well-ordering principle, the axiom of choice implies cardinal trichotomy. That is, for any two cardinals $\kappa$ and $\lambda$, we have exactly one of $\kappa &lt; \lambda$, $\kappa = \lambda$ or $\lambda &lt; \kappa$. The converse can be proven using Hartog numbers.
+	</p>
+
+	<p>
+		<i>Suppose, for all cardinals $\kappa$ and $\lambda$, we have $\kappa \le \lambda$ or $\lambda \le \kappa$. Then, the axiom of choice holds.</i>
+	</p>
+
+	<p>
+		To show this, let $\kappa$ be any cardinal and let $\lambda = \aleph(\kappa)$. Then, either $\kappa \le \aleph(\kappa)$ or $\aleph(\kappa) \le \kappa$. By the definition of the Hartog number, we have that $\aleph(\kappa) \nleq \kappa$, and therefore $\kappa \le \aleph(\kappa)$. Subsets of well-orderable sets are well-orderable, so $\kappa$ is a well-orderable cardinal. This proves the well-ordering principle.
+	</p>
+
+	<h2>Tarski's Theorem</h2>
+	<p>
+		Tarski's theorem on the axiom of choice states that, if every infinite cardinal is idempotent ($\lambda \cdot \lambda = \lambda$ for infinite $\lambda$), then AC holds. This can be proven using Lindenbaum numbers.
+	</p>
+
+	<p>
+		Suppose every infinite cardinal is idempotent. Let $B$ be an infinite set. We'll show $B$ has a well-order. Let $\beta = \aleph^*(B)$ be the Lindenbaum number of $B$. We have that $|B + \beta|$ is idempotent, i.e. we have a bijection $f: B + \beta \leftrightarrow (B + \beta)^2$. Since $B \nleq^* \beta$, we know that, for each $x \in B$, there is some element of $\{x\} \times \beta \subset (B+\beta)^2$ not in the image of $f|_B$. Therefore, as $f$ is bijective (and, in particular, surjective), there is some ordinal $\gamma$ for which $f(\gamma) \in \{x\} \times \beta$. Denote the least such $\gamma$ by $g(x)$. Then, $g$ is a function from $B$ to $\beta$. We can see $g$ is injective. Therefore, $|B| \le |\beta|$, and $B$ is well-orderable.
 	</p>
 
 	<h2>Exercises</h2>
@@ -42,11 +77,27 @@
 	</p>
 
 	<p>
-		
+		Let $\kappa$ be an infinite cardinal. Show that TFAE:
+	</p>
+	<ol>
+		<li>$\kappa$ is Dedekind-finite;</li>
+		<li>$\aleph(\kappa) = \aleph_0$.</li>
+	</ol>
+
+	<p>
+		A set $A$ is <b>amorphous</b> iff it is infinite and for all $S \subset A$, either $S$ is finite or $S$ is cofinite (i.e. $A \setminus S$ is finite). Show that the powerset of an amorphous set is Dedekind.
 	</p>
 
 	<p>
-		Let $\alpha$ be an infinite initial ordinal. Define an injection $f: \alpha \times \alpha \hookrightarrow \alpha$. Conclude that AC implies idempotence of infinite cardinals.
+		Prove that $\aleph_1 \le \aleph(\RR)$ and $\aleph_2 \le \Theta$.
+	</p>
+
+	<p>
+		Suppose, for all cardinals $\kappa$ and $\lambda$, we have $\kappa \le^* \lambda$ or $\lambda \le^* \kappa$. Show that the axiom of choice holds.
+	</p>
+
+	<p>
+		Let $\alpha$ be an infinite initial ordinal. Define an injection $f: \alpha \times \alpha \hookrightarrow \alpha$. Conclude that AC implies idempotence of infinite cardinals, proving the converse of Tarski's theorem.
 	</p>
 
 	<p>
