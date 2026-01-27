@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\im}{\operatorname{im}}
+\]
+	<title>Zorn's Lemma - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Zorn's Lemma</h1>
+	<p>
+		Zorn's lemma is a statement equivalent to the axiom of choice and the well-ordering principle. It is often used in algebra for maximality theorems. For example, for showing that every vector space has a maximal linearly independent set (i.e. a basis), or to show that every ideal of a ring can be extended to a maximal ideal.
+	</p>
+
+	<h2>Statement</h2>
+	<p>
+		A <b>partial ordered set</b>, or <b>poset</b>, is a pair $(P,\le)$ with a set $P$ and a binary relation $\le$ on $P$ satisfying:
+	</p>
+	<ul>
+		<li>Reflexivity. For all $x \in P$, $x \le x$;</li>
+		<li>Transitivity. For all $x,y,z \in P$, if $x \le y$ and $y \le z$, then $x \le z$;</li>
+		<li>Antisymmetry. For all $x,y \in P$, if $x \le y$ and $y \le x$, then $x = y$.</li>
+	</ul>
+	<p>
+		A set $C \subset P$ is a <b>chain</b> iff $C$ is linearly ordered by $\le$. That is, for all $x,y \in C$, we have $x \le y$ or $y \le x$. For a set $A \subset P$ and an element $x \in P$:
+	</p>
+	<ul>
+		<li>$x$ is an <b>upper bound</b> of $A$, denoted $A \le x$, iff, for all $a \in A$, $a \le x$;</li>
+		<li>$x$ is a <b>lower bound</b> of $A$, denoted $x \le A$, iff, for all $a \in A$, $a \le x$;</li>
+		<li>$x$ is a <b>maximal element</b> of $A$ iff $x \in A$ and, for all $a \in A$, if $x \le a$, then $x = a$;</li>
+		<li>$x$ is a <b>minimal element</b> of $A$ iff $x \in A$ and, for all $a \in A$, if $a \le x$, then $a = x$.</li>
+	</ul>
+	<p>
+		A set can have multiple maximal or minimal elements. For example, if we set $P = \pow(\NN)$ and $X \le Y \Leftrightarrow X \subset Y$, and we set $A$ to be the set of subsets of $\NN$ with cardinality $\le 6$, then every six element set in $A$ is maximal.
+	</p>
+
+	<p>
+		A poset $(P,\le)$ is <b>inductive</b> iff all chains in $P$ have an upper-bound. The poset $(P,\le)$ is <b>reductive</b> iff every chain has a lower-bound. Zorn's lemma is the following statement:
+	</p>
+
+	<p>
+		<i>Every inductive poset has a maximal element.</i>
+	</p>
+
+	<p>
+		There are a few variations on this, including:
+	</p>
+	<ul>
+		<li>Strong Zorn's lemma. <i>For every element $a \in P$ of an inductive poset, there is a maximal element $m \ge a$</i>;</li>
+		<li>Hausdorff's maximality principle. <i>Every poset has a $\subset$-maximal chain.</i>;</li>
+		<li>Inverse Zorn's lemma. <i>Every reductive poset has a minimal element.</i></li>
+	</ul>
+
+	<h2>Zorn's Lemma implies AC</h2>
+	<p>
+		In this part, we'll show that Zorn's lemma implies the axiom of choice. Let $f: A \twoheadrightarrow B$ be a surjection for which we want to find a section. Define a poset $(P,\le)$ as follows:
+	</p>
+
+	<p>
+		Elements of $P$ are pairs $(S,g)$ with $S \subset B$ and $g: S \to A$ so that $f(g(x)) = x$ for all $x \in S$. We let $(S,g) \le (T,h)$ iff $S \subset T$, and $g(x) = h(x)$ for all $x \in S$.
+	</p>
+
+	<p>
+		We verify $(P,\le)$ is inductive. Let $C$ be a chain in $P$. Note that all functions $h$ for $(T,h)$ in $C$ are compatible. Define an upper-bound $(S,g)$ for $C$ as follows: $S = \bigcup_{(T,h) \in C} T$, and $g(x) = h(x)$ for all $(T,h) \in C$ and $x \in T$. Clearly, $(T,h)$ is an upper-bound.
+	</p>
+
+	<p>
+		As $(P,\le)$, it has an upper-bound. Let $(M,m)$ be as such. Assume, towards contradiction, $M \neq B$. Let $b \in B \setminus M$. As $f$ is a surjection, there is some $a \in A$ for which $f(a) = b$. Define $m': M \cup \{b\} \to A$ as follows: $m'(x) = m(x)$ for $x \in M$, and $m'(b) = a$. Then, $(M,m) &lt; (M \cup \{b\},m')$, contradicting $(M,m)$ being a maximal element. So, we have $M = B$, and $m: B \to A$. Clearly, $m$ is a section of $f$.
+	</p>
+
+	<h2>Zorn's Lemma implies WOP</h2>
+	<p>
+		Let $B$ be the set we want to well-order. Define a poset $(P,\le)$ as follows:
+	</p>
+
+	<p>
+		Elements of $P$ are pairs $(S,&lt;_S)$ with $S \subset B$ and with $&lt;_S$ a well-order on $S$. We set $(S,&lt;_S) \le (T,&lt;_T)$ iff $S \subset T$, and the identity map $S \to T$ is a segment.
+	</p>
+
+	<p>
+		We verify $(P,\le)$ is inductive. Let $C$ be a chain in $P$. We define an upper-bound $(S,&lt;_S)$ for $C$ as follows: $S = \bigcup_{(T,&lt;_T) \in C} T$, and $x &lt;_S y$ iff $x &lt;_T y$ for some $(T,&lt_T;) \in C$ with $x,y \in T$ (some element of $C$ must contain $x$, and some element must contain $y$, and one of those must extend the other, i.e. contain both). You'll verify in the exercises that $&lt;_S$ is a well-order.
+	</p>
+
+	<p>
+		As $P$ is inductive, it has an upper-bound $(M,&lt;_M)$. Clearly, $M = B$, and $&lt;_M$ is a well-order on $B$, as desired.
+	</p>
+
+	<h2>WOP implies Zorn's Lemma</h2>
+	<p>
+		For a poset $(P,\le)$, a <b>strict upper-bound</b> for a set $A \subset P$ is an upper-bound $A \le x$ with $x \notin A$, for which we write $A &lt; x$.
+	</p>
+	
+	<p>
+		Let $(P,\le)$ be an inductive poset for which we want to find a maximal element. Let $\triangleleft$ be a well-order of $P$ and let $\beta = \aleph(P)$. By recursion, define a function $f: \beta \to P$. Assume $f(y)$ for $y &lt; x$ has been defined. Let
+	</p>
+\[C = \{f(y) \mid y &lt; x\}\]
+	<p>
+		Then:
+	</p>
+	<ol>
+		<li>If $C$ is not a chain, set $f$ to be a dummy value, such as the $\triangleleft$-minimal element of $P$;</li>
+		<li>If $C$ is a chain and does not have a strict upper-bound, set $f(x)$ to be the $\le$-maximal element of $C$;</li>
+		<li>If $C$ is a chain and does have a strict upper-bound, set $f(x)$ to be the $\triangleleft$-minimal strict upper-bound of $C$.</li>
+	</ol>
+	<p>
+		By induction on $\beta$, the image $\im f$ is a chain in $(P,\le)$. So, the first case in the definition above is never reached. As $|P| \nleq \beta$, the function $f: \beta \to P$ is not an injection, so the third case isn't always applied. So, the second case is reached at least once. Therefore, $\im f$ has no strict upper-bound. As $(P,\le)$ is inductive, the set $\im f$ does have some upper-bound, which (as it is not strict) is a maximal element of $(P,\le)$.
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Show that Zorn's lemma, strong Zorn's lemma, Hausdorff's maximality principle and inverse Zorn's lemma are equivalent.
+	</p>
+
+	<p>
+		Verify that the upper-bound constructed in the part <b>Zorn's Lemma implies WOP</b> is a well-order. Further, suppose we had defined <i>$(S,&lt;_S) \le (T,&lt;_T)$ iff $S \subset T$ and $(&lt;_S) \subset (&lt;_T)$</i>. Give an example of a set $B$ and a chain $C \subset P$ that has no upper-bound in this ordering.
+	</p>
+
+	<p>
+		A <b>filter</b> on a set $X$ is a family $F \subset \pow(X)$ of subsets of $X$, satisfying the following four conditions:
+	</p>
+	<ul>
+		<li>$\varnothing \notin F$;</li>
+		<li>$X \in F$;</li>
+		<li>If $A \subset B \subset X$ and $A \in F$, then $B \in F$;</li>
+		<li>If $A,B \in F$, then $A \cap B \in F$.</li>
+	</ul>
+	<p>
+		A filter $U$ on $X$ is an <b>utlrafilter</b> iff the following additional condition is satisfied:
+	</p>
+	<ul>
+		<li>For all $A \subset X$, either $A \in U$ or $X \setminus A \in U$.</li>
+	</ul>
+	<p>
+		Using Zorn's lemma, show that every filter $F$ on $X$ can be extended to an ultrafilter $U \supset F$ on $X$.
+	</p>
+
+	<p>
+		<a href="../hartog-and-lindenbaum-numbers">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../stationary-sets">&rightarrow;</a>
+	</p>
+</body>
+</html>
