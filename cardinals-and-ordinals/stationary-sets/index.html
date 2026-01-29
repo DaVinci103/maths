@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\diagonal}[1]{\underset{#1}{\large\triangle}}
+\newcommand{\cf}{\operatorname{cf}}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\club}{\textrm{club}}
+\]
+	<title>Stationary Sets - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Stationary Sets</h1>
+	<h2>Club Filter</h2>
+	<p>
+		Let $\kappa$ be an ordinal. We say a set $C \subset \kappa$ of ordinals below $\kappa$ is a <b>club set</b> iff it is closed and unbounded. I.e. $C$ contains all its limit points (below $\kappa$), and for every $\alpha &lt; \kappa$, there is some $\beta \in C$ with $\alpha &lt; \beta$.
+	</p>
+
+	<p>
+		If $\kappa$ has uncountable cofinality, then intersections of club sets are again club. You'll prove this in the exercises.
+	</p>
+
+	<p>
+		A <b>filter</b> on a set $X$ is a family $F \subset \pow(X)$ of subsets of $X$ satisfying:
+	</p>
+	<ul>
+		<li>$X \in F$;</li>
+		<li>$\varnothing \notin F$;</li>
+		<li>For $A \subset B \subset X$ and $A \in F$, we have $B \in F$;</li>
+		<li>For $A,B \in F$, we have $A \cap B \in F$.</li>
+	</ul>
+
+	<p>
+		Let $\kappa$ be an ordinal with uncountable cofinality. The <b>club filter</b> on $\kappa$, denoted $\club_{\kappa}$, is the family of subsets of $\kappa$ that contain a club. Note that, for $A \in \club_{\kappa}$, the set $A'$ of limit points of $A$ is club and is contained in $A$. Note a superset of a club set doesn't need to be closed, so the family of club subsets of $\kappa$ isn't a filter.
+	</p>
+
+	<p>
+		If $\cf \kappa = \lambda &gt; \omega$, then $\club_{\kappa}$ is $\lambda$-complete. I.e. for $\delta &lt; \lambda$ and a family $(C_{\alpha} \mid \alpha &lt; \delta)$ of $\delta$ sets $C_{\alpha} \in \club_{\kappa}$, we have
+	</p>
+\[\bigcup_{\alpha &lt; \delta} C_{\alpha} \in \club_{\kappa}\]
+	<p>
+		A proof of this is not too different to the case of binary intersections. Although $\club_{\kappa}$ is closed under $\delta$-intersections for $\delta &lt; \lambda$, it is not closed under $\lambda$-intersections: let $f: \lambda \to \kappa$ be a cofinal embedding, and for $i &lt; \lambda$, set $C_{\alpha} = \kappa \setminus f(\alpha)$. Clearly, all $C_{\alpha}$ are club, but their intersection is empty, and hence not club.
+	</p>
+
+	<p>
+		For a family of sets $C_{\alpha} \subset \kappa$ for $i &lt; \kappa$, we define the diagonal intersection:
+	</p>
+\[\diagonal{\alpha &lt; \kappa} C_{\alpha} = \{\beta &lt; \kappa \mid \forall \alpha &lt; \beta. \beta \in C_{\alpha}\}\]
+	<p>
+		A filter that is closed under diagonal intersections is said to be <b>normal</b>.
+	</p>
+
+	<p>
+		Assuming the axiom of choice, if $\kappa$ is uncountable regular, then $\club_{\kappa}$ is normal. Let $(C_{\alpha} \mid \alpha &lt; \kappa)$ be a family of sets in $\club_{\kappa}$ and, WLOG, assume each $C_{\alpha}$ is club (if not, choose a club subset of each $C_{\alpha}$). Let
+	</p>
+\[\Delta = \diagonal{\alpha &lt; \kappa} C_{\alpha}\]
+	<p>
+		be the diagonal intersection. First, to show $\Delta$ is closed, let $\delta &lt; \kappa$ be a limit ordinal and assume $\Delta \cap \delta$ is unbounded in $\delta$ (i.e. $\delta \in \Delta'$). Then, for $\alpha &lt; \delta$, we want to show that $\delta \in C_{\alpha}$. Let $C = C_{\alpha} \cup \alpha \cup \{\alpha\}$. Then, as $\Delta \cap \delta \subset C$, we have that $C$ is unbounded in $\delta$. Further, as $C$ is the union of closed sets $C_{\alpha}$ and $\alpha \cup \{\alpha\}$, we have that $C$ is closed in $\kappa$ as well. Thus, $\delta \in C$ which, as $\delta &gt; \alpha$, implies $\delta \in C_{\alpha}$.
+	</p>
+	
+	<p>
+		Second, to show $\Delta$ is unbounded, let $\alpha &lt; \kappa$. As $\kappa$ is regular, we have that $\club_{\kappa}$ is closed under $&lt;\kappa$-intersections. We define a sequence $(\alpha_n \mid n &lt; \omega)$ of ordinals $\alpha_n &lt; \kappa$ as follows: $\alpha_0 = \alpha$, and $\alpha_{n+1}$ is the smallest ordinal greater than $\alpha_n$ in the set
+	</p>
+\[\bigcap_{i &t; \alpha_n} C_i\]
+	<p>
+		which exists as this intersection is in $\club_{\kappa}$, and therefore unbounded. As $\kappa$ has uncountable cofinality, the limit of the sequence $(\alpha_n)$ is $&lt; \kappa$. Let $\beta$ be this limit. Then, clearly, $\beta \in \Delta$ and $\alpha &lt; \beta$.
+	</p>
+
+	<h2>Stationary Sets</h2>
+	<p>
+		For an ordinal $\kappa$ with uncountable cofinality, a set $S \subset \kappa$ is <b>stationary</b> iff $S$ intersects all club sets of $\kappa$. For example, as intersections of club sets are club and, in particular, non-empty, we have that every club set is stationary. Further, every supserset of a stationary set is stationary, so every element of the club filter $\club_{\kappa}$ is stationary. The intersection of a stationary set with a club set is again stationary, but the intersection of two stationary sets does not need to be (as you'll show in the exercises).
+	</p>
+
+	<p>
+		Stationary sets, like club sets, are "large" subsets of $\kappa$, though often thinner than club sets. If a set $S \subset \kappa$ is stationary in $\kappa$, then that means there are many elements in $S$ below $\kappa$, in a way that is more lenient than $S$ being club. For example, a <b>weakly Mahlo cardinal</b> is an aleph cardinal (or, infinite intial ordinal) $\kappa$ for which the set of regular ordinals below $\kappa$ is stationary in $\kappa$, meaning that there are many regular ordinals below $\kappa$. Obviously, the set of regular ordinals below an ordinal with uncountable cofinality cannot be club. Weakly Mahlo cardinals are a kind of large cardinal, we'll return to large cardinals in the last chapter of this section.
+	</p>
+
+	<p>
+		Stationary sets can also serve as a measure for "how close" one model of set theory is to another. If subsets of $\kappa$ that are stationary in one model $M$ are still stationary in an extension $N$, then that means $N$ doesn't add "too many" club subsets of $\kappa$, while still being allowed to add some club subsets. For example, proper forcing is defined in terms of preservation of stationary sets, though it is of some structure $[\kappa]^{\omega}$ rather than ordinals $\kappa$.
+	</p>
+
+	<h2>Fodor's Lemma</h2>
+	<p>
+		<b>Fodor's lemma</b>, or the <b>pressing down lemma</b>, is the following statement:
+	</p>
+
+	<p>
+		<i>For a regular uncountable ordinal $\kappa$, a stationary set $S \subset \kappa$ and a function $f: S \to \kappa$, if $f$ is regresive ($\forall \alpha \in S \smallsetminus 0. f(\alpha) &lt; \alpha$), then $f$ is constant on a stationary set $S_0 \subset S$ (there is some $\gamma &lt; \kappa$ for which the fibre $f^{-1}\{\gamma\}$ is stationary).</i>
+	</p>
+
+	<p>
+		Fodor's lemma is a consequence of AC. Its proof is not too difficult. Let $\kappa$, $S$ and $f$ be as above and assume, towards contradiction, $f$ is not constant on a stationary set $S_0 \subset S$. For each $\alpha &lt; \kappa$, choose a club subset $C_{\alpha} \subset \kappa$ that is disjoint from $f^{-1}\{\alpha\}$. Now, take the diagonal intersection
+	</p>
+\[C = \diagonal{\alpha &lt; \kappa} C_{\alpha}\]
+	<p>
+		As the axiom of choice holds and $\kappa$ is uncountable regular, the set $C$ is club. Let $\alpha \in S \cap C$. For every $\beta \in S \cap \alpha$, we have $\alpha \in C_{\beta}$, and therefore $f(\alpha) \neq \beta$. Therefore, we have $f(\alpha) \ge \alpha$, a contradiction.
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Let $\alpha$ and $\beta$ be limit ordinals. We say a function $f: \alpha \to \beta$ is <b>monotone increasing</b> iff $\forall x,y &lt; \alpha. x \le y \Rightarrow f(x) \le f(y)$. We say $f$ is <b>bounded</b> iff $\exists M &lt; \beta \forall x &lt; \alpha. f(x) &lt; M$. We say $f$ is <b>unbounded</b> iff it is not bounded. Show that there exists an unbounded monotone increasing function $f: \alpha \to \beta$ iff $\cf \alpha = \cf \beta$.
+	</p>
+
+	<p>
+		For a limit ordinal $\kappa$, prove that the following are equivalent:
+	</p>
+	<ol>
+		<li>$\cf \kappa$ is uncountable;</li>
+		<li>For all clubs $C,D \subset \kappa$, their intersection $C \cap D$ is club.</li>
+	</ol>
+
+	<p>
+		Recall: a filter $F$ on $X$ is $\kappa$-complete iff $F$ is closed under $&lt;\kappa$-intersections, and $F$ is <b>normal</b> iff $F$ is closed under diagonal intersections. Let $\kappa$ be an intial ordinal. Let $F$ be a normal filter on $\kappa$ containing all sets of the form $\kappa \setminus \alpha$ for $\alpha &lt; \kappa$. Show that $F$ is $\kappa$-complete and contains the club filter.
+	</p>
+
+	<p>
+		Assume $\omega_1$ is regular. Define a stationary set $S \subset \omega_2$ that does not contain a club (for no club $C \subset \omega_2$ do we have $C \subset S$). Note: this means there are disjoint stationary subsets of $\omega_2$, namely $S$ and $\omega_2 \setminus S$.
+	</p>
+
+	<p>
+		Assume the axiom of choice (or any of its equivalent formulations discussed thus far). Show that there is a stationary set $S \subset \omega_1$ that does not contain a club.
+	</p>
+
+	<p>
+		<a href="../zorns-lemma">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../weakenings-of-choice">&rightarrow;</a>
+	</p>
+</body>
+</html>
