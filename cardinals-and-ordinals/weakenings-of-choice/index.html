@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+\[
+\newcommand{\id}{\textrm{id}}
+\newcommand{\AC}{\textsf{AC}}
+\newcommand{\CC}{\textsf{CC}}
+\newcommand{\DC}{\textsf{DC}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\lh}{\operatorname{lh}}
+\newcommand{\ht}{\operatorname{ht}}
+\newcommand{\Set}{\textsf{Set}}
+\]
+	<title>Weakenings of Choice - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Weakenings of Choice</h1>
+	<p>
+		The axiom of choice, abbreviated AC, states that every surjection $f: A \twoheadrightarrow B$ has a section $s: B \to A$ ($s \circ f = \id_A$). In this chapter, we'll see a few weaker axioms, such as the axiom of countable and of dependent choice and CUT, and one stronger axiom: the axiom of global choice.
+	</p>
+
+	<h2>$\AC_\kappa$ and $\CC$</h2>
+	<p>
+		Given a cardinal $\kappa = |B|$, the proposition $\AC_\kappa$ or $\AC_B$ states:
+	</p>
+
+	<p>
+		<i>For all $A$ and all surjections $f: A \twoheadrightarrow B$, there is a section $s: B \to A$.</i>
+	</p>
+
+	<p>
+		Then, $\CC = \AC_{\aleph_0} = \AC_\omega$. The proposition $\CC$ is known as <b>countable choice</b>. For finite $n$, $\AC_n$ (<i>finite choice</i>) can be proven by induction. For $\kappa \le \lambda$, we have that $\AC_\lambda$ implies $\AC_\kappa$.
+	</p>
+
+	<h2>$\DC$</h2>
+	<p>
+		The axiom of <b>dependent choice</b>, or $\DC$, is the following proposition:
+	</p>
+
+	<p>
+		<i>Let $X$ be a set and let $R \subset X \times X$ be a relation. If, for all $x \in X$, there is some $y \in X$ for which $x \mathrel{R} y$, then there is some sequence $f: \NN \to X$ for which, for all $i \in \NN$, $f(i) \mathrel{R} f(i+1)$.</i>
+	</p>
+
+	<p>
+		For a given set $A$, $\DC(A)$ is $\DC$ for $X \subset A$. For example, $\DC(\RR)$ is the statement "for all $X \subset \RR$ and all $R \subset X \times X$, if $\forall x \in X \exists y \in X. x \mathrel{R} y$, then $\exists f: \NN \to X \forall i \in \NN. f(i) \mathrel{R} f(i+1)$".
+	</p>
+
+	<p>
+		Given a limit ordinal $\lambda$, we can strengthen $\DC$ to $\DC_\lambda$. A <b>tree</b> is a pair $(T,&lt;)$ with a set $T$ and a binary relation $&lt;$ on $T$ satisfying:
+	</p>
+	<ul>
+		<li>Transitivity. For $a,b,c \in T$, if $a &lt; b$ and $b &lt; c$, then $a &lt; c$;</li>
+		<li>For $a \in T$, set ${\downarrow} a := \{b \mid b &lt; a\}$. Then, $({\downarrow} a, &lt;)$ is a well-order.</li>
+	</ul>
+	<p>
+		For $a \in T$, we define the <b>rank</b> $\rk a$ of $a$ as the order-type of ${\downarrow} a$. A <b>branch</b> of $T$ is a well-ordered subset $B \subset T$, maximal under the subset relation. The <b>length</b> $\lh B$ of a branch $B$ is its order-type. The <b>height</b> $\ht T$ of a tree $T$ is the supremum of lengths of its branches. A branch $B$ is <b>cofinal</b> iff $\lh B = \ht T$. An element $a \in T$ is a <b>leaf</b>, or is <b>maximal</b>, iff there is no $b \in T$ for which $a &lt; b$. Then, $\DC_\lambda$ is the following statement:
+	</p>
+
+	<p>
+		<i>Every height $\lambda$ has a leaf or a cofinal branch.</i>
+	</p>
+
+	<h2>CUT</h2>
+	<p>
+		The <b>countable union theorem</b>, or <b>CUT</b>, is the following proposition:
+	</p>
+	
+	<p>
+		<i>For a set $A$ and a sequence of subsets $(A_n \mid n \in \NN)$, if each $A_n$ is countable and $A = \bigcup_{n \in \NN} A_n$, then $A$ is countable.</i>
+	</p>
+
+	<p>
+		CUT is implied by CC and implies $\omega_1$ is regular. CUT is one of the weakest fragments of choice.
+	</p>
+
+	<h2>Partition Principle</h2>
+	<p>
+		The <b>partition principle</b>, or <b>PP</b>, is the following proposition:
+	</p>
+
+	<p>
+		<i>For non-zero cardinals $\kappa$ and $\lambda$, if $\kappa \le^* \lambda$, then $\kappa \le \lambda$.</i>
+	</p>
+
+	<p>
+		It is known that AC implies PP, though it is still open whether PP implies AC.
+	</p>
+
+	<h2>GC</h2>
+	<p>
+		<b>Global choice</b>, or <b>GC</b>, is the following proposition:
+	</p>
+
+	<p>
+		<i>There is a (large) function \[\mathbf{c}: \prod_{X \in \Set} (X \to X)\] for which, for a set $X$ and for $a,b \in X$, we have $\mathbf{c}(X,a) = \mathbf{c}(X,b)$.</i>
+	</p>
+
+	<p>
+		Global choice implies the axiom of choice: given a surjection $f: A \to B$, we can define the section $s: B \to A$ by setting $s(b)$ to be the unique element in the image of $\mathbf{c}(f^{-1}\{b\},-)$. It is known that GC is strictly stronger than AC, meaning that GC cannot be proven from AC.
+	</p>
+
+	<h2>Exercises</h2>
+	<p>
+		Assume CC. Show there are no Dedekind cardinals.
+	</p>
+
+	<p>
+		Show that DC implies CC.
+	</p>
+
+	<p>
+		Prove that $\DC$ and $\DC_\omega$ are equivalent.
+	</p>
+
+	<p>
+		Show that CC implies CUT and CUT implies $\omega_1$ is regular.
+	</p>
+
+	<p>
+		<a href="../stationary-sets">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../small-large-cardinals">&rightarrow;</a>
+	</p>
+</body>
+</html>
