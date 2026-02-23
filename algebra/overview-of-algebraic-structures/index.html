@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\const}{\operatorname{const}}
+\]
+<head>
+	<title>Overview of Algebraic Structures - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+	
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Overview of Algebraic Structures</h1>
+	<h2>Preliminaries</h2>
+	<p>
+		Given a set $A$, we write $x \in A$ for the proposition "$x$ is an element of $A$". We write $x = y$ to denote two elements $x,y \in A$ are equal. Every element is equal to itself (<b>reflexivity</b>), and equal elements are interchangable (<b>J-rule</b>). For example, if $x = y$, then, as $x = x$ (by reflexivity), we may swap the first $x$ with $y$, and we get $y = x$ (by the J-rule). This consequence is known as <b>symmetry</b> of $=$. If $x = y$ and $y = z$, then we can replace $y$ in $x = y$ with $z$ (by the J-rule), and therefore $x = z$. This consequence is called <b>transitivity</b> of $=$.
+	</p>
+
+	<p>
+		Some examples of sets are: the empty set, $\varnothing$, which contains no elements. The singleton $1$, which contains a single element $*$ (i.e. for all $x \in 1$, we have $x = *$). For any number of elements $x_1,\ldots,x_n$, we write $\{x_1,\ldots,x_n\}$ for the set containing all and only those elements. For example, $1 = \{*\}$. For a natural number $n$, we write $n$ for the set $\{0_n,\ldots,(n-1)_n\}$ of $n$ elements. For example, $2 = \{0_2,1_2\}$ and $4 = \{0_4,1_4,2_4,3_4\}$. We sometimes omit the subscripts for brevity and simply write $4 = \{0,1,2,3\}$. Elements of $2$ are also sometimes called "false" ($=0_2$) and "true" ($=1_2$). The set $\NN$ is the set of natural numbers $\{0,1,2,3,4,\ldots\}$.
+	</p>
+
+	<p>
+		For sets $A$ and $B$, a <b>function</b> $f: A \to B$ has the following data and conditions:
+	</p>
+	<ul>
+		<li><b>Totality.</b> To each element $x$ of $A$, an associated element $f(x)$ of $B$;</li>
+		<li><b>Functionality.</b> For any two elements $x$ and $y$, if $x = y$, then $f(x) = f(y)$.</li>
+	</ul>
+	<p>
+		Functionality is technically a consequence of the J-rule, though it's important enough to mention separately. We sometimes write $fx$ for $f(x)$ for brevity. In the notation $f(x)$, we call $x$ the <b>argument</b> of $f$ and $f(x)$ the <b>value</b> of $f$ at $x$. The set $A$ is called the <b>domain</b> of the function $f$, and $B$ is the <b>codomain</b>. We call $f$ a function <b>from</b> $A$ <b>to</b> $B$.
+	</p>
+
+	<p>
+		For example, every set $A$ has an <b>identity</b> function $\id: A \to A$ that associates, to each element $a$ of $A$, that same element $\id(a) = a$. And, for any two sets $A$ and $B$ and any element $b$ of $B$, we there is a <b>constant</b> function $\const_b: A \to B$ that associates, to each element $a$ of $A$, the same element $\const_b(a) = b$ of $B$. For every set $A$, there is a unique function $\varnothing \to A$. As there are no elements of $\varnothing$, there are no arguments to which we need to associative values. This function is called the <b>empty</b> function of $A$. Similarly, for any set $A$, there is a unique function $A \to 1$ that maps every element $A$ to the unique element $*$ of $1$.
+	</p>
+
+	<p>
+		Given sets $A$ and $B$, we can define a new set $[A,B]$ of all functions from $A$ to $B$. Alternative notations of $[A,B]$ are $B^A$, ${}^AB$ and $A \Rightarrow B$. Elements $f,g \in [A,B]$ are equal iff, for all $x \in A$, we have $f(x) = g(x)$.
+	</p>
+
+	<p>
+		For sets $A$ and $B$, we define a new set $A \times B$. For every element $a$ of $A$ and every element $b$ of $B$, $(a,b)$ is an element of $A \times B$ and is called a <b>pair</b>. Further, if $(a,b) = (c,d)$, then $a = c$ and $b = d$. Any element $p$ of $A \times B$ is a pair $(a,b)$ for some $a \in A$ and some $b \in B$. In this case, we write $p_0$ for $a$ and $p_1$ for $b$. So that: $(p_0,p_1) = p$, $(a,b)_0 = a$ and $(a,b)_1 = b$. We write $\pi_0: A \times B \to A$ and $\pi_1: A \times B \to B$ for the functions that associative to each element $(a,b)$ of $A \times B$, the element $a$ of $A$ and the element $b$ of $B$ respectively. The functions $\pi_0,\pi_1$ are called the <b>projection</b> functions of $A \times B$.
+	</p>
+
+	<p>
+		A (binary) <b>operation</b> on $A$ is a function $\star: A \times A \to A$. We write $a \star b$ for $\star(a,b)$. Whether to calculate $a \star b \star c$ as $(a \star b) \star c$ or $a \star (b \star c)$ is called the <b>associativity</b> of the notation for $\star$, and is specified for each operation that is introduced separately. In the former case, the notation for $\star$ is <b>left-associative</b>, and in the latter case, the notation for $\star$ is <b>right-associative</b>. For two operations $\star$ and $\circ$ on the same set $A$, whether to calculate $\star$ first or $\circ$ first in an expression in which both occur, such as $a \star b \circ c \star d$, is called the <b>precedence</b> of the notation. If $\star$ is calculated first, i.e. $a \star b \circ c \star d$ is interpreted as $(a \star b) \circ (c \star d)$, then we say $\star$ has <b>higher precedence</b> than $\circ$. Symmetrically, if $\circ$ is calculated first, i.e. $a \star b \circ c \star d$ is interpreted as $a \star (b \circ c) \star d$ (which is $(a \star (b \circ c)) \star d$ or $a \star ((b \circ c) \star d)$ depending on the associativity of the notation for $\star$), then $\star$ has <b>lower precedence</b> than $\circ$. If they have the same precedence, then there associativity must align. E.g. say the notation for $\star$ and $\circ$ are left-associative. Then, $a \star b \circ c \star d$ is interpreted as $((a \star b) \circ c) \star d$. If the symbol $\cdot$ is used for an operation, then we may also write $a \cdot b$ using <b>juxtaposition</b>, i.e. as $ab$. Juxtaposition has precedence above all operators so that, for example, $ab \cdot c$ is interpreted as $(a \cdot b) \cdot c$, and $a \cdot bc$ is interpreted as $a \cdot (b \cdot c)$. Hopefully, you already know examples of this: the four operations $+$, $-$, $\times$ and $\div$ on the reals are all left-associative, $+$ and $-$ have the same precedence, so do $\times$ and $\div$, and $\times$ and $\div$ have higher precedence than $+$ and $-$. Note: $\div$ is technically not an operation as division by $0$ is not possible, but we can simply define $a \div 0$ to have a dummy value, such as $0$, to make it one.
+	</p>
+
+	<p>
+		We write $\forall$ and $\exists$ for <i>for all</i> and <i>there exists</i>. For example, $(\forall b \in B) \, (\exists a \in A) \, f(a) = b$ means <i>for all $b$ in $B$, there exists an $a$ in $A$ for which $f(a) = b$</i>.
+	</p>
+
+	<h2>Conditions</h2>
+	<p>
+		Fix a set $A$ and a binary operations $\star$ and $\circ$ on $A$. We define various conditions these operations can have.
+	</p>
+
+	<p>
+		The operation $\star$ is <b>associative</b> iff $(\forall a\,b\,c \in A) \, (a \star b) \star c = a \star (b \star c)$. In this case, it doesn't matter if the notation for $\star$ is left- or right-associative. Examples of associative operations are $+$ and $\times$. A non-example is $-$, as $(11 - 6) - 2 = 5 - 2 = 3 \neq 11 - (6 - 2) = 11 - 4 = 7$.
+	</p>
+
+	<p>
+		Elements $a$ and $b$ of $A$ are said to <b>commute</b> with respect to the operation $\star$ iff $a \star b = b \star a$. The operation $\star$ is called <b>commutative</b>, or <b>symmetric</b>, iff $(\forall a\,b \in A) \, a \star b = b \star a$, i.e. if any two elements of $A$ commute. For example, $+$ and $\times$ are symmetric, while $-$ and $\div$ are not.
+	</p>
+
+	<p>
+		An element $e$ of $A$ is a <b>left-identity</b> for the operation $\star$ iff $(\forall a \in A) \, e \star a = a$. It is a <b>right-identity</b> iff $(\forall a \in A) \, a \star e = a$. It is an <b>identity</b> iff it is both a left- and a right-identity. For example, $0$ is an identity for $+$ and a right-identity for $-$, and $1$ is an identity for $\times$.
+	</p>
+
+	<p>
+		An element $z$ of $A$ is an <b>absorption</b> element iff $(\forall a \in A) \, z \star a = a \star z = z$. We define left- and right-absorption elements analogously to identity elements. For example, $0$ is an absorption element for $\times$.
+	</p>
+
+	<p>
+		WIP
+	</p>
+</body>
+</html>
