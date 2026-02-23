@@ -2,6 +2,9 @@
 <html>
 \[
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\const}{\operatorname{const}}
 \]
@@ -76,7 +79,7 @@
 	</p>
 
 	<p>
-		An element $e$ of $A$ is a <b>left-identity</b> for the operation $\star$ iff $(\forall a \in A) \, e \star a = a$. It is a <b>right-identity</b> iff $(\forall a \in A) \, a \star e = a$. It is an <b>identity</b> iff it is both a left- and a right-identity. For example, $0$ is an identity for $+$ and a right-identity for $-$, and $1$ is an identity for $\times$.
+		An element $e$ of $A$ is a <b>left-identity</b> for the operation $\star$ iff $(\forall a \in A) \, e \star a = a$. It is a <b>right-identity</b> iff $(\forall a \in A) \, a \star e = a$. It is an <b>identity</b> iff it is both a left- and a right-identity. For example, $0$ is an identity for $+$ and a right-identity for $-$, and $1$ is an identity for $\times$. Note that, if $e_1$ is a right-identity, and $e_2$ is a left-identity, then $e_1 = e_1 \star e_2 = e_2$. Hence, the identity of $\star$, if it exists, is unique.
 	</p>
 
 	<p>
@@ -84,7 +87,64 @@
 	</p>
 
 	<p>
-		WIP
+		For an identity $e$ for $\star$, an element $b \in A$ is a <b>left-inverse</b> of an element $a \in A$ iff $b \star a = e$. The element $b$ is a <b>right-inverse</b> of $a$ iff $a \star b = e$ and an <b>inverse</b> of $a$ iff it is both a left- and right-inverse. If every element has an inverse, then we say $\star$ <b>has inverses</b>. Note $\star$ must have an identity element for it to have inverses.
+	</p>
+
+	<p>
+		The operation $\circ$ is <b>left-distributive</b> over $\star$ iff $(\forall a\,b\,c \in A) \, a \circ (b \star c) = (a \circ b) \star (a \circ c)$. It is <b>right-distributive</b> iff $(\forall a\,b\,c \in A) (a \star b) \circ c = (a \circ c) \star (b \circ c)$ and it is <b>distributive</b>, or <b>distributes over</b> $\star$, iff it is both left- and right-distributive. For example, $\times$ distributes over $+$: $a \times (b + c) = a \times b + a \times c$, and $(a + b) \times c = a \times c + b \times c$.
+	</p>
+
+	<h2>Algebraic Structures</h2>
+	<p>
+		A pair $(A,\star)$ with a set $A$ and a binary operation $\star$ on $A$ is called a <b>magma</b>. There are different kinds of magmas.
+	</p>
+
+	<p>
+		A <b>semigroup</b> is a magma with an associative operation. A <b>unital magma</b> is a magma with an identity element. A <b>monoid</b> is a semigroup and a unital magma. A <b>loop</b> is a unital magma that has left- and right-inverses (that don't need to be equal). A <b>group</b> is a monoid that has inverses. An <b>Abelian group</b>, or <b>commutative group</b>, is a group with a commutative operation. We'll focus mostly on groups and Abelian groups.
+	</p>
+
+	<p>
+		We may have a triple $(A,\star,\circ)$ with a set $A$ and two binary operations $\star$ and $\circ$ on $A$. Such a triple is a:
+	</p>
+
+	<p>
+		<b>Ring</b> iff $(A,\star)$ is an Abelian group, $(A,\circ)$ is a monoid and $\circ$ distributes over $\star$. <b>Commutative ring</b>, or <b>cring</b> (capitalized: CRing) iff it is a ring and $\circ$ is commutative. <b>Division ring</b> iff it is a ring and every element, except for the identity element of $\star$, has an inverse with respect to $\circ$. <b>Field</b> iff it is a division cring.
+	</p>
+
+	<p>
+		Examples of rings are the ring $(\ZZ,+,\cdot)$ of integers, the ring $(\QQ,+,\cdot)$$ of rational numbers and the ring $(\RR,+,\cdot)$ of real numbers. These are all also commutative, and the latter example is also a field. Non-examples are the even integers $(2\ZZ,+,\cdot)$, as there is no multiplicative identity (identity for $\cdot$), and the natural numbers $(\NN,+,\cdot)$, as there are no negatives (inverses for $+$). These are a <i>rng</i> (pronounced: rung) and a <i>rig</i> respectively.
+	</p>
+
+	<p>
+		Typically, the operation of a group is denoted $\cdot$ and the operation of an Abelian group is denoted $+$. We write the first and second operation of a ring as $+$ and $\cdot$ respectively. We typically write $0$ for the identity of any operation denoted $+$ and $1$ for the identity of any operation denoted $\cdot$. If inverses for $+$ or $\cdot$ are unique (e.g. if they are associative as part of a ring), then we write $-a$ for the inverse of an element $a$ with respect to $+$ and $a^{-1}$ for the inverse of $a$ with respect to $\cdot$, provided those inverses exist. Another important kind of ring is an integral domain. A ring $(R,+,\cdot)$ is an <b>integral domain</b> iff $(\forall a\,b \in R) a \cdot b = 0 \implies a = 0 \vee b = 0$. here, $\implies$ means <i>implies</i> and $\vee$ means <i>or</i>, and $\vee$ has higher precedence than $\implies$. So this reads <i>For all elements $a$ and $b$ of $R$, if $a \cdot b = 0$, then $a = 0$ or $b = 0$</i>.
+	</p>
+
+	<h2>Modules</h2>
+	<p>
+		let $(M,\cdot)$ be a monoid and let $X$ be a set. Let $\star: M \times X \to X$ be a function and write $m \star x$ for $\star(m,x)$. We call $\star$ an <b>action</b> of $(M,\cdot)$ on $X$ iff:
+	</p>
+	<ul>
+		<li>For the identity element $e$ of $M$, $(\forall x \in X) \, e \cdot x = x$;</li>
+		<li>$(\forall m\,n \in M, x \in X) \, m \star (n \star x) = (m \cdot n) \star x$.</li>
+	</ul>
+	<p>
+		This definition applies to groups as well. We write $\star: (M,\cdot) \curverightarrow X$ for <i>$\star$ is an action of $(M,\cdot)$ on $X$</i>.
+	</p>
+
+	<p>
+		Given a ring $(R,+,\cdot)$, an $R$-<b>module</b> is a triple $(M,\star,\circ)$ where $(M,\star)$ is an Abelian group and $\circ: (R,\cdot) \curverightarrow M$ is an action satisfying:
+	</p>
+	<ul>
+		<li>$(\forall r \in R, m\,n \in M) \, r \circ (m \star n) = (r \circ m) \star (r \circ n)$;</li>
+		<li>$(\forall r\,s \in R, m \in M) \, (r + s) \circ m = (r \circ m) \star (s \circ m)$.</li>
+	</ul>
+	<p>
+		We typically write $+$ for $\star$ and $\cdot$ for $\circ$. These functions shouldn't be confused with the operations $+$ and $\cdot$ of the ring. In the case the ring $(R,+,\cdot)$ is a field, we sometimes call an $R$-module an $R$-<b>vector space</b>.
+	</p>
+
+	<p>
+		<a href="../..">..</a>
+		<a href="../groupoids-and-categories">&rightarrow;</a>
 	</p>
 </body>
 </html>
