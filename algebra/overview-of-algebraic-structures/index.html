@@ -5,6 +5,7 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\HH}{\mathbb{H}}
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\const}{\operatorname{const}}
 \]
@@ -112,11 +113,11 @@
 	</p>
 
 	<p>
-		Examples of rings are the ring $(\ZZ,+,\cdot)$ of integers, the ring $(\QQ,+,\cdot)$ of rational numbers and the ring $(\RR,+,\cdot)$ of real numbers. These are all also commutative, and the latter example is also a field. Non-examples are the even integers $(2\ZZ,+,\cdot)$, as there is no multiplicative identity (identity for $\cdot$), and the natural numbers $(\NN,+,\cdot)$, as there are no negatives (inverses for $+$). These are a <i>rng</i> (pronounced: rung) and a <i>rig</i> respectively.
+		Examples of rings are the ring $(\ZZ,+,\cdot)$ of integers, the ring $(\QQ,+,\cdot)$ of rational numbers and the ring $(\RR,+,\cdot)$ of real numbers. These are all also commutative, and the latter example is also a field. Non-examples are the even integers $(2\ZZ,+,\cdot)$, as there is no multiplicative identity (identity for $\cdot$), and the natural numbers $(\NN,+,\cdot)$, as there are no negatives (inverses for $+$). These are a <i>rng</i> (pronounced: rung) and a <i>rig</i> respectively. An example of a division ring that is not a field is the ring of quaternions $(\HH,+,\cdot)$, which is build from the reals by adding numbers $i,j,k$ satisfying $i^2 = j^2 = k^2 = -1$ and $ij = -ji = k$.
 	</p>
 
 	<p>
-		Typically, the operation of a group is denoted $\cdot$ and the operation of an Abelian group is denoted $+$. We write the first and second operation of a ring as $+$ and $\cdot$ respectively. We typically write $0$ for the identity of any operation denoted $+$ and $1$ for the identity of any operation denoted $\cdot$. If inverses for $+$ or $\cdot$ are unique (e.g. if they are associative as part of a ring), then we write $-a$ for the inverse of an element $a$ with respect to $+$ and $a^{-1}$ for the inverse of $a$ with respect to $\cdot$, provided those inverses exist. Another important kind of ring is an integral domain. A ring $(R,+,\cdot)$ is an <b>integral domain</b> iff $(\forall a\,b \in R) a \cdot b = 0 \implies a = 0 \vee b = 0$. here, $\implies$ means <i>implies</i> and $\vee$ means <i>or</i>, and $\vee$ has higher precedence than $\implies$. So this reads <i>For all elements $a$ and $b$ of $R$, if $a \cdot b = 0$, then $a = 0$ or $b = 0$</i>.
+		Typically, the operation of a group is denoted $\cdot$ and the operation of an Abelian group is denoted $+$. We write the first and second operation of a ring as $+$ and $\cdot$ respectively. We typically write $0$ for the identity of any operation denoted $+$ and $1$ for the identity of any operation denoted $\cdot$. If inverses for $+$ or $\cdot$ are unique (e.g. if they are associative as part of a ring), then we write $-a$ for the inverse of an element $a$ with respect to $+$ and $a^{-1}$ for the inverse of $a$ with respect to $\cdot$, provided those inverses exist. Another important kind of ring is an integral domain. A cring $(R,+,\cdot)$ is an <b>integral domain</b> iff $(\forall a\,b \in R) \, a \cdot b = 0 \implies a = 0 \vee b = 0$. here, $\implies$ means <i>implies</i> and $\vee$ means <i>or</i>, and $\vee$ has higher precedence than $\implies$. So this reads <i>For all elements $a$ and $b$ of $R$, if $a \cdot b = 0$, then $a = 0$ or $b = 0$</i>.
 	</p>
 
 	<h2>Modules</h2>
