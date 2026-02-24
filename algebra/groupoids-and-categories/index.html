@@ -32,7 +32,35 @@
 	</p>
 
 	<p>
-		A <b>groupoid</b> is a collection $A$. We write $a \in A$ for <i>$a$ is an element of the groupoid $A$</i>. For elements $a$ and $b$ of $A$, there is a set $\Id_A(a,b)$ called the set of <b>identifications</b> of $a$ and $b$. We write $p \in \Id_A(A,b)$, $p: a = b$ or $p: a \squigrightarrow b$ to denote $p$ is an identification of $a$ with $b$, sometimes referred to as a <b>path</b> from $a$ to $b$. For any element $a \in A$, there is an identification $\rfl_a \in \Id_A(a,a)$ called <b>reflexivity</b>. Further, to prove or construct something for any path from a given element $a$, it is sufficient to define it for the path $\rfl_a$ (this is called the <b>J-rule</b> of groupoids).
+		A <b>groupoid</b> is a collection $A$. We write $a \in A$ for <i>$a$ is an element of the groupoid $A$</i>. For elements $a$ and $b$ of $A$, there is a set $\Id_A(a,b)$ called the set of <b>identifications</b> of $a$ and $b$. We write $p \in \Id_A(a,b)$, $p: a = b$ or $p: a \rightsquigarrow b$ to denote $p$ is an identification of $a$ with $b$, sometimes referred to as a <b>path</b> from $a$ to $b$. For any element $a \in A$, there is an identification $\rfl_a \in \Id_A(a,a)$ called <b>reflexivity</b>. Further, to prove or construct something for any path from a given element $a$, it is sufficient to prove or construct it for the path $\rfl_a$ (this is called the <b>J-rule</b> of groupoids).
+	</p>
+
+	<p>
+		The J-rule might be a bit confusing for groupoids, so let's look at some examples.
+	</p>
+	
+	<p>
+		Suppose we have a path $p: a \rightsquigarrow b$ and we want to construct a path $p^{-1}: b \rightsquigarrow a$ in the other direction. As we want to construct something for any path from $a$, it is sufficient to define it for the path $\rfl_a: a \rightsquigarrow a$. We can define the path $\rfl_a^{-1}: a \rightsquigarrow a$ going in the other direction by $\rfl_a^{-1} := \rfl_a$. This completes the construction. The path $p^{-1}$ is called the <b>inverse</b> of $p$ and acts as the groupoid's <i>symetry law</i>.
+	</p>
+
+	<p>
+		As another example, suppose we have a path $p: a \rightsquigarrow b$ and a path $q: b \rightsquigarrow c$ and we want to construct a path $q \cdot p: a \rightsquigarrow c$. As we want to define something for any path $p$ out of $a$, it is sufficient to define it for the path $\rfl_a: a \rightsquigarrow a$. In this case, we have a path $q: a \rightsquigarrow c$ and we want to define a path $q \cdot \rfl_a: a \rightsquigarrow c$. We can define this path by $q \cdot \rfl_a := q$. The path $q \cdot p$ is called the <b>concatenation</b> of $p$ and $q$. It acts as the groupoid's <i>transitivity law</i>.
+	</p>
+
+	<p>
+		As for a non-example, suppose we want to prove, for any path $p: a \rightsquigarrow a$, that $p = \rfl_a$. The following argument does not work:
+	</p>
+
+	<p>
+		<i>As we want to prove something for any path $p: a \rightsquigarrow a$, it is sufficient to prove it for the path $\rfl_a: a \rightsquigarrow a$. As $\rfl_a$ belongs to the set $\Id_A(a,a)$, and the identity relation on sets is reflexive, we have $\rfl_a = \rfl_a$. This completes the proof.</i>
+	</p>
+
+	<p>
+		The flaw in the argument might be hard to spot. In the argument above, we didn't want to prove something for every path out of $a$, but only for every path $p: a \rightsquigarrow a$. If we considered every path $p: a \rightsquigarrow b$, then the sentence "$p$ is equal to $\rfl_a$" doesn't make sense anymore: $p$ belongs to the set $\Id_A(a,b)$, and $\rfl_a$ belongs to the set $\Id_A(a,a)$. Though these two sets are equal, we do need an identification of these sets to treat elements of one set as elements of the other, and there is no identification that works here.
+	</p>
+
+	<p>
+		It turns out it is not possible to prove any identification in $\Id_A(a,a)$ is equal to $\rfl_a$. To give an example for where this isn't the case, consider the set $\Id(2,2)$ of identifications of the set $2$ with itself. There is an identification $\rfl_2$, which identifies $0_2$ with $0_2$ and $1_2$ with $1_2$, but there also is an identification $\neg$, which identifies $0_2$ with $1_2$ and $1_2$ with $0_2$.
 	</p>
 
 	<p>
