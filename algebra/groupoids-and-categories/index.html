@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Id}{\textrm{Id}}
+\newcommand{\rfl}{\textrm{rfl}}
+\]
+<head>
+	<title>Groupoids and Categories - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+	
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Groupoids and Categories</h1>
+	<h2>Groupoids</h2>
+	<p>
+		Suppose we have sets $3 = \{0_3,1_3,2_3\}$ and $S = \{\triangle,\square\}$. These sets are clearly distinct: $3$ contains three elements, while $S$ contains two. So, for example, the sentence $(\forall a\,b\,c \in A) \, a=b \vee b=c \vee a=c$ would be true for $A = S$ but false for $A = 3$. Now consider the sets $2 = \{0_1,0_2\}$ and $S = \{\triangle,\square\}$. At first glance, it might seem that these two sets are still distinct: they contain different elements. But what does "different" mean here really? We cannot ask whether elements of different sets are equal: the identity relation is defined <i>within</i> a set. We have given the elements different symbols, but whether you use 4 to refer to the real number four or IV, it doesn't change the fact that it is the number four. For any sentence we could think of, for example the sentence $(\exists a \in A) \, a = a$, either it is true for both $A = 2$ and $A = S$, or neither $A = 2$ or $A = S$. So, saying that $2$ and $S$ are different sets seems to be not entirely correct. On the other hand, if $2$ and $S$ are merely equal, we would get that $(\forall a \in 2) \, (\exists b \in S) \, a = b$ (this holds when replacing $S$ with $2$, and equal elements (in this case, sets) are interchangable), but would $0_2$ equal $\triangle$ and $1_2$ equal $\square$, or would $1_2$ equal $\triangle$ and $0_2$ equal $\triangle$? There doesn't seem to be a clear answer to this, so saying that $2$ and $S$ are merely equal also seems to be not entirely correct.
+	</p>
+
+	<p>
+		This paradox can be resolved as follows: instead of saying two sets $A$ and $B$ are either merely equal or not equal, we say that for any two sets $A$ and $B$ there is a <i>set of identifications</i> $\Id(A,B)$. If $A$ and $B$ are equal, then the set of identifications $\Id(A,B)$ has at least one element, and if $A$ and $B$ are not equal, then the set of identifications is empty. In the example above, the set of identifications $\Id(2,S)$ has two elements. One identifies $0_2$ with $\triangle$ and $1_2$ with $\square$, and the other identifies $0_2$ with $\square$ and $1_2$ with $\triangle$. So, sets seem to live in a collection in which any two elements have a set of identifications. Such a collection is called a <i>groupoid</i>.
+	</p>
+
+	<p>
+		A <b>groupoid</b> is a collection $A$. We write $a \in A$ for <i>$a$ is an element of the groupoid $A$</i>. For elements $a$ and $b$ of $A$, there is a set $\Id_A(a,b)$ called the set of <b>identifications</b> of $a$ and $b$. We write $p \in \Id_A(A,b)$, $p: a = b$ or $p: a \squigrightarrow b$ to denote $p$ is an identification of $a$ with $b$, sometimes referred to as a <b>path</b> from $a$ to $b$. For any element $a \in A$, there is an identification $\rfl_a \in \Id_A(a,a)$ called <b>reflexivity</b>. Further, to prove or construct something for any path from a given element $a$, it is sufficient to define it for the path $\rfl_a$ (this is called the <b>J-rule</b> of groupoids).
+	</p>
+
+	<p>
+		WIP
+	</p>
+
+	<p>
+		<a href="../overview-of-algebraic-structures">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../groups">&rightarrow;</a>
+	</p>
+</body>
+</html>
