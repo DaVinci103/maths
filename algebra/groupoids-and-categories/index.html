@@ -3,7 +3,10 @@
 \[
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\Id}{\textrm{Id}}
-\newcommand{\rfl}{\textrm{rfl}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\rfl}{\textsf{rfl}}
+\newcommand{\Set}{\textsf{Set}}
+\newcommand{\Bi}{\textrm{Bi}}
 \]
 <head>
 	<title>Groupoids and Categories - DV103</title>
@@ -14,7 +17,7 @@
 		loader: {load: ['[tex]/html']},
 		tex: {
 			inlineMath: {'[+]': [['$', '$']]},
-			packages: {'[+]': ['html', 'ams']}
+			packages: {'[+]': ['html', 'ams', 'stix']}
 		},
 	};
 	</script>
@@ -28,7 +31,7 @@
 	</p>
 
 	<p>
-		This paradox can be resolved as follows: instead of saying two sets $A$ and $B$ are either merely equal or not equal, we say that for any two sets $A$ and $B$ there is a <i>set of identifications</i> $\Id(A,B)$. If $A$ and $B$ are equal, then the set of identifications $\Id(A,B)$ has at least one element, and if $A$ and $B$ are not equal, then the set of identifications is empty. In the example above, the set of identifications $\Id(2,S)$ has two elements. One identifies $0_2$ with $\triangle$ and $1_2$ with $\square$, and the other identifies $0_2$ with $\square$ and $1_2$ with $\triangle$. So, sets seem to live in a collection in which any two elements have a set of identifications. Such a collection is called a <i>groupoid</i>.
+		This paradox can be resolved as follows: instead of saying two sets $A$ and $B$ are either merely equal or not equal, we say that for any two sets $A$ and $B$ there is a <i>set of identifications</i> $\Id_{\Set}(A,B)$. If $A$ and $B$ are equal, then the set of identifications $\Id_{\Set}(A,B)$ has at least one element, and if $A$ and $B$ are not equal, then the set of identifications is empty. In the example above, the set of identifications $\Id_{\Set}(2,S)$ has two elements. One identifies $0_2$ with $\triangle$ and $1_2$ with $\square$, and the other identifies $0_2$ with $\square$ and $1_2$ with $\triangle$. So, sets seem to live in a collection in which any two elements have a set of identifications. Such a collection is called a <i>groupoid</i>.
 	</p>
 
 	<p>
@@ -56,15 +59,39 @@
 	</p>
 
 	<p>
-		The flaw in the argument might be hard to spot. In the argument above, we didn't want to prove something for every path out of $a$, but only for every path $p: a \rightsquigarrow a$. If we considered every path $p: a \rightsquigarrow b$, then the sentence "$p$ is equal to $\rfl_a$" doesn't make sense anymore: $p$ belongs to the set $\Id_A(a,b)$, and $\rfl_a$ belongs to the set $\Id_A(a,a)$. Though these two sets are equal, we do need an identification of these sets to treat elements of one set as elements of the other, and there is no identification that works here.
+		The flaw in the argument might be hard to spot. In the argument above, we didn't want to prove something for every path out of $a$, but only for every path $p: a \rightsquigarrow a$. If we considered every path $p: a \rightsquigarrow b$, then the sentence "$p$ is equal to $\rfl_a$" doesn't make sense anymore: $p$ belongs to the set $\Id_A(a,b)$, and $\rfl_a$ belongs to the set $\Id_A(a,a)$. Though these two sets are equal, we do need an identification of these sets to treat elements of one set as elements of the other, and there is no identification that works here. More fundamentally, the flaw in the proof above is that the end-point of a path $p: a \rightsquigarrow a$ isn't <i>free</i>: it must be $a$ and can only be $a$. The J-rule may only be applied on paths for which the end-point is free. I.e. paths $p: a \rightsquigarrow b$ with no restrictions on $b$.
 	</p>
 
 	<p>
-		It turns out it is not possible to prove any identification in $\Id_A(a,a)$ is equal to $\rfl_a$. To give an example for where this isn't the case, consider the set $\Id(2,2)$ of identifications of the set $2$ with itself. There is an identification $\rfl_2$, which identifies $0_2$ with $0_2$ and $1_2$ with $1_2$, but there also is an identification $\neg$, which identifies $0_2$ with $1_2$ and $1_2$ with $0_2$.
+		It turns out it is not possible to prove any identification in $\Id_A(a,a)$ is equal to $\rfl_a$. To give an example for where this isn't the case, consider the set $\Id_{\Set}(2,2)$ of identifications of the set $2$ with itself. There is an identification $\rfl_2$, which identifies $0_2$ with $0_2$ and $1_2$ with $1_2$, but there also is an identification $\neg$, which identifies $0_2$ with $1_2$ and $1_2$ with $0_2$.
 	</p>
 
 	<p>
-		WIP
+		I want to give a few more important application of the J-rule. First, suppose we have paths $a \overset{p}{\rightsquigarrow} b \overset{q}{\rightsquigarrow} c \overset{r}{\rightsquigarrow} d$. Consider the two paths $(r \cdot q) \cdot p$ and $r \cdot (q \cdot p)$ from $a$ to $d$. We can prove these two paths are equal. As the end-points of $p,q,r$ are all free, we can apply the J-rule to all of them to simplify the situation to $a \overset{\rfl_a}{\rightsquigarrow} a \overset{\rfl_a}{\rightsquigarrow} a \overset{\rfl_a}{\rightsquigarrow} a$, and we want to prove $(\rfl_a \cdot \rfl_a) \cdot \rfl_a = \rfl_a \cdot (\rfl_a \cdot \rfl_a)$. As we have defined $q \cdot \rfl_a := q$, both expressions simplify to $\rfl_a$. So, we want to prove $\rfl_a = \rfl_a$, which is immediate from reflexivity of the identity relation on sets. This means that path concatenation is <b>associative</b>. Second, suppose we have a path $p: a \rightsquigarrow b$. We want to prove $p^{-1} \cdot p = \rfl_a$ and $p \cdot p^{-1} = \rfl_b$. We again apply the J-rule and the definition of path concatenation and path inversion to simplify both these equations to $\rfl_a = \rfl_a$ which is again immediate from reflexivity of the identity relation on the set $\Id_A(a,a)$. This means that $p^{-1}$ is an <b>inverse</b> for $p$ with respect to path concatenation. Last, given a path $p: a \rightsquigarrow b$, we can prove $\rfl_b \cdot p = p$ in again the same way. As we have $q \cdot \rfl_a = q$ by definition, this means that $\rfl_a$ is an <b>identity</b> element for path concatenation.
+	</p>
+
+	<p>
+		Note that, as the proof above applies to all paths, in particular, it applies to loops, i.e. paths from $a$ to $a$ for some $a$. We have proven $(\Id_A(a,a),\cdot)$ is a <i>group</i>, with identity element $\rfl_a$ and inverses given by path inversion. Note that we could only prove $(\Id_A(a,a),\cdot)$ is a group because we could prove (and, importantly, state) the equations of a group for paths with free end-points. We could only prove $(r \cdot q) \cdot p = r \cdot (q \cdot p)$ for any three loops $p\,q\,r: a \rightsquigarrow a$ because we could prove it for any three paths. We couldn't prove $p = \rfl_a$ for any loop $p$ because we couldn't prove, or even state it for any path $p$. One of the main reasons we study groups is because they arise naturally like this as a structure containing the ways in which an object is equal to itself (what we here call <i>identifications</i> of an object with itself are within the context of group theory called <i>symmetries</i> of that object).
+	</p>
+
+	<p>
+		Now that we have defined groupoids, we want to formally define the <i>groupoid of sets</i> $\Set$. But first, a bit more background on sets:
+	</p>
+
+	<p>
+		Suppose we have sets $A$ and $B$ and a function $f: A \to B$. We call this function a <b>surjection</b>, denoted $f: A \twoheadrightarrow B$, iff $(\forall b \in B) \, (\exists a \in A) \, f(a) = b$. I.e. if every element of $B$ is mapped onto by at least one element of $A$. We call $f$ an <b>injection</b>, denoted by $f: A \hookrightarrow B$, iff $(\forall a\,b \in A) \, f(a) = f(b) \implies a = b$. I.e. if arguments of the function can be discerned from the function values, or if every element of $B$ is mapped onto by at most one element of $A$. We call $f$ a <b>bijection</b>, denoted $f: A \similarrightarrow B$, iff it is both an injection and a surjection. I.e. if every element of $B$ is mapped onto by $f$ exactly once. Further, suppose we have sets $A$, $B$ and $C$ and functions $f: A \to B$ and $g: B \to C$. We define a function $g \circ f: A \to C$, called the <b>composition</b> of $f$ and $g$, by $(g \circ f)(a) := g(f(a))$ for $a \in A$. Then, $f: A \to B$ is a bijection iff there exists a function $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. In which case, $g$ is unique, is called the <b>inverse</b> of $f$ and is denoted $f^{-1}$. I recommend doing the exercises in <a href="../../elementary-set-theory/sets-and-functions">Sets and Functions</a> from the section Elementary Set Theory.
+	</p>
+
+	<p>
+		We write $\Bi(A,B)$ for the set of bijections from $A$ to $B$. In the <b>groupoid of sets</b> $\Set$, elements are sets. For sets $A$ and $B$, using the J-rule, we define a function $e_{A,B}: \Id_{\Set}(A,B) \to \Bi(A,B)$ by setting $e_{A,A}(\rfl_A) := \id_A$. We assume $e_{A,B}$ is a bijection. In other words, an identification of a set $A$ with a set $B$ is a bijection from $A$ to $B$.
+	</p>
+
+	<p>
+		I won't go into the details, but with the J-rule, we can prove that $e_{A,C}(q \cdot p) = e_{B,C}(q) \circ e_{A,B}(p)$ and $e_{B,A}(p^{-1}) = e_{A,B}(p)^{-1}$ for $p: A \rightsquigarrow B$ and $q: B \rightsquigarrow C$.
+	</p>
+
+	<p>
+		W.I.P
 	</p>
 
 	<p>
