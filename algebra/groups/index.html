@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+\[
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Id}{\textrm{Id}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\rfl}{\textsf{rfl}}
+\newcommand{\Set}{\textsf{Set}}
+\newcommand{\Bi}{\textrm{Bi}}
+\]
+<head>
+	<title>Groupoids and Categories - DV103</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	
+	<script>
+	MathJax = {
+		loader: {load: ['[tex]/html']},
+		tex: {
+			inlineMath: {'[+]': [['$', '$']]},
+			packages: {'[+]': ['html', 'ams', 'stix']}
+		},
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<h1>Groups</h1>
+	<p>
+		WIP
+	</p>
+
+	<div class="box">
+	<svg width="600" height="600">
+		<defs>
+		<filter id="shadow" filterUnits="userSpaceOnUse" width="1000" height="1000">
+		<feGaussianBlur in="SourceAlpha" stdDeviation="4"></feGaussianBlur>
+		<feBlend in="SourceGraphic" in2="blurOut"></feBlend>
+		</filter>
+		</defs>
+
+		<g class="rhombus" id="rhombush"><g class="rhombus" id="rhombusv"><g class="rhombus" id="rhombusr">
+		<g filter="url(#shadow)">
+		<polygon points="300 150, 560 300, 300 450, 40 300" fill="var(--ctp-mocha-mauve)" />
+		</g>
+
+	    <text x="300" y="300" fill="var(--ctp-mocha-text)" font-size="100px" dominant-baseline="middle" text-anchor="middle" style="text-shadow:0 0 4px black" font-style="italic" font-family="serif">A</text>
+		</g></g></g>
+	</svg>
+
+	<div style="text-align:center">
+	<button onclick="reset()"><svg width="60" height="60">
+		<g filter="url(#shadow)">
+		<polygon points="30 15, 56 30, 30 45, 4 30" fill="var(--ctp-mocha-red)" />
+		</g>
+		<text x="30" y="30" fill="var(--ctp-mocha-text)" font-size="15px" dominant-baseline="middle" text-anchor="middle" style="text-shadow:0 0 4px black" font-style="italic" font-weight="1000" font-family="sans-serif">R</text>
+	</svg></button>
+
+	<button><svg width="60" height="60">
+		<g filter="url(#shadow)">
+		<polygon points="30 15, 56 30, 30 45, 4 30" fill="var(--ctp-mocha-red)" />
+		</g>
+		<g filter="url(#shadow)">
+	    <circle cx="30" cy="30" r="2" fill="var(--ctp-mocha-text)" >
+		</g>
+	</svg></button>
+
+	<button onclick="flip_hor()"><svg width="60" height="60">
+		<g filter="url(#shadow)">
+		<polygon points="30 15, 56 30, 30 45, 4 30" fill="var(--ctp-mocha-red)" />
+		</g>
+		<g filter="url(#shadow)">
+		<line x1="0" y1="30" x2="60" y2="30" stroke="var(--ctp-mocha-text)" stroke-width="2px" />
+		</g>
+	</svg></button>
+
+	<button onclick="flip_ver()"><svg width="60" height="60">
+		<g filter="url(#shadow)">
+		<polygon points="30 15, 56 30, 30 45, 4 30" fill="var(--ctp-mocha-red)" />
+		</g>
+		<g filter="url(#shadow)">
+		<line x1="30" y1="10" x2="30" y2="50" stroke="var(--ctp-mocha-text)" stroke-width="2px" />
+		</g>
+	</svg></button>
+
+	<button onclick="rotate()"><svg width="60" height="60">
+		<g filter="url(#shadow)">
+		<polygon points="30 15, 56 30, 30 45, 4 30" fill="var(--ctp-mocha-red)" />
+		</g>
+		<g filter="url(#shadow)">
+	    <circle cx="30" cy="30" r="5" fill="none" stroke="var(--ctp-mocha-text)" stroke-width="2px" >
+		</g>
+	</svg></button>
+	</div>
+	</div>
+
+	<p>
+		<a href="../groupoids-and-categories">&leftarrow;</a>
+		<a href="../..">..</a>
+		<a href="../abelian-groups">&rightarrow;</a>
+	</p>
+</body>
+</html>
