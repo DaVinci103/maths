@@ -1,0 +1,27 @@
+.rhombus{
+	transform-origin: 300px 300px;
+	transition: 0.5s;
+}
+
+#rhombush.h {
+	transform: scaleY(-1);
+}
+
+#rhombusv.v {
+	transform: scaleX(-1);
+}
+
+#rhombusr.r {
+	transform: rotate(180deg);
+}
+
+button {
+	background: var(--ctp-mocha-mantle);
+	border: 2px solid #00000000;
+	padding: 0;
+}
+
+button:hover {
+	border: 2px solid var(--ctp-mocha-text);
+	box-shadow: 0 0 2px var(--ctp-mocha-text);
+}
