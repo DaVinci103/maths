@@ -3,10 +3,20 @@
 \[
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\Id}{\textrm{Id}}
+\newcommand{\Idt}{\texttt{Id}}
+\newcommand{\dott}{\texttt{.}}
+\newcommand{\invt}{\texttt{'}}
 \newcommand{\id}{\textrm{id}}
+\newcommand{\idt}{\texttt{1}}
 \newcommand{\rfl}{\textsf{rfl}}
 \newcommand{\Set}{\textsf{Set}}
+\newcommand{\Card}{\textsf{Card}}
 \newcommand{\Bi}{\textrm{Bi}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\Ob}{\textrm{Ob}}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\Iso}{\textrm{Iso}}
+\newcommand{\similarrightarrow}{\mathrel{⥲}}
 \]
 <head>
 	<title>Groupoids and Categories - DV103</title>
@@ -17,7 +27,7 @@
 		loader: {load: ['[tex]/html']},
 		tex: {
 			inlineMath: {'[+]': [['$', '$']]},
-			packages: {'[+]': ['html', 'ams', 'stix']}
+			packages: {'[+]': ['html', 'ams']}
 		},
 	};
 	</script>
@@ -27,7 +37,7 @@
 	<h1>Groupoids and Categories</h1>
 	<h2>Groupoids</h2>
 	<p>
-		Suppose we have sets $3 = \{0_3,1_3,2_3\}$ and $S = \{\triangle,\square\}$. These sets are clearly distinct: $3$ contains three elements, while $S$ contains two. So, for example, the sentence $(\forall a\,b\,c \in A) \, a=b \vee b=c \vee a=c$ would be true for $A = S$ but false for $A = 3$. Now consider the sets $2 = \{0_1,0_2\}$ and $S = \{\triangle,\square\}$. At first glance, it might seem that these two sets are still distinct: they contain different elements. But what does "different" mean here really? We cannot ask whether elements of different sets are equal: the identity relation is defined <i>within</i> a set. We have given the elements different symbols, but whether you use 4 to refer to the real number four or IV, it doesn't change the fact that it is the number four. For any sentence we could think of, for example the sentence $(\exists a \in A) \, a = a$, either it is true for both $A = 2$ and $A = S$, or neither $A = 2$ or $A = S$. So, saying that $2$ and $S$ are different sets seems to be not entirely correct. On the other hand, if $2$ and $S$ are merely equal, we would get that $(\forall a \in 2) \, (\exists b \in S) \, a = b$ (this holds when replacing $S$ with $2$, and equal elements (in this case, sets) are interchangable), but would $0_2$ equal $\triangle$ and $1_2$ equal $\square$, or would $1_2$ equal $\triangle$ and $0_2$ equal $\triangle$? There doesn't seem to be a clear answer to this, so saying that $2$ and $S$ are merely equal also seems to be not entirely correct.
+		Suppose we have sets $3 = \{0_3,1_3,2_3\}$ and $S = \{\triangle,\square\}$. These sets are clearly distinct: $3$ contains three elements, while $S$ contains two. So, for example, the sentence $(\forall a\,b\,c \in A) \, a=b \vee b=c \vee a=c$ would be true for $A = S$ but false for $A = 3$. Now consider the sets $2 = \{0_1,0_2\}$ and $S = \{\triangle,\square\}$. At first glance, it might seem that these two sets are still distinct: they contain different elements. But what does "different" mean here? We cannot ask whether elements of different sets are equal: the identity relation is defined <i>within</i> a set. We have given the elements different symbols, but whether you use 4 to refer to the real number four or IV, it doesn't change the fact that it's the real number four. For any sentence we could think of, for example the sentence $(\exists a \in A) \, a = a$, either it is true for both $A = 2$ and $A = S$, or neither $A = 2$ or $A = S$. So, saying that $2$ and $S$ are different sets seems to be not entirely correct. On the other hand, if $2$ and $S$ are merely equal, we would get that $(\forall a \in 2) \, (\exists b \in S) \, a = b$ (this holds when replacing $S$ with $2$, and equal elements (in this case, sets) are interchangable), but would $0_2$ equal $\triangle$ and $1_2$ equal $\square$, or would $1_2$ equal $\triangle$ and $0_2$ equal $\triangle$? There doesn't seem to be a clear answer to this, so saying that $2$ and $S$ are merely equal also seems to be incorrect, or at least this answer is incomplete.
 	</p>
 
 	<p>
@@ -59,7 +69,7 @@
 	</p>
 
 	<p>
-		The flaw in the argument might be hard to spot. In the argument above, we didn't want to prove something for every path out of $a$, but only for every path $p: a \rightsquigarrow a$. If we considered every path $p: a \rightsquigarrow b$, then the sentence "$p$ is equal to $\rfl_a$" doesn't make sense anymore: $p$ belongs to the set $\Id_A(a,b)$, and $\rfl_a$ belongs to the set $\Id_A(a,a)$. Though these two sets are equal, we do need an identification of these sets to treat elements of one set as elements of the other, and there is no identification that works here. More fundamentally, the flaw in the proof above is that the end-point of a path $p: a \rightsquigarrow a$ isn't <i>free</i>: it must be $a$ and can only be $a$. The J-rule may only be applied on paths for which the end-point is free. I.e. paths $p: a \rightsquigarrow b$ with no restrictions on $b$.
+		The flaw in the argument might be hard to spot. In the argument above, we didn't want to prove something for every path out of $a$, but only for every path $p: a \rightsquigarrow a$. If we considered every path $p: a \rightsquigarrow b$, then the sentence "$p$ is equal to $\rfl_a$" doesn't make sense anymore: $p$ belongs to the set $\Id_A(a,b)$, and $\rfl_a$ belongs to the set $\Id_A(a,a)$. Though these two sets are equal, we do need an identification of these sets to treat elements of one set as elements of the other, and there is no identification that works here. More fundamentally, the flaw in the proof above is that the end-point of a path $p: a \rightsquigarrow a$ isn't <i>free</i>: it must be $a$. The J-rule may only be applied on paths for which the end-point is free. I.e. paths $p: a \rightsquigarrow b$ where $b$ is independent of $a$.
 	</p>
 
 	<p>
@@ -88,6 +98,65 @@
 
 	<p>
 		I won't go into the details, but with the J-rule, we can prove that $e_{A,C}(q \cdot p) = e_{B,C}(q) \circ e_{A,B}(p)$ and $e_{B,A}(p^{-1}) = e_{A,B}(p)^{-1}$ for $p: A \rightsquigarrow B$ and $q: B \rightsquigarrow C$.
+	</p>
+
+	<p>
+		Every set $X$ is a groupoid in which any two elements of $\Id_X(a,b)$ are equal, for any $a,b \in X$. I.e. if $\Id_X(a,b)$ is always either empty or a singleton (has exactly 0 or 1 elements). So, anything that we define for groupoids can also be applied to sets. Sets and groupoids belong to a more general collection of <i>types</i>. A <b>type</b> is a collection $A$ for which, for all $x,y \in A$, there is a type of identifications $\Id_A(x,y)$. Sets and groupoids are then a particular kind of type. A set is also called a 0-type and a groupoid is a 1-type. Generally, an $n+1$-type is a type $A$ for which, for all $a,b \in A$, $\Id_A(a,b)$ is an $n$-type. We won't use types in this section beyond 1-types. If you're interested in the study of types, I recommend searching for <a href="https://homotopytypetheory.org/">Homotopy Type Theory</a>.
+	</p>
+
+	<p>
+		If groupoids are still a bit too abstract to understand, one may replace every mention of a groupoid with a pregroupoid. A <b>pregroupoid</b> has the following data and conditions:
+	</p>
+
+	<ul>
+		<li>A set $A$ called the <b>domain</b>;</li>
+		<li>A function $\Idt: A \times A \to \Set$ that takes two elements $a,b \in A$ and returns a set $\Idt(a,b)$;</li>
+		<li>For any three elements $a,b,c \in A$ and any $p \in \Idt(a,b)$ and $q \in \Idt(b,c)$, we have some $q \dott p \in \Idt(a,c)$, $p \invt \in \Idt(b,a)$ and $\idt_a \in \Idt(a,a)$;</li>
+		<li>For any four elements $a,b,c,d \in A$ and any $p \in \Idt(a,b)$, $q \in \Idt(b,c)$ and $r \in \Idt(c,d)$, we have $(r \dott q) \dott p = r \dott (q \dott p)$, $p \invt \dott p = \idt_a$ and $p \dott p \invt = \idt_b$.</li>
+	</ul>
+
+	<p>
+		Note that $p \in \Idt(a,b)$ does not imply $a = b$ in $A$. The data of a pregroupoid mimicks that of a groupoid, but the rules of transitivity, symmetry, associativity and inverses are explicit in the definition instead of consequences of the J-rule.
+	</p>
+
+	<p>
+		There's still the issue of size to deal with. Given a groupoid $G$, we can define its set-trunctation $\|G\|_0$, which is a set with the same elements as $G$, and where $a = b$ holds in $\|G\|_0$ iff $\Id_G(a,b)$ has an element. For example, $\|\Set\|_0$ is a set, usually denoted $\Card$. However, this creates a paradox. I won't prove this here, but for any set $A$, we can define a family of sets $B_a$ for $a \in A$ that are all distinct (if there is some identification $p: B_a = B_b$, then $a = b$). Therefore, for any set $A$, $A$ is smaller than $\Card$. Also, for any set $A$, we can define a set $\mathcal{P}(A)$ strictly larger than $A$. This implies that $\mathcal{P}(\Card)$ is simultaneously smaller than $\Card$ and strictly larger than $\Card$, a contradiction. We resolve this paradox with the notion of a universe:
+	</p>
+
+	<p>
+		A <b>universe</b> $\mathcal{U}$ is a collection of types closed under a certain list of operations. Given a universe $\mathcal{U}$, we can define a collection of sets $\Set_{\mathcal{U}}$ in $\mathcal{U}$. This collection is itself not in the universe $\mathcal{U}$, but is in the next universe $\mathcal{U}^+$. When going through the paradox above, we see that $\textsf{Card}_{\mathcal{U}}$ is larger than any element of $\textsf{Set}_{\mathcal{U}}$ and itself not in $\textsf{Set}_{\mathcal{U}}$, so we cannot argue $\Card_{\mathcal{U}}$ is larger than $\mathcal{P}(\textsf{Card}_{\mathcal{U}})$ and the argument of the paradox does not go through.
+	</p>
+
+	<p>
+		We fix a universe $\mathcal{U}$ and we write $\Set$, $\Card$, etc, for $\Set_{\mathcal{U}}$, $\Card_{\mathcal{U}}$, etc.
+	</p>
+
+	<h2>Categories</h2>
+	<p>
+		A category is to a groupoid what a monoid is to a group. A <b>precategory</b> $\cC$ has the following data and conditions:
+	</p>
+	<ul>
+		<li>A groupoid $\cC_0$ of <b>objects</b>. We write $A \in \cC$ for $A \in \cC_0$;</li>
+		<li>For any two objects $A,B \in \cC$, a set $\cC(A,B)$ of <b>arrows</b>, <b>morphisms</b> or <b>homomorphisms</b>. We write $f: A \to B$ for $f \in \cC(A,B)$;</li>
+		<li>For any two arrows $f: A \to B$ and $g: B \to C$, a <b>composite</b> arrow $g \circ h: A \to C$;</li>
+		<li>For any object $A \in \cC$, an <b>identity</b> arrow $\id_A: A \to A$;</li>
+		<li>For any arrow $f: A \to B$, we have $f \circ \id_A = f$ and $\id_B \circ f = f$;</li>
+		<li>For any three arrows $f: A \to B$, $g: B \to C$ and $h: C \to D$, we have $(h \circ g) \circ f = h \circ (g \circ f)$.</li>
+	</ul>
+	<p>
+		A <b>set-precategory</b> is a precategory $\cC$ where $\cC_0$ is a set. We sometimes write $\Ob(\cC)$ for $\cC_0$ and $\Hom_\cC(A,B)$ or $\Hom(A,B)$ for $\cC(A,B)$.
+	</p>
+
+	<p>
+		In a precategory $\cC$, an <b>isomorphism</b> from an object $A$ to an object $B$ is an arrow $f: A \to B$ for which there exists an arrow $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. In which case, we write $f: A \similarrightarrow B$, we call $g$ the <b>inverse</b> of $f$ and write $g = f^{-1}$. We write $\Iso_{\cC}(A,B)$ or $\Iso(A,B)$ for the collection of isomorphisms between $A$ and $B$. Note that $\id_A$ is an isomorphism as it is its own inverse.
+	</p>
+
+	<p>
+		Using the J-rule, we define a function $e_{A,B}: \Id_{\cC_0}(A,B) \to \Iso_{\cC}(A,B)$ by $e_{A,A}(\rfl_A) := \id_A$. If, for any $A,B \in \cC_0$, $e_{A,B}$ is a bijection, then we call $\cC$ a <b>category</b>. Categories and set-precategories are mostly interchangable, just like groupoids and pregroupoids.
+	</p>
+
+	<p>
+		The prime example of a category is the category $\Set$ of sets. The underlying groupoid $\Set_0$ is the groupoid of sets. For sets $A,B \in \Set$, we define $\Set(A,B) := [A,B]$ to be the set of functions from $A$ to $B$. For functions $f: A \to B$ and $g: B \to C$, $g \circ f$ is the usual composition $(g \circ f)(a) = g(f(a))$ and $\id_A$ is the usual identity $\id_A(a) = a$. By definition, $\Iso_{\Set}(A,B) = \Bi(A,B)$. The function $e: \Id \to \Iso$ defined above is the same function as $e: \Id \to \Bi$ defined in the previous part, which we assumed to be bijective. So, $\Set$ is indeed a category as opposed to a precategory.
 	</p>
 
 	<p>
