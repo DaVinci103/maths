@@ -37,7 +37,7 @@
 	<h1>Groupoids and Categories</h1>
 	<h2>Groupoids</h2>
 	<p>
-		Suppose we have sets $3 = \{0_3,1_3,2_3\}$ and $S = \{\triangle,\square\}$. These sets are clearly distinct: $3$ contains three elements, while $S$ contains two. So, for example, the sentence $(\forall a\,b\,c \in A) \, a=b \vee b=c \vee a=c$ would be true for $A = S$ but false for $A = 3$. Now consider the sets $2 = \{0_1,0_2\}$ and $S = \{\triangle,\square\}$. At first glance, it might seem that these two sets are still distinct: they contain different elements. But what does "different" mean here? We cannot ask whether elements of different sets are equal: the identity relation is defined <i>within</i> a set. We have given the elements different symbols, but whether you use 4 to refer to the real number four or IV, it doesn't change the fact that it's the real number four. For any sentence we could think of, for example the sentence $(\exists a \in A) \, a = a$, either it is true for both $A = 2$ and $A = S$, or neither $A = 2$ or $A = S$. So, saying that $2$ and $S$ are different sets seems to be not entirely correct. On the other hand, if $2$ and $S$ are merely equal, we would get that $(\forall a \in 2) \, (\exists b \in S) \, a = b$ (this holds when replacing $S$ with $2$, and equal elements (in this case, sets) are interchangable), but would $0_2$ equal $\triangle$ and $1_2$ equal $\square$, or would $1_2$ equal $\triangle$ and $0_2$ equal $\triangle$? There doesn't seem to be a clear answer to this, so saying that $2$ and $S$ are merely equal also seems to be incorrect, or at least this answer is incomplete.
+		Suppose we have sets $3 = \{0_3,1_3,2_3\}$ and $S = \{\triangle,\square\}$. These sets are clearly distinct: $3$ contains three elements, while $S$ contains two. So, for example, the sentence $(\forall a\,b\,c \in A) \, a=b \vee b=c \vee a=c$ would be true for $A = S$ but false for $A = 3$. Now consider the sets $2 = \{0_1,0_2\}$ and $S = \{\triangle,\square\}$. At first glance, it might seem that these two sets are still distinct: they contain different elements. But what does "different" mean here? We cannot ask whether elements of different sets are equal: the identity relation is defined <i>within</i> a set. We have given the elements different symbols, but whether you use 4 to refer to the real number four or IV, it doesn't change the fact that it's the real number four. For any sentence we could think of, for example the sentence $(\exists a \in A) \, a = a$, either it is true for both $A = 2$ and $A = S$, or neither $A = 2$ or $A = S$. So, saying that $2$ and $S$ are different sets seems to be not entirely correct. On the other hand, if $2$ and $S$ are merely equal, we would get that $(\forall a \in 2) \, (\exists b \in S) \, a = b$ (this holds when replacing $S$ with $2$, and equal elements (in this case, sets) are interchangable), but would $0_2$ equal $\triangle$ and $1_2$ equal $\square$, or would $1_2$ equal $\triangle$ and $0_2$ equal $\square$? There doesn't seem to be a clear answer to this, so saying that $2$ and $S$ are merely equal also seems to be incorrect, or at least this answer is incomplete.
 	</p>
 
 	<p>
@@ -64,7 +64,7 @@
 		As for a non-example, suppose we want to prove, for any path $p: a \rightsquigarrow a$, that $p = \rfl_a$. The following argument does not work:
 	</p>
 
-	<p>
+	<p style="padding-left:4em;padding-right:4em">
 		<i>As we want to prove something for any path $p: a \rightsquigarrow a$, it is sufficient to prove it for the path $\rfl_a: a \rightsquigarrow a$. As $\rfl_a$ belongs to the set $\Id_A(a,a)$, and the identity relation on sets is reflexive, we have $\rfl_a = \rfl_a$. This completes the proof.</i>
 	</p>
 
@@ -116,7 +116,7 @@
 	</ul>
 
 	<p>
-		Note that $p \in \Idt(a,b)$ does not imply $a = b$ in $A$. The data of a pregroupoid mimicks that of a groupoid, but the rules of transitivity, symmetry, associativity and inverses are explicit in the definition instead of consequences of the J-rule.
+		Note that $p \in \Idt(a,b)$ does not imply $a = b$ in $A$. The data of a pregroupoid mimicks that of a groupoid, but the rules of transitivity, symmetry, associativity, identity and inverses are explicit in the definition instead of consequences of the J-rule.
 	</p>
 
 	<p>
@@ -128,7 +128,7 @@
 	</p>
 
 	<p>
-		We fix a universe $\mathcal{U}$ and we write $\Set$, $\Card$, etc, for $\Set_{\mathcal{U}}$, $\Card_{\mathcal{U}}$, etc.
+		We fix a universe $\mathcal{U}$ and we write $\Set$, $\Card$, etc, for $\Set_{\mathcal{U}}$, $\Card_{\mathcal{U}}$, etc. We call types in $\mathcal{U}$, such as the set of natural numbers $\NN$ and a set of functions $[A,B]$, <b>small types</b>, and we call types outside of $\mathcal{U}$, such as $\Set$ and $\Card$, <b>large types</b>. Most sets we refer to are small sets and most groupoids we refer to are large but locally small groupoids (<i>locally small</i> means that $\Id_A(a,b)$ is a small set for all $a$ and $b$ in the groupoid $A$).
 	</p>
 
 	<h2>Categories</h2>
@@ -144,11 +144,11 @@
 		<li>For any three arrows $f: A \to B$, $g: B \to C$ and $h: C \to D$, we have $(h \circ g) \circ f = h \circ (g \circ f)$.</li>
 	</ul>
 	<p>
-		A <b>set-precategory</b> is a precategory $\cC$ where $\cC_0$ is a set. We sometimes write $\Ob(\cC)$ for $\cC_0$ and $\Hom_\cC(A,B)$ or $\Hom(A,B)$ for $\cC(A,B)$.
+		A <b>set-precategory</b> is a precategory $\cC$ where $\cC_0$ is a set. We sometimes write $\Ob(\cC)$ for $\cC_0$ and $\Hom_\cC(A,B)$ or $\Hom(A,B)$ for $\cC(A,B)$. A precategory $\cC$ is <b>locally small</b> iff, for all objects $A,B \in \cC$, the set $\cC(A,B)$ is small. A precategory $\cC$ is <b>small</b> iff it is locally small and $\cC_0$ is a small groupoid.
 	</p>
 
 	<p>
-		In a precategory $\cC$, an <b>isomorphism</b> from an object $A$ to an object $B$ is an arrow $f: A \to B$ for which there exists an arrow $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. In which case, we write $f: A \similarrightarrow B$, we call $g$ the <b>inverse</b> of $f$ and write $g = f^{-1}$. We write $\Iso_{\cC}(A,B)$ or $\Iso(A,B)$ for the collection of isomorphisms between $A$ and $B$. Note that $\id_A$ is an isomorphism as it is its own inverse.
+		In a precategory $\cC$, an <b>isomorphism</b> from an object $A$ to an object $B$ is an arrow $f: A \to B$ for which there exists an arrow $g: B \to A$ for which $g \circ f = \id_A$ and $f \circ g = \id_B$. In which case, we write $f: A \similarrightarrow B$, we call $g$ the <b>inverse</b> of $f$ and write $g = f^{-1}$. We write $\Iso_{\cC}(A,B)$ or $\Iso(A,B)$ for the collection of isomorphisms from $A$ to $B$. Note that $\id_A$ is an isomorphism as it is its own inverse.
 	</p>
 
 	<p>
@@ -156,11 +156,23 @@
 	</p>
 
 	<p>
-		The prime example of a category is the category $\Set$ of sets. The underlying groupoid $\Set_0$ is the groupoid of sets. For sets $A,B \in \Set$, we define $\Set(A,B) := [A,B]$ to be the set of functions from $A$ to $B$. For functions $f: A \to B$ and $g: B \to C$, $g \circ f$ is the usual composition $(g \circ f)(a) = g(f(a))$ and $\id_A$ is the usual identity $\id_A(a) = a$. By definition, $\Iso_{\Set}(A,B) = \Bi(A,B)$. The function $e: \Id \to \Iso$ defined above is the same function as $e: \Id \to \Bi$ defined in the previous part, which we assumed to be bijective. So, $\Set$ is indeed a category as opposed to a precategory.
+		The prime example of a category is the category $\Set$ of sets. The underlying groupoid $\Set_0$ is the groupoid of sets. For sets $A,B \in \Set$, we define $\Set(A,B) := [A,B]$ to be the set of functions from $A$ to $B$. For functions $f: A \to B$ and $g: B \to C$, $g \circ f$ is the usual composition $(g \circ f)(a) = g(f(a))$ and $\id_A$ is the usual identity $\id_A(a) = a$. By definition, $\Iso_{\Set}(A,B) = \Bi(A,B)$. The function $e: \Id \to \Iso$ defined above is the same function as $e: \Id \to \Bi$ defined in the previous part, which we assumed to be bijective. So, $\Set$ is indeed a category as opposed to a precategory. We're going to review some more examples of categories and precategories. You don't need to remember any of them.
 	</p>
 
 	<p>
-		W.I.P
+		Every monoid $(M,\star)$ induces a set-precategory $\mathbf{B}(M,\star)$ where $\Ob(\mathbf{B}(M,\star)) := 1 = \{\varnothing\}$, $\Hom_{\mathbf{B}(M,\star)} := M$, $g \circ f := g \star f$ and $\id_*$ is the identity element of the monoid.
+	</p>
+
+	<p>
+		Every groupoid $A$ is a category if we define $\Ob(A) := A$, $\Hom_A(a,b) := \Id_A(a,b)$, $g \circ f := g \cdot f$ and $\id_a := \rfl_a$. As every set is a groupoid, this also defines a category associated to each set $X$. This category is called the <b>discrete category</b> on the set $X$.
+	</p>
+
+	<p>
+		In a similar way, every pregroupoid $(A,\Idt,\dott,\invt,\idt)$ induces a set-precategory with $\Ob(A) := A$, $\Hom_A(a,b) := \Idt_A(a,b)$, $g \circ f := g \dott f$ and $\id_a := \idt_a$.
+	</p>
+
+	<p>
+		We define finite categories $\square$, $\downdownarrows$, $\to$ and $3$. We define $\Ob(\square) := 4 = \{0_4,1_4,2_4,3_4\}$, $\Ob(\downdownarrows) := 2$, $\Ob(\to) := 2$ and $\Ob(3) := 3$. Further, we define $\Hom(a,a) := \{\id_a\}$ in all cases, $\square(0_4,1_4) := \square(0_4,2_4) := \square(0_4,3_4) := \square(1_4,3_4) := \square(2_4,3_4) := 1$ W.I.P
 	</p>
 
 	<p>
