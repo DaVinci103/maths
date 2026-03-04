@@ -27,7 +27,7 @@
 		loader: {load: ['[tex]/html']},
 		tex: {
 			inlineMath: {'[+]': [['$', '$']]},
-			packages: {'[+]': ['html', 'ams']}
+			packages: {'[+]': ['html', 'ams', 'tikz-cd']}
 		},
 	};
 	</script>
@@ -180,8 +180,10 @@
 		We say a diagram of objects and arrows, such as the following:
 	</p>
 
-	<!-- https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIkMiXSxbMSwxLCJEIl0sWzAsMSwiZiJdLFswLDIsImciLDJdLFsxLDMsImcnIl0sWzIsMywiZiciLDJdXQ== -->
-	<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIkMiXSxbMSwxLCJEIl0sWzAsMSwiZiJdLFswLDIsImciLDJdLFsxLDMsImcnIl0sWzIsMywiZiciLDJdXQ==&embed" width="304" height="304" style="border-radius: 8px; border: none;"></iframe>
+\[\begin{tikzcd}
+A \arrow[r, "f"] \arrow[d, "g"] & B \arrow[d, "g'"] \\
+C \arrow[r, "f'"] & D
+\end{tikzcd}\]
 
 	<p>
 		<b>commutes</b> iff, for any two objects $X$ and $Y$ in the diagram and any two paths $(f_1,\cdots,f_m)$ and $(g_1,\cdots,g_n)$ from $X$ to $Y$, we have $f_m \circ \cdots \circ f_1 = g_n \circ \cdots \circ g_1$. In the diagram above, this would mean that $f' \circ g = g' \circ f$ ($(g,f')$ and $(f,g')$ are two different paths from $A$ to $D$). Sometimes, arrows will be decorated in the diagram to highlight special properties of those arrows, e.g. an arrow with a double head $\twoheadrightarrow$ highlights the arrow is epic.
