@@ -160,7 +160,7 @@
 	</p>
 
 	<p>
-		Every monoid $(M,\star)$ induces a set-precategory $\mathbf{B}(M,\star)$ where $\Ob(\mathbf{B}(M,\star)) := 1 = \{\varnothing\}$, $\Hom_{\mathbf{B}(M,\star)} := M$, $g \circ f := g \star f$ and $\id_*$ is the identity element of the monoid.
+		Every monoid $(M,\star)$ induces a set-precategory $\mathbf{B}(M,\star)$ where $\Ob(\mathbf{B}(M,\star)) := 1 = \{*\}$, $\Hom_{\mathbf{B}(M,\star)}(1,1) := M$, $g \circ f := g \star f$ and $\id_*$ is the identity element of the monoid.
 	</p>
 
 	<p>
@@ -172,7 +172,19 @@
 	</p>
 
 	<p>
-		We define finite categories $\square$, $\downdownarrows$, $\to$ and $3$. We define $\Ob(\square) := 4 = \{0_4,1_4,2_4,3_4\}$, $\Ob(\downdownarrows) := 2$, $\Ob(\to) := 2$ and $\Ob(3) := 3$. Further, we define $\Hom(a,a) := \{\id_a\}$ in all cases, $\square(0_4,1_4) := \square(0_4,2_4) := \square(0_4,3_4) := \square(1_4,3_4) := \square(2_4,3_4) := 1$ W.I.P
+		We'll see more examples of categories in the comming chapters.
+	</p>
+
+	<h2>Commutative Diagrams</h2>
+	<p>
+		We say a diagram of objects and arrows, such as the following:
+	</p>
+
+	<!-- https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIkMiXSxbMSwxLCJEIl0sWzAsMSwiZiJdLFswLDIsImciLDJdLFsxLDMsImcnIl0sWzIsMywiZiciLDJdXQ== -->
+	<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIkMiXSxbMSwxLCJEIl0sWzAsMSwiZiJdLFswLDIsImciLDJdLFsxLDMsImcnIl0sWzIsMywiZiciLDJdXQ==&embed" width="304" height="304" style="border-radius: 8px; border: none;"></iframe>
+
+	<p>
+		<b>commutes</b> iff, for any two objects $X$ and $Y$ in the diagram and any two paths $(f_1,\cdots,f_m)$ and $(g_1,\cdots,g_n)$ from $X$ to $Y$, we have $f_m \circ \cdots \circ f_1 = g_n \circ \cdots \circ g_1$. In the diagram above, this would mean that $f' \circ g = g' \circ f$ ($(g,f')$ and $(f,g')$ are two different paths from $A$ to $D$). Sometimes, arrows will be decorated in the diagram to highlight special properties of those arrows, e.g. an arrow with a double head $\twoheadrightarrow$ highlights the arrow is epic.
 	</p>
 
 	<p>
