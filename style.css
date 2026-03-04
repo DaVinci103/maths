@@ -12,6 +12,10 @@ body {
 	background: #7c7f93cc;
 }
 
+.MathJax {
+	color: var(--ctp-mocha-blue);
+}
+
 .MathJax ::selection {
 	background: none;
 	color: var(--ctp-mocha-lavender);
@@ -27,12 +31,16 @@ h1, h2 {
 }
 
 a {
-	color: var(--ctp-mocha-blue);
+	color: var(--ctp-mocha-teal);
 	text-decoration: none;
 }
 
 a:hover {
 	color: var(--ctp-mocha-sky);
+}
+
+b {
+	color: var(--ctp-mocha-red);
 }
 
 .box {
