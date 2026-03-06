@@ -8,10 +8,11 @@
 \newcommand{\id}{\textrm{id}}
 \newcommand{\rfl}{\textsf{rfl}}
 \newcommand{\Set}{\textsf{Set}}
+\newcommand{\Magma}{\textsf{Magma}}
 \newcommand{\Bi}{\textrm{Bi}}
 \]
 <head>
-	<title>Groupoids and Categories - DV103</title>
+	<title>Groups - DV103</title>
 	<link rel="stylesheet" href="../../style.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js"></script>
@@ -29,10 +30,6 @@
 </head>
 <body>
 	<h1>Groups</h1>
-	<p>
-		WIP
-	</p>
-
 	<div class="box">
 	<svg width="600" height="600">
 		<defs>
@@ -96,6 +93,19 @@
 	</svg></button>
 	</div>
 	</div>
+
+	<h2>Magma</h2>
+	<p>
+		A <b>magma</b> is a pair $(M,\star)$ with a set $M$ and a binary operation $\star: M \times M \to M$ on $M$. Usually, we write $A \times B$ for the collection of pairs of elements of $A$ and elements of $B$. However, it's not possible to write the collection of magmas this way. Note that the second element of the pair $(M,\star)$ depends on the first: $\star$ is a binary operation <i>on $M$</i>, so we need to know what $M$ is before we can define what kind of thing $\star$ is. We call $(M,\star)$ a <b>dependent pair</b>: the type of the second element depends on the value of the first. For a type $A$ and a family of types $B_a$ for $a \in A$, there is a type denoted $(a: A) \times B_a$, $(a: A, B_a)$ or $\sum_{a: A} B_a$ called the <b>dependent sum</b> type. For $a \in A$ and $b \in B_a$, we have that the pair $(a,b)$ is an element of $\sum_{a:A} B_a$. For example, the type of magma's described above is denoted as $\Magma := \sum_{M:\Set} [M \times M,M]$. The usual product is a special case of the dependent sum where the type $B_a$ does not depend on $a$.
+	</p>
+
+	<p>
+		
+	</p>
+
+	<p>
+		We'd like to know what the identities of the groupoid $\Magma$ are. In $\Set$, we know that $\Id_{\Set}(A,B)$ is the set of bijections between $A$ and $B$. WIP
+	</p>
 
 	<p>
 		<a href="../groupoids-and-categories">&leftarrow;</a>
