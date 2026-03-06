@@ -180,10 +180,25 @@
 		We say a diagram of objects and arrows, such as the following:
 	</p>
 
-\[\begin{tikzcd}
-A \arrow[r, "f"] \arrow[d, "g"] & B \arrow[d, "g'"] \\
-C \arrow[r, "f'"] & D
-\end{tikzcd}\]
+	<div class="cd box">
+	<table>
+	<tr>
+		<td class="cd-cell">A</td>
+		<td class="cd-edge">&longrightarrow;<sup class="cd-arrow">f</sup></td>
+		<td class="cd-cell">B</td>
+	</tr>
+	<tr>
+		<td class="cd-edge"><span class="cd-arrow">g</span>&downarrow;</td>
+		<td></td>
+		<td class="cd-edge">&downarrow;<span class="cd-arrow right">f'</span></td>
+	</tr>
+	<tr>
+		<td class="cd-cell">C</td>
+		<td class="cd-edge">&longrightarrow;<sub class="cd-arrow">g'</sub></td>
+		<td class="cd-cell">D</td>
+	</tr>
+	</table>
+	</div>
 
 	<p>
 		<b>commutes</b> iff, for any two objects $X$ and $Y$ in the diagram and any two paths $(f_1,\cdots,f_m)$ and $(g_1,\cdots,g_n)$ from $X$ to $Y$, we have $f_m \circ \cdots \circ f_1 = g_n \circ \cdots \circ g_1$. In the diagram above, this would mean that $f' \circ g = g' \circ f$ ($(g,f')$ and $(f,g')$ are two different paths from $A$ to $D$). Sometimes, arrows will be decorated in the diagram to highlight special properties of those arrows, e.g. an arrow with a double head $\twoheadrightarrow$ highlights the arrow is epic.
