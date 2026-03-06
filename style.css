@@ -53,3 +53,38 @@ svg {
 	display: block;
     margin: auto;
 }
+
+.cd {
+ display: flex;
+ justify-content: center;
+}
+
+.cd-cell {
+ padding: 21px;
+ font-style: italic;
+ font-family: serif;
+ font-size: 42px;
+}
+
+.cd-edge {
+ padding: 21px;;
+ font-family: serif;
+ font-size: 42px;
+}
+
+.cd-arrow {
+ font-style: italic;
+ font-size: 33px;
+}
+
+sup.cd-arrow {
+ margin-left: -50%;
+ vertical-align: top;
+ line-height: 0;
+}
+
+sub.cd-arrow {
+ margin-left: -50%;
+ vertical-align: bottom;
+ line-height: 0;
+}
